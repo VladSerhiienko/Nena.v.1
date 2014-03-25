@@ -1,0 +1,5 @@
+C:\Users\Ruda Kita\documents\visual studio 2010\Projects\HammingCode\HammingCode\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Ruda Kita\documents\visual studio 2010\Projects\HammingCode\HammingCode\bin\Release\HammingCode.exe
+C:\Users\Ruda Kita\documents\visual studio 2010\Projects\HammingCode\HammingCode\bin\Release\HammingCode.pdb
+C:\Users\Ruda Kita\documents\visual studio 2010\Projects\HammingCode\HammingCode\obj\x86\Release\HammingCode.exe
+C:\Users\Ruda Kita\documents\visual studio 2010\Projects\HammingCode\HammingCode\obj\x86\Release\HammingCode.pdb

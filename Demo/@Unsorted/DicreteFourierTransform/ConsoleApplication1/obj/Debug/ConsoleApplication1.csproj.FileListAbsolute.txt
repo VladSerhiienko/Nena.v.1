@@ -1,0 +1,6 @@
+C:\Users\Vlad Serhiienko\Documents\Visual Studio 2012\Projects\Labworks\DicreteFourierTransform\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\Vlad Serhiienko\Documents\Visual Studio 2012\Projects\Labworks\DicreteFourierTransform\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\Vlad Serhiienko\Documents\Visual Studio 2012\Projects\Labworks\DicreteFourierTransform\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\Vlad Serhiienko\Documents\Visual Studio 2012\Projects\Labworks\DicreteFourierTransform\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+C:\Users\Vlad Serhiienko\Documents\Visual Studio 2012\Projects\Labworks\DicreteFourierTransform\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\Vlad Serhiienko\Documents\Visual Studio 2012\Projects\Labworks\DicreteFourierTransform\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb

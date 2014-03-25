@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="VideoTrackingFaceLxnd.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="VideoTrackingFaceLxnd.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{257CE57F-8993-4BB7-A3A4-8980F1C5AC11}</ProjectGuid>
+    <RootNamespace>FacesLxnd</RootNamespace>
+    <ProjectName>Luxand_vs2013</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Props\Nn_Build_Checked.props" />
+    <Import Project="..\..\Props\Nn_bsc.props" />
+    <Import Project="..\..\Props\Nn_Dpndc.props" />
+    <Import Project="..\..\Props\Nn_appwndd.props" />
+    <Import Project="..\..\Props\Nn_Pcsdkd.props" />
+    <Import Project="..\..\Props\Nn_Lxndsdk.props" />
+    <Import Project="..\..\Props\Nn_Dflibd.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Props\Nn_Build_Checked.props" />
+    <Import Project="..\..\Props\Nn_bsc.props" />
+    <Import Project="..\..\Props\Nn_Dpndc.props" />
+    <Import Project="..\..\Props\Nn_appwndd.props" />
+    <Import Project="..\..\Props\Nn_Pcsdkd.props" />
+    <Import Project="..\..\Props\Nn_Lxndsdk.props" />
+    <Import Project="..\..\Props\Nn_Dflibd.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Props\Nn_Build_Release.props" />
+    <Import Project="..\..\Props\Nn_bsc.props" />
+    <Import Project="..\..\Props\Nn_Dpndc.props" />
+    <Import Project="..\..\Props\Nn_appwnd.props" />
+    <Import Project="..\..\Props\Nn_Pcsdk.props" />
+    <Import Project="..\..\Props\Nn_Lxndsdk.props" />
+    <Import Project="..\..\Props\Nn_Dflib.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Props\Nn_Build_Release.props" />
+    <Import Project="..\..\Props\Nn_bsc.props" />
+    <Import Project="..\..\Props\Nn_Dpndc.props" />
+    <Import Project="..\..\Props\Nn_appwnd.props" />
+    <Import Project="..\..\Props\Nn_Pcsdk.props" />
+    <Import Project="..\..\Props\Nn_Lxndsdk.props" />
+    <Import Project="..\..\Props\Nn_Dflib.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(Nn_DevkitRoot)Luxand\Lib\</OutDir>
+    <IntDir>$(Nn_IntRoot)Luxand$(Nn_PrjSffx)d\</IntDir>
+    <TargetName>Luxand$(Nn_PrjSffx)d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(Nn_DevkitRoot)Luxand\Lib\</OutDir>
+    <IntDir>$(Nn_IntRoot)Luxand$(Nn_PrjSffx)d\</IntDir>
+    <TargetName>Luxand$(Nn_PrjSffx)d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(Nn_DevkitRoot)Luxand\Lib\</OutDir>
+    <IntDir>$(Nn_IntRoot)Luxand$(Nn_PrjSffx)\</IntDir>
+    <TargetName>Luxand$(Nn_PrjSffx)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(Nn_DevkitRoot)Luxand\Lib\</OutDir>
+    <IntDir>$(Nn_IntRoot)Luxand$(Nn_PrjSffx)\</IntDir>
+    <TargetName>Luxand$(Nn_PrjSffx)</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(Nn_Incd3d);$(Nn_Incdxrsrc);$(Nn_Incd2d);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;DEBUG;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(Nn_Incd3dlibs);$(Nn_Incdxrsrclibs);$(Nn_Incd2dlibs);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(Nn_Lnkd3dd);$(Nn_Lnkd2dd);$(Nn_Lnkdxrsrcd);%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <FxCompile>
+      <ObjectFileOutput>$(ProjectDir)Shaders\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <PreBuildEvent>
+      <Command>mkdir $(ProjectDir)Shaders\
+mkdir $(OutDir)Shaders\
+exit 0</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>echo ----------------------------------------------------------
+mkdir $(OutDir)..\Inc\Nena\
+copy $(ProjectDir)*.h $(OutDir)..\Inc\Nena\
+copy $(ProjectDir)*.inl $(OutDir)..\Inc\Nena\
+copy $(ProjectDir)*.xml $(OutDir)..\Inc\Nena\
+echo ----------------------------------------------------------
+exit 0</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(Nn_Incd3d);$(Nn_Incdxrsrc);$(Nn_Incd2d);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN64;DEBUG;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(Nn_Incd3dlibs);$(Nn_Incdxrsrclibs);$(Nn_Incd2dlibs);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <FxCompile>
+      <ObjectFileOutput>$(ProjectDir)Shaders\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <PreBuildEvent>
+      <Command>mkdir $(ProjectDir)Shaders\
+mkdir $(OutDir)Shaders\
+exit 0</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>echo ----------------------------------------------------------
+mkdir $(OutDir)..\Inc\Nena\
+copy $(ProjectDir)*.h $(OutDir)..\Inc\Nena\
+copy $(ProjectDir)*.inl $(OutDir)..\Inc\Nena\
+copy $(ProjectDir)*.xml $(OutDir)..\Inc\Nena\
+echo ----------------------------------------------------------
+exit 0</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(Nn_Incd3d);$(Nn_Incdxrsrc);$(Nn_Incd2d);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(Nn_Incd3dlibs);$(Nn_Incdxrsrclibs);$(Nn_Incd2dlibs);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(Nn_Lnkd3d);$(Nn_Lnkd2d);$(Nn_Lnkdxrsrc);%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <FxCompile>
+      <ObjectFileOutput>$(ProjectDir)Shaders\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(Nn_Incd3d);$(Nn_Incdxrsrc);$(Nn_Incd2d);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN64;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(Nn_Incd3dlibs);$(Nn_Incdxrsrclibs);$(Nn_Incd2dlibs);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(Nn_Lnkd3d);$(Nn_Lnkd2d);$(Nn_Lnkdxrsrc);%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <FxCompile>
+      <ObjectFileOutput>$(ProjectDir)Shaders\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

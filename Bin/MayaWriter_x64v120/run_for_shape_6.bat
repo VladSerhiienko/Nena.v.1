@@ -1,0 +1,2 @@
+MayaWriter "D:/Development/Maya/Scenes/shape-6-skinned.ma" "D:/Development/Maya/Scenes/shape-6-skinned.ma.xml" "import-all.lua"
+MayaWriter "D:/Development/Maya/Scenes/shape-6-posed.ma" "D:/Development/Maya/Scenes/shape-6-posed.ma.xml" "import-joints.lua"

@@ -1,0 +1,8 @@
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\ModelFirst\bin\Debug\ModelFirst.exe.config
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\ModelFirst\bin\Debug\ModelFirst.exe
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\ModelFirst\bin\Debug\ModelFirst.pdb
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\ModelFirst\bin\Debug\EntityFramework.dll
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\ModelFirst\bin\Debug\EntityFramework.xml
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\ModelFirst\obj\Debug\ModelFirst.exe
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\ModelFirst\obj\Debug\ModelFirst.pdb
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\ModelFirst\obj\Debug\ModelFirst.csprojResolveAssemblyReference.cache

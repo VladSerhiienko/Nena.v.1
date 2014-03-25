@@ -1,0 +1,41 @@
+<App>
+	<Vars>
+		<Rec Name="App/View/Ico/Big/Hpx">128</Rec>
+		<Rec Name="App/View/Ico/Small/Wpx">64</Rec>
+		<Rec Name="App/View/Text">Demo</Rec>
+		<Rec Name="App/View/Ico/Big/File">../../Bin/@Icons/cpp.ico</Rec>
+		<Rec Name="App/View/Ico/Small/Hpx">64</Rec>
+		<Rec Name="App/View/Ico/Small/File">../../Bin/@Icons/cpp.ico</Rec>
+		<Rec Name="App/View/Ico/Big/Wpx">128</Rec>
+    <Rec Name="App/View/Class">NenaWindowClass</Rec>
+    
+    <Rec Name="App/Video/Tracking/LuxandSDK/License">BDamqp/LmVRIFKBUehhOLhjFApxKwiISCu3sTBhksRWFAEpsHvuw7GG3Bs0Yf8QRnt7vo5MtOMhml0PD+ZPPm0G2UjVbfgCrm9Av448HWO0EROCkoGuSUJYnhguTluJcWwDAPo4n3zGlsmRHj3Aqo2Hmw9aK15ExvdQEoNNckYU=</Rec>
+
+
+    <Rec Name="App/Video/Tracking/LuxandSDK/Device/Preferred/Name">BisonCam, NB Pro</Rec>
+    <!--<Rec Name="App/Video/Tracking/LuxandSDK/Device/Preferred/Name">Creative GestureCam---</Rec>-->
+
+    <Rec Name="App/Video/Tracking/LuxandSDK/Device/Preferred/Format/BPPMax">20</Rec>
+    <!--<Rec Name="App/Video/Tracking/LuxandSDK/Device/Preferred/Format/BPPMax">30</Rec>-->
+    <Rec Name="App/Video/Tracking/LuxandSDK/Device/Preferred/Format/BPPMin">10</Rec>
+    <Rec Name="App/Video/Tracking/LuxandSDK/Device/Preferred/Format/WMax">700</Rec>
+    <Rec Name="App/Video/Tracking/LuxandSDK/Device/Preferred/Format/WMin">400</Rec>
+    <Rec Name="App/Video/Tracking/LuxandSDK/Device/Preferred/Format/HMax">500</Rec>
+    <Rec Name="App/Video/Tracking/LuxandSDK/Device/Preferred/Format/HMin">300</Rec>
+
+    <Rec Name="App/Video/Tracking/LuxandSDK/Tracker/Default/Target/Gender">DetermineFaceRotationAngle=false; HandleArbitraryRotations=false; FaceDetectionThreshold=5; InternalResizeWidth=100; RecognizeFaces=false; DetectGender=true; </Rec>
+    <Rec Name="App/Video/Tracking/LuxandSDK/Tracker/Default/Target/Name">DetermineFaceRotationAngle=false; HandleArbitraryRotations=false; FaceDetectionThreshold=5; InternalResizeWidth=100; </Rec>
+
+    <Rec Name="App/Video/Tracking/LuxandSDK/Tracker/Stars/Storage/Resource/Folder">D:/Media/Images/Faces/</Rec>
+    <Rec Name="App/Video/Tracking/LuxandSDK/Tracker/Stars/Storage/Bank/File">stars.facebank</Rec>
+
+    <Rec Name="App/Video/Tracking/LuxandSDK/Tracker/Default/Storage/Folder">../../Bin/@Banks/</Rec>
+    <Rec Name="App/Video/Tracking/LuxandSDK/Tracker/Default/Storage/File">def.facebank</Rec>
+
+    <Rec Name="App/Video/Tracking/DFusion/TotalImmersion/Tracker/Default/Config/Folder">../../Bin/@Tracking/</Rec>
+    <Rec Name="App/Video/Tracking/DFusion/TotalImmersion/Tracker/Default/Config/File">SampleTracking/tracker.xml</Rec>
+
+  </Vars>
+</App>
+
+

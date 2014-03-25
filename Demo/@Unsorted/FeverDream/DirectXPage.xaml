@@ -1,0 +1,37 @@
+﻿<Page
+    x:Class="FeverDream.DirectXPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FeverDream"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <!--  -->
+    <SwapChainBackgroundPanel x:Name="SwapChainPanel" PointerMoved="OnPointerMoved" PointerReleased="OnPointerReleased">
+        <TextBlock x:Name="SimpleTextBlock" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Text="UI" Margin="0,0,0,0"/>
+    </SwapChainBackgroundPanel>
+    <Page.BottomAppBar>
+        <AppBar Padding="10,0,10,0">
+            <Grid>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <!--<Button Style="{StaticResource AppBarButtonStyle}" 
+                            Tag="Previous" 
+                            AutomationProperties.AutomationId="PreviousAppBarButton" Content="&#xE112;"  
+                            AutomationProperties.Name="Previous Color" 
+                            Click="OnPreviousColorPressed"/>-->
+                    <TextBox x:Name="HostTextBox" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" Width="150" Margin="20,0,20,0" Text="192.168.0.10"/>
+                    <TextBox x:Name="ServiceTextBox" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" Width="150" Margin="0,0,20,0" Text="2234"/>
+                    <Button Content="Open" Margin="0,0,20,0" FontSize="18" x:Name="OpenConnectionButton" Click="OpenConnectionButton_Click_1"/>
+                    <Button Content="Close" Margin="0,0,20,0" FontSize="18" x:Name="CloseConnectionButton" Click="CloseConnectionButton_Click_1"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <!--<Button Style="{StaticResource AppBarButtonStyle}" 
+                            Tag="Next" 
+                            AutomationProperties.AutomationId="NextAppBarButton" Content="&#xE111;"  
+                            AutomationProperties.Name="Next Color" 
+                            Click="OnNextColorPressed"/>-->
+                </StackPanel>
+            </Grid>
+        </AppBar>
+    </Page.BottomAppBar>
+</Page>

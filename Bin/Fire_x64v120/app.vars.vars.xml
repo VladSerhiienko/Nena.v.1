@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<App>
+  <Vars>
+    <Rec Name="App/View/Text">Feuer Frei!</Rec>
+    <Rec Name="App/View/Class">NenaWindowClass_FireDemo</Rec>
+    <Rec Name="App/View/Ico/Small/File">../../Bin/@Icons/cpp.ico</Rec>
+    <Rec Name="App/View/Ico/Big/File">../../Bin/@Icons/cpp.ico</Rec>
+    <Rec Name="App/View/Ico/Small/Wpx">64</Rec>
+    <Rec Name="App/View/Ico/Small/Hpx">64</Rec>
+    <Rec Name="App/View/Ico/Big/Wpx">128</Rec>
+    <Rec Name="App/View/Ico/Big/Hpx">128</Rec>
+    <Rec Name="Fire/Shaders/Fire/VS/Noise/FrameTime">0.1</Rec>
+    <!--<Rec Name="Fire/Shaders/Fire/VS/Noise/ScrollX">0.1</Rec>
+    <Rec Name="Fire/Shaders/Fire/VS/Noise/ScrollY">0.1</Rec>
+    <Rec Name="Fire/Shaders/Fire/VS/Noise/ScrollZ">0.1</Rec>-->
+    <Rec Name="Fire/Shaders/Fire/VS/Noise/ScrollX">1.3</Rec>
+    <Rec Name="Fire/Shaders/Fire/VS/Noise/ScrollY">2.1</Rec>
+    <Rec Name="Fire/Shaders/Fire/VS/Noise/ScrollZ">2.3</Rec>
+    <!--<Rec Name="Fire/Shaders/Fire/VS/Noise/ScaleX">0.1</Rec>
+    <Rec Name="Fire/Shaders/Fire/VS/Noise/ScaleY">0.1</Rec>
+    <Rec Name="Fire/Shaders/Fire/VS/Noise/ScaleZ">0.1</Rec>-->
+    <Rec Name="Fire/Shaders/Fire/VS/Noise/ScaleX">1.1</Rec>
+    <Rec Name="Fire/Shaders/Fire/VS/Noise/ScaleY">2.1</Rec>
+    <Rec Name="Fire/Shaders/Fire/VS/Noise/ScaleZ">3.1</Rec>
+    <!--<Rec Name="Fire/Shaders/Fire/PS/Distortion/1X">0.1</Rec>
+    <Rec Name="Fire/Shaders/Fire/PS/Distortion/2X">0.1</Rec>
+    <Rec Name="Fire/Shaders/Fire/PS/Distortion/3X">0.1</Rec>
+    <Rec Name="Fire/Shaders/Fire/PS/Distortion/1Y">0.1</Rec>
+    <Rec Name="Fire/Shaders/Fire/PS/Distortion/2Y">0.1</Rec>
+    <Rec Name="Fire/Shaders/Fire/PS/Distortion/3Y">0.1</Rec>-->
+    <Rec Name="Fire/Shaders/Fire/PS/Distortion/1X">0.1</Rec>
+    <Rec Name="Fire/Shaders/Fire/PS/Distortion/2X">0.1</Rec>
+    <Rec Name="Fire/Shaders/Fire/PS/Distortion/3X">0.1</Rec>
+    <Rec Name="Fire/Shaders/Fire/PS/Distortion/1Y">0.1</Rec>
+    <Rec Name="Fire/Shaders/Fire/PS/Distortion/2Y">0.2</Rec>
+    <Rec Name="Fire/Shaders/Fire/PS/Distortion/3Y">0.3</Rec>
+    <!--<Rec Name="Fire/Shaders/Fire/PS/Distortion/Bias">0.1</Rec>
+    <Rec Name="Fire/Shaders/Fire/PS/Distortion/Scale">0.1</Rec>-->
+    <Rec Name="Fire/Shaders/Fire/PS/Distortion/Bias">0.8</Rec>
+    <Rec Name="Fire/Shaders/Fire/PS/Distortion/Scale">0.5</Rec>
+    <Rec Name="Fire/Shaders/Fire/PS/CSO">Shaders/FirePixelShader.cso</Rec>
+    <Rec Name="Fire/Shaders/Fire/VS/CSO">Shaders/FireVertexShader.cso</Rec>
+    <Rec Name="Fire/Textures/Fire/DDS">..\..\Bin\@Resources\fire01.dds</Rec>
+    <Rec Name="Fire/Textures/Noise/DDS">..\..\Bin\@Resources\noise01.dds</Rec>
+    <Rec Name="Fire/Textures/Alpha/DDS">..\..\Bin\@Resources\alpha01.dds</Rec>
+  </Vars>
+</App>

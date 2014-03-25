@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Image Include="Assets\Logo.png">
+      <Filter>External\Assets</Filter>
+    </Image>
+    <Image Include="Assets\SmallLogo.png">
+      <Filter>External\Assets</Filter>
+    </Image>
+    <Image Include="Assets\StoreLogo.png">
+      <Filter>External\Assets</Filter>
+    </Image>
+    <Image Include="Assets\SplashScreen.png">
+      <Filter>External\Assets</Filter>
+    </Image>
+    <Filter Include="External">
+      <UniqueIdentifier>{afc438ca-3e70-4c8a-9bd2-3b5cbc67d31b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{d3c582bf-a8e1-40f9-bd4e-eeed99d257ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\App">
+      <UniqueIdentifier>{676d8c2e-cd27-438f-bdaf-c5f953fbb5ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\App\View">
+      <UniqueIdentifier>{a00130bf-d682-4aaf-83dd-11872d91c3cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Render">
+      <UniqueIdentifier>{44b0a2d7-a1d3-498d-9123-e886bd9b9e92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Util">
+      <UniqueIdentifier>{dd2628fb-b3e7-4e8b-860c-88bc0b38d11a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External\Assets">
+      <UniqueIdentifier>2e64111b-1d90-47f4-81cf-5ed1137a7d01</UniqueIdentifier>
+    </Filter>
+    <Image Include="Assets\Game\cellfloor.jpg">
+      <Filter>External\Assets\Game</Filter>
+    </Image>
+    <Image Include="Assets\Game\cellwall.jpg">
+      <Filter>External\Assets\Game</Filter>
+    </Image>
+    <Image Include="Assets\Game\ground2.bmp">
+      <Filter>External\Assets\Game</Filter>
+    </Image>
+    <Image Include="Assets\Game\particle.bmp">
+      <Filter>External\Assets\Game</Filter>
+    </Image>
+    <Image Include="Assets\Game\particle.dds">
+      <Filter>External\Assets\Game</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="App.xaml.cpp" />
+    <ClCompile Include="DirectXPage.xaml.cpp" />
+    <ClCompile Include="DirectXBase.cpp">
+      <Filter>Game\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Game\App</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicLoader.cpp">
+      <Filter>Game\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicReaderWriter.cpp">
+      <Filter>Game\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicShapes.cpp">
+      <Filter>Game\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="DDSTextureLoader.cpp">
+      <Filter>Game\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="GameRenderer.cpp">
+      <Filter>Game\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="ShadowRenderer.cpp">
+      <Filter>Game\Content\Room\CPU\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="RoomRenderer.cpp">
+      <Filter>Game\Content\Room\CPU\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="DepthRenderer.cpp">
+      <Filter>Game\Content\Room\CPU\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderTarget.cpp">
+      <Filter>Game\Content\Room\CPU\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="RoomLight.cpp">
+      <Filter>Game\Content\Room\CPU\Content</Filter>
+    </ClCompile>
+    <ClCompile Include="RoomCamera.cpp">
+      <Filter>Game\Content\Room\CPU\Content</Filter>
+    </ClCompile>
+    <ClCompile Include="Room.cpp">
+      <Filter>Game\Content\Room\CPU\Content</Filter>
+    </ClCompile>
+    <ClCompile Include="ListenerContext.cpp">
+      <Filter>Game\Content\Room\CPU\Synchrony</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientContext.cpp">
+      <Filter>Game\Content\Room\CPU\Synchrony</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="App.xaml.h" />
+    <ClInclude Include="DirectXPage.xaml.h" />
+    <ClInclude Include="DirectXBase.h">
+      <Filter>Game\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectXHelper.h">
+      <Filter>Game\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicTimer.h">
+      <Filter>Game\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Game\App</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicLoader.h">
+      <Filter>Game\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicMath.h">
+      <Filter>Game\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicReaderWriter.h">
+      <Filter>Game\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicShapes.h">
+      <Filter>Game\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="DDSTextureLoader.h">
+      <Filter>Game\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="GameRenderer.h">
+      <Filter>Game\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="ShadowRenderer.h">
+      <Filter>Game\Content\Room\CPU\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="RoomRenderer.h">
+      <Filter>Game\Content\Room\CPU\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="DepthRenderer.h">
+      <Filter>Game\Content\Room\CPU\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderTarget.h">
+      <Filter>Game\Content\Room\CPU\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="RoomLight.h">
+      <Filter>Game\Content\Room\CPU\Content</Filter>
+    </ClInclude>
+    <ClInclude Include="RoomCamera.h">
+      <Filter>Game\Content\Room\CPU\Content</Filter>
+    </ClInclude>
+    <ClInclude Include="Room.h">
+      <Filter>Game\Content\Room\CPU\Content</Filter>
+    </ClInclude>
+    <ClInclude Include="ListenerContext.h">
+      <Filter>Game\Content\Room\CPU\Synchrony</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientContext.h">
+      <Filter>Game\Content\Room\CPU\Synchrony</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <Filter>External</Filter>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FeverDream_TemporaryKey.pfx">
+      <Filter>External</Filter>
+    </None>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Filter>Game\App</Filter>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="DirectXPage.xaml">
+      <Filter>Game\App\View</Filter>
+    </Page>
+    <Page Include="Common\StandardStyles.xaml">
+      <Filter>Game\App\View</Filter>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="External\Assets\Game">
+      <UniqueIdentifier>{6e9f4c3e-76f2-46a5-b15d-0635ab6c18f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Resource">
+      <UniqueIdentifier>{27dc253a-0a72-429c-bba6-b40e5999c6e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Content">
+      <UniqueIdentifier>{cf9e2bca-5e45-412a-ba6a-60eea05cf2ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Content\Room">
+      <UniqueIdentifier>{5d337fd0-fb95-408d-bbe3-b682a4f20bb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Content\Room\GPU">
+      <UniqueIdentifier>{318c84ad-76c3-4864-af56-2d357c73e033}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Content\Room\CPU">
+      <UniqueIdentifier>{4179a621-219f-4571-aa6a-0c6538811442}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Content\Room\CPU\Rendering">
+      <UniqueIdentifier>{70f8485c-8707-45c3-975a-e0cf8b4fe535}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Content\Room\CPU\Content">
+      <UniqueIdentifier>{151395a0-aa5d-4414-b3ba-98df66f3188d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Content\Room\CPU\Synchrony">
+      <UniqueIdentifier>{77023c88-1d8a-4c88-8cbb-df0552c2a35c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="MakeRoundComputeShader.hlsl">
+      <Filter>Game\Content\Room\GPU</Filter>
+    </FxCompile>
+    <FxCompile Include="DepthVertexShader.hlsl">
+      <Filter>Game\Content\Room\GPU</Filter>
+    </FxCompile>
+    <FxCompile Include="DepthPixelShader.hlsl">
+      <Filter>Game\Content\Room\GPU</Filter>
+    </FxCompile>
+    <FxCompile Include="RoomPixelShader2.hlsl">
+      <Filter>Game\Content\Room\GPU</Filter>
+    </FxCompile>
+    <FxCompile Include="RoomVertexShader2.hlsl">
+      <Filter>Game\Content\Room\GPU</Filter>
+    </FxCompile>
+    <FxCompile Include="ShadowPixelShader.hlsl">
+      <Filter>Game\Content\Room\GPU</Filter>
+    </FxCompile>
+    <FxCompile Include="ShadowVertexShader.hlsl">
+      <Filter>Game\Content\Room\GPU</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Assets\Game\rm.spec.n.cave1.xml">
+      <Filter>External\Assets\Game</Filter>
+    </Xml>
+    <Xml Include="Assets\Game\rm.spec.n.cave2.xml">
+      <Filter>External\Assets\Game</Filter>
+    </Xml>
+  </ItemGroup>
+</Project>

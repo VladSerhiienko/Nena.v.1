@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PerceptualKickstart_vs2013", "PerceptualKickstart\PerceptualKickstart_vs2013.vcxproj", "{23254A98-7D33-44EF-865A-196357502197}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PerceptualFaceAnalysis_vs2013", "PerceptualFaceAnalysis\PerceptualFaceAnalysis_vs2013.vcxproj", "{D22DD123-04F9-4480-8FAC-4D54A79089BA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PerceptualGestures_vs2013", "PerceptualGestures\PerceptualGestures_vs2013.vcxproj", "{D73EC52E-D024-4ACE-8955-F662E87584E2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GestureWinemit_v1_vs2013", "GestureWinemit_v1\GestureWinemit_v1_vs2013.vcxproj", "{BB00F978-5544-4B25-8345-33056764396F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23254A98-7D33-44EF-865A-196357502197}.Debug|Win32.ActiveCfg = Debug|Win32
+		{23254A98-7D33-44EF-865A-196357502197}.Debug|Win32.Build.0 = Debug|Win32
+		{23254A98-7D33-44EF-865A-196357502197}.Debug|x64.ActiveCfg = Debug|x64
+		{23254A98-7D33-44EF-865A-196357502197}.Debug|x64.Build.0 = Debug|x64
+		{23254A98-7D33-44EF-865A-196357502197}.Release|Win32.ActiveCfg = Release|Win32
+		{23254A98-7D33-44EF-865A-196357502197}.Release|Win32.Build.0 = Release|Win32
+		{23254A98-7D33-44EF-865A-196357502197}.Release|x64.ActiveCfg = Release|x64
+		{23254A98-7D33-44EF-865A-196357502197}.Release|x64.Build.0 = Release|x64
+		{D22DD123-04F9-4480-8FAC-4D54A79089BA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D22DD123-04F9-4480-8FAC-4D54A79089BA}.Debug|Win32.Build.0 = Debug|Win32
+		{D22DD123-04F9-4480-8FAC-4D54A79089BA}.Debug|x64.ActiveCfg = Debug|x64
+		{D22DD123-04F9-4480-8FAC-4D54A79089BA}.Debug|x64.Build.0 = Debug|x64
+		{D22DD123-04F9-4480-8FAC-4D54A79089BA}.Release|Win32.ActiveCfg = Release|Win32
+		{D22DD123-04F9-4480-8FAC-4D54A79089BA}.Release|Win32.Build.0 = Release|Win32
+		{D22DD123-04F9-4480-8FAC-4D54A79089BA}.Release|x64.ActiveCfg = Release|x64
+		{D22DD123-04F9-4480-8FAC-4D54A79089BA}.Release|x64.Build.0 = Release|x64
+		{D73EC52E-D024-4ACE-8955-F662E87584E2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D73EC52E-D024-4ACE-8955-F662E87584E2}.Debug|Win32.Build.0 = Debug|Win32
+		{D73EC52E-D024-4ACE-8955-F662E87584E2}.Debug|x64.ActiveCfg = Debug|x64
+		{D73EC52E-D024-4ACE-8955-F662E87584E2}.Debug|x64.Build.0 = Debug|x64
+		{D73EC52E-D024-4ACE-8955-F662E87584E2}.Release|Win32.ActiveCfg = Release|Win32
+		{D73EC52E-D024-4ACE-8955-F662E87584E2}.Release|Win32.Build.0 = Release|Win32
+		{D73EC52E-D024-4ACE-8955-F662E87584E2}.Release|x64.ActiveCfg = Release|x64
+		{D73EC52E-D024-4ACE-8955-F662E87584E2}.Release|x64.Build.0 = Release|x64
+		{BB00F978-5544-4B25-8345-33056764396F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BB00F978-5544-4B25-8345-33056764396F}.Debug|Win32.Build.0 = Debug|Win32
+		{BB00F978-5544-4B25-8345-33056764396F}.Debug|x64.ActiveCfg = Debug|x64
+		{BB00F978-5544-4B25-8345-33056764396F}.Debug|x64.Build.0 = Debug|x64
+		{BB00F978-5544-4B25-8345-33056764396F}.Release|Win32.ActiveCfg = Release|Win32
+		{BB00F978-5544-4B25-8345-33056764396F}.Release|Win32.Build.0 = Release|Win32
+		{BB00F978-5544-4B25-8345-33056764396F}.Release|x64.ActiveCfg = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,71 @@
+﻿'Fire.exe' (Win32): Loaded 'E:\DEV\VisualStudio2013\Graphics\Reign\Reign\Binary\Sandbox\Fire\Desktop\x86\Debug\Fire.exe'. Symbols loaded.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\ntdll.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\kernel32.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\KernelBase.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\d2d1.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\d3d11.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\dxgi.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\DWrite.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\user32.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\gdi32.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\ole32.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\msvcp120d.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\msvcr120d.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\msvcrt.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\combase.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\rpcrt4.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\sechost.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\sspicli.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\cryptbase.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\bcryptprimitives.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\imm32.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\msctf.dll'. Cannot find or open the PDB file.
+Herzeleid. Main
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\kernel.appcore.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\uxtheme.dll'. Cannot find or open the PDB file.
+E:\DEV\VisualStudio2013\Graphics\Reign\Reign\Binary\Sandbox\Fire\Desktop\x86\Debug\Fire.exe
+Herzeleid. Creating window.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\advapi32.dll'. Cannot find or open the PDB file.
+Herzeleid. Registering window.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\dwmapi.dll'. Cannot find or open the PDB file.
+Herzeleid. Creating application view.
+Herzeleid. Creating framework view.
+Herzeleid. Initializing framework view.
+Sehnsucht. Creating directx base for desktop.
+Sandbox. Creating renderer.
+Herzeleid. Loading external framework view resources.
+Herzeleid. Associating window with the framework view.
+Sandbox. Initializing renderer.
+Sehnsucht. Initializing directx base for desktop.
+Sehnsucht. Creating the device independent resources for directx base for desktop.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\d2d1debug2.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\clbcatq.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\WindowsCodecs.dll'. Cannot find or open the PDB file.
+Sehnsucht. Creating the device resources for directx base for desktop.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\dxgidebug.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\aticfx32.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\version.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\atiuxpag.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\atidxx32.dll'. Cannot find or open the PDB file.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\d3d11_2sdklayers.dll'. Cannot find or open the PDB file.
+Sehnsucht. Creating the window size dependent resources for directx base for desktop.
+'Fire.exe' (Win32): Loaded 'D:\Windows\SysWOW64\dcomp.dll'. Cannot find or open the PDB file.
+Herzeleid. Launching application message loop.
+Herzeleid. Process window events.
+Herzeleid. Uninitialize application view.
+Sandbox. Deleting renderer.
+Sehnsucht. Deleting directx base for desktop.
+Herzeleid. Deleting framework view.
+Herzeleid. Deleting framework view source.
+Herzeleid. Waiting until the application message loop is over.
+Herzeleid. Deleting application message loop handle.
+Herzeleid. Deleting application views.
+Herzeleid. Destucting core app instance.
+Herzeleid. Exiting.
+The thread 0x4c0 has exited with code 0 (0x0).
+'Fire.exe' (Win32): Unloaded 'D:\Windows\SysWOW64\atidxx32.dll'
+'Fire.exe' (Win32): Unloaded 'D:\Windows\SysWOW64\aticfx32.dll'
+The thread 0xa98 has exited with code 0 (0x0).
+The thread 0xc54 has exited with code 0 (0x0).
+The thread 0xc10 has exited with code 0 (0x0).
+The program '[2540] Fire.exe' has exited with code 0 (0x0).

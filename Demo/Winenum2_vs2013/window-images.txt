@@ -1,0 +1,90 @@
+65702 COMTASKSWINDOWCLASS
+65706 #32770
+65736 #32770
+65948 Progman
+65982 OleDdeWndClass
+66120 WorkerW
+66136 OleDdeWndClass
+66146 SystemTray_Main
+66160 WNPGeneric
+66232 PersistClass
+66238 GDI+ Hook Window Class
+66242 Afx:0000000140000000:0
+66356 C:\Program Files (x86)\Creative\Sound Blaster Cinema\Sound Blaster Cinema\SBCinema.exe
+66364 C:\Program Files (x86)\Common Files\Intel\PCSDK\bin\win32\notification_tool.exe
+131112 MS_WebcheckMonitor
+131220 BluetoothNotificationAreaIconWindowClass
+131352 #32770
+131500 PushNotificationsPowerManagement
+131580 igfxtrayClass
+131794 C:\Program Files (x86)\ABBYY Lingvo x5\LvAgent.exe
+131798 C:\Program Files (x86)\Creative\Sound Blaster Cinema\Sound Blaster Cinema\SBCinema.exe
+131806 C:\Program Files (x86)\Creative\Sound Blaster Cinema\Sound Blaster Cinema\SBCinema.exe
+131808 C:\Program Files (x86)\Creative\Sound Blaster Cinema\Sound Blaster Cinema\SBCinema.exe
+131814 C:\Program Files (x86)\Creative\Sound Blaster Cinema\Sound Blaster Cinema\SBCinema.exe
+131822 Zune AutoLauncher Window Class
+131952 C:\Program Files\Intel\Intel(R) Rapid Storage Technology\IAStorIcon.exe
+132622 DV2ControlHost
+196750 ATL:00007FFA41D37320
+264114 OperationStatusWindow
+264282 CabinetWClass
+327706 TaskSwitcherWnd
+393308 C:\Program Files\Intel\Intel(R) Rapid Storage Technology\IAStorIcon.exe
+394154 D:\Development\VisualStudio\Aktuelle\Nena\Demo\..\Bin\Winenum_vs2013_x86v120\Winenum_vs2013d.exe
+394986 GDI+ Hook Window Class
+460232 C:\Program Files (x86)\Internet Explorer\IEXPLORE.EXE
+460348 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+460392 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+460712 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+460966 IEFrame
+525672 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+526170 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+656334 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+656880 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+657390 C:\Program Files (x86)\Internet Explorer\IEXPLORE.EXE
+721908 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+786692 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+787092 HkClass
+788116 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+852042 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+853376 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+918256 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+984324 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+985668 C:\Program Files (x86)\Skype\Phone\Skype.exe
+985878 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+1116866 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+1180554 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+1246184 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+1247532 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+1247638 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+1377396 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+1509484 C:\Program Files (x86)\Skype\Phone\Skype.exe
+1572928 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+1573972 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+1574260 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+1574960 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+1639218 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+1639460 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+1836728 CabinetWClass
+1836994 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+2032678 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+2098330 WNPGeneric
+2098654 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+2426144 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+2491294 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+2623460 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+2687624 C:\Program Files (x86)\Internet Explorer\IEXPLORE.EXE
+3082266 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+3212894 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+3540866 C:\Program Files (x86)\Skype\Phone\Skype.exe
+3670888 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+3671958 OleDdeWndClass
+3737768 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+4654778 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+5179846 C:\Program Files (x86)\Skype\Phone\Skype.exe
+5244776 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+6424808 C:\Program Files (x86)\Skype\Phone\Skype.exe
+7669598 C:\Program Files (x86)\Skype\Phone\Skype.exe
+7735930 C:\Program Files (x86)\Skype\Phone\Skype.exe
+9241738 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+10029322 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe

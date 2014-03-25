@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="yes" ?>
+<CAMERABASE>
+    <CAMERABASE>
+        <COMMENTS></COMMENTS>
+        <MODELE>OPENCV_0</MODELE>
+        <MAXX>640</MAXX>
+        <MAXY>480</MAXY>
+        <PX>320.00000000</PX>
+        <PY>240.00000000</PY>
+        <FX>900.00000000</FX>
+        <FY>900.00000000</FY>
+        <A1>0.00000000</A1>
+        <A2>0.00000000</A2>
+        <P1>0.00000000</P1>
+        <P2>0.00000000</P2>
+        <DEDISTORTION>true</DEDISTORTION>
+    </CAMERABASE>
+</CAMERABASE>

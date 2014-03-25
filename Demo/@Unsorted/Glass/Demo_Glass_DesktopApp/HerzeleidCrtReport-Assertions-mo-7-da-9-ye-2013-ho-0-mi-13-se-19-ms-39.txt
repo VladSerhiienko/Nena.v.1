@@ -1,0 +1,6 @@
+Assertion failed: 
+Herzeleid (Assert). Crt debugging started.
+
+Assertion failed: 
+Herzeleid (Assert). Crt debugging closed.
+

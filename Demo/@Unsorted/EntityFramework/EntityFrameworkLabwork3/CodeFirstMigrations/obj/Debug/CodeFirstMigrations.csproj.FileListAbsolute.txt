@@ -1,0 +1,7 @@
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\CodeFirstMigrations\bin\Debug\CodeFirstMigrations.exe.config
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\CodeFirstMigrations\bin\Debug\CodeFirstMigrations.exe
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\CodeFirstMigrations\bin\Debug\CodeFirstMigrations.pdb
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\CodeFirstMigrations\bin\Debug\EntityFramework.dll
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\CodeFirstMigrations\bin\Debug\EntityFramework.xml
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\CodeFirstMigrations\obj\Debug\CodeFirstMigrations.exe
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\CodeFirstMigrations\obj\Debug\CodeFirstMigrations.pdb

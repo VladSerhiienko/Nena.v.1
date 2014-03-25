@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Samples">
+      <UniqueIdentifier>{f7f0b85a-a455-4429-b860-b4d6cdf3cc3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Heuristic Vogel Approach">
+      <UniqueIdentifier>{bfbf7776-4047-4436-93f7-a77c86190870}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Samples</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="hvasolver.h">
+      <Filter>Heuristic Vogel Approach</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="hvasolver.inl">
+      <Filter>Heuristic Vogel Approach</Filter>
+    </None>
+  </ItemGroup>
+</Project>

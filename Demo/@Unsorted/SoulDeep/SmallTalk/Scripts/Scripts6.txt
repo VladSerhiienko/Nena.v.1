@@ -1,0 +1,15 @@
+﻿$ /Set N1 2
+$ /Set N2 3
+$ /Set DecDst3 EncSS3GA
+$ /Set DecDst2 EncSS2GA
+$ /Set DecDst1 EncSSAA
+$ /Set DecSrc C:\Users\Vlad Serhiienko\Downloads\Papers\Variants\lab_2\S53
+$ /Set Src %DecSrc
+$ /Set Dst1 %DecDst1
+$ /Set Dst2 %DecDst2
+$ /Set Dst3 %DecDst3
+$ /Obj:Analyzer:Alpha /Act:Analyze /Param:Srcpath:%Src /Param:Destpath:%Dst1
+$ /Obj:Analyzer:NGram /Act:Analyze /Param:N:%N1 /Param:Srcpath:%Src /Param:Destpath:%Dst2
+$ /Obj:Analyzer:NGram /Act:Analyze /Param:N:%N2 /Param:Srcpath:%Src /Param:Destpath:%Dst3
+
+

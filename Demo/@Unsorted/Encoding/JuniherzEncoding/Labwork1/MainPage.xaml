@@ -1,0 +1,71 @@
+﻿<Page
+    x:Class="Labwork1.MainPage"
+    IsTabStop="false"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Labwork1"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock 
+            x:Name="ResultTextBlock" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center"
+            Text="Data"
+            />
+        
+        <Button x:Name="ResultButton1"
+                Grid.Row="1"
+                Content="Read"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                Click="OnResultButtonClicked1"/>
+                
+        
+        <Button x:Name="ResultButton2"
+                Grid.Row="1"
+                Content="Shannon-Fano"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Click="OnResultButtonClicked2"/>
+                
+        
+        <Button x:Name="ResultButton3"
+                Grid.Row="1"
+                Content="Huffman"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                Click="OnResultButtonClicked3"/>
+
+
+        <Button x:Name="ResultButton4"
+                Grid.Row="2"
+                Content="Encode"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                Click="OnResultButtonClicked4"/>
+        
+        <TextBox x:Name="ResultTextBox1"
+                 Grid.Row="2"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center"
+                 MinWidth="700"/>
+                 
+
+
+        <Button x:Name="ResultButton5"
+                Grid.Row="2"
+                Content="Decode"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                Click="OnResultButtonClicked5"/>
+    </Grid>
+</Page>

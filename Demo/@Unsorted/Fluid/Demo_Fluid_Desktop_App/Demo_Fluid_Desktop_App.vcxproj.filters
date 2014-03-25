@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Shared">
+      <UniqueIdentifier>{811424e5-2532-4f69-b424-cf3422747d55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shared\App">
+      <UniqueIdentifier>{f31f2e86-cd58-4a9f-9b6b-9039a6baf81a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shared\App\Pch">
+      <UniqueIdentifier>{d29e0d35-c057-45ba-89f2-1cd538ff7a57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shared\Fluid">
+      <UniqueIdentifier>{81a33c09-9a95-4440-961a-da3f85983e61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shared\Fluid\CPU">
+      <UniqueIdentifier>{48c126f8-2216-4e54-97c6-22b1a58b915b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shared\Fluid\GPU">
+      <UniqueIdentifier>{5f5a926d-1743-4119-af04-9cf73b23cb8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shared\Fluid\GPU\Rendering">
+      <UniqueIdentifier>{3abe7b64-5c55-4c04-86d7-6d9f8118e53a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shared\Fluid\GPU\Computation">
+      <UniqueIdentifier>{9355483a-1351-48b9-87cd-771a0c2a5c3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shared\Fluid\GPU\Computation\Grid">
+      <UniqueIdentifier>{b7c604f7-2560-42d0-8540-8f8f82319781}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shared\Fluid\GPU\Computation\Grid\Sort">
+      <UniqueIdentifier>{8ab09c67-6109-4a46-9afe-6fa61fd8f3b7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Include\Precompiled.h">
+      <Filter>Shared\App\Pch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Application.h">
+      <Filter>Shared\App</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\FluidSimulator.h">
+      <Filter>Shared\Fluid\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\FluidRenderer.h">
+      <Filter>Shared\Fluid\CPU</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Source\Precompiled.cpp">
+      <Filter>Shared\App\Pch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Application.cpp">
+      <Filter>Shared\App</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\FluidSimulator.cpp">
+      <Filter>Shared\Fluid\CPU</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\FluidRenderer.cpp">
+      <Filter>Shared\Fluid\CPU</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\Source\FluidSimulatorVertexShader.hlsl">
+      <Filter>Shared\Fluid\GPU\Rendering</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Source\FluidSimulatorPixelShader.hlsl">
+      <Filter>Shared\Fluid\GPU\Rendering</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Source\FluidSimulatorGeometryShader.hlsl">
+      <Filter>Shared\Fluid\GPU\Rendering</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Source\FluidSimulatorParticleAcceleration.hlsl">
+      <Filter>Shared\Fluid\GPU\Computation</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Source\FluidSimulatorParticleDensity.hlsl">
+      <Filter>Shared\Fluid\GPU\Computation</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Source\FluidSimulatorBitonicSort.hlsl">
+      <Filter>Shared\Fluid\GPU\Computation\Grid\Sort</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Source\FluidSimulatorMatrixTranspose.hlsl">
+      <Filter>Shared\Fluid\GPU\Computation\Grid\Sort</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Source\FluidSimulatorRearrangeParticles.hlsl">
+      <Filter>Shared\Fluid\GPU\Computation\Grid</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Source\FluidSimulatorClearParticleGridIndices.hlsl">
+      <Filter>Shared\Fluid\GPU\Computation\Grid</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Source\FluidSimulatorBuildParticleGridIndices.hlsl">
+      <Filter>Shared\Fluid\GPU\Computation\Grid</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Source\FluidSimulatorBuildParticleGrid.hlsl">
+      <Filter>Shared\Fluid\GPU\Computation\Grid</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Source\FluidSimulatorAccumulateParticles.hlsl">
+      <Filter>Shared\Fluid\GPU\Computation</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,135 @@
+Supervisor: Mode = Debugging.
+Supervisor: Created: # 0 0x0
+Supervisor: Initializing with: #ABCDEFGHIJKLMNOPQRSTUVWXYZ
+Supervisor: Created: A 1 0x1
+Supervisor: Created: B 2 0x2
+Supervisor: Created: C 3 0x3
+Supervisor: Created: D 4 0x4
+Supervisor: Created: E 5 0x5
+Supervisor: Created: F 6 0x6
+Supervisor: Created: G 7 0x7
+Supervisor: Created: H 8 0x8
+Supervisor: Created: I 9 0x9
+Supervisor: Created: J 10 0xA
+Supervisor: Created: K 11 0xB
+Supervisor: Created: L 12 0xC
+Supervisor: Created: M 13 0xD
+Supervisor: Created: N 14 0xE
+Supervisor: Created: O 15 0xF
+Supervisor: Created: P 16 0x10
+Supervisor: Created: Q 17 0x11
+Supervisor: Created: R 18 0x12
+Supervisor: Created: S 19 0x13
+Supervisor: Created: T 20 0x14
+Supervisor: Created: U 21 0x15
+Supervisor: Created: V 22 0x16
+Supervisor: Created: W 23 0x17
+Supervisor: Created: X 24 0x18
+Supervisor: Created: Y 25 0x19
+Supervisor: Created: Z 26 0x1A
+Supervisor: Index of the init dictionary: 26
+Supervisor: Encoding: TOBEORNOTTOBEORTOBEORNOT#
+Supervisor: Created: TO 27 0x1B
+Supervisor: Added to encoding set: Word = T Index = 20
+Supervisor: Created: OB 28 0x1C
+Supervisor: Added to encoding set: Word = O Index = 15
+Supervisor: Created: BE 29 0x1D
+Supervisor: Added to encoding set: Word = B Index = 2
+Supervisor: Created: EO 30 0x1E
+Supervisor: Added to encoding set: Word = E Index = 5
+Supervisor: Created: OR 31 0x1F
+Supervisor: Added to encoding set: Word = O Index = 15
+Supervisor: Created: RN 32 0x20
+Supervisor: Added to encoding set: Word = R Index = 18
+Supervisor: Created: NO 33 0x21
+Supervisor: Added to encoding set: Word = N Index = 14
+Supervisor: Created: OT 34 0x22
+Supervisor: Added to encoding set: Word = O Index = 15
+Supervisor: Created: TT 35 0x23
+Supervisor: Added to encoding set: Word = T Index = 20
+Supervisor: Created: TOB 36 0x24
+Supervisor: Added to encoding set: Word = TO Index = 27
+Supervisor: Created: BEO 37 0x25
+Supervisor: Added to encoding set: Word = BE Index = 29
+Supervisor: Created: ORT 38 0x26
+Supervisor: Added to encoding set: Word = OR Index = 31
+Supervisor: Created: TOBE 39 0x27
+Supervisor: Added to encoding set: Word = TOB Index = 36
+Supervisor: Created: EOR 40 0x28
+Supervisor: Added to encoding set: Word = EO Index = 30
+Supervisor: Created: RNO 41 0x29
+Supervisor: Added to encoding set: Word = RN Index = 32
+Supervisor: Created: OT# 42 0x2A
+Supervisor: Added to encoding set: Word = OT Index = 34
+Supervisor: Added to encoding set: Word = # Index = 0
+Supervisor: Encoded message: 20 15 2 5 15 18 14 15 20 27 29 31 36 30 32 34 0 
+Supervisor: 
+
+
+
+
+
+
+Supervisor: Created: # 0 0x0
+Supervisor: Initializing with: #ABCDEFGHIJKLMNOPQRSTUVWXYZ
+Supervisor: Created: A 1 0x1
+Supervisor: Created: B 2 0x2
+Supervisor: Created: C 3 0x3
+Supervisor: Created: D 4 0x4
+Supervisor: Created: E 5 0x5
+Supervisor: Created: F 6 0x6
+Supervisor: Created: G 7 0x7
+Supervisor: Created: H 8 0x8
+Supervisor: Created: I 9 0x9
+Supervisor: Created: J 10 0xA
+Supervisor: Created: K 11 0xB
+Supervisor: Created: L 12 0xC
+Supervisor: Created: M 13 0xD
+Supervisor: Created: N 14 0xE
+Supervisor: Created: O 15 0xF
+Supervisor: Created: P 16 0x10
+Supervisor: Created: Q 17 0x11
+Supervisor: Created: R 18 0x12
+Supervisor: Created: S 19 0x13
+Supervisor: Created: T 20 0x14
+Supervisor: Created: U 21 0x15
+Supervisor: Created: V 22 0x16
+Supervisor: Created: W 23 0x17
+Supervisor: Created: X 24 0x18
+Supervisor: Created: Y 25 0x19
+Supervisor: Created: Z 26 0x1A
+Supervisor: Index of the init dictionary: 26
+Supervisor: Created: TO 27 0x1B
+Supervisor: Added to encoding set: Word = T Index = 20
+Supervisor: Created: OB 28 0x1C
+Supervisor: Added to encoding set: Word = O Index = 15
+Supervisor: Created: BE 29 0x1D
+Supervisor: Added to encoding set: Word = B Index = 2
+Supervisor: Created: EO 30 0x1E
+Supervisor: Added to encoding set: Word = E Index = 5
+Supervisor: Created: OR 31 0x1F
+Supervisor: Added to encoding set: Word = O Index = 15
+Supervisor: Created: RN 32 0x20
+Supervisor: Added to encoding set: Word = R Index = 18
+Supervisor: Created: NO 33 0x21
+Supervisor: Added to encoding set: Word = N Index = 14
+Supervisor: Created: OT 34 0x22
+Supervisor: Added to encoding set: Word = O Index = 15
+Supervisor: Created: TT 35 0x23
+Supervisor: Added to encoding set: Word = T Index = 20
+Supervisor: Created: TOB 36 0x24
+Supervisor: Added to encoding set: Word = TO Index = 27
+Supervisor: Created: BEO 37 0x25
+Supervisor: Added to encoding set: Word = BE Index = 29
+Supervisor: Created: ORT 38 0x26
+Supervisor: Added to encoding set: Word = OR Index = 31
+Supervisor: Created: TOBE 39 0x27
+Supervisor: Added to encoding set: Word = TOB Index = 36
+Supervisor: Created: EOR 40 0x28
+Supervisor: Added to encoding set: Word = EO Index = 30
+Supervisor: Created: RNO 41 0x29
+Supervisor: Added to encoding set: Word = RN Index = 32
+Supervisor: Created: OT# 42 0x2A
+Supervisor: Added to encoding set: Word = OT Index = 34
+Supervisor: Added to decoded set: Word = # Index = 0
+Supervisor: Decoded message: TOBEORNOTTOBEORTOBEORNOT#

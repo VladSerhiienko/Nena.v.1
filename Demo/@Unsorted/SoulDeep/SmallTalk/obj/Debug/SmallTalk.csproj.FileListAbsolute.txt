@@ -1,0 +1,15 @@
+E:\DEV\VisualStudio2012\Win32\Labworks\SoulDeep\SmallTalk\bin\Debug\SmallTalk.dll
+E:\DEV\VisualStudio2012\Win32\Labworks\SoulDeep\SmallTalk\bin\Debug\SmallTalk.pdb
+E:\DEV\VisualStudio2012\Win32\Labworks\SoulDeep\SmallTalk\bin\Debug\SmallTalk.dll.manifest
+E:\DEV\VisualStudio2012\Win32\Labworks\SoulDeep\SmallTalk\bin\Debug\SmallTalk.vsto
+E:\DEV\VisualStudio2012\Win32\Labworks\SoulDeep\SmallTalk\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+E:\DEV\VisualStudio2012\Win32\Labworks\SoulDeep\SmallTalk\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.xml
+E:\DEV\VisualStudio2012\Win32\Labworks\SoulDeep\SmallTalk\obj\Debug\SmallTalk.HauptMenu.resources
+E:\DEV\VisualStudio2012\Win32\Labworks\SoulDeep\SmallTalk\obj\Debug\SmallTalk.Properties.Resources.resources
+E:\DEV\VisualStudio2012\Win32\Labworks\SoulDeep\SmallTalk\obj\Debug\SmallTalk.Ribbons.CaeserSandboxForm.resources
+E:\DEV\VisualStudio2012\Win32\Labworks\SoulDeep\SmallTalk\obj\Debug\SmallTalk.Ribbons.CommandPromptForm.resources
+E:\DEV\VisualStudio2012\Win32\Labworks\SoulDeep\SmallTalk\obj\Debug\SmallTalk.csproj.GenerateResource.Cache
+E:\DEV\VisualStudio2012\Win32\Labworks\SoulDeep\SmallTalk\obj\Debug\SmallTalk.dll
+E:\DEV\VisualStudio2012\Win32\Labworks\SoulDeep\SmallTalk\obj\Debug\SmallTalk.pdb
+E:\DEV\VisualStudio2012\Win32\Labworks\SoulDeep\SmallTalk\obj\Debug\SmallTalk.csprojResolveAssemblyReference.cache
+E:\DEV\VisualStudio2012\Win32\Labworks\SoulDeep\SmallTalk\obj\Debug\SmallTalk.Ribbons.CryptoSandbox.resources

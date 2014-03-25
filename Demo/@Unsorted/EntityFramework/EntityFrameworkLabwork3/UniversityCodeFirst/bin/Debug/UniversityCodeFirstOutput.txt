@@ -1,0 +1,238 @@
+Labwork #03: CodeFirst.
+Creating db tester instance.
+RunTests>>
+-----------------------------------
+DataSupply Stage:
+Filling database with the sample data...
+InitializeDatabase>> Connection exists. Closing...
+InitializeDatabase>> Closed.
+InitializeDatabase>> Creating...
+InitializeDatabase>> Created.
+Db>> Trying to save the changes...
+Changes: 0
+Db>> Trying to save the changes...
+Changes: 38
+Test output:
+Group: CAD11
+Discipline: Mathematics.
+Discipline: Economics.
+Discipline: Painting.
+Discipline: English.
+Discipline: Deutsch.
+Group: CAD12
+Discipline: Physics.
+Discipline: Chemistry.
+Discipline: Painting.
+Discipline: History.
+Discipline: Deutsch.
+Group: CAD13
+Discipline: Mathematics.
+Discipline: Geography.
+Discipline: History.
+Discipline: English.
+Discipline: Deutsch.
+Group: AI11
+Discipline: Mathematics.
+Discipline: Physics.
+Discipline: Chemistry.
+Discipline: Geography.
+Group: AI12
+Discipline: Chemistry.
+Discipline: Economics.
+Discipline: Painting.
+Discipline: Deutsch.
+Group: AI13
+Discipline: Mathematics.
+Discipline: Physics.
+Discipline: Economics.
+Discipline: Music.
+Group: NET11
+Discipline: Economics.
+Discipline: Geography.
+Discipline: Music.
+Group: NET12
+Discipline: Chemistry.
+Discipline: Geography.
+Discipline: Music.
+Discipline: History.
+Discipline: English.
+Discipline: Deutsch.
+Group: NET13
+Discipline: Economics.
+Discipline: English.
+Cooper CAD11.
+Burke - not studying.
+Murphy CAD12.
+Wilson CAD12.
+Peterson - not studying.
+Diaz AI12.
+Bein - not studying.
+Rossi - not studying.
+Petersen NET11.
+Leka NET13.
+Heikkonen NET13.
+Lauzon NET12.
+-----------------------------------
+Audit Stage:
+OriginalValue: Murphy
+CurrentValue: Murphy_Memory
+DatabaseValue: Murphy_Db
+-----------------------------------
+Validation Stage:
+Adding student: Name=Li(2) Surname=Errungenschaftsgemeinschaft(27)
+Db>> Trying to save the changes...
+Internal Validation Exception Handler>>
+Error#1
+   >> Type: Student
+   >> Property: Name
+   >> Error: The name is too short. Consider it to have more then 3 digits.
+Error#2
+   >> Type: Student
+   >> Property: Surname
+   >> Error: The surname is too big. Consider it to have less then 20 digits.
+External Validation Exception Handler>>
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+-----------------------------------
+Concurrency Db Wins Stage:
+Find student: Name=Regina(6) Surname=Murphy(6) Id=3
+Update student surname in db: FirstWins
+Update student surname in memory: MemorySurname1
+Db>> Trying to save the changes...
+Reloading conflicting entries...
+Find student: Name=Regina(6) Surname=FirstWins(9) Id=3
+Db or Memory ??? => FirstWins
+-----------------------------------
+Concurrency Memory Wins Stage:
+Find student: Name=Regina(6) Surname=FirstWins(9) Id=3
+Update student surname in db: LastWins
+Update student surname in memory: MemorySurname
+Db>> Trying to save the changes...
+Applying database values...
+Find student: Name=Regina(6) Surname=MemorySurname(13) Id=3
+Db or Memory ??? => MemorySurname
+-----------------------------------
+
+Students from CAD:
+student>> Charlotte Cooper
+student>> Peter Wilson
+student>> Regina MemorySurname
+
+Students of the 1st course grouped by their group acronym:
+key>> AI
+student>> Carlos Diaz
+key>> CAD
+student>> Charlotte Cooper
+student>> Regina MemorySurname
+student>> Peter Wilson
+key>> NET
+student>> Sven  Petersen
+student>> Chandra Leka
+student>> Anne  Heikkonen
+student>> Jean-Guy Lauzon
+
+Students of the 1st course grouped by surname in the alphabet order:
+key>> C
+student>> Cooper Charlotte
+key>> D
+student>> Diaz Carlos
+key>> H
+student>> Heikkonen Anne 
+key>> L
+student>> MemorySurname Regina
+student>> Leka Chandra
+student>> Lauzon Jean-Guy
+key>> P
+student>> Petersen Sven 
+key>> W
+student>> Wilson Peter
+
+Students, grouped by the first letter of their name ordered descending:
+Constrain: More then 1 element within
+key>> C
+	student>> Charlotte Cooper
+	student>> Carlos Diaz
+	student>> Chandra Leka
+
+Left outer join: dbo.Students-dbo.Groups
+joined>> Charlotte Cooper     CAD-11
+joined>> Shelley Burke        CAD-12
+joined>> Regina MemorySurname CAD-13
+joined>> Peter Wilson         AI-11
+joined>> Lars Peterson        AI-12
+joined>> Carlos Diaz          AI-13
+joined>> Martin Bein          NET-11
+joined>> Elio Rossi           NET-12
+joined>> Sven  Petersen       NET-13
+joined>> Chandra Leka         NOT FOUND
+joined>> Anne  Heikkonen      NOT FOUND
+joined>> Jean-Guy Lauzon      NOT FOUND
+
+Right outer join: dbo.Students-dbo.Groups
+joined>> Charlotte Cooper     CAD-11
+joined>> Shelley Burke        CAD-12
+joined>> Regina MemorySurname CAD-13
+joined>> Peter Wilson         AI-11
+joined>> Lars Peterson        AI-12
+joined>> Carlos Diaz          AI-13
+joined>> Martin Bein          NET-11
+joined>> Elio Rossi           NET-12
+joined>> Sven  Petersen       NET-13
+
+Inner join: dbo.Students-dbo.Groups
+joined>> Charlotte Cooper     CAD-11
+joined>> Shelley Burke        CAD-12
+joined>> Regina MemorySurname CAD-13
+joined>> Peter Wilson         AI-11
+joined>> Lars Peterson        AI-12
+joined>> Carlos Diaz          AI-13
+joined>> Martin Bein          NET-11
+joined>> Elio Rossi           NET-12
+joined>> Sven  Petersen       NET-13
+
+Full join: dbo.Students-dbo.Groups
+joined>> Chandra Leka         NOT FOUND
+joined>> Anne  Heikkonen      NOT FOUND
+joined>> Jean-Guy Lauzon      NOT FOUND
+joined>> Charlotte Cooper     CAD-11
+joined>> Shelley Burke        CAD-12
+joined>> Regina MemorySurname CAD-13
+joined>> Peter Wilson         AI-11
+joined>> Lars Peterson        AI-12
+joined>> Carlos Diaz          AI-13
+joined>> Martin Bein          NET-11
+joined>> Elio Rossi           NET-12
+joined>> Sven  Petersen       NET-13
+
+Grouped join: dbo.Students-dbo.Groups
+group>> CAD-11
+	student>> Charlotte Cooper
+group>> CAD-12
+	student>> Shelley Burke
+group>> CAD-13
+	student>> Regina MemorySurname
+group>> AI-11
+	student>> Peter Wilson
+group>> AI-12
+	student>> Lars Peterson
+group>> AI-13
+	student>> Carlos Diaz
+group>> NET-11
+	student>> Martin Bein
+group>> NET-12
+	student>> Elio Rossi
+group>> NET-13
+	student>> Sven  Petersen
+
+Left outer join: dbo.Students-dbo.Groups (in raw)
+Charlotte Cooper CAD-11
+Shelley Burke 
+Regina LastWins CAD-12
+Peter Wilson CAD-12
+Lars Peterson 
+Carlos Diaz AI-12
+Martin Bein 
+Elio Rossi 
+Sven  Petersen NET-11
+Chandra Leka NET-13
+Anne  Heikkonen NET-13
+Jean-Guy Lauzon NET-12

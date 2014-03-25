@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Precompiled.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="Application.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Graphics\CPU</Filter>
+    </ClCompile>
+    <ClCompile Include="GlassRenderer.cpp">
+      <Filter>Graphics\CPU</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneRenderer.cpp">
+      <Filter>Graphics\CPU</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Precompiled.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="Application.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Graphics\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Graphics\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="GlassRenderer.h">
+      <Filter>Graphics\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneRenderer.h">
+      <Filter>Graphics\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="RendererUtil.h">
+      <Filter>Graphics\CPU</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="App">
+      <UniqueIdentifier>{1a4b2f02-6de3-4c3c-b737-8f86695012b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{e8c15ace-1873-4d39-b715-a8c0d4ee371b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\GPU">
+      <UniqueIdentifier>{f0e02bfc-db63-4274-84e8-3a958b863224}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\CPU">
+      <UniqueIdentifier>{e62371b4-d34b-4b78-81fd-1aa3d97c872b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="GlassVertexShader.hlsl">
+      <Filter>Graphics\GPU</Filter>
+    </FxCompile>
+    <FxCompile Include="GlassPixelShader.hlsl">
+      <Filter>Graphics\GPU</Filter>
+    </FxCompile>
+    <FxCompile Include="SceneVertexShader.hlsl">
+      <Filter>Graphics\GPU</Filter>
+    </FxCompile>
+    <FxCompile Include="ScenePixelShader.hlsl">
+      <Filter>Graphics\GPU</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>

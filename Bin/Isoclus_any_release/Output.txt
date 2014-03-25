@@ -1,0 +1,227 @@
+3/14/2014 2:39:27 PM
+ ISOCLUS OUTPUT: 
+
+
+
+INF: Initial points:
+[X1, Point[X1 (0,1)]]
+[X10, Point[X10 (10,6)]]
+[X11, Point[X11 (10,12)]]
+[X2, Point[X2 (1,3)]]
+[X3, Point[X3 (3,4)]]
+[X4, Point[X4 (3,9)]]
+[X5, Point[X5 (4,8)]]
+[X6, Point[X6 (8,5)]]
+[X7, Point[X7 (9,6)]]
+[X8, Point[X8 (10,5)]]
+[X9, Point[X9 (10,5)]]
+
+INF: Initial clusters:
+[S1, Cluster[S1 Point[Z1 (6,2)]]]
+[S2, Cluster[S2 Point[Z2 (0,6)]]]
+
+INF: Iteration 1.
+
+INF: Step 2.
+
+INF: Assign each point to its closest cluster center:
+INF: Euclidean Length From Point[X1 (0,1)] To Cluster[S1 Point[Z1 (6,2)]] Is 6.082763
+INF: Euclidean Length From Point[X1 (0,1)] To Cluster[S2 Point[Z2 (0,6)]] Is 5
+INF: Associate Point[X1 (0,1)] With Cluster[S2 Point[Z2 (0,6)]]
+INF: Euclidean Length From Point[X10 (10,6)] To Cluster[S1 Point[Z1 (6,2)]] Is 5.656854
+INF: Euclidean Length From Point[X10 (10,6)] To Cluster[S2 Point[Z2 (0,6)]] Is 10
+INF: Associate Point[X10 (10,6)] With Cluster[S1 Point[Z1 (6,2)]]
+INF: Euclidean Length From Point[X11 (10,12)] To Cluster[S1 Point[Z1 (6,2)]] Is 10.77033
+INF: Euclidean Length From Point[X11 (10,12)] To Cluster[S2 Point[Z2 (0,6)]] Is 11.6619
+INF: Associate Point[X11 (10,12)] With Cluster[S1 Point[Z1 (6,2)]]
+INF: Euclidean Length From Point[X2 (1,3)] To Cluster[S1 Point[Z1 (6,2)]] Is 5.09902
+INF: Euclidean Length From Point[X2 (1,3)] To Cluster[S2 Point[Z2 (0,6)]] Is 3.162278
+INF: Associate Point[X2 (1,3)] With Cluster[S2 Point[Z2 (0,6)]]
+INF: Euclidean Length From Point[X3 (3,4)] To Cluster[S1 Point[Z1 (6,2)]] Is 3.605551
+INF: Euclidean Length From Point[X3 (3,4)] To Cluster[S2 Point[Z2 (0,6)]] Is 3.605551
+INF: Associate Point[X3 (3,4)] With Cluster[S1 Point[Z1 (6,2)]]
+INF: Euclidean Length From Point[X4 (3,9)] To Cluster[S1 Point[Z1 (6,2)]] Is 7.615773
+INF: Euclidean Length From Point[X4 (3,9)] To Cluster[S2 Point[Z2 (0,6)]] Is 4.24264
+INF: Associate Point[X4 (3,9)] With Cluster[S2 Point[Z2 (0,6)]]
+INF: Euclidean Length From Point[X5 (4,8)] To Cluster[S1 Point[Z1 (6,2)]] Is 6.324555
+INF: Euclidean Length From Point[X5 (4,8)] To Cluster[S2 Point[Z2 (0,6)]] Is 4.472136
+INF: Associate Point[X5 (4,8)] With Cluster[S2 Point[Z2 (0,6)]]
+INF: Euclidean Length From Point[X6 (8,5)] To Cluster[S1 Point[Z1 (6,2)]] Is 3.605551
+INF: Euclidean Length From Point[X6 (8,5)] To Cluster[S2 Point[Z2 (0,6)]] Is 8.062258
+INF: Associate Point[X6 (8,5)] With Cluster[S1 Point[Z1 (6,2)]]
+INF: Euclidean Length From Point[X7 (9,6)] To Cluster[S1 Point[Z1 (6,2)]] Is 5
+INF: Euclidean Length From Point[X7 (9,6)] To Cluster[S2 Point[Z2 (0,6)]] Is 9
+INF: Associate Point[X7 (9,6)] With Cluster[S1 Point[Z1 (6,2)]]
+INF: Euclidean Length From Point[X8 (10,5)] To Cluster[S1 Point[Z1 (6,2)]] Is 5
+INF: Euclidean Length From Point[X8 (10,5)] To Cluster[S2 Point[Z2 (0,6)]] Is 10.04988
+INF: Associate Point[X8 (10,5)] With Cluster[S1 Point[Z1 (6,2)]]
+INF: Euclidean Length From Point[X9 (10,5)] To Cluster[S1 Point[Z1 (6,2)]] Is 5
+INF: Euclidean Length From Point[X9 (10,5)] To Cluster[S2 Point[Z2 (0,6)]] Is 10.04988
+INF: Associate Point[X9 (10,5)] With Cluster[S1 Point[Z1 (6,2)]]
+
+INF: Step 3.
+
+INF: No small clusters detected.
+
+INF: Step 4.
+
+INF: Center Point[Z1 (6,2)]
+INF: Updated Center Point[Z1 (8.571428,6.142857)]
+
+INF: Center Point[Z2 (0,6)]
+INF: Updated Center Point[Z2 (2,5.25)]
+
+INF: Step 5.
+INF: Try Split Clusters
+INF: Try Merge Clusters
+
+INF: Iteration 2.
+
+INF: Step 2.
+
+INF: Assign each point to its closest cluster center:
+
+INF: Step 3.
+
+INF: No small clusters detected.
+
+INF: Step 4.
+
+INF: Center Point[Z1 (8.571428,6.142857)]
+INF: Updated Center Point[Z1 (8.571428,6.142857)]
+
+INF: Center Point[Z2 (2,5.25)]
+INF: Updated Center Point[Z2 (2,5.25)]
+Cluster[S1 Point[Z1 (8.571428,6.142857)]]
+[X10, Point[X10 (10,6)]]
+[X11, Point[X11 (10,12)]]
+[X3, Point[X3 (3,4)]]
+[X6, Point[X6 (8,5)]]
+[X7, Point[X7 (9,6)]]
+[X8, Point[X8 (10,5)]]
+[X9, Point[X9 (10,5)]]
+Cluster[S2 Point[Z2 (2,5.25)]]
+[X1, Point[X1 (0,1)]]
+[X2, Point[X2 (1,3)]]
+[X4, Point[X4 (3,9)]]
+[X5, Point[X5 (4,8)]]
+
+INF: Step 5.
+INF: Try Merge Clusters
+
+INF: Iteration 3.
+
+INF: Step 2.
+
+INF: Assign each point to its closest cluster center:
+
+INF: Step 3.
+
+INF: No small clusters detected.
+
+INF: Step 4.
+
+INF: Center Point[Z1 (8.571428,6.142857)]
+INF: Updated Center Point[Z1 (8.571428,6.142857)]
+
+INF: Center Point[Z2 (2,5.25)]
+INF: Updated Center Point[Z2 (2,5.25)]
+Cluster[S1 Point[Z1 (8.571428,6.142857)]]
+[X10, Point[X10 (10,6)]]
+[X11, Point[X11 (10,12)]]
+[X3, Point[X3 (3,4)]]
+[X6, Point[X6 (8,5)]]
+[X7, Point[X7 (9,6)]]
+[X8, Point[X8 (10,5)]]
+[X9, Point[X9 (10,5)]]
+Cluster[S2 Point[Z2 (2,5.25)]]
+[X1, Point[X1 (0,1)]]
+[X2, Point[X2 (1,3)]]
+[X4, Point[X4 (3,9)]]
+[X5, Point[X5 (4,8)]]
+
+INF: Step 5.
+INF: Try Split Clusters
+INF: Try Merge Clusters
+
+INF: Iteration 4.
+
+INF: Step 2.
+
+INF: Assign each point to its closest cluster center:
+
+INF: Step 3.
+
+INF: No small clusters detected.
+
+INF: Step 4.
+
+INF: Center Point[Z1 (8.571428,6.142857)]
+INF: Updated Center Point[Z1 (8.571428,6.142857)]
+
+INF: Center Point[Z2 (2,5.25)]
+INF: Updated Center Point[Z2 (2,5.25)]
+Cluster[S1 Point[Z1 (8.571428,6.142857)]]
+[X10, Point[X10 (10,6)]]
+[X11, Point[X11 (10,12)]]
+[X3, Point[X3 (3,4)]]
+[X6, Point[X6 (8,5)]]
+[X7, Point[X7 (9,6)]]
+[X8, Point[X8 (10,5)]]
+[X9, Point[X9 (10,5)]]
+Cluster[S2 Point[Z2 (2,5.25)]]
+[X1, Point[X1 (0,1)]]
+[X2, Point[X2 (1,3)]]
+[X4, Point[X4 (3,9)]]
+[X5, Point[X5 (4,8)]]
+
+INF: Step 5.
+INF: Try Merge Clusters
+
+INF: Iteration 5.
+
+INF: Step 2.
+
+INF: Assign each point to its closest cluster center:
+
+INF: Step 3.
+
+INF: No small clusters detected.
+
+INF: Step 4.
+
+INF: Center Point[Z1 (8.571428,6.142857)]
+INF: Updated Center Point[Z1 (8.571428,6.142857)]
+
+INF: Center Point[Z2 (2,5.25)]
+INF: Updated Center Point[Z2 (2,5.25)]
+Cluster[S1 Point[Z1 (8.571428,6.142857)]]
+[X10, Point[X10 (10,6)]]
+[X11, Point[X11 (10,12)]]
+[X3, Point[X3 (3,4)]]
+[X6, Point[X6 (8,5)]]
+[X7, Point[X7 (9,6)]]
+[X8, Point[X8 (10,5)]]
+[X9, Point[X9 (10,5)]]
+Cluster[S2 Point[Z2 (2,5.25)]]
+[X1, Point[X1 (0,1)]]
+[X2, Point[X2 (1,3)]]
+[X4, Point[X4 (3,9)]]
+[X5, Point[X5 (4,8)]]
+
+INF: Step 5.
+INF: Try Merge Clusters
+INF: Clusterized Data:
+Cluster[S1 Point[Z1 (8.571428,6.142857)]]
+[X10, Point[X10 (10,6)]]
+[X11, Point[X11 (10,12)]]
+[X3, Point[X3 (3,4)]]
+[X6, Point[X6 (8,5)]]
+[X7, Point[X7 (9,6)]]
+[X8, Point[X8 (10,5)]]
+[X9, Point[X9 (10,5)]]
+Cluster[S2 Point[Z2 (2,5.25)]]
+[X1, Point[X1 (0,1)]]
+[X2, Point[X2 (1,3)]]
+[X4, Point[X4 (3,9)]]
+[X5, Point[X5 (4,8)]]

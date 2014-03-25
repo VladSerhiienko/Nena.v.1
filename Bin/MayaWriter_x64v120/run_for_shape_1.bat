@@ -1,0 +1,1 @@
+MayaWriter "D:/Development/Maya/Scenes/shape-1.ma" "D:/Development/Maya/Scenes/shape-1.ma.xml" "import-all.lua"

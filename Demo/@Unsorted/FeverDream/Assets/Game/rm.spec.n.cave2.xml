@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+
+<!--***************
+USE UNICODE ONLY
+****************-->
+
+<Room>
+
+  <!--Terrain (client/implementation-independent)-->
+  <Terrain Version="1.0.0.0">
+    
+    <!--***************************************************************
+    MaxAllowedX="256" MaxAllowedY="256" are version dependent values.
+    So far they cannot be changed for current version unless the whole 
+    developer team commit this change.
+    ****************************************************************-->
+
+    <Dimension X="10" Y="7" MaxAllowedX="256" MaxAllowedY="256" Origin="TopLeft"/>
+
+    <Verification Of="Dimension">
+      <AssertOn ValueAt="Dimension.X" IsLessThenValueAt="Dimension.MaxAllowedX" Type="UInt32">
+        <Message Content="Room width exceeds max allowed value."/>
+      </AssertOn>
+      <AssertOn ValueAt="Dimension.X" IsGreaterThenValue="3" Type="UInt32">
+        <Message Content="Room width is less then min allowed value."/>
+      </AssertOn>
+      <AssertOn ValueAt="Dimension.Y" IsLessThenValueAt="Dimension.MaxAllowedY" Type="UInt32">
+        <Message Content="Room height exceeds max allowed value."/>
+      </AssertOn>
+      <AssertOn ValueAt="Dimension.Y" IsGreaterThenValue="3" Type="UInt32">
+        <Message Content="Room height is less then min allowed value."/>
+      </AssertOn>
+    </Verification>
+    
+    <NPC>
+      <Player Id="0">
+        <Start X="1.5" Y="1.5"/>
+        <Finish X="1.5" Y="8.5"/>
+      </Player>
+      <Player Id="1">
+        <Start X="2.5" Y="1.5"/>
+        <Finish X="2.5" Y="8.5"/>
+      </Player>
+    </NPC>
+    
+    <Slices Transpose="False" TileRadii="10.0">
+      <!--            0123456789              -->
+      <!--0--> <Slice>##########</Slice> <!--0-->
+      <!--1--> <Slice>#  # ## ##</Slice> <!--1-->
+      <!--2--> <Slice>#   #   ##</Slice> <!--2-->
+      <!--3--> <Slice>##   # # #</Slice> <!--3-->
+      <!--4--> <Slice>#        #</Slice> <!--4-->
+      <!--5--> <Slice># # ##   #</Slice> <!--5-->
+      <!--6--> <Slice>##########</Slice> <!--6-->
+      <!--            0123456789              -->
+    </Slices>
+  </Terrain>
+
+  <!--***************************************************************
+  Check: 
+  (1) whether the players will not appear inside the wall tile
+  (2) whether the players can actually reach the finish tile
+  (3) room is a closed area (walls.. walls everywhere...)
+  ****************************************************************-->
+  <!--Not implemented-->
+  <Verification Of="Player.Start"></Verification>
+  <Verification Of="Player.Finish"></Verification>
+
+  <!--Images (client/implementation-dependent)-->
+  <Textures Client="Windows.Version.1.0.0.0">
+    <Path Id="Wall" ShaderResourceId="1">Assets/Game/ground2.bmp</Path>    <!--1 tex-->
+    <Path Id="Floor" ShaderResourceId="0">Assets/Game/cellwall.jpg</Path>    <!--0 tex-->
+    <Path Id="Ceiling" ShaderResourceId="2">Assets/Game/cellfloor.bmp</Path>    <!--2 tex-->
+  </Textures>
+  
+  <!--AI related to the room (common for all clients)-->
+  <AI>
+    <!--Bot startup location-->
+    <!--Treasure location-->
+    <!--Light locations-->
+    <!--HP locations-->
+    <!--Bonuses-->
+  </AI>
+</Room>

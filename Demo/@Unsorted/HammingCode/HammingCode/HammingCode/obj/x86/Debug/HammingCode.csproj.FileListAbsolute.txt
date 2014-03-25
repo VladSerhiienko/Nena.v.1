@@ -1,0 +1,15 @@
+C:\Users\Ruda Kita\AppData\Local\Temporary Projects\HammingCode\bin\Debug\HammingCode.exe
+C:\Users\Ruda Kita\AppData\Local\Temporary Projects\HammingCode\bin\Debug\HammingCode.pdb
+C:\Users\Ruda Kita\AppData\Local\Temporary Projects\HammingCode\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Ruda Kita\AppData\Local\Temporary Projects\HammingCode\obj\x86\Debug\HammingCode.exe
+C:\Users\Ruda Kita\AppData\Local\Temporary Projects\HammingCode\obj\x86\Debug\HammingCode.pdb
+C:\Users\Ruda Kita\documents\visual studio 2010\Projects\HammingCode\HammingCode\obj\x86\Debug\HammingCode.exe
+C:\Users\Ruda Kita\documents\visual studio 2010\Projects\HammingCode\HammingCode\obj\x86\Debug\HammingCode.pdb
+C:\Users\Ruda Kita\documents\visual studio 2010\Projects\HammingCode\HammingCode\bin\Debug\HammingCode.exe
+C:\Users\Ruda Kita\documents\visual studio 2010\Projects\HammingCode\HammingCode\bin\Debug\HammingCode.pdb
+C:\Users\Ruda Kita\documents\visual studio 2010\Projects\HammingCode\HammingCode\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\DEV\VisualStudio2012\Win32\Labworks\HammingCode\HammingCode\HammingCode\obj\x86\Debug\HammingCode.exe
+E:\DEV\VisualStudio2012\Win32\Labworks\HammingCode\HammingCode\HammingCode\obj\x86\Debug\HammingCode.pdb
+E:\DEV\VisualStudio2012\Win32\Labworks\HammingCode\HammingCode\HammingCode\bin\Debug\HammingCode.exe
+E:\DEV\VisualStudio2012\Win32\Labworks\HammingCode\HammingCode\HammingCode\bin\Debug\HammingCode.pdb
+E:\DEV\VisualStudio2012\Win32\Labworks\HammingCode\HammingCode\HammingCode\obj\x86\Debug\HammingCode.csprojResolveAssemblyReference.cache

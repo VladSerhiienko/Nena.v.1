@@ -1,0 +1,186 @@
+Initializing...
+>> Succeeded
+Opening file...
+>> Succeeded
+  DAG node = pCubeShape1Orig
+   DAG adult = pCube1
+  DAG mesh node = pCubeShape1Orig
+  DAG mesh vertices: 
+   poly[0]
+     v=0 n=0 uvs= [s=map1 i=0] 
+     v=1 n=1 uvs= [s=map1 i=1] 
+     v=3 n=2 uvs= [s=map1 i=3] 
+     v=2 n=3 uvs= [s=map1 i=2] 
+   poly[1]
+     v=2 n=4 uvs= [s=map1 i=2] 
+     v=3 n=5 uvs= [s=map1 i=3] 
+     v=5 n=6 uvs= [s=map1 i=5] 
+     v=4 n=7 uvs= [s=map1 i=4] 
+   poly[2]
+     v=4 n=8 uvs= [s=map1 i=4] 
+     v=5 n=9 uvs= [s=map1 i=5] 
+     v=7 n=10 uvs= [s=map1 i=7] 
+     v=6 n=11 uvs= [s=map1 i=6] 
+   poly[3]
+     v=6 n=12 uvs= [s=map1 i=6] 
+     v=7 n=13 uvs= [s=map1 i=7] 
+     v=1 n=14 uvs= [s=map1 i=9] 
+     v=0 n=15 uvs= [s=map1 i=8] 
+   poly[4]
+     v=1 n=16 uvs= [s=map1 i=1] 
+     v=7 n=17 uvs= [s=map1 i=10] 
+     v=5 n=18 uvs= [s=map1 i=11] 
+     v=3 n=19 uvs= [s=map1 i=3] 
+   poly[5]
+     v=6 n=20 uvs= [s=map1 i=12] 
+     v=0 n=21 uvs= [s=map1 i=0] 
+     v=2 n=22 uvs= [s=map1 i=2] 
+     v=4 n=23 uvs= [s=map1 i=13] 
+   point[0] => px=-1 py=-2.5 pz=1
+   point[1] => px=1 py=-2.5 pz=1
+   point[2] => px=-1 py=2.5 pz=1
+   point[3] => px=1 py=2.5 pz=1
+   point[4] => px=-1 py=2.5 pz=-1
+   point[5] => px=1 py=2.5 pz=-1
+   point[6] => px=-1 py=-2.5 pz=-1
+   point[7] => px=1 py=-2.5 pz=-1
+   normal[0] => nx=0 ny=0 nz=1
+   normal[1] => nx=0 ny=0 nz=1
+   normal[2] => nx=0 ny=0 nz=1
+   normal[3] => nx=0 ny=0 nz=1
+   normal[4] => nx=0 ny=1 nz=0
+   normal[5] => nx=0 ny=1 nz=0
+   normal[6] => nx=0 ny=1 nz=0
+   normal[7] => nx=0 ny=1 nz=0
+   normal[8] => nx=0 ny=0 nz=-1
+   normal[9] => nx=0 ny=0 nz=-1
+   normal[10] => nx=0 ny=0 nz=-1
+   normal[11] => nx=0 ny=0 nz=-1
+   normal[12] => nx=0 ny=-1 nz=0
+   normal[13] => nx=0 ny=-1 nz=0
+   normal[14] => nx=0 ny=-1 nz=0
+   normal[15] => nx=0 ny=-1 nz=0
+   normal[16] => nx=1 ny=0 nz=0
+   normal[17] => nx=1 ny=0 nz=0
+   normal[18] => nx=1 ny=0 nz=0
+   normal[19] => nx=1 ny=0 nz=0
+   normal[20] => nx=-1 ny=0 nz=0
+   normal[21] => nx=-1 ny=0 nz=0
+   normal[22] => nx=-1 ny=0 nz=0
+   normal[23] => nx=-1 ny=0 nz=0
+   uvset{14}=map1
+    uv[0] u=0.375 v=0.375
+    uv[1] u=0.625 v=0.625
+    uv[2] u=0.375 v=0.375
+    uv[3] u=0.625 v=0.625
+    uv[4] u=0.375 v=0.375
+    uv[5] u=0.625 v=0.625
+    uv[6] u=0.375 v=0.375
+    uv[7] u=0.625 v=0.625
+    uv[8] u=0.375 v=0.375
+    uv[9] u=0.625 v=0.625
+    uv[10] u=0.875 v=0.875
+    uv[11] u=0.875 v=0.875
+    uv[12] u=0.125 v=0.125
+    uv[13] u=0.125 v=0.125
+Node type = kTransform
+  >> xform groundPlane_transform
+    >> t x 0
+    >> t y 0
+    >> t z 0
+    >> r x 1.5708
+    >> r y 0
+    >> r z 0
+    >> s x 12
+    >> s y 12
+    >> s z 1
+Node type = kTransform
+  >> xform persp
+    >> t x -9.34031e-013
+    >> t y -5.03597e-013
+    >> t z 24.1669
+    >> r x -0.215345
+    >> r y 3.11018
+    >> r z 0
+    >> s x 1
+    >> s y 1
+    >> s z 1
+Node type = kTransform
+  >> xform top
+    >> t x 0
+    >> t y 2.22267e-014
+    >> t z 100.1
+    >> r x -1.5708
+    >> r y 0
+    >> r z 0
+    >> s x 1
+    >> s y 1
+    >> s z 1
+Node type = kTransform
+  >> xform front
+    >> t x 0
+    >> t y 0
+    >> t z 100.1
+    >> r x 0
+    >> r y 0
+    >> r z 0
+    >> s x 1
+    >> s y 1
+    >> s z 1
+Node type = kTransform
+  >> xform side
+    >> t x 2.22267e-014
+    >> t y 0
+    >> t z 100.1
+    >> r x 0
+    >> r y 1.5708
+    >> r z 0
+    >> s x 1
+    >> s y 1
+    >> s z 1
+Node type = kTransform
+  >> xform pCube1
+    >> t x 0
+    >> t y 0
+    >> t z 0
+    >> r x 0
+    >> r y 0
+    >> r z 0
+    >> s x 1
+    >> s y 1
+    >> s z 1
+Node type = kJoint
+  >> xform joint1
+    >> t x 0.858736
+    >> t y 2.34783
+    >> t z -0.0164641
+    >> r x -0.02596
+    >> r y -0.0898913
+    >> r z 0.352118
+    >> s x 1
+    >> s y 1
+    >> s z 1
+Node type = kJoint
+  >> xform joint2
+    >> t x -1.32419
+    >> t y -2.07959
+    >> t z 0.41453
+    >> r x 0.141247
+    >> r y -0.0886083
+    >> r z 0.560682
+    >> s x 1
+    >> s y 1
+    >> s z 1
+Node type = kJoint
+  >> xform joint3
+    >> t x 0.223142
+    >> t y -2.49002
+    >> t z -1.56205e-006
+    >> r x 0
+    >> r y 0
+    >> r z -0.0892975
+    >> s x 1
+    >> s y 1
+    >> s z 1
+Cleaning...
+>> Cleaned

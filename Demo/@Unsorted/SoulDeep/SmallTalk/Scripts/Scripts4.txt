@@ -1,0 +1,37 @@
+﻿
+
+$ /Echo Complex analysis
+$ /Echo Setting common keys
+$ /Set N1 2
+$ /Set N2 3
+$ /Set EncDst3 EncTwoGramAnalysis
+$ /Set EncDst2 EncThreeGramAnalysis
+$ /Set EncDst1 EncAlphabetAnalysis
+$ /Set DecDst3 DecTwoGramAnalysis
+$ /Set DecDst2 DecThreeGramAnalysis
+$ /Set DecDst1 DecAlphabetAnalysis
+$ /Set EncSrc C:\Users\Vlad Serhiienko\Downloads\Papers\Variants\lab_1\SH_VT57
+$ /Set DecSrc C:\Users\Vlad Serhiienko\Downloads\Papers\Variants\lab_1\C_C_VT00
+$ /Echo Ok
+$ /Echo Setting private keys
+$ /Echo Analysing encrypted text
+$ /Set Src %EncSrc
+$ /Set Dst1 %EncDst1
+$ /Set Dst2 %EncDst2
+$ /Set Dst3 %EncDst3
+$ /Obj:Analyzer:Alpha /Act:Analyze /Param:Srcpath:%Src /Param:Destpath:%Dst1
+$ /Obj:Analyzer:NGram /Act:Analyze /Param:N:%N1 /Param:Srcpath:%Src /Param:Destpath:%Dst2
+$ /Obj:Analyzer:NGram /Act:Analyze /Param:N:%N2 /Param:Srcpath:%Src /Param:Destpath:%Dst3
+$ /Echo Ok
+$ /Echo Setting private keys
+$ /Echo Analysing decrypted text
+$ /Set Src %DecSrc
+$ /Set Dst1 %DecDst1
+$ /Set Dst2 %DecDst2
+$ /Set Dst3 %DecDst3
+$ /Obj:Analyzer:Alpha /Act:Analyze /Param:Srcpath:%Src /Param:Destpath:%Dst1
+$ /Obj:Analyzer:NGram /Act:Analyze /Param:N:%N1 /Param:Srcpath:%Src /Param:Destpath:%Dst2
+$ /Obj:Analyzer:NGram /Act:Analyze /Param:N:%N2 /Param:Srcpath:%Src /Param:Destpath:%Dst3
+$ /Echo Ok
+
+

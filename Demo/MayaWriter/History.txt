@@ -1,0 +1,336 @@
+
+	void ExportAnimationCurve(::rapidxml::xml_node<> *&hostXmlNode, MFnAnimCurve &fn, std::string const &attr, LPSTR _index)
+	{
+		::UINT32 keyIndex = 0;
+		::UINT32 keyCount = fn.numKeys();
+		::INT32 animCurveType = fn.animCurveType();
+
+		auto _attr = g_Out.allocate_string(attr.c_str());
+		auto _name = g_Out.allocate_string(fn.name().asChar());
+		auto _animCurveKind = g_Out.allocate_string("HermiteCurve");
+		auto _keyCount = g_Out.allocate_string(std::to_string(keyCount).c_str());
+		auto _animCurveType = g_Out.allocate_string(std::to_string(animCurveType).c_str());
+
+		auto curveNode = g_Out.allocate_node(::rapidxml::node_element, "Curve");
+		curveNode->append_attribute(g_Out.allocate_attribute("Attribute", _attr));
+		curveNode->append_attribute(g_Out.allocate_attribute("Index", _index));
+		curveNode->append_attribute(g_Out.allocate_attribute("Count", _keyCount));
+		curveNode->append_attribute(g_Out.allocate_attribute("Name", _name));
+		curveNode->append_attribute(g_Out.allocate_attribute("Type", _animCurveType));
+		curveNode->append_attribute(g_Out.allocate_attribute("Kind", _animCurveKind));
+		hostXmlNode->append_node(curveNode);
+
+		for (keyIndex = 0; keyIndex < keyCount; keyIndex++)
+		{
+			::DOUBLE value = fn.value(keyIndex);
+			::DOUBLE timeMss = fn.time(keyIndex).as(MTime::kMilliseconds);
+			::INT32 in = (::INT32) fn.inTangentType(keyIndex);
+			::INT32 out = (::INT32) fn.outTangentType(keyIndex);
+			::FLOAT m1x, m1y, m2x, m2y;
+			fn.getTangent(keyIndex, m1x, m1y, TRUE);
+			fn.getTangent(keyIndex, m2x, m2y, FALSE);
+
+			auto _time = g_Out.allocate_string(std::to_string(timeMss).c_str());
+			auto _value = g_Out.allocate_string(std::to_string(value).c_str());
+			auto _inx = g_Out.allocate_string(std::to_string(m1x).c_str());
+			auto _iny = g_Out.allocate_string(std::to_string(m1y).c_str());
+			auto _outx = g_Out.allocate_string(std::to_string(m2x).c_str());
+			auto _outy = g_Out.allocate_string(std::to_string(m2y).c_str());
+			auto _int = g_Out.allocate_string(std::to_string(in).c_str());
+			auto _outt = g_Out.allocate_string(std::to_string(out).c_str());
+			auto _index = g_Out.allocate_string(std::to_string(keyIndex).c_str());
+			auto _unit = g_Out.allocate_string("Milliseconds");
+
+			auto keyNode = g_Out.allocate_node(::rapidxml::node_element, "Key");
+
+			keyNode->append_attribute(g_Out.allocate_attribute("Index", _index));
+			keyNode->append_attribute(g_Out.allocate_attribute("Unit", _unit));
+			keyNode->append_attribute(g_Out.allocate_attribute("Time", _time));
+			keyNode->append_attribute(g_Out.allocate_attribute("Value", _value));
+			keyNode->append_attribute(g_Out.allocate_attribute("InX", _inx));
+			keyNode->append_attribute(g_Out.allocate_attribute("InY", _iny));
+			keyNode->append_attribute(g_Out.allocate_attribute("OutX", _outx));
+			keyNode->append_attribute(g_Out.allocate_attribute("OutY", _outy));
+			keyNode->append_attribute(g_Out.allocate_attribute("InType", _int));
+			keyNode->append_attribute(g_Out.allocate_attribute("OutType", _outt));
+
+			curveNode->append_node(keyNode);
+		}
+	}
+
+	void ExportAnimationCurveByAttributeName(::rapidxml::xml_node<> *&hostXmlNode, MObject &object, std::string attr, std::string target)
+	{
+		if (!g_ExportAnimationCurves) return;
+
+		MStatus status;
+
+		MPlug plug;
+		UINT32 index = 0;
+		MPlugArray connections;
+		MFnDependencyNode fn(object);
+
+		plug = fn.findPlug(attr.c_str(), &status);
+		if (status != MS::kSuccess) return;
+
+		plug.connectedTo(connections, TRUE, FALSE, &status);
+
+		for (index = 0; index < connections.length(); index++)
+		{
+			MObject connectedObject = connections[index].node();
+			if (connectedObject.hasFn(MFn::kAnimCurve))
+			{
+				MFnAnimCurve fn(connectedObject, &status);
+				if (status == MS::kSuccess && fn.numKeys())
+				{
+					auto i = g_Out.allocate_string(std::to_string(index).c_str());
+					ExportAnimationCurve(hostXmlNode, fn, target, i);
+				}
+			}
+
+		}
+	}
+
+	void ExportTransformation(::rapidxml::xml_node<> *&hostXmlNode, MObject &object)
+	{
+		MStatus status;
+		MFnIkJoint joint(object, &status);
+		::BOOL isJoint = status == MS::kSuccess;
+
+		MFnTransform fn(object);
+		MFnDagNode dagNode(object);
+
+		MString name = fn.name();
+
+		std::cout << "Transform=" << name.asChar() << std::endl;
+
+		double3 scale;
+		MEulerRotation rotation;
+
+		MQuaternion rotateQuat;
+		MQuaternion rotateQuatTS;
+		MQuaternion rotateQuatWS;
+
+		MQuaternion rotateOrient;
+		MQuaternion rotateOrientOS;
+		MQuaternion rotateOrientTS;
+		MQuaternion rotateOrientWS;
+
+		MVector translation;
+		MVector translationTS;
+		MVector translationWS;
+
+		if (isJoint)
+		{
+			status = joint.getScale(scale);
+			status = joint.getRotation(rotation);
+			translation = joint.getTranslation(MSpace::kObject, &status);
+			translationTS = joint.getTranslation(MSpace::kTransform, &status);
+			//translationWS = joint.getTranslation(MSpace::kWorld, &status);
+
+			status = joint.getRotationQuaternion(rotateQuat.x, rotateQuat.y, rotateQuat.z, rotateQuat.w, MSpace::kObject);
+			status = joint.getRotationQuaternion(rotateQuatTS.x, rotateQuatTS.y, rotateQuatTS.z, rotateQuatTS.w, MSpace::kTransform);
+			//status = joint.getRotationQuaternion(rotateQuatWS.x, rotateQuatWS.y, rotateQuatWS.z, rotateQuatWS.w, MSpace::kWorld);
+
+			status = joint.getOrientation(rotateOrient);
+			rotateOrientOS = joint.rotateOrientation(MSpace::kObject);
+			rotateOrientTS = joint.rotateOrientation(MSpace::kTransform);
+			rotateOrientWS = joint.rotateOrientation(MSpace::kWorld);
+		}
+		else
+		{
+			status = fn.getScale(scale);
+			status = fn.getRotation(rotation);
+			translation = fn.getTranslation(MSpace::kObject);
+			translationTS = fn.getTranslation(MSpace::kTransform);
+			translationWS = fn.getTranslation(MSpace::kWorld);
+
+			status = fn.getRotationQuaternion(rotateQuat.x, rotateQuat.y, rotateQuat.z, rotateQuat.w, MSpace::kObject);
+			status = fn.getRotationQuaternion(rotateQuatTS.x, rotateQuatTS.y, rotateQuatTS.z, rotateQuatTS.w, MSpace::kTransform);
+			//status = fn.getRotationQuaternion(rotateQuatWS.x, rotateQuatWS.y, rotateQuatWS.z, rotateQuatWS.w, MSpace::kWorld);
+			rotateOrient = fn.rotateOrientation(MSpace::kObject);
+			rotateOrientTS = fn.rotateOrientation(MSpace::kTransform);
+			rotateOrientWS = fn.rotateOrientation(MSpace::kWorld);
+		}
+
+		auto transformationNode = g_Out.allocate_node(::rapidxml::node_element, "Transform");
+		auto transformationNodeName = g_Out.allocate_string(name.asChar());
+		transformationNode->append_attribute(g_Out.allocate_attribute("Name", transformationNodeName));
+		if (isJoint) transformationNode->append_attribute(g_Out.allocate_attribute("IsJoint", "1"));
+		hostXmlNode->append_node(transformationNode);
+		AddFamily(transformationNode, dagNode);
+
+
+		auto translationNode = g_Out.allocate_node(::rapidxml::node_element, "Translate");
+		auto translationNodeTS = g_Out.allocate_node(::rapidxml::node_element, "Translate");
+		auto translationNodeWS = g_Out.allocate_node(::rapidxml::node_element, "Translate");
+
+		auto tx = g_Out.allocate_string(std::to_string(translation.x).c_str());
+		auto ty = g_Out.allocate_string(std::to_string(translation.y).c_str());
+		auto tz = g_Out.allocate_string(std::to_string(translation.z).c_str());
+		translationNode->append_attribute(g_Out.allocate_attribute("Space", "Object"));
+		translationNode->append_attribute(g_Out.allocate_attribute("X", tx));
+		translationNode->append_attribute(g_Out.allocate_attribute("Y", ty));
+		translationNode->append_attribute(g_Out.allocate_attribute("Z", tz));
+
+		tx = g_Out.allocate_string(std::to_string(translationTS.x).c_str());
+		ty = g_Out.allocate_string(std::to_string(translationTS.y).c_str());
+		tz = g_Out.allocate_string(std::to_string(translationTS.z).c_str());
+		translationNodeTS->append_attribute(g_Out.allocate_attribute("Space", "Transform"));
+		translationNodeTS->append_attribute(g_Out.allocate_attribute("X", tx));
+		translationNodeTS->append_attribute(g_Out.allocate_attribute("Y", ty));
+		translationNodeTS->append_attribute(g_Out.allocate_attribute("Z", tz));
+
+		tx = g_Out.allocate_string(std::to_string(translationWS.x).c_str());
+		ty = g_Out.allocate_string(std::to_string(translationWS.y).c_str());
+		tz = g_Out.allocate_string(std::to_string(translationWS.z).c_str());
+		translationNodeWS->append_attribute(g_Out.allocate_attribute("Space", "World"));
+		translationNodeWS->append_attribute(g_Out.allocate_attribute("X", tx));
+		translationNodeWS->append_attribute(g_Out.allocate_attribute("Y", ty));
+		translationNodeWS->append_attribute(g_Out.allocate_attribute("Z", tz));
+
+		auto scaleNode = g_Out.allocate_node(::rapidxml::node_element, "Scale");
+		auto sx = g_Out.allocate_string(std::to_string(scale[0]).c_str());
+		auto sy = g_Out.allocate_string(std::to_string(scale[1]).c_str());
+		auto sz = g_Out.allocate_string(std::to_string(scale[2]).c_str());
+		scaleNode->append_attribute(g_Out.allocate_attribute("X", sx));
+		scaleNode->append_attribute(g_Out.allocate_attribute("Y", sy));
+		scaleNode->append_attribute(g_Out.allocate_attribute("Z", sz));
+
+		auto rotationNode = g_Out.allocate_node(::rapidxml::node_element, "Rotate");
+		auto eulerNode = g_Out.allocate_node(::rapidxml::node_element, "Euler-Angles");
+		auto quatNode = g_Out.allocate_node(::rapidxml::node_element, "Quaternion");
+		auto quatNodeWS = g_Out.allocate_node(::rapidxml::node_element, "Quaternion");
+		auto quatNodeTS = g_Out.allocate_node(::rapidxml::node_element, "Quaternion");
+		auto orientNode = g_Out.allocate_node(::rapidxml::node_element, "Orientation");
+		auto orientNodeOS = g_Out.allocate_node(::rapidxml::node_element, "Orientation");
+		auto orientNodeWS = g_Out.allocate_node(::rapidxml::node_element, "Orientation");
+		auto orientNodeTS = g_Out.allocate_node(::rapidxml::node_element, "Orientation");
+
+		auto rx = g_Out.allocate_string(std::to_string(rotation.x).c_str());
+		auto ry = g_Out.allocate_string(std::to_string(rotation.y).c_str());
+		auto rz = g_Out.allocate_string(std::to_string(rotation.z).c_str());
+		auto rw = g_Out.allocate_string(std::to_string(rotation.z).c_str());
+		eulerNode->append_attribute(g_Out.allocate_attribute("X", rx));
+		eulerNode->append_attribute(g_Out.allocate_attribute("Y", ry));
+		eulerNode->append_attribute(g_Out.allocate_attribute("Z", rz));
+
+		rx = g_Out.allocate_string(std::to_string(rotateQuat.x).c_str());
+		ry = g_Out.allocate_string(std::to_string(rotateQuat.y).c_str());
+		rz = g_Out.allocate_string(std::to_string(rotateQuat.z).c_str());
+		rw = g_Out.allocate_string(std::to_string(rotateQuat.w).c_str());
+		quatNode->append_attribute(g_Out.allocate_attribute("Space", "Object"));
+		quatNode->append_attribute(g_Out.allocate_attribute("X", rx));
+		quatNode->append_attribute(g_Out.allocate_attribute("Y", ry));
+		quatNode->append_attribute(g_Out.allocate_attribute("Z", rz));
+		quatNode->append_attribute(g_Out.allocate_attribute("W", rw));
+
+		rx = g_Out.allocate_string(std::to_string(rotateQuatTS.x).c_str());
+		ry = g_Out.allocate_string(std::to_string(rotateQuatTS.y).c_str());
+		rz = g_Out.allocate_string(std::to_string(rotateQuatTS.z).c_str());
+		rw = g_Out.allocate_string(std::to_string(rotateQuatTS.w).c_str());
+		quatNodeTS->append_attribute(g_Out.allocate_attribute("Space", "Transform"));
+		quatNodeTS->append_attribute(g_Out.allocate_attribute("X", rx));
+		quatNodeTS->append_attribute(g_Out.allocate_attribute("Y", ry));
+		quatNodeTS->append_attribute(g_Out.allocate_attribute("Z", rz));
+		quatNodeTS->append_attribute(g_Out.allocate_attribute("W", rw));
+
+		rx = g_Out.allocate_string(std::to_string(rotateQuatWS.x).c_str());
+		ry = g_Out.allocate_string(std::to_string(rotateQuatWS.y).c_str());
+		rz = g_Out.allocate_string(std::to_string(rotateQuatWS.z).c_str());
+		rw = g_Out.allocate_string(std::to_string(rotateQuatWS.w).c_str());
+		quatNodeWS->append_attribute(g_Out.allocate_attribute("Space", "World"));
+		quatNodeWS->append_attribute(g_Out.allocate_attribute("X", rx));
+		quatNodeWS->append_attribute(g_Out.allocate_attribute("Y", ry));
+		quatNodeWS->append_attribute(g_Out.allocate_attribute("Z", rz));
+		quatNodeWS->append_attribute(g_Out.allocate_attribute("W", rw));
+
+		if (isJoint)
+		{
+			rx = g_Out.allocate_string(std::to_string(rotateOrient.x).c_str());
+			ry = g_Out.allocate_string(std::to_string(rotateOrient.y).c_str());
+			rz = g_Out.allocate_string(std::to_string(rotateOrient.z).c_str());
+			rw = g_Out.allocate_string(std::to_string(rotateOrient.w).c_str());
+			orientNode->append_attribute(g_Out.allocate_attribute("Space", "*Object"));
+			orientNode->append_attribute(g_Out.allocate_attribute("X", rx));
+			orientNode->append_attribute(g_Out.allocate_attribute("Y", ry));
+			orientNode->append_attribute(g_Out.allocate_attribute("Z", rz));
+			orientNode->append_attribute(g_Out.allocate_attribute("W", rw));
+		}
+
+		rx = g_Out.allocate_string(std::to_string(rotateOrientOS.x).c_str());
+		ry = g_Out.allocate_string(std::to_string(rotateOrientOS.y).c_str());
+		rz = g_Out.allocate_string(std::to_string(rotateOrientOS.z).c_str());
+		rw = g_Out.allocate_string(std::to_string(rotateOrientOS.w).c_str());
+		orientNodeOS->append_attribute(g_Out.allocate_attribute("Space", "Object"));
+		orientNodeOS->append_attribute(g_Out.allocate_attribute("X", rx));
+		orientNodeOS->append_attribute(g_Out.allocate_attribute("Y", ry));
+		orientNodeOS->append_attribute(g_Out.allocate_attribute("Z", rz));
+		orientNodeOS->append_attribute(g_Out.allocate_attribute("W", rw));
+
+		rx = g_Out.allocate_string(std::to_string(rotateOrientTS.x).c_str());
+		ry = g_Out.allocate_string(std::to_string(rotateOrientTS.y).c_str());
+		rz = g_Out.allocate_string(std::to_string(rotateOrientTS.z).c_str());
+		rw = g_Out.allocate_string(std::to_string(rotateOrientTS.w).c_str());
+		orientNodeTS->append_attribute(g_Out.allocate_attribute("Space", "Transform"));
+		orientNodeTS->append_attribute(g_Out.allocate_attribute("X", rx));
+		orientNodeTS->append_attribute(g_Out.allocate_attribute("Y", ry));
+		orientNodeTS->append_attribute(g_Out.allocate_attribute("Z", rz));
+		orientNodeTS->append_attribute(g_Out.allocate_attribute("W", rw));
+
+		rx = g_Out.allocate_string(std::to_string(rotateOrientWS.x).c_str());
+		ry = g_Out.allocate_string(std::to_string(rotateOrientWS.y).c_str());
+		rz = g_Out.allocate_string(std::to_string(rotateOrientWS.z).c_str());
+		rw = g_Out.allocate_string(std::to_string(rotateOrientWS.w).c_str());
+		orientNodeWS->append_attribute(g_Out.allocate_attribute("Space", "World"));
+		orientNodeWS->append_attribute(g_Out.allocate_attribute("X", rx));
+		orientNodeWS->append_attribute(g_Out.allocate_attribute("Y", ry));
+		orientNodeWS->append_attribute(g_Out.allocate_attribute("Z", rz));
+		orientNodeWS->append_attribute(g_Out.allocate_attribute("W", rw));
+
+		rotationNode->append_node(eulerNode);
+		rotationNode->append_node(quatNode);
+		rotationNode->append_node(quatNodeTS);
+		rotationNode->append_node(quatNodeWS);
+		if (isJoint)rotationNode->append_node(orientNode);
+		rotationNode->append_node(orientNodeOS);
+		rotationNode->append_node(orientNodeTS);
+		rotationNode->append_node(orientNodeWS);
+
+		ExportAnimationCurveByAttributeName(transformationNode, object, "tx", "TranslateX");
+		ExportAnimationCurveByAttributeName(transformationNode, object, "ty", "TranslateY");
+		ExportAnimationCurveByAttributeName(transformationNode, object, "tz", "TranslateZ");
+		ExportAnimationCurveByAttributeName(transformationNode, object, "rx", "RotateX");
+		ExportAnimationCurveByAttributeName(transformationNode, object, "ry", "RotateY");
+		ExportAnimationCurveByAttributeName(transformationNode, object, "rz", "RotateZ");
+		ExportAnimationCurveByAttributeName(transformationNode, object, "sx", "ScaleX");
+		ExportAnimationCurveByAttributeName(transformationNode, object, "sy", "ScaleY");
+		ExportAnimationCurveByAttributeName(transformationNode, object, "sz", "ScaleZ");
+
+		transformationNode->append_node(translationNode);
+		transformationNode->append_node(translationNodeTS);
+		transformationNode->append_node(translationNodeWS);
+		transformationNode->append_node(rotationNode);
+		transformationNode->append_node(scaleNode);
+	}
+
+	void ExportTransformations()
+	{
+
+		auto transformationsNode = g_Out.allocate_node(::rapidxml::node_element, "Transforms");
+		g_DataNode->append_node(transformationsNode);
+
+		UINT32 transformationNodeCount = 0;
+		MItDependencyNodes nodeIterator(MFn::kTransform);
+
+		std::cout << "Exporter: Transformations...\n";
+
+		while (!nodeIterator.isDone())
+		{
+			ExportTransformation(transformationsNode, nodeIterator.item());
+			transformationNodeCount++;
+			nodeIterator.next();
+		}
+
+		auto nodesCount = g_Out.allocate_string(std::to_string(transformationNodeCount).c_str());
+		transformationsNode->append_attribute(g_Out.allocate_attribute("Count", nodesCount));
+	}

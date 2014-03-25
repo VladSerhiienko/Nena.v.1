@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <Nn_NvidiaBuildConfig>CHECKED</Nn_NvidiaBuildConfig>
+    <Nn_d>d</Nn_d>
+    <Nn_pcsdkd>_d</Nn_pcsdkd>
+  </PropertyGroup>
+  <PropertyGroup>
+    <_PropertySheetDisplayName>NenaCheckedBuild</_PropertySheetDisplayName>
+  </PropertyGroup>
+  <ItemDefinitionGroup />
+  <ItemGroup>
+    <BuildMacro Include="Nn_NvidiaBuildConfig">
+      <Value>$(Nn_NvidiaBuildConfig)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_d">
+      <Value>$(Nn_d)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_pcsdkd">
+      <Value>$(Nn_pcsdkd)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

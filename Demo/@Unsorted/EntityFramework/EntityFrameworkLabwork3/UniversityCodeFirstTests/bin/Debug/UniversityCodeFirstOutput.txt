@@ -1,0 +1,14 @@
+Labwork #03: CodeFirst.
+Adding student: Name=Li(2) Surname=Errungenschaftsgemeinschaft(27)
+Db>> Trying to save the changes...
+Internal Validation Exception Handler>>
+Error#1
+   >> Type: Student
+   >> Property: Name
+   >> Error: The name is too short. Consider it to have more then 3 digits.
+Error#2
+   >> Type: Student
+   >> Property: Surname
+   >> Error: The surname is too big. Consider it to have less then 20 digits.
+External Validation Exception Handler>>
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.

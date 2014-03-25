@@ -1,0 +1,324 @@
+Task Switching
+TaskSwitcherWnd
+
+-------------------------------------------------------
+SysFader
+SysFader
+C:\Program Files (x86)\Internet Explorer\IEXPLORE.EXE
+-------------------------------------------------------
+SysFader
+SysFader
+C:\Program Files (x86)\Internet Explorer\IEXPLORE.EXE
+-------------------------------------------------------
+Loading...
+#32770
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+-------------------------------------------------------
+ms_sqlce_se_notify_wndproc
+ms_sqlce_se_notify_wndproc
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+-------------------------------------------------------
+Jump List
+DV2ControlHost
+
+-------------------------------------------------------
+CiceroUIWndFrame
+CiceroUIWndFrame
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+-------------------------------------------------------
+SysFader
+SysFader
+C:\Program Files (x86)\Internet Explorer\IEXPLORE.EXE
+-------------------------------------------------------
+SysFader
+SysFader
+C:\Program Files (x86)\Internet Explorer\IEXPLORE.EXE
+-------------------------------------------------------
+SysFader
+SysFader
+C:\Program Files (x86)\Internet Explorer\IEXPLORE.EXE
+-------------------------------------------------------
+SysFader
+SysFader
+C:\Program Files (x86)\Internet Explorer\IEXPLORE.EXE
+-------------------------------------------------------
+SysFader
+SysFader
+C:\Program Files (x86)\Internet Explorer\IEXPLORE.EXE
+-------------------------------------------------------
+Network Flyout
+ATL:00007FFCADEF7320
+
+-------------------------------------------------------
+My Favorites Setting
+#32770
+
+-------------------------------------------------------
+AutoCompleteProxy
+Edit
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+-------------------------------------------------------
+Miscellanea_vs2013 (Debugging) - Microsoft Visual Studio
+HwndWrapper[DefaultDomain;;86446205-aed0-49ee-9d67-6b248c1ed5eb]
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+-------------------------------------------------------
+D:\Development\VisualStudio\Aktuelle\Nena\Demo\..\Bin\Winenum2_vs2013_x86v120\Winenum2_vs2013d.exe
+ConsoleWindowClass
+D:\Development\VisualStudio\Aktuelle\Nena\Demo\..\Bin\Winenum2_vs2013_x86v120\Winenum2_vs2013d.exe
+-------------------------------------------------------
+Tooltip
+Touch Tooltip Window
+C:\Program Files (x86)\Internet Explorer\IEXPLORE.EXE
+-------------------------------------------------------
+PostMessage function (Windows) - Internet Explorer
+IEFrame
+
+-------------------------------------------------------
+PostMessage function (Windows) - Internet Explorer
+TabThumbnailWindow
+C:\Program Files (x86)\Internet Explorer\IEXPLORE.EXE
+-------------------------------------------------------
+Tooltip
+Touch Tooltip Window
+C:\Program Files (x86)\Internet Explorer\IEXPLORE.EXE
+-------------------------------------------------------
+c++ - Validate HWND using Win32 API - Stack Overflow - Internet Explorer
+TabThumbnailWindow
+C:\Program Files (x86)\Internet Explorer\IEXPLORE.EXE
+-------------------------------------------------------
+Tooltip
+Touch Tooltip Window
+C:\Program Files (x86)\Internet Explorer\IEXPLORE.EXE
+-------------------------------------------------------
+Using Keyboard Input (Windows) - Internet Explorer
+TabThumbnailWindow
+C:\Program Files (x86)\Internet Explorer\IEXPLORE.EXE
+-------------------------------------------------------
+ABBYY Lingvo x5
+Lv15_MainWindow
+C:\Program Files (x86)\ABBYY Lingvo x5\Lingvo.exe
+-------------------------------------------------------
+ABBYY Lingvo x5
+Lv15_AppWindow
+C:\Program Files (x86)\ABBYY Lingvo x5\Lingvo.exe
+-------------------------------------------------------
+Winenum2_vs2013
+CabinetWClass
+
+-------------------------------------------------------
+Progress
+OperationStatusWindow
+
+-------------------------------------------------------
+GDI+ Window
+GDI+ Hook Window Class
+
+-------------------------------------------------------
+CiceroUIWndFrame
+CiceroUIWndFrame
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+-------------------------------------------------------
+Tooltip
+Touch Tooltip Window
+C:\Program Files (x86)\Internet Explorer\IEXPLORE.EXE
+-------------------------------------------------------
+Tooltip
+Touch Tooltip Window
+C:\Program Files (x86)\Internet Explorer\IEXPLORE.EXE
+-------------------------------------------------------
+c++ - How to get main window handle from process id? - Stack Overflow - Internet Explorer
+TabThumbnailWindow
+C:\Program Files (x86)\Internet Explorer\IEXPLORE.EXE
+-------------------------------------------------------
+Sending HTML tag to browser via socket connection with C++ Socket API - Stack Overflow - Internet Explorer
+TabThumbnailWindow
+C:\Program Files (x86)\Internet Explorer\IEXPLORE.EXE
+-------------------------------------------------------
+Tooltip
+Touch Tooltip Window
+C:\Program Files (x86)\Internet Explorer\IEXPLORE.EXE
+-------------------------------------------------------
+c++ - MFC and UI Automation Support - Stack Overflow - Internet Explorer
+TabThumbnailWindow
+C:\Program Files (x86)\Internet Explorer\IEXPLORE.EXE
+-------------------------------------------------------
+DDE Server Window
+OleDdeWndClass
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+-------------------------------------------------------
+MediaContextNotificationWindow
+HwndWrapper[DefaultDomain;StatusBar;9a570b1e-e99e-4dae-ad32-8a130e708883]
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+-------------------------------------------------------
+SystemResourceNotifyWindow
+HwndWrapper[DefaultDomain;StatusBar;af685e09-13ec-4ed0-847d-4ea4224ebc4f]
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+-------------------------------------------------------
+devenv.exe:8676:1
+TeamFoundationNotificationWindow
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+-------------------------------------------------------
+GDI+ Window
+GDI+ Hook Window Class
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+-------------------------------------------------------
+MediaContextNotificationWindow
+HwndWrapper[DefaultDomain;;f066c0eb-ad13-4a8f-a649-5499d24e7e4d]
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+-------------------------------------------------------
+SystemResourceNotifyWindow
+HwndWrapper[DefaultDomain;;e8a4f05b-f6d3-44ab-9812-f9bc85d6ad53]
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+-------------------------------------------------------
+Visual Studio Application Management Window
+VisualStudioAppManagement
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+-------------------------------------------------------
+.NET-BroadcastEventWindow.4.0.0.0.9585cb.0
+.NET-BroadcastEventWindow.4.0.0.0.9585cb.0
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+-------------------------------------------------------
+winapi - C++: Best way to get Window Handle of the only window from a process by process id, pr - Internet Explorer
+TabThumbnailWindow
+C:\Program Files (x86)\Internet Explorer\IEXPLORE.EXE
+-------------------------------------------------------
+DDE Server Window
+OleDdeWndClass
+
+-------------------------------------------------------
+DDE Server Window
+OleDdeWndClass
+C:\Program Files (x86)\ABBYY Lingvo x5\Lingvo.exe
+-------------------------------------------------------
+GDI+ Window
+GDI+ Hook Window Class
+C:\Program Files (x86)\ABBYY Lingvo x5\Lingvo.exe
+-------------------------------------------------------
+ABBYY Lingvo
+Lv15_Launcher
+C:\Program Files (x86)\ABBYY Lingvo x5\LvAgent.exe
+-------------------------------------------------------
+SystemResourceNotifyWindow
+HwndWrapper[SBCinema.exe;;916b127f-182b-4e1d-bd49-c37cee83adfe]
+C:\Program Files (x86)\Creative\Sound Blaster Cinema\Sound Blaster Cinema\SBCinema.exe
+-------------------------------------------------------
+MediaContextNotificationWindow
+HwndWrapper[SBCinema.exe;;8ceb5330-1593-405f-a234-4849271b5fe5]
+C:\Program Files (x86)\Creative\Sound Blaster Cinema\Sound Blaster Cinema\SBCinema.exe
+-------------------------------------------------------
+Intel® Perceptual Computing SDK Privacy Notification
+#32770
+C:\Program Files (x86)\Common Files\Intel\PCSDK\bin\win32\notification_tool.exe
+-------------------------------------------------------
+GDI+ Window
+GDI+ Hook Window Class
+C:\Program Files (x86)\Creative\Sound Blaster Cinema\Sound Blaster Cinema\SBCinema.exe
+-------------------------------------------------------
+.NET-BroadcastEventWindow.4.0.0.0.3fbab22.0
+.NET-BroadcastEventWindow.4.0.0.0.3fbab22.0
+C:\Program Files (x86)\Creative\Sound Blaster Cinema\Sound Blaster Cinema\SBCinema.exe
+-------------------------------------------------------
+SystemResourceNotifyWindow
+HwndWrapper[SBCinema.exe;;878a9bf6-606b-45f9-a8f1-d0755c5a77ec]
+C:\Program Files (x86)\Creative\Sound Blaster Cinema\Sound Blaster Cinema\SBCinema.exe
+-------------------------------------------------------
+Realtek HD Audio CPL for Vista
+Afx:0000000140000000:0
+
+-------------------------------------------------------
+GDI+ Window
+GDI+ Hook Window Class
+
+-------------------------------------------------------
+PersistWndName
+PersistClass
+
+-------------------------------------------------------
+HkWndName
+HkClass
+
+-------------------------------------------------------
+igfxtrayWindow
+igfxtrayClass
+
+-------------------------------------------------------
+BluetoothNotificationAreaIconWindowClass
+BluetoothNotificationAreaIconWindowClass
+
+-------------------------------------------------------
+MS_WebcheckMonitor
+MS_WebcheckMonitor
+
+-------------------------------------------------------
+NvSvc
+NVSVC64.DLL
+DEMO :: ACCESS DENIED :: DEMO
+-------------------------------------------------------
+Battery Meter
+SystemTray_Main
+
+-------------------------------------------------------
+DDE Server Window
+OleDdeWndClass
+
+-------------------------------------------------------
+CWNPTransportImpl
+WNPGeneric
+
+-------------------------------------------------------
+Windows Push Notifications Platform
+PushNotificationsPowerManagement
+
+-------------------------------------------------------
+Microsoft-Windows-CDesktopAppSpaceElement-4BF42B71-EA88-489E-917F-495A116C3596
+WorkerW
+
+-------------------------------------------------------
+CWNPTransportImpl
+WNPGeneric
+
+-------------------------------------------------------
+GDI+ Window
+GDI+ Hook Window Class
+C:\Program Files\Intel\Intel(R) Rapid Storage Technology\IAStorIcon.exe
+-------------------------------------------------------
+.NET-BroadcastEventWindow.4.0.0.0.34f5582.0
+.NET-BroadcastEventWindow.4.0.0.0.34f5582.0
+C:\Program Files\Intel\Intel(R) Rapid Storage Technology\IAStorIcon.exe
+-------------------------------------------------------
+DDE Server Window
+OleDdeWndClass
+
+-------------------------------------------------------
+ETDCtrlHelper
+#32770
+DEMO :: ACCESS DENIED :: DEMO
+-------------------------------------------------------
+BTServer-Message_Dialog
+#32770
+
+-------------------------------------------------------
+C:\Program Files\NVIDIA Corporation\NvStreamSrv\nvstreamsvc.exe
+ConsoleWindowClass
+DEMO :: ACCESS DENIED :: DEMO
+-------------------------------------------------------
+ETDCtrl
+#32770
+
+-------------------------------------------------------
+Task Host Window
+COMTASKSWINDOWCLASS
+
+-------------------------------------------------------
+UxdService
+UxdService
+DEMO :: ACCESS DENIED :: DEMO
+-------------------------------------------------------
+DWM Notification Window
+Dwm
+DEMO :: ACCESS DENIED :: DEMO
+-------------------------------------------------------
+Program Manager
+Progman
+
+-------------------------------------------------------

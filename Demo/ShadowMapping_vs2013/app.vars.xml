@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<App>
+  <Vars>
+    <Rec Name="App/View/Text">Rastertek 40: Shadow Mapping</Rec>
+    <Rec Name="App/View/Class">NenaWindowClass_ShadowMappingDemo</Rec>
+    <Rec Name="App/View/Ico/Small/File">../../Bin/@Icons/cpp.ico</Rec>
+    <Rec Name="App/View/Ico/Big/File">../../Bin/@Icons/cpp.ico</Rec>
+    <Rec Name="App/View/Ico/Small/Wpx">64</Rec>
+    <Rec Name="App/View/Ico/Small/Hpx">64</Rec>
+    <Rec Name="App/View/Ico/Big/Wpx">128</Rec>
+    <Rec Name="App/View/Ico/Big/Hpx">128</Rec>
+    
+    <Rec Name="Demo/ShadowMapping/Scene/Import/File">D:\Development\Maya\Scenes\scene_rastertek_tutorial_40_tris.ma.xml</Rec>
+    <Rec Name="Demo/ShadowMapping/Scene/Import/Sphere/Shape">pSphereShape1</Rec>
+    <Rec Name="Demo/ShadowMapping/Scene/Import/Ground/Shape">pPlaneShape1</Rec>
+    <Rec Name="Demo/ShadowMapping/Scene/Import/Cube/Shape">pCubeShape1</Rec>
+    <Rec Name="Demo/ShadowMapping/Scene/Import/Sphere/Texture">..\..\Bin\@Resources\ice.dds</Rec>
+    <Rec Name="Demo/ShadowMapping/Scene/Import/Ground/Texture">..\..\Bin\@Resources\wall01.dds</Rec>
+    <Rec Name="Demo/ShadowMapping/Scene/Import/Cube/Texture">..\..\Bin\@Resources\metal001.dds</Rec>
+    <Rec Name="Demo/ShadowMapping/Scene/Import/Sphere/Transform">pSphere1</Rec>
+    <Rec Name="Demo/ShadowMapping/Scene/Import/Ground/Transform">pPlane1</Rec>
+    <Rec Name="Demo/ShadowMapping/Scene/Import/Cube/Transform">pCube1</Rec>
+    <Rec Name="Demo/ShadowMapping/Shader/Shadow/VS/CSO">Shaders/ShadowVertexShaderd.cso</Rec>
+    <Rec Name="Demo/ShadowMapping/Shader/Shadow/GS/CSO">Shaders/ShadowGeometryShaderd.cso</Rec>
+    <Rec Name="Demo/ShadowMapping/Shader/Shadow/PS/CSO">Shaders/ShadowPixelShaderd.cso</Rec>
+    <Rec Name="Demo/ShadowMapping/Shader/Depth/VS/CSO">Shaders/ShadowVertexShaderd.cso</Rec>
+    <Rec Name="Demo/ShadowMapping/Shader/Depth/GS/CSO">Shaders/DepthGeometryShaderd.cso</Rec>
+    <Rec Name="Demo/ShadowMapping/Shader/Depth/PS/CSO">Shaders/DepthPixelShaderd.cso</Rec>
+    <Rec Name="Demo/ShadowMapping/Scene/Light/Position/X">10.0f</Rec>
+    <Rec Name="Demo/ShadowMapping/Scene/Light/Position/Y">10.0f</Rec>
+    <Rec Name="Demo/ShadowMapping/Scene/Light/Position/Z">10.0f</Rec>
+    <Rec Name="Demo/ShadowMapping/Scene/Light/Ambient/R">1.0f</Rec>
+    <Rec Name="Demo/ShadowMapping/Scene/Light/Ambient/G">1.0f</Rec>
+    <Rec Name="Demo/ShadowMapping/Scene/Light/Ambient/B">1.0f</Rec>
+    <Rec Name="Demo/ShadowMapping/Scene/Light/Diffuse/R">1.0f</Rec>
+    <Rec Name="Demo/ShadowMapping/Scene/Light/Diffuse/G">1.0f</Rec>
+    <Rec Name="Demo/ShadowMapping/Scene/Light/Diffuse/B">1.0f</Rec>
+  </Vars>
+</App>

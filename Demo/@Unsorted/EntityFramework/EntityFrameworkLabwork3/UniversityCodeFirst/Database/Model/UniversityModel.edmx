@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="UniversityModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="UniversityModelStoreContainer">
+          <EntitySet Name="Disciplines" EntityType="UniversityModel.Store.Disciplines" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="DisciplinesGroups" EntityType="UniversityModel.Store.DisciplinesGroups" store:Type="Tables" store:Schema="dbo" store:Name="DisciplinesGroups" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+            <DefiningQuery>SELECT 
+      [DisciplinesGroups].[DisciplineId] AS [DisciplineId], 
+      [DisciplinesGroups].[GroupId] AS [GroupId]
+      FROM [dbo].[DisciplinesGroups] AS [DisciplinesGroups]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Groups" EntityType="UniversityModel.Store.Groups" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Students" EntityType="UniversityModel.Store.Students" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <AssociationSet Name="FK_DisciplinesGroups_Disciplines" Association="UniversityModel.Store.FK_DisciplinesGroups_Disciplines">
+            <End Role="Disciplines" EntitySet="Disciplines" />
+            <End Role="DisciplinesGroups" EntitySet="DisciplinesGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DisciplinesGroups_Groups" Association="UniversityModel.Store.FK_DisciplinesGroups_Groups">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="DisciplinesGroups" EntitySet="DisciplinesGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Group" Association="UniversityModel.Store.FK_Students_Group">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Disciplines">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="32" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'C:\DOCUMENTS AND SETTINGS\CDT\MY DOCUMENTS\VISUAL STUDIO 2010\PROJECTS\CONSOLEAPP\CONSOLEAPP\UNIVERSITYDB001.MDF.dbo.DisciplinesGroups' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="DisciplinesGroups">
+          <Key>
+            <PropertyRef Name="DisciplineId" />
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="DisciplineId" Type="bigint" Nullable="false" />
+          <Property Name="GroupId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Acronym" Type="nvarchar" Nullable="false" MaxLength="4" />
+          <Property Name="Course" Type="tinyint" Nullable="false" />
+          <Property Name="DepartmentIndex" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" Nullable="false" MaxLength="16" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="16" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="16" />
+          <Property Name="Age" Type="tinyint" />
+          <Property Name="GroupId" Type="bigint" />
+        </EntityType>
+        <Association Name="FK_DisciplinesGroups_Disciplines">
+          <End Role="Disciplines" Type="UniversityModel.Store.Disciplines" Multiplicity="1" />
+          <End Role="DisciplinesGroups" Type="UniversityModel.Store.DisciplinesGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplines">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DisciplinesGroups">
+              <PropertyRef Name="DisciplineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DisciplinesGroups_Groups">
+          <End Role="Groups" Type="UniversityModel.Store.Groups" Multiplicity="1" />
+          <End Role="DisciplinesGroups" Type="UniversityModel.Store.DisciplinesGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DisciplinesGroups">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Group">
+          <End Role="Groups" Type="UniversityModel.Store.Groups" Multiplicity="0..1" />
+          <End Role="Students" Type="UniversityModel.Store.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UniversityModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="UniversityEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+          <EntitySet Name="Disciplines" EntityType="UniversityModel.Discipline" />
+          <EntitySet Name="Groups" EntityType="UniversityModel.Group" />
+          <EntitySet Name="Students" EntityType="UniversityModel.Student" />
+          <AssociationSet Name="FK_Students_Group" Association="UniversityModel.FK_Students_Group">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="DisciplinesGroups" Association="UniversityModel.DisciplinesGroups">
+            <End Role="Disciplines" EntitySet="Disciplines" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Discipline">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="32" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Groups" Relationship="UniversityModel.DisciplinesGroups" FromRole="Disciplines" ToRole="Groups" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Acronym" Type="String" Nullable="false" MaxLength="4" Unicode="true" FixedLength="false" />
+          <Property Name="Course" Type="Byte" Nullable="false" />
+          <Property Name="DepartmentIndex" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Students" Relationship="UniversityModel.FK_Students_Group" FromRole="Groups" ToRole="Students" />
+          <NavigationProperty Name="Disciplines" Relationship="UniversityModel.DisciplinesGroups" FromRole="Groups" ToRole="Disciplines" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="Age" Type="Byte" />
+          <Property Name="GroupId" Type="Int64" />
+          <NavigationProperty Name="Group" Relationship="UniversityModel.FK_Students_Group" FromRole="Students" ToRole="Groups" />
+        </EntityType>
+        <Association Name="FK_Students_Group">
+          <End Role="Groups" Type="UniversityModel.Group" Multiplicity="0..1" />
+          <End Role="Students" Type="UniversityModel.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DisciplinesGroups">
+          <End Role="Disciplines" Type="UniversityModel.Discipline" Multiplicity="*" />
+          <End Role="Groups" Type="UniversityModel.Group" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UniversityModelStoreContainer" CdmEntityContainer="UniversityEntities">
+          <EntitySetMapping Name="Disciplines"><EntityTypeMapping TypeName="UniversityModel.Discipline"><MappingFragment StoreEntitySet="Disciplines">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Groups"><EntityTypeMapping TypeName="UniversityModel.Group"><MappingFragment StoreEntitySet="Groups">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Acronym" ColumnName="Acronym" />
+            <ScalarProperty Name="Course" ColumnName="Course" />
+            <ScalarProperty Name="DepartmentIndex" ColumnName="DepartmentIndex" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Students"><EntityTypeMapping TypeName="UniversityModel.Student"><MappingFragment StoreEntitySet="Students">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Surname" ColumnName="Surname" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+            <ScalarProperty Name="Age" ColumnName="Age" />
+            <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="DisciplinesGroups" TypeName="UniversityModel.DisciplinesGroups" StoreEntitySet="DisciplinesGroups">
+            <EndProperty Name="Disciplines">
+              <ScalarProperty Name="Id" ColumnName="DisciplineId" />
+            </EndProperty>
+            <EndProperty Name="Groups">
+              <ScalarProperty Name="Id" ColumnName="GroupId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer>
+    <edmx:Connection>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <edmx:DesignerProperty Name="EnablePluralization" Value="True" />
+        <edmx:DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <edmx:Diagram Name="Model1" ZoomLevel="98">
+        <edmx:EntityTypeShape EntityType="UniversityModel.Discipline" Width="1.5" PointX="3.25" PointY="0.75" Height="1.4279589843750002" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="UniversityModel.Group" Width="1.5" PointX="0.625" PointY="1.75" Height="1.9210009765624996" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="UniversityModel.Student" Width="1.5" PointX="3.25" PointY="2.5" Height="2.0853483072916656" IsExpanded="true" />
+        <edmx:AssociationConnector Association="UniversityModel.FK_Students_Group" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="4.5" PointY="1.9605004882812498" />
+          <edmx:ConnectorPoint PointX="5.25" PointY="1.9605004882812498" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="UniversityModel.DisciplinesGroups" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="2.25" PointY="1.9639794921875002" />
+          <edmx:ConnectorPoint PointX="3" PointY="1.9639794921875002" />
+        </edmx:AssociationConnector>
+      </edmx:Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

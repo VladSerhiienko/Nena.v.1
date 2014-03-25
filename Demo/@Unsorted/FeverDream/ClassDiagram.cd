@@ -1,0 +1,435 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FeverDream::App" Collapsed="true">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAACgAAAAAAAAAAAAAAAAIAGAAAAAAAAQAEAAAAoAAA=</HashCode>
+      <FileName>App.xaml.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FeverDream::DirectXPage">
+    <Position X="14" Y="5.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Typedef Name="FeverDream::DirectXPage::TimerView" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DirectXPage.xaml.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="FeverDream::DirectXPage::Timer" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DirectXPage.xaml.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>IAAAgEgEAAQgAQAAgAAAQIACIAAEACABmBECBQCAAEw=</HashCode>
+      <FileName>DirectXPage.xaml.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameRenderer">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Typedef Name="GameRenderer::TimerView" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>GameRenderer.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AESQEEHQAQAAAAEAgACAAAAAABAAQCAAIDABQAQAaEA=</HashCode>
+      <FileName>GameRenderer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DirectXBase">
+    <Position X="0.5" Y="0.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>iAAUhAAAoBAAEREABACAKASAwJAAEALABBQAAASAoAA=</HashCode>
+      <FileName>DirectXBase.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BasicTimer" Collapsed="true">
+    <Position X="12" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QBQABAAAgAAABAABIAAAAAAAAAIAQAIAAAAAAAAAAAA=</HashCode>
+      <FileName>BasicTimer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BasicLoader">
+    <Position X="22.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AMAEAAAAAIAgAAAAAAAAEAAghAECAgDBAQAAAAEACAA=</HashCode>
+      <FileName>BasicLoader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BasicReaderWriter">
+    <Position X="14.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAEAAABAAAAAAAIAACAAAAgAAAACAAAAAAAAAA=</HashCode>
+      <FileName>BasicReaderWriter.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BasicShapes" Collapsed="true">
+    <Position X="17.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAQQAAAAAAAAAAAAAACAEAJAABAAQAAAACAAAA=</HashCode>
+      <FileName>BasicShapes.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DepthRenderer">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Typedef Name="DepthRenderer::TimerView" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DepthRenderer.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Struct Name="DepthRenderer::Spatial" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DepthRenderer.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>0AAAAAAgIAAgAABwAACABAAAAgAAAABAAQAAAgAAIAA=</HashCode>
+      <FileName>DepthRenderer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RenderTarget" Collapsed="true">
+    <Position X="17.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>hAAEgAHAIAAEAEBIoAAACAAEEWEAAIBgACAFAgBAQAA=</HashCode>
+      <FileName>RenderTarget.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRenderer">
+    <Position X="21.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Typedef Name="ShadowRenderer::TimerView" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ShadowRenderer.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Struct Name="ShadowRenderer::Spatial" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ShadowRenderer.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="ShadowRenderer::LightSpatial" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ShadowRenderer.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="ShadowRenderer::NumLights" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ShadowRenderer.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="ShadowRenderer::LightColors" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ShadowRenderer.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>0EIAQA5hIAAgAgFgIEADBAAoAjQEAABxkAACIgAQAAA=</HashCode>
+      <FileName>ShadowRenderer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoomRenderer">
+    <Position X="16.25" Y="6" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="RoomRenderer::Spatial" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>RoomRenderer.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="RoomRenderer::Projection" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>RoomRenderer.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="RoomRenderer::Vertex" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>RoomRenderer.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="RoomRenderer::Sparkle" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>RoomRenderer.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>iFEqAIACrQAAAIAhAQRIAFQAsoSHOCDAcBIYgAQAKhA=</HashCode>
+      <FileName>RoomRenderer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoomCamera">
+    <Position X="19.25" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>iJAGASAEgADEhEAgQAEQAAAEMBBAQAAgQAAXAJEAAAA=</HashCode>
+      <FileName>RoomCamera.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoomLight" Collapsed="true">
+    <Position X="13.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iJAGASAGgABEgkBgQAEQAAIEMBBAwAAgCAAXAJAAAAA=</HashCode>
+      <FileName>RoomLight.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Room">
+    <Position X="17.5" Y="2.25" Width="1.5" />
+    <NestedTypes>
+      <Struct Name="Room::Tile" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Room.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Typedef Name="Room::TileCollection" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Room.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="Room::TexPathCollection" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Room.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="Room::TexCollection" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Room.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="Room::SRVCollection" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Room.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="Room::UAVCollection" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Room.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Struct Name="Room::NPC" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Room.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="Room::Terrain" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Room.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABACAAEgAAABAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Room.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ListenerContext" Collapsed="true">
+    <Position X="15.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AJAAAAAEAAACIABAAAAAAAAAAAIAABAAEAAAAICgAgA=</HashCode>
+      <FileName>ListenerContext.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientContextInput" Collapsed="true">
+    <Position X="17.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClientContext.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientContext">
+    <Position X="19.25" Y="7" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Typedef Name="ClientContext::DatagramSocketMessageReceivedEvent" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ClientContext.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="ClientContext::ActionAsync" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ClientContext.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="ClientContext::UInt32Async" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ClientContext.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAQBAAAABEACAAABIAAQAAAAAAAACABAIAEQA=</HashCode>
+      <FileName>ClientContext.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="DDS_PIXELFORMAT" Collapsed="true">
+    <Position X="17.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAQAAAIAAAAAAAAAAAAAAAAAAACAFIAQ=</HashCode>
+      <FileName>DDSTextureLoader.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="__unnamed_struct_018a_1" Collapsed="true">
+    <Position X="7.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAASAAAAAAAgQIQIAAIAAEgAAAAAAAAAAQIAAAAAQ=</HashCode>
+      <FileName>DDSTextureLoader.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="__unnamed_struct_018a_2" Collapsed="true">
+    <Position X="1.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAgAAAAAAAIAAAAAAAAAAAQAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>DDSTextureLoader.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Vec2&lt;T&gt;" Collapsed="true">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>BasicMath.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Vec3&lt;T&gt;" Collapsed="true">
+    <Position X="5.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>BasicMath.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Vec4&lt;T&gt;" Collapsed="true">
+    <Position X="7" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>BasicMath.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Matrix4x4&lt;T&gt;" Collapsed="true">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>BasicMath.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="BasicVertex" Collapsed="true">
+    <Position X="12" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAIAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>BasicShapes.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="TangentVertex" Collapsed="true">
+    <Position X="12" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAIAAAIBAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BasicShapes.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ClientContextInputEntry" Collapsed="true">
+    <Position X="13.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAQBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClientContext.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ClientContextOutput" Collapsed="true">
+    <Position X="15.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAwBAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClientContext.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Typedef Name="DDS_HEADER" Collapsed="true">
+    <Position X="9.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DDSTextureLoader.cpp</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="DDS_HEADER_DXT10" Collapsed="true">
+    <Position X="1.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DDSTextureLoader.cpp</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="uint" Collapsed="true">
+    <Position X="12" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BasicMath.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="float2" Collapsed="true">
+    <Position X="8.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BasicMath.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="float3" Collapsed="true">
+    <Position X="5.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BasicMath.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="float4" Collapsed="true">
+    <Position X="5.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BasicMath.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="float4x4" Collapsed="true">
+    <Position X="4.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BasicMath.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Delegate Name="ClientContextInputCallback" Collapsed="true">
+    <Position X="12" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAgAAA=</HashCode>
+      <FileName>ClientContext.h</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="ClientContextConnectionCallback" Collapsed="true">
+    <Position X="12" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>ClientContext.h</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

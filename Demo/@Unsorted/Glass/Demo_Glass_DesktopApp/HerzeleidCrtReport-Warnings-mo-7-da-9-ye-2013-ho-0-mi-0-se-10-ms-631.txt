@@ -1,0 +1,11 @@
+
+Herzeleid (Warn). Crt debugging started.
+Detected memory leaks!
+Dumping objects ->
+{475} normal block at 0x00591FB0, 4 bytes long.
+ Data: <h Y > 68 1F 59 00 
+{146} normal block at 0x00565B90, 8 bytes long.
+ Data: <  O     > F4 A0 4F 00 00 00 00 00 
+Object dump complete.
+
+Herzeleid (Warn). Crt debugging closed.

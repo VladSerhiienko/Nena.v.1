@@ -1,0 +1,96 @@
+65560 DWM Notification Window
+65596 UxdService
+65702 Task Host Window
+65706 ETDCtrl
+65736 My Favorites Setting
+65756 C:\Program Files\NVIDIA Corporation\NvStreamSrv\nvstreamsvc.exe
+65948 Program Manager
+65982 DDE Server Window
+66120 Microsoft-Windows-CDesktopAppSpaceElement-4BF42B71-EA88-489E-917F-495A116C3596
+66136 DDE Server Window
+66146 Battery Meter
+66160 CWNPTransportImpl
+66232 PersistWndName
+66238 GDI+ Window
+66242 Realtek HD Audio CPL for Vista
+66356 SystemResourceNotifyWindow
+66364 Intel® Perceptual Computing SDK Privacy Notification
+131112 MS_WebcheckMonitor
+131220 BluetoothNotificationAreaIconWindowClass
+131352 BTServer-Message_Dialog
+131500 Windows Push Notifications Platform
+131580 igfxtrayWindow
+131794 ABBYY Lingvo
+131798 MediaContextNotificationWindow
+131806 GDI+ Window
+131808 .NET-BroadcastEventWindow.4.0.0.0.3fbab22.0
+131814 SystemResourceNotifyWindow
+131822 Zune AutoLauncher
+131952 GDI+ Window
+132622 Jump List
+196750 Network Flyout
+196820 ETDCtrlHelper
+196862 NvSvc
+264114 Progress
+264282 Extra
+327706 Task Switching
+393308 .NET-BroadcastEventWindow.4.0.0.0.34f5582.0
+394154 D:\Development\VisualStudio\Aktuelle\Nena\Demo\..\Bin\Winenum_vs2013_x86v120\Winenum_vs2013d.exe
+394986 GDI+ Window
+460232 SysFader
+460348 ms_sqlce_se_notify_wndproc
+460392 SystemResourceNotifyWindow
+460712 Microsoft Visual Studio
+460966 0 ?>G5<C BK 3>2>@8HL "=5 >G5=L"? - Google Search - Internet Explorer
+525672 CiceroUIWndFrame
+526170 CiceroUIWndFrame
+656334 GDI+ Window
+656880 devenv.exe:7132:1
+657390 0 ?>G5<C BK 3>2>@8HL "=5 >G5=L"? - Google Search - Internet Explorer
+721908 GDI+ Window
+786692 ms_sqlce_se_notify_wndproc
+787092 HkWndName
+788116 MediaContextNotificationWindow
+852042 Microsoft Visual Studio
+853376 Basics_vs2013 - Microsoft Visual Studio
+918256 GDI+ Window
+984324 DDE Server Window
+985668 Msg
+985878 Miscellanea_vs2013 (Running) - Microsoft Visual Studio
+1116866 Locating source
+1180554 SystemResourceNotifyWindow
+1246184 SystemResourceNotifyWindow
+1247532 MediaContextNotificationWindow
+1247638 MediaContextNotificationWindow
+1377396 Visual Studio Application Management Window
+1509484 Skype" - paris_summer
+1572928 Microsoft Visual Studio
+1573972 SystemResourceNotifyWindow
+1574260 Visual Studio Application Management Window
+1574960 CiceroUIWndFrame
+1639218 MediaContextNotificationWindow
+1639460 .NET-BroadcastEventWindow.4.0.0.0.9585cb.0
+1836728 Demo
+1836994 devenv.exe:15056:1
+2032678 SystemResourceNotifyWindow
+2098330 CWNPTransportImpl
+2098654 MediaContextNotificationWindow
+2426144 DDE Server Window
+2491294 Microsoft Visual Studio
+2623460 AutoCompleteProxy
+2687624 Tooltip
+3082266 SystemResourceNotifyWindow
+3212894 devenv.exe:3232:1
+3540866 Tuesday, March 18, 2014 1:21:39 AM
+3670888 MediaContextNotificationWindow
+3671958 DDE Server Window
+3737768 .NET-BroadcastEventWindow.4.0.0.0.9585cb.0
+4654778 .NET-BroadcastEventWindow.4.0.0.0.9585cb.0
+5179846 v
+5244776 CiceroUIWndFrame
+6424808 C:\Users\Vladyslav\AppData\Roaming\Skype
+7669598 GDI+ Window
+7735930 DDE Server Window
+8719394 Task Host Window
+9241738 Visual Studio Application Management Window
+10029322 DDE Server Window

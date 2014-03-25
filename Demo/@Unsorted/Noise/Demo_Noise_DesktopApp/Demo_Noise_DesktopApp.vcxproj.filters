@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="App">
+      <UniqueIdentifier>{ba0f50b7-77ca-4cc9-b189-dc656cfccb57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{11f9096e-bbb8-4a62-80c9-e7e5e1ebf3db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\CPU">
+      <UniqueIdentifier>{ab1606a1-7b1c-4250-874b-443fa1b4b64b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\GPU">
+      <UniqueIdentifier>{5c302987-27c0-478f-8bc1-98e0c2dd71b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\CPU\Noise">
+      <UniqueIdentifier>{02cfc4b0-09a4-4875-a616-e646ee4fd2e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\CPU\Noise\Deprecated">
+      <UniqueIdentifier>{2e97cb4a-5a6f-4071-8809-558797e2e484}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\CPU\Utility">
+      <UniqueIdentifier>{b27f3f00-3f84-44fd-b525-6debfdddca3f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Application.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="Precompiled.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Graphics\CPU</Filter>
+    </ClCompile>
+    <ClCompile Include="PerlinNoise.cpp">
+      <Filter>Graphics\CPU\Noise\Deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="Noise.cpp">
+      <Filter>Graphics\CPU\Noise</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Application.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="Precompiled.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Graphics\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="PerlinNoise.h">
+      <Filter>Graphics\CPU\Noise\Deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="Noise.h">
+      <Filter>Graphics\CPU\Noise</Filter>
+    </ClInclude>
+    <ClInclude Include="RendererUtil.h">
+      <Filter>Graphics\CPU\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Graphics\CPU\Utility</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

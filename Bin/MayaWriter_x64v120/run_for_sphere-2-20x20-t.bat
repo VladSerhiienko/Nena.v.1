@@ -1,0 +1,1 @@
+MayaWriter "D:/Development/Maya/Scenes/sphere-2-20x20-t.ma" "D:/Development/Maya/Scenes/sphere-2-20x20-t.ma.xml" "import-all.lua"

@@ -1,0 +1,13 @@
+E:\DEV\VisualStudio2012\Win32\Labworks\Clusterization\Isoclus\bin\Release\Isoclus.exe.config
+E:\DEV\VisualStudio2012\Win32\Labworks\Clusterization\Isoclus\bin\Release\Isoclus.exe
+E:\DEV\VisualStudio2012\Win32\Labworks\Clusterization\Isoclus\bin\Release\Isoclus.pdb
+E:\DEV\VisualStudio2012\Win32\Labworks\Clusterization\Isoclus\obj\Release\Isoclus.csprojResolveAssemblyReference.cache
+E:\DEV\VisualStudio2012\Win32\Labworks\Clusterization\Isoclus\obj\Release\Isoclus.exe
+E:\DEV\VisualStudio2012\Win32\Labworks\Clusterization\Isoclus\obj\Release\Isoclus.pdb
+D:\Development\VisualStudio\Aktuelle\Nena\Bin\Isoclus_any_release\Isoclus.exe.config
+D:\Development\VisualStudio\Aktuelle\Nena\Bin\Isoclus_any_release\Isoclus.XML
+D:\Development\VisualStudio\Aktuelle\Nena\Bin\Isoclus_any_release\Isoclus.exe
+D:\Development\VisualStudio\Aktuelle\Nena\Bin\Isoclus_any_release\Isoclus.pdb
+D:\Development\VisualStudio\Aktuelle\Nena\Demo\Isoclus\obj\Release\Isoclus.csprojResolveAssemblyReference.cache
+D:\Development\VisualStudio\Aktuelle\Nena\Demo\Isoclus\obj\Release\Isoclus.exe
+D:\Development\VisualStudio\Aktuelle\Nena\Demo\Isoclus\obj\Release\Isoclus.pdb

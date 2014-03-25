@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UniversityModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="UniversityModelStoreContainer">
+    <EntitySet Name="Disciplines" EntityType="UniversityModel.Store.Disciplines" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="DisciplinesGroups" EntityType="UniversityModel.Store.DisciplinesGroups" store:Type="Tables" store:Schema="dbo" store:Name="DisciplinesGroups" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+      <DefiningQuery>SELECT 
+      [DisciplinesGroups].[DisciplineId] AS [DisciplineId], 
+      [DisciplinesGroups].[GroupId] AS [GroupId]
+      FROM [dbo].[DisciplinesGroups] AS [DisciplinesGroups]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Groups" EntityType="UniversityModel.Store.Groups" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="Students" EntityType="UniversityModel.Store.Students" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <AssociationSet Name="FK_DisciplinesGroups_Disciplines" Association="UniversityModel.Store.FK_DisciplinesGroups_Disciplines">
+      <End Role="Disciplines" EntitySet="Disciplines" />
+      <End Role="DisciplinesGroups" EntitySet="DisciplinesGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DisciplinesGroups_Groups" Association="UniversityModel.Store.FK_DisciplinesGroups_Groups">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="DisciplinesGroups" EntitySet="DisciplinesGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Students_Group" Association="UniversityModel.Store.FK_Students_Group">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Disciplines">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="32" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'C:\DOCUMENTS AND SETTINGS\CDT\MY DOCUMENTS\VISUAL STUDIO 2010\PROJECTS\CONSOLEAPP\CONSOLEAPP\UNIVERSITYDB001.MDF.dbo.DisciplinesGroups' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="DisciplinesGroups">
+    <Key>
+      <PropertyRef Name="DisciplineId" />
+      <PropertyRef Name="GroupId" />
+    </Key>
+    <Property Name="DisciplineId" Type="bigint" Nullable="false" />
+    <Property Name="GroupId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Groups">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Acronym" Type="nvarchar" Nullable="false" MaxLength="4" />
+    <Property Name="Course" Type="tinyint" Nullable="false" />
+    <Property Name="DepartmentIndex" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Students">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="Patronymic" Type="nvarchar" MaxLength="16" />
+    <Property Name="Age" Type="tinyint" />
+    <Property Name="GroupId" Type="bigint" />
+  </EntityType>
+  <Association Name="FK_DisciplinesGroups_Disciplines">
+    <End Role="Disciplines" Type="UniversityModel.Store.Disciplines" Multiplicity="1" />
+    <End Role="DisciplinesGroups" Type="UniversityModel.Store.DisciplinesGroups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Disciplines">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DisciplinesGroups">
+        <PropertyRef Name="DisciplineId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DisciplinesGroups_Groups">
+    <End Role="Groups" Type="UniversityModel.Store.Groups" Multiplicity="1" />
+    <End Role="DisciplinesGroups" Type="UniversityModel.Store.DisciplinesGroups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DisciplinesGroups">
+        <PropertyRef Name="GroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Students_Group">
+    <End Role="Groups" Type="UniversityModel.Store.Groups" Multiplicity="0..1" />
+    <End Role="Students" Type="UniversityModel.Store.Students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="GroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Pch.cpp">
+      <Filter>Startup</Filter>
+    </ClCompile>
+    <ClCompile Include="EightPuzzle.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoMain.cpp">
+      <Filter>Startup</Filter>
+    </ClCompile>
+    <ClCompile Include="AsyncLogger.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="FifteenPuzzle.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Startup">
+      <UniqueIdentifier>{9918748a-92c5-4ae1-b565-e564de537075}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{49834329-c7dd-4d91-88f1-0df1c16f7a2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{8951e148-d387-4c8e-8254-4d5ac1d352c5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Pch.h">
+      <Filter>Startup</Filter>
+    </ClInclude>
+    <ClInclude Include="EightPuzzle.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="AsyncLogger.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="FifteenPuzzle.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

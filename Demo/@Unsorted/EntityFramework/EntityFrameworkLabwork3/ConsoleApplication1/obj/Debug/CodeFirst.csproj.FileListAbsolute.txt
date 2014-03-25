@@ -1,0 +1,10 @@
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\ConsoleApplication1\bin\Debug\EntityFramework.dll
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\ConsoleApplication1\bin\Debug\System.Data.SqlServerCe.dll
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\ConsoleApplication1\bin\Debug\EntityFramework.xml
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\ConsoleApplication1\bin\Debug\CodeFirst.exe.config
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\ConsoleApplication1\bin\Debug\CodeFirst.exe
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\ConsoleApplication1\bin\Debug\CodeFirst.pdb
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\ConsoleApplication1\obj\Debug\CodeFirst.exe
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\ConsoleApplication1\obj\Debug\CodeFirst.pdb
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\ConsoleApplication1\obj\Debug\CodeFirst.Migrations.InitialCreate.resources
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\ConsoleApplication1\obj\Debug\CodeFirst.csproj.GenerateResource.Cache

@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="App">
+      <UniqueIdentifier>{a205602d-5016-4034-9a1a-bcc4fef51b7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{bed1e5ed-cc93-4972-8e04-bb621fe01ac1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\CPU">
+      <UniqueIdentifier>{f0ee21e6-f317-46c0-aa87-009066eacde4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\GPU">
+      <UniqueIdentifier>{eaafe5a9-c14d-4770-88e1-e54436b85243}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\CPU\Fluid">
+      <UniqueIdentifier>{6e4215d2-6616-49a9-bd1c-181e77292fcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\GPU\Simulation">
+      <UniqueIdentifier>{2b4b85aa-bd63-4168-a814-87dc7dcfbfe0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\GPU\Rendering">
+      <UniqueIdentifier>{5ba64131-bc28-47d6-8c13-f8727d8b84fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\GPU\Simulation\Utility">
+      <UniqueIdentifier>{8814220a-5d07-4a2a-89ad-a4a77d915389}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Application.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="Precompiled.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Graphics\CPU</Filter>
+    </ClCompile>
+    <ClCompile Include="FluidSimulator.cpp">
+      <Filter>Graphics\CPU\Fluid</Filter>
+    </ClCompile>
+    <ClCompile Include="FluidRenderer.cpp">
+      <Filter>Graphics\CPU\Fluid</Filter>
+    </ClCompile>
+    <ClCompile Include="FluidSolver.cpp">
+      <Filter>Graphics\CPU\Fluid</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Application.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="Precompiled.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="RendererUtil.h">
+      <Filter>Graphics\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Graphics\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Graphics\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="FluidSimulator.h">
+      <Filter>Graphics\CPU\Fluid</Filter>
+    </ClInclude>
+    <ClInclude Include="FluidRenderer.h">
+      <Filter>Graphics\CPU\Fluid</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="FluidBoxVs0.hlsl">
+      <Filter>Graphics\GPU\Rendering</Filter>
+    </FxCompile>
+    <FxCompile Include="FluidBoxPs0.hlsl">
+      <Filter>Graphics\GPU\Rendering</Filter>
+    </FxCompile>
+    <FxCompile Include="DivergenceCs0.hlsl">
+      <Filter>Graphics\GPU\Simulation</Filter>
+    </FxCompile>
+    <FxCompile Include="ProjectionCs1.hlsl">
+      <Filter>Graphics\GPU\Simulation</Filter>
+    </FxCompile>
+    <FxCompile Include="AdvectionCs1.hlsl">
+      <Filter>Graphics\GPU\Simulation</Filter>
+    </FxCompile>
+    <FxCompile Include="DiffusionJacobiCs2.hlsl">
+      <Filter>Graphics\GPU\Simulation</Filter>
+    </FxCompile>
+    <FxCompile Include="PressureJacobiCs2.hlsl">
+      <Filter>Graphics\GPU\Simulation</Filter>
+    </FxCompile>
+    <FxCompile Include="GaussianSplatCs0.hlsl">
+      <Filter>Graphics\GPU\Simulation</Filter>
+    </FxCompile>
+    <FxCompile Include="ZeroTextureCs0.hlsl">
+      <Filter>Graphics\GPU\Simulation\Utility</Filter>
+    </FxCompile>
+    <FxCompile Include="CopyTextureCs0.hlsl">
+      <Filter>Graphics\GPU\Simulation\Utility</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>

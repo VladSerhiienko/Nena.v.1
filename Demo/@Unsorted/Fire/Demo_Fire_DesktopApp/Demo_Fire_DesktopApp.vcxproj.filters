@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="App">
+      <UniqueIdentifier>{f01bb731-e8ef-4ad5-9a13-c16241eb73fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{80cf6fd5-7548-4424-82ff-f6756efed9f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\CPU">
+      <UniqueIdentifier>{9189fb7c-1961-479f-9508-fd5bc972dac6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\GPU">
+      <UniqueIdentifier>{b05c97d6-063b-4885-813a-33be1fa792d0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Precompiled.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="Application.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="FireRenderer.cpp">
+      <Filter>Graphics\CPU</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Graphics\CPU</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Application.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="Precompiled.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="FireRenderer.h">
+      <Filter>Graphics\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Graphics\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Graphics\CPU</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="FireVertexShader.hlsl">
+      <Filter>Graphics\GPU</Filter>
+    </FxCompile>
+    <FxCompile Include="FirePixelShader.hlsl">
+      <Filter>Graphics\GPU</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>

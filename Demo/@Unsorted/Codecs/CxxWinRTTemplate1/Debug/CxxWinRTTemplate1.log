@@ -1,0 +1,15 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V110\Microsoft.CppBuild.targets(348,5): warning MSB8021: The value 'MultiByte' of the variable 'CharacterSet' is incompatible with the value 'true' of the variable 'WindowsAppContainer'.
+  basicalphabet.cpp
+  basicindata.cpp
+  basicrwasync.cpp
+  huffalphabet.cpp
+  shafalphabet.cpp
+  RefTemplate.cpp
+Debug\shafalphabet.obj : warning LNK4264: archiving object file compiled with /ZW into a static library; note that when authoring Windows Runtime types it is not recommended to link with a static library that contains Windows Runtime metadata
+Debug\RefTemplate.obj : warning LNK4264: archiving object file compiled with /ZW into a static library; note that when authoring Windows Runtime types it is not recommended to link with a static library that contains Windows Runtime metadata
+Debug\huffalphabet.obj : warning LNK4264: archiving object file compiled with /ZW into a static library; note that when authoring Windows Runtime types it is not recommended to link with a static library that contains Windows Runtime metadata
+Debug\basicrwasync.obj : warning LNK4264: archiving object file compiled with /ZW into a static library; note that when authoring Windows Runtime types it is not recommended to link with a static library that contains Windows Runtime metadata
+Debug\basicindata.obj : warning LNK4264: archiving object file compiled with /ZW into a static library; note that when authoring Windows Runtime types it is not recommended to link with a static library that contains Windows Runtime metadata
+Debug\basicalphabet.obj : warning LNK4264: archiving object file compiled with /ZW into a static library; note that when authoring Windows Runtime types it is not recommended to link with a static library that contains Windows Runtime metadata
+  CxxWinRTTemplate1.vcxproj -> C:\Users\Vlad Serhiienko\Documents\Visual Studio 2012\Projects\Labworks\Codecs\Debug\CxxWinRTTemplate1\CxxConsoleApplication1.lib
+C:\Program Files (x86)\MSBuild\Microsoft\VisualStudio\v11.0\AppxPackage\Microsoft.AppXPackage.Targets(1541,9): warning APPX1901: The DefaultLanguage property is either missing from the project file or does not have a value. The fallback language is set to the Visual Studio language: en-US.

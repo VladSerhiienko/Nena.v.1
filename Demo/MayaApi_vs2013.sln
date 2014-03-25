@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MayaMeshReader_Console1_vs2013", "MayaMeshReaderConsole1\MayaMeshReader_Console1_vs2013.vcxproj", "{3F7173F3-658E-4FFA-99CE-ABDC7E517F31}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MayaAnimReader_Console1_vs2013", "MayaAnimReaderConsole1\MayaAnimReader_Console1_vs2013.vcxproj", "{7FF61CB3-AE0D-468F-B112-7D5E091B773A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MayaJointClusterReader_Console1_vs2013", "MayaJointClusterReaderConsole1\MayaJointClusterReader_Console1_vs2013.vcxproj", "{41BAEAA5-EC18-454C-A69E-4DD499039E2F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MayaWriter_vs2013", "MayaWriter\MayaWriter_vs2013.vcxproj", "{2810D3A9-EAED-406B-B117-D58CF7072CC8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F7173F3-658E-4FFA-99CE-ABDC7E517F31}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
+		{3F7173F3-658E-4FFA-99CE-ABDC7E517F31}.Debug|Mixed Platforms.Build.0 = Debug|x64
+		{3F7173F3-658E-4FFA-99CE-ABDC7E517F31}.Debug|Win32.ActiveCfg = Debug|x64
+		{3F7173F3-658E-4FFA-99CE-ABDC7E517F31}.Debug|x64.ActiveCfg = Debug|x64
+		{3F7173F3-658E-4FFA-99CE-ABDC7E517F31}.Debug|x64.Build.0 = Debug|x64
+		{3F7173F3-658E-4FFA-99CE-ABDC7E517F31}.Release|Mixed Platforms.ActiveCfg = Release|x64
+		{3F7173F3-658E-4FFA-99CE-ABDC7E517F31}.Release|Mixed Platforms.Build.0 = Release|x64
+		{3F7173F3-658E-4FFA-99CE-ABDC7E517F31}.Release|Win32.ActiveCfg = Release|x64
+		{3F7173F3-658E-4FFA-99CE-ABDC7E517F31}.Release|x64.ActiveCfg = Release|x64
+		{3F7173F3-658E-4FFA-99CE-ABDC7E517F31}.Release|x64.Build.0 = Release|x64
+		{7FF61CB3-AE0D-468F-B112-7D5E091B773A}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
+		{7FF61CB3-AE0D-468F-B112-7D5E091B773A}.Debug|Mixed Platforms.Build.0 = Debug|x64
+		{7FF61CB3-AE0D-468F-B112-7D5E091B773A}.Debug|Win32.ActiveCfg = Debug|x64
+		{7FF61CB3-AE0D-468F-B112-7D5E091B773A}.Debug|x64.ActiveCfg = Debug|x64
+		{7FF61CB3-AE0D-468F-B112-7D5E091B773A}.Debug|x64.Build.0 = Debug|x64
+		{7FF61CB3-AE0D-468F-B112-7D5E091B773A}.Release|Mixed Platforms.ActiveCfg = Release|x64
+		{7FF61CB3-AE0D-468F-B112-7D5E091B773A}.Release|Mixed Platforms.Build.0 = Release|x64
+		{7FF61CB3-AE0D-468F-B112-7D5E091B773A}.Release|Win32.ActiveCfg = Release|x64
+		{7FF61CB3-AE0D-468F-B112-7D5E091B773A}.Release|x64.ActiveCfg = Release|x64
+		{7FF61CB3-AE0D-468F-B112-7D5E091B773A}.Release|x64.Build.0 = Release|x64
+		{41BAEAA5-EC18-454C-A69E-4DD499039E2F}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
+		{41BAEAA5-EC18-454C-A69E-4DD499039E2F}.Debug|Mixed Platforms.Build.0 = Debug|x64
+		{41BAEAA5-EC18-454C-A69E-4DD499039E2F}.Debug|Win32.ActiveCfg = Debug|x64
+		{41BAEAA5-EC18-454C-A69E-4DD499039E2F}.Debug|x64.ActiveCfg = Debug|x64
+		{41BAEAA5-EC18-454C-A69E-4DD499039E2F}.Debug|x64.Build.0 = Debug|x64
+		{41BAEAA5-EC18-454C-A69E-4DD499039E2F}.Release|Mixed Platforms.ActiveCfg = Release|x64
+		{41BAEAA5-EC18-454C-A69E-4DD499039E2F}.Release|Mixed Platforms.Build.0 = Release|x64
+		{41BAEAA5-EC18-454C-A69E-4DD499039E2F}.Release|Win32.ActiveCfg = Release|x64
+		{41BAEAA5-EC18-454C-A69E-4DD499039E2F}.Release|x64.ActiveCfg = Release|x64
+		{41BAEAA5-EC18-454C-A69E-4DD499039E2F}.Release|x64.Build.0 = Release|x64
+		{2810D3A9-EAED-406B-B117-D58CF7072CC8}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
+		{2810D3A9-EAED-406B-B117-D58CF7072CC8}.Debug|Mixed Platforms.Build.0 = Debug|x64
+		{2810D3A9-EAED-406B-B117-D58CF7072CC8}.Debug|Win32.ActiveCfg = Debug|x64
+		{2810D3A9-EAED-406B-B117-D58CF7072CC8}.Debug|x64.ActiveCfg = Debug|x64
+		{2810D3A9-EAED-406B-B117-D58CF7072CC8}.Debug|x64.Build.0 = Debug|x64
+		{2810D3A9-EAED-406B-B117-D58CF7072CC8}.Release|Mixed Platforms.ActiveCfg = Release|x64
+		{2810D3A9-EAED-406B-B117-D58CF7072CC8}.Release|Mixed Platforms.Build.0 = Release|x64
+		{2810D3A9-EAED-406B-B117-D58CF7072CC8}.Release|Win32.ActiveCfg = Release|x64
+		{2810D3A9-EAED-406B-B117-D58CF7072CC8}.Release|x64.ActiveCfg = Release|x64
+		{2810D3A9-EAED-406B-B117-D58CF7072CC8}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

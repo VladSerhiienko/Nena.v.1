@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>LAWRENCE-PC</Machine>
+    <WindowsUser>Vlad</WindowsUser>
+    <SolutionConfiguration>Debug|Win32</SolutionConfiguration>
+    <PackageArchitecture>x86</PackageArchitecture>
+    <RegisteredManifestChecksum>3C1731854D8A864E471EC76D9D215BB7484C13D031AED4B0F5CA118C0E34CF85</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>e05a710d-a2a2-4c58-b4c9-6226ca2bd2fe_1.0.0.0_x86__r4gzqp0nkbhc6</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>e05a710d-a2a2-4c58-b4c9-6226ca2bd2fe_r4gzqp0nkbhc6!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>e05a710d-a2a2-4c58-b4c9-6226ca2bd2fe</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=Vlad</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\Vlad\Documents\Visual Studio 2012\Projects\Juniherz\Encoding\JuniherzEncoding\Debug\Labwork1\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-10-02T11:55:58.289</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\Vlad\Documents\Visual Studio 2012\Projects\Juniherz\Encoding\JuniherzEncoding\Debug\Labwork1\Labwork1.exe">
+      <PackagePath>Labwork1.exe</PackagePath>
+      <Modified>2012-10-02T11:55:57.696</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Vlad\Documents\Visual Studio 2012\Projects\Juniherz\Encoding\JuniherzEncoding\Debug\Labwork1\Labwork1.pdb">
+      <PackagePath>Labwork1.pdb</PackagePath>
+      <Modified>2012-10-02T11:55:58.102</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Vlad\Documents\Visual Studio 2012\Projects\Juniherz\Encoding\JuniherzEncoding\Debug\Labwork1\Labwork1.winmd">
+      <PackagePath>Labwork1.winmd</PackagePath>
+      <Modified>2012-10-02T11:55:57.149</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Vlad\Documents\Visual Studio 2012\Projects\Juniherz\Encoding\JuniherzEncoding\Labwork1\labdata\alphabet-01.txt">
+      <PackagePath>labdata\alphabet-01.txt</PackagePath>
+      <Modified>2012-10-02T03:30:38.502</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Vlad\Documents\Visual Studio 2012\Projects\Juniherz\Encoding\JuniherzEncoding\Labwork1\labdata\alphabet-mapping-01.txt">
+      <PackagePath>labdata\alphabet-mapping-01.txt</PackagePath>
+      <Modified>2012-09-29T13:11:02.558</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Vlad\Documents\Visual Studio 2012\Projects\Juniherz\Encoding\JuniherzEncoding\Labwork1\labdata\alphabet-mapping-02.txt">
+      <PackagePath>labdata\alphabet-mapping-02.txt</PackagePath>
+      <Modified>2012-10-02T01:51:31.074</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Vlad\Documents\Visual Studio 2012\Projects\Juniherz\Encoding\JuniherzEncoding\Labwork1\labdata\sample-01.txt">
+      <PackagePath>labdata\sample-01.txt</PackagePath>
+      <Modified>2012-10-01T21:17:23.421</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Vlad\Documents\Visual Studio 2012\Projects\Juniherz\Encoding\JuniherzEncoding\Labwork1\labdata\alphabet-mapping-03.txt">
+      <PackagePath>labdata\alphabet-mapping-03.txt</PackagePath>
+      <Modified>2012-10-02T08:40:49.185</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Vlad\Documents\Visual Studio 2012\Projects\Juniherz\Encoding\JuniherzEncoding\Labwork1\labdata\alphabet-mapping-04.txt">
+      <PackagePath>labdata\alphabet-mapping-04.txt</PackagePath>
+      <Modified>2012-10-02T11:44:55.987</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Vlad\Documents\Visual Studio 2012\Projects\Juniherz\Encoding\JuniherzEncoding\Labwork1\Assets\Logo.png">
+      <PackagePath>Assets\Logo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-03-19T16:54:48.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Vlad\Documents\Visual Studio 2012\Projects\Juniherz\Encoding\JuniherzEncoding\Labwork1\Assets\SmallLogo.png">
+      <PackagePath>Assets\SmallLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-03-19T16:54:48.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Vlad\Documents\Visual Studio 2012\Projects\Juniherz\Encoding\JuniherzEncoding\Labwork1\Assets\StoreLogo.png">
+      <PackagePath>Assets\StoreLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-03-19T16:54:48.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Vlad\Documents\Visual Studio 2012\Projects\Juniherz\Encoding\JuniherzEncoding\Labwork1\Assets\SplashScreen.png">
+      <PackagePath>Assets\SplashScreen.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-03-19T16:54:48.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Vlad\Documents\Visual Studio 2012\Projects\Juniherz\Encoding\JuniherzEncoding\Debug\Labwork1\Common\StandardStyles.xaml">
+      <PackagePath>Common\StandardStyles.xaml</PackagePath>
+      <Modified>2012-10-01T22:07:12.288</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Vlad\Documents\Visual Studio 2012\Projects\Juniherz\Encoding\JuniherzEncoding\Debug\Labwork1\MainPage.xaml">
+      <PackagePath>MainPage.xaml</PackagePath>
+      <Modified>2012-10-02T03:55:54.422</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Vlad\Documents\Visual Studio 2012\Projects\Juniherz\Encoding\JuniherzEncoding\Debug\Labwork1\App.xaml">
+      <PackagePath>App.xaml</PackagePath>
+      <Modified>2012-09-29T11:08:03.747</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Vlad\Documents\Visual Studio 2012\Projects\Juniherz\Encoding\JuniherzEncoding\Debug\Labwork1\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2012-10-02T11:45:30.691</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResolvedSDKReference Include="C:\Program Files\Microsoft SDKs\Windows\v8.0\ExtensionSDKs\Microsoft.VCLibs\11.0\">
+      <Name>Microsoft.VCLibs.110.Debug</Name>
+      <Version>11.0.50522.1</Version>
+      <Architecture>X86</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.110.Debug, MinVersion = 11.0.50522.1</FrameworkIdentity>
+      <AppxLocation>C:\Program Files\Microsoft SDKs\Windows\v8.0\ExtensionSDKs\Microsoft.VCLibs\11.0\.\AppX\Debug\x86\Microsoft.VCLibs.x86.Debug.11.appx</AppxLocation>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files\Microsoft SDKs\Windows\v8.0\ExtensionSDKs\Microsoft.VCLibs\11.0\">
+      <Name>Microsoft.VCLibs.110.Debug</Name>
+      <Version>11.0.50522.1</Version>
+      <Architecture>X64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.110.Debug, MinVersion = 11.0.50522.1</FrameworkIdentity>
+      <AppxLocation>C:\Program Files\Microsoft SDKs\Windows\v8.0\ExtensionSDKs\Microsoft.VCLibs\11.0\.\AppX\Debug\x64\Microsoft.VCLibs.x64.Debug.11.appx</AppxLocation>
+    </ResolvedSDKReference>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,96 @@
+65560 Dwm
+65596 UxdService
+65702 COMTASKSWINDOWCLASS
+65706 #32770
+65736 #32770
+65756 ConsoleWindowClass
+65948 Progman
+65982 OleDdeWndClass
+66120 WorkerW
+66136 OleDdeWndClass
+66146 SystemTray_Main
+66160 WNPGeneric
+66232 PersistClass
+66238 GDI+ Hook Window Class
+66242 Afx:0000000140000000:0
+66356 HwndWrapper[SBCinema.exe;;22d01f16-5a39-4d99-8086-3276f1a35fed]
+66364 #32770
+131112 MS_WebcheckMonitor
+131220 BluetoothNotificationAreaIconWindowClass
+131352 #32770
+131500 PushNotificationsPowerManagement
+131580 igfxtrayClass
+131794 Lv15_Launcher
+131798 HwndWrapper[SBCinema.exe;;af45fb27-e47e-43e4-b6a9-6b3af1b4388b]
+131806 GDI+ Hook Window Class
+131808 .NET-BroadcastEventWindow.4.0.0.0.3fbab22.0
+131814 HwndWrapper[SBCinema.exe;;f7a6e282-a506-4be4-b044-cb643b6f4995]
+131822 Zune AutoLauncher Window Class
+131952 GDI+ Hook Window Class
+132622 DV2ControlHost
+196750 ATL:00007FFA41D37320
+196820 #32770
+196862 NVSVC64.DLL
+264114 OperationStatusWindow
+264282 CabinetWClass
+327706 TaskSwitcherWnd
+393308 .NET-BroadcastEventWindow.4.0.0.0.34f5582.0
+394154 ConsoleWindowClass
+394986 GDI+ Hook Window Class
+460232 SysFader
+460348 ms_sqlce_se_notify_wndproc
+460392 HwndWrapper[DefaultDomain;StatusBar;e00c8884-30d4-4be8-ae1d-5ac68bd9d25c]
+460712 #32770
+460966 IEFrame
+525672 CiceroUIWndFrame
+526170 CiceroUIWndFrame
+656334 GDI+ Hook Window Class
+656880 TeamFoundationNotificationWindow
+657390 TabThumbnailWindow
+721908 GDI+ Hook Window Class
+786692 ms_sqlce_se_notify_wndproc
+787092 HkClass
+788116 HwndWrapper[DefaultDomain;StatusBar;9211d992-391e-47b1-bfed-bcf1a2fb1e63]
+852042 #32770
+853376 HwndWrapper[DefaultDomain;;e320f650-b0f0-41a6-ba84-83ed392ddb1c]
+918256 GDI+ Hook Window Class
+984324 OleDdeWndClass
+985668 Messaging
+985878 HwndWrapper[DefaultDomain;;8c5f80d7-e651-4acb-9557-514f57e36ed7]
+1116866 #32770
+1180554 HwndWrapper[DefaultDomain;StatusBar;908e9f1d-7f76-4d7b-bff0-454bc4dd630d]
+1246184 HwndWrapper[DefaultDomain;StatusBar;27a2c23c-33c8-434e-a615-1fb5d87b11db]
+1247532 HwndWrapper[DefaultDomain;;0dd94e8d-e0f2-4d91-98f9-8bc7efe03411]
+1247638 HwndWrapper[DefaultDomain;;cbc821e6-5acb-46da-bb62-48cf6266d82e]
+1377396 VisualStudioAppManagement
+1509484 tSkMainForm
+1572928 HwndWrapper[DefaultDomain;;6e6cb6bc-80ad-4d06-9926-3c055ab84ba5]
+1573972 HwndWrapper[DefaultDomain;;4a6b44c4-3d97-47e0-9c76-2f8a218289f7]
+1574260 VisualStudioAppManagement
+1574960 CiceroUIWndFrame
+1639218 HwndWrapper[DefaultDomain;StatusBar;aad8885d-90c3-40c4-8158-ac2ee2f1b442]
+1639460 .NET-BroadcastEventWindow.4.0.0.0.9585cb.0
+1836728 CabinetWClass
+1836994 TeamFoundationNotificationWindow
+2032678 HwndWrapper[DefaultDomain;;f6a8841c-f946-4fb7-902e-96a74b74098d]
+2098330 WNPGeneric
+2098654 HwndWrapper[DefaultDomain;;aa948574-8fda-4d66-b50d-677fa1575ce0]
+2426144 OleDdeWndClass
+2491294 #32770
+2623460 Edit
+2687624 Touch Tooltip Window
+3082266 HwndWrapper[DefaultDomain;;979d35f6-5668-4525-b6f3-3cfb42cfb5dd]
+3212894 TeamFoundationNotificationWindow
+3540866 TskHintWindow
+3670888 HwndWrapper[DefaultDomain;StatusBar;60e4f29b-10b9-49c5-98ec-934835940fc5]
+3671958 OleDdeWndClass
+3737768 .NET-BroadcastEventWindow.4.0.0.0.9585cb.0
+4654778 .NET-BroadcastEventWindow.4.0.0.0.9585cb.0
+5179846 vpwin::NotificationWindow
+5244776 CiceroUIWndFrame
+6424808 TPUtilWindow
+7669598 GDI+ Hook Window Class
+7735930 OleDdeWndClass
+8719394 COMTASKSWINDOWCLASS
+9241738 VisualStudioAppManagement
+10029322 OleDdeWndClass

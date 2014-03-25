@@ -1,0 +1,1 @@
+MayaWriter "D:/Development/Maya/Scenes/cube-2x2x2-t.ma" "D:/Development/Maya/Scenes/cube-2x2x2-t.ma.xml" "import-all.lua"

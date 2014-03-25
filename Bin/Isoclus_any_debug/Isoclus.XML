@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Isoclus</name>
+    </assembly>
+    <members>
+        <member name="T:Isoclus.Mechanism.Cluster">
+            <summary>
+            Left element
+            </summary>
+        </member>
+        <member name="F:Isoclus.Mechanism.Cluster.Id">
+            <summary>
+             Unique name
+            </summary>
+        </member>
+        <member name="F:Isoclus.Mechanism.Cluster.Center">
+            <summary>
+            Left center
+            </summary>
+        </member>
+        <member name="F:Isoclus.Mechanism.Cluster.AssociatedPoints">
+            <summary>
+            Left pointers 
+            </summary>
+        </member>
+        <member name="M:Isoclus.Mechanism.Cluster.#ctor(System.Single,System.Single,System.Int32)">
+            <summary>
+            Initializes cluster
+            </summary>
+        </member>
+        <member name="M:Isoclus.Mechanism.Cluster.EuclideanLengthTo(Isoclus.Mechanism.Point)">
+            <summary>
+            Distance between the cluster center and the provided point
+            </summary>
+            <param name="Point">The point to calc the distance to.</param>
+            <returns>Distance to the provided point.</returns>
+        </member>
+        <member name="M:Isoclus.Mechanism.Cluster.AdjustCenter">
+            <summary>
+            Calculates the centroid of the associated points
+            </summary>
+        </member>
+        <member name="P:Isoclus.Mechanism.Cluster.N">
+            <summary>
+            Number of associated points
+            </summary>
+        </member>
+        <member name="P:Isoclus.Mechanism.Cluster.AverageDistance">
+            <summary>
+            Calculates the average distance of points to their associated cluster center.
+            </summary>
+        </member>
+        <member name="P:Isoclus.Mechanism.Cluster.Deviation">
+            <summary>
+            Calculates the standard deviation of each coordinate of points directed from 
+            the cluster center. 
+            </summary>
+        </member>
+        <member name="M:Isoclus.Mechanism.ClusterExtensions.MergeWith(Isoclus.Mechanism.Cluster,Isoclus.Mechanism.Cluster)">
+            <summary>
+            Generates the new merged cluster with first cluster id. 
+            </summary>
+            <param name="Left">First cluster</param>
+            <param name="Right">Second cluster</param>
+            <returns>New merged cluster</returns>
+        </member>
+        <member name="T:Isoclus.Mechanism.Clusterizer">
+            <summary>
+            ISOCLUS algorithm implementation 
+            </summary>
+        </member>
+        <member name="M:Isoclus.Mechanism.Clusterizer.AssociatePointsWithClusters">
+            <summary>
+            Step 2. Assign each point to its closest cluster center. 
+            Point collection would be completely cleared. 
+            </summary>
+        </member>
+        <member name="M:Isoclus.Mechanism.Clusterizer.RemoveSmallClusters">
+            <summary>
+            Step 3. Remove all the clusters size of which is less then Nmin (Settings)
+            </summary>
+        </member>
+        <member name="M:Isoclus.Mechanism.Clusterizer.AdjustClusterCenters">
+            <summary>
+            Step 4. Adjust cluster centers to their point set centroids. 
+            </summary>
+        </member>
+        <member name="M:Isoclus.Mechanism.Clusterizer.AdjustClusters(System.Int32)">
+            <summary>
+            Step 5. In this algorithm stage the clusters will be merged or/and split. 
+            Its rather large and complex. 
+            </summary>
+        </member>
+        <member name="M:Isoclus.Mechanism.Clusterizer.MergeClusters">
+            <summary>
+            Steps 9, 10, 11. Merge clusters
+            </summary>
+        </member>
+        <member name="T:Isoclus.Mechanism.Config">
+            <summary>
+            Clusterizer configuration
+            </summary>
+        </member>
+        <member name="F:Isoclus.Mechanism.Config.Kinit">
+            <summary>
+            Initial number of clusters.
+            </summary>
+        </member>
+        <member name="F:Isoclus.Mechanism.Config.Nmin">
+            <summary>
+            Minimum number of points that can form a cluster.
+            </summary>
+        </member>
+        <member name="F:Isoclus.Mechanism.Config.Imax">
+            <summary>
+            Max number of iterations.
+            </summary>
+        </member>
+        <member name="F:Isoclus.Mechanism.Config.Dmax">
+            <summary>
+            Max deviation of points from their cluster centers.
+            </summary>
+        </member>
+        <member name="F:Isoclus.Mechanism.Config.Lmin">
+            <summary>
+            Min required distance between two clusters.
+            </summary>
+        </member>
+        <member name="F:Isoclus.Mechanism.Config.Pmax">
+            <summary>
+            Max number of cluster pairs that can be merged per iteration.
+            </summary>
+        </member>
+        <member name="M:Isoclus.Mechanism.Config.#ctor">
+            <summary>
+            Apply default settings. 
+            </summary>
+        </member>
+        <member name="T:Isoclus.Mechanism.Point">
+            <summary>
+            AssociatedPoints element
+            </summary>
+        </member>
+        <member name="F:Isoclus.Mechanism.Point.Id">
+            <summary>
+             Unique name
+            </summary>
+        </member>
+        <member name="F:Isoclus.Mechanism.Point.X">
+            <summary>
+             X position
+            </summary>
+        </member>
+        <member name="F:Isoclus.Mechanism.Point.Y">
+            <summary>
+             Y position
+            </summary>
+        </member>
+        <member name="M:Isoclus.Mechanism.Point.#ctor(System.Single,System.Single,System.Int32,System.Boolean)">
+            <summary>
+            Initializes point
+            </summary>
+        </member>
+        <member name="P:Isoclus.Mechanism.Point.Length">
+            <summary>
+            Distance to the point from the central coords (0, 0)
+            </summary>
+        </member>
+    </members>
+</doc>

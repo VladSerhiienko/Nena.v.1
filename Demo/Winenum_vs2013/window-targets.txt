@@ -1,0 +1,3 @@
+ABBYY Lingvo x5
+Lv15_MainWindow
+C:\Program Files (x86)\ABBYY Lingvo x5\Lingvo.exe

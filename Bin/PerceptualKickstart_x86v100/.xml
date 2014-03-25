@@ -1,0 +1,14 @@
+<App>
+	<Vars>
+		<Rec Name="App/View/Ico/Big/Hpx">128</Rec>
+		<Rec Name="App/View/Ico/Small/Wpx">64</Rec>
+		<Rec Name="App/View/Text">Demo</Rec>
+		<Rec Name="App/View/Ico/Big/File">../@Icons/cpp.ico</Rec>
+		<Rec Name="App/View/Ico/Small/Hpx">64</Rec>
+		<Rec Name="App/View/Ico/Small/File">../@Icons/cpp.ico</Rec>
+		<Rec Name="App/View/Ico/Big/Wpx">128</Rec>
+		<Rec Name="App/View/Class">NenaWindowClass</Rec>
+	</Vars>
+</App>
+
+

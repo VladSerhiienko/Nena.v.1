@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{b5b1d5dc-b6da-41a9-8f0f-d1805f91efc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\CPU">
+      <UniqueIdentifier>{96571aa9-9044-4a86-a02f-364324451ed0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\CPU\Fluid">
+      <UniqueIdentifier>{62a9764e-50a9-4d57-9451-af3f0e02920b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\GPU">
+      <UniqueIdentifier>{8482345f-0f8a-4e3c-b3f9-e0e79805c89d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\GPU\Simulation">
+      <UniqueIdentifier>{98206492-672a-4a43-9dbf-acc73dc83e4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\GPU\Simulation\Utility">
+      <UniqueIdentifier>{0a4e135c-100a-4075-8a7d-d36c8f7edd77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\GPU\Rendering">
+      <UniqueIdentifier>{b6fc6f22-7a55-4852-8704-00aa4d39edfb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="App">
+      <UniqueIdentifier>{b758da30-0942-4d7f-b0c2-bcc90d0de816}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Precompiled.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="Application.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="FluidRenderer.cpp">
+      <Filter>Graphics\CPU\Fluid</Filter>
+    </ClCompile>
+    <ClCompile Include="FluidSimulator.cpp">
+      <Filter>Graphics\CPU\Fluid</Filter>
+    </ClCompile>
+    <ClCompile Include="FluidSolver.cpp">
+      <Filter>Graphics\CPU\Fluid</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Graphics\CPU</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Application.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="Precompiled.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="FluidRenderer.h">
+      <Filter>Graphics\CPU\Fluid</Filter>
+    </ClInclude>
+    <ClInclude Include="FluidSimulator.h">
+      <Filter>Graphics\CPU\Fluid</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Graphics\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Graphics\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="RendererUtil.h">
+      <Filter>Graphics\CPU</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="FluidBoxVs0.hlsl">
+      <Filter>Graphics\GPU\Rendering</Filter>
+    </FxCompile>
+    <FxCompile Include="FluidBoxPs0.hlsl">
+      <Filter>Graphics\GPU\Rendering</Filter>
+    </FxCompile>
+    <FxCompile Include="CopyTextureCs0.hlsl">
+      <Filter>Graphics\GPU\Simulation\Utility</Filter>
+    </FxCompile>
+    <FxCompile Include="ZeroTextureCs0.hlsl">
+      <Filter>Graphics\GPU\Simulation\Utility</Filter>
+    </FxCompile>
+    <FxCompile Include="AdvectionCs1.hlsl">
+      <Filter>Graphics\GPU\Simulation</Filter>
+    </FxCompile>
+    <FxCompile Include="DiffusionJacobiCs2.hlsl">
+      <Filter>Graphics\GPU\Simulation</Filter>
+    </FxCompile>
+    <FxCompile Include="DivergenceCs0.hlsl">
+      <Filter>Graphics\GPU\Simulation</Filter>
+    </FxCompile>
+    <FxCompile Include="GaussianSplatCs0.hlsl">
+      <Filter>Graphics\GPU\Simulation</Filter>
+    </FxCompile>
+    <FxCompile Include="PressureJacobiCs2.hlsl">
+      <Filter>Graphics\GPU\Simulation</Filter>
+    </FxCompile>
+    <FxCompile Include="ProjectionCs1.hlsl">
+      <Filter>Graphics\GPU\Simulation</Filter>
+    </FxCompile>
+    <FxCompile Include="CurlCs0.hlsl">
+      <Filter>Graphics\GPU\Simulation</Filter>
+    </FxCompile>
+    <FxCompile Include="VorticityCs0.hlsl">
+      <Filter>Graphics\GPU\Simulation</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Sample.txt">
+      <Filter>App</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

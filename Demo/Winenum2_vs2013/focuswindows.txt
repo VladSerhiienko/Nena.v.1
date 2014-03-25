@@ -1,0 +1,12 @@
+PostMessage function (Windows) - Internet Explorer
+IEFrame
+
+PostMessage function (Windows) - Internet Explorer
+TabThumbnailWindow
+C:\Program Files (x86)\Internet Explorer\IEXPLORE.EXE
+c++ - Validate HWND using Win32 API - Stack Overflow - Internet Explorer
+TabThumbnailWindow
+C:\Program Files (x86)\Internet Explorer\IEXPLORE.EXE
+c++ - How to get main window handle from process id? - Stack Overflow - Internet Explorer
+TabThumbnailWindow
+C:\Program Files (x86)\Internet Explorer\IEXPLORE.EXE

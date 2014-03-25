@@ -1,0 +1,13 @@
+App.xaml
+Common\StandardStyles.xaml
+MainPage.xaml
+Assets\Logo.png
+Assets\SmallLogo.png
+Assets\SplashScreen.png
+Assets\StoreLogo.png
+labdata\alphabet-01.txt
+labdata\alphabet-mapping-01.txt
+labdata\alphabet-mapping-02.txt
+labdata\alphabet-mapping-03.txt
+labdata\alphabet-mapping-04.txt
+labdata\sample-01.txt

@@ -1,0 +1,1 @@
+MayaWriter "D:/Development/Maya/Scenes/Karen-1.ma" "D:/Development/Maya/Scenes/Karen-1.ma.xml" "import-all.lua"

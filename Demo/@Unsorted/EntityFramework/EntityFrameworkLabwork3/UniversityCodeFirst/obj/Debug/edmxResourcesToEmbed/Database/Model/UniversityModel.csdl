@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UniversityModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="UniversityEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+    <EntitySet Name="Disciplines" EntityType="UniversityModel.Discipline" />
+    <EntitySet Name="Groups" EntityType="UniversityModel.Group" />
+    <EntitySet Name="Students" EntityType="UniversityModel.Student" />
+    <AssociationSet Name="FK_Students_Group" Association="UniversityModel.FK_Students_Group">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="DisciplinesGroups" Association="UniversityModel.DisciplinesGroups">
+      <End Role="Disciplines" EntitySet="Disciplines" />
+      <End Role="Groups" EntitySet="Groups" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Discipline">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="32" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Groups" Relationship="UniversityModel.DisciplinesGroups" FromRole="Disciplines" ToRole="Groups" />
+  </EntityType>
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" />
+    <Property Name="Acronym" Type="String" Nullable="false" MaxLength="4" Unicode="true" FixedLength="false" />
+    <Property Name="Course" Type="Byte" Nullable="false" />
+    <Property Name="DepartmentIndex" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="Students" Relationship="UniversityModel.FK_Students_Group" FromRole="Groups" ToRole="Students" />
+    <NavigationProperty Name="Disciplines" Relationship="UniversityModel.DisciplinesGroups" FromRole="Groups" ToRole="Disciplines" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" />
+    <Property Name="Surname" Type="String" Nullable="false" MaxLength="16" Unicode="true" FixedLength="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="16" Unicode="true" FixedLength="false" />
+    <Property Name="Patronymic" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+    <Property Name="Age" Type="Byte" />
+    <Property Name="GroupId" Type="Int64" />
+    <NavigationProperty Name="Group" Relationship="UniversityModel.FK_Students_Group" FromRole="Students" ToRole="Groups" />
+  </EntityType>
+  <Association Name="FK_Students_Group">
+    <End Role="Groups" Type="UniversityModel.Group" Multiplicity="0..1" />
+    <End Role="Students" Type="UniversityModel.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="GroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DisciplinesGroups">
+    <End Role="Disciplines" Type="UniversityModel.Discipline" Multiplicity="*" />
+    <End Role="Groups" Type="UniversityModel.Group" Multiplicity="*" />
+  </Association>
+</Schema>

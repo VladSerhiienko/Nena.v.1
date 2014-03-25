@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<App>
+  <Vars>
+    <Rec Name="App/View/Text">Volume Rendering</Rec>
+    <Rec Name="App/View/Class">NenaWindowClass_ShadowMappingDemo</Rec>
+    <Rec Name="App/View/Ico/Small/File">../../Bin/@Icons/cpp.ico</Rec>
+    <Rec Name="App/View/Ico/Big/File">../../Bin/@Icons/cpp.ico</Rec>
+    <Rec Name="App/View/Ico/Small/Wpx">64</Rec>
+    <Rec Name="App/View/Ico/Small/Hpx">64</Rec>
+    <Rec Name="App/View/Ico/Big/Wpx">128</Rec>
+    <Rec Name="App/View/Ico/Big/Hpx">128</Rec>
+
+    <Rec Name="Demo/SimpleVolume/Shader/VS/CSO">Shaders/VolumeVertexShader.cso</Rec>
+    <Rec Name="Demo/SimpleVolume/Shader/PS/CSO">Shaders/VolumePixelShader.cso</Rec>
+    
+  </Vars>
+</App>

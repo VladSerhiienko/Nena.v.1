@@ -1,0 +1,10 @@
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\UniversityCodeFirstTests\obj\Debug\UniversityCodeFirstTests.csprojResolveAssemblyReference.cache
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\UniversityCodeFirstTests\bin\Debug\UniversityCodeFirstTests.dll
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\UniversityCodeFirstTests\bin\Debug\UniversityCodeFirstTests.pdb
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\UniversityCodeFirstTests\bin\Debug\EntityFramework.dll
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\UniversityCodeFirstTests\bin\Debug\UniversityCodeFirst.exe
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\UniversityCodeFirstTests\bin\Debug\UniversityCodeFirst.pdb
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\UniversityCodeFirstTests\bin\Debug\EntityFramework.xml
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\UniversityCodeFirstTests\obj\Debug\UniversityCodeFirstTests.dll
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\UniversityCodeFirstTests\obj\Debug\UniversityCodeFirstTests.pdb
+E:\DEV\VisualStudio2012\Win32\Labworks\EntityFramework\EntityFrameworkLabwork3\UniversityCodeFirstTests\bin\Debug\UniversityCodeFirstTests.dll.config

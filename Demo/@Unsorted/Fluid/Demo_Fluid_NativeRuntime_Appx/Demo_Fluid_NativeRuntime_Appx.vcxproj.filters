@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Image Include="Assets\Logo.png">
+      <Filter>Specific\Assets</Filter>
+    </Image>
+    <Image Include="Assets\SmallLogo.png">
+      <Filter>Specific\Assets</Filter>
+    </Image>
+    <Image Include="Assets\StoreLogo.png">
+      <Filter>Specific\Assets</Filter>
+    </Image>
+    <Image Include="Assets\SplashScreen.png">
+      <Filter>Specific\Assets</Filter>
+    </Image>
+    <Filter Include="Specific">
+      <UniqueIdentifier>{b7c2f952-7170-4b42-a036-c6e6b6eadb2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Specific\Assets">
+      <UniqueIdentifier>b0d196f2-7260-4a59-a707-881289be1c4a</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <Filter>Specific</Filter>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Demo_Fluid_NativeRuntime_Appx_TemporaryKey.pfx">
+      <Filter>Specific</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Shared">
+      <UniqueIdentifier>{965b99ca-f9c3-478c-9e64-ff9f8ec2a826}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shared\App">
+      <UniqueIdentifier>{74a2505e-31a4-4d7c-9cfa-9e263939319b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shared\App\Pch">
+      <UniqueIdentifier>{a9b89a07-37dc-41c1-a4fe-1a5914b15921}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shared\Fluid">
+      <UniqueIdentifier>{de762de1-1210-48a5-aa6e-f761fb281a70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shared\Fluid\CPU">
+      <UniqueIdentifier>{74cd8bc3-4efc-4a7f-950d-e3f2f18da969}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shared\Fluid\GPU">
+      <UniqueIdentifier>{b82571c7-7f4f-4185-a26d-1df9bbde9089}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Include\Precompiled.h">
+      <Filter>Shared\App\Pch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Application.h">
+      <Filter>Shared\App</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\FluidSimulator.h">
+      <Filter>Shared\Fluid\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\FluidRenderer.h">
+      <Filter>Shared\Fluid\CPU</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Source\Precompiled.cpp">
+      <Filter>Shared\App\Pch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Application.cpp">
+      <Filter>Shared\App</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\FluidSimulator.cpp">
+      <Filter>Shared\Fluid\CPU</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\FluidRenderer.cpp">
+      <Filter>Shared\Fluid\CPU</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

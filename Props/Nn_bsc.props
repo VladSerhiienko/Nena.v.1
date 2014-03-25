@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <Nn_BinRoot>$(SolutionDir)..\Bin\</Nn_BinRoot>
+    <Nn_IntRoot>$(SolutionDir)..\Int\</Nn_IntRoot>
+    <Nn_PrjSffx>_$(PlatformTarget)$(PlatformToolset)</Nn_PrjSffx>
+    <Nn_ArmSffx>_arm$(PlatformToolset)</Nn_ArmSffx>
+    <Nn_DevkitRoot>$(SolutionDir)..\Devkit\</Nn_DevkitRoot>
+    <Nn_Lnkd3d>DirectX$(Nn_PrjSffx)$(Nn_d).lib; d3d11.lib; dxgi.lib</Nn_Lnkd3d>
+    <Nn_Lnkd3dd>DirectX$(Nn_PrjSffx)$(Nn_d).lib; d3d11.lib; dxgi.lib</Nn_Lnkd3dd>
+    <Nn_Lnkwnd>Window$(Nn_PrjSffx)$(Nn_d).lib</Nn_Lnkwnd>
+    <Nn_Lnkwndd>Window$(Nn_PrjSffx)$(Nn_d).lib</Nn_Lnkwndd>
+    <Nn_Lnkd2d>Overlay$(Nn_PrjSffx)$(Nn_d).lib; d2d1.lib; dwrite.lib; windowscodecs.lib</Nn_Lnkd2d>
+    <Nn_Lnkd2dd>Overlay$(Nn_PrjSffx)$(Nn_d).lib; d2d1.lib; dwrite.lib; windowscodecs.lib</Nn_Lnkd2dd>
+    <Nn_Lnkdxrsrc>DirectXResources$(Nn_PrjSffx)$(Nn_d).lib</Nn_Lnkdxrsrc>
+    <Nn_Lnkdxrsrcd>DirectXResources$(Nn_PrjSffx)$(Nn_d).lib</Nn_Lnkdxrsrcd>
+    <Nn_Lnkmare>MayaReader$(Nn_PrjSffx)$(Nn_d).lib</Nn_Lnkmare>
+    <Nn_Lnkmared>MayaReader$(Nn_PrjSffx)$(Nn_d).lib</Nn_Lnkmared>
+    <Nn_Inc>$(Nn_DevkitRoot)Nena\Inc\</Nn_Inc>
+    <Nn_Incd3d>$(Nn_DevkitRoot)DirectX\Inc\</Nn_Incd3d>
+    <Nn_Incd2d>$(Nn_DevkitRoot)Overlay\Inc\</Nn_Incd2d>
+    <Nn_Incwnd>$(Nn_DevkitRoot)Window\Inc\</Nn_Incwnd>
+    <Nn_Incdxrsrc>$(Nn_DevkitRoot)DirectXResources\Inc\</Nn_Incdxrsrc>
+    <Nn_Incmare>$(Nn_DevkitRoot)MayaReader\Inc\</Nn_Incmare>
+    <Nn_Incd2dlibs>$(Nn_DevkitRoot)Overlay\Lib\</Nn_Incd2dlibs>
+    <Nn_Incd3dlibs>$(Nn_DevkitRoot)DirectX\Lib\</Nn_Incd3dlibs>
+    <Nn_Incwndlibs>$(Nn_DevkitRoot)Window\Lib\</Nn_Incwndlibs>
+    <Nn_Incdxrsrclibs>$(Nn_DevkitRoot)DirectXResources\Lib\</Nn_Incdxrsrclibs>
+    <Nn_Incmarelibs>$(Nn_DevkitRoot)MayaReader\Lib\</Nn_Incmarelibs>
+    <Nn_Incapp>$(Nn_DevkitRoot)App\Inc\</Nn_Incapp>
+    <Nn_Lnkapp>App$(Nn_PrjSffx)$(Nn_d).lib</Nn_Lnkapp>
+    <Nn_Lnkappd>App$(Nn_PrjSffx)$(Nn_d).lib</Nn_Lnkappd>
+    <Nn_Incapplibs>$(Nn_DevkitRoot)App\Lib\</Nn_Incapplibs>
+    <Nn_Incpcsdk>$(PCSDK_DIR)include\</Nn_Incpcsdk>
+    <Nn_Incpcsdku>$(PCSDK_DIR)sample\common\include\</Nn_Incpcsdku>
+    <Nn_Incpxctotimm>$(PCSDK_DIR)contrib\Total Immersion\include\</Nn_Incpxctotimm>
+    <Nn_Incpcsdklibs>$(PCSDK_DIR)lib\$(PlatformName)\</Nn_Incpcsdklibs>
+    <Nn_Incpcsdkulibs>$(PCSDK_DIR)sample\common\lib\$(PlatformName)\$(PlatformToolset)\</Nn_Incpcsdkulibs>
+    <Nn_Lnkpcsdk>libpxc$(Nn_pcsdkd).lib;</Nn_Lnkpcsdk>
+    <Nn_Lnkpcsdkd>libpxc$(Nn_pcsdkd).lib;</Nn_Lnkpcsdkd>
+    <Nn_Lnkpcsdku>libpxcutils$(Nn_pcsdkd).lib</Nn_Lnkpcsdku>
+    <Nn_Lnkpcsdkud>libpxcutils$(Nn_pcsdkd).lib</Nn_Lnkpcsdkud>
+    <Nn_Incperc>$(Nn_DevkitRoot)Perceptual\Inc\</Nn_Incperc>
+    <Nn_Incperclibs>$(Nn_DevkitRoot)Perceptual\Lib\</Nn_Incperclibs>
+    <Nn_Lnkperc>Perceptual$(Nn_PrjSffx)$(Nn_d).lib</Nn_Lnkperc>
+    <Nn_Lnkpercd>Perceptual$(Nn_PrjSffx)$(Nn_d).lib</Nn_Lnkpercd>
+    <Nn_Inclxnd>$(Nn_DevkitRoot)Luxand\Inc\</Nn_Inclxnd>
+    <Nn_Inclxndlibs>$(Nn_DevkitRoot)Luxand\Lib\</Nn_Inclxndlibs>
+    <Nn_Lnklxnd>Luxand$(Nn_PrjSffx)$(Nn_d).lib</Nn_Lnklxnd>
+    <Nn_Lnklxndd>Luxand$(Nn_PrjSffx)$(Nn_d).lib</Nn_Lnklxndd>
+  </PropertyGroup>
+  <PropertyGroup>
+    <_PropertySheetDisplayName>NenaBasicProps</_PropertySheetDisplayName>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(Nn_Inc);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="Nn_BinRoot">
+      <Value>$(Nn_BinRoot)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_IntRoot">
+      <Value>$(Nn_IntRoot)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_PrjSffx">
+      <Value>$(Nn_PrjSffx)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_ArmSffx">
+      <Value>$(Nn_ArmSffx)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_DevkitRoot">
+      <Value>$(Nn_DevkitRoot)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Lnkd3d">
+      <Value>$(Nn_Lnkd3d)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Lnkd3dd">
+      <Value>$(Nn_Lnkd3dd)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Lnkwnd">
+      <Value>$(Nn_Lnkwnd)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Lnkwndd">
+      <Value>$(Nn_Lnkwndd)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Lnkd2d">
+      <Value>$(Nn_Lnkd2d)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Lnkd2dd">
+      <Value>$(Nn_Lnkd2dd)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Lnkdxrsrc">
+      <Value>$(Nn_Lnkdxrsrc)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Lnkdxrsrcd">
+      <Value>$(Nn_Lnkdxrsrcd)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Lnkmare">
+      <Value>$(Nn_Lnkmare)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Lnkmared">
+      <Value>$(Nn_Lnkmared)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Inc">
+      <Value>$(Nn_Inc)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Incd3d">
+      <Value>$(Nn_Incd3d)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Incd2d">
+      <Value>$(Nn_Incd2d)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Incwnd">
+      <Value>$(Nn_Incwnd)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Incdxrsrc">
+      <Value>$(Nn_Incdxrsrc)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Incmare">
+      <Value>$(Nn_Incmare)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Incd2dlibs">
+      <Value>$(Nn_Incd2dlibs)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Incd3dlibs">
+      <Value>$(Nn_Incd3dlibs)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Incwndlibs">
+      <Value>$(Nn_Incwndlibs)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Incdxrsrclibs">
+      <Value>$(Nn_Incdxrsrclibs)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Incmarelibs">
+      <Value>$(Nn_Incmarelibs)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Incapp">
+      <Value>$(Nn_Incapp)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Lnkapp">
+      <Value>$(Nn_Lnkapp)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Lnkappd">
+      <Value>$(Nn_Lnkappd)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Incapplibs">
+      <Value>$(Nn_Incapplibs)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Incpcsdk">
+      <Value>$(Nn_Incpcsdk)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Incpcsdku">
+      <Value>$(Nn_Incpcsdku)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Incpxctotimm">
+      <Value>$(Nn_Incpxctotimm)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Incpcsdklibs">
+      <Value>$(Nn_Incpcsdklibs)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Incpcsdkulibs">
+      <Value>$(Nn_Incpcsdkulibs)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Lnkpcsdk">
+      <Value>$(Nn_Lnkpcsdk)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Lnkpcsdkd">
+      <Value>$(Nn_Lnkpcsdkd)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Lnkpcsdku">
+      <Value>$(Nn_Lnkpcsdku)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Lnkpcsdkud">
+      <Value>$(Nn_Lnkpcsdkud)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Incperc">
+      <Value>$(Nn_Incperc)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Incperclibs">
+      <Value>$(Nn_Incperclibs)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Lnkperc">
+      <Value>$(Nn_Lnkperc)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Lnkpercd">
+      <Value>$(Nn_Lnkpercd)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Inclxnd">
+      <Value>$(Nn_Inclxnd)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Inclxndlibs">
+      <Value>$(Nn_Inclxndlibs)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Lnklxnd">
+      <Value>$(Nn_Lnklxnd)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Lnklxndd">
+      <Value>$(Nn_Lnklxndd)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

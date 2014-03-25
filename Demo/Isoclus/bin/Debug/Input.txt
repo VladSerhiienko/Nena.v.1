@@ -1,0 +1,21 @@
+Points
+3 5 
+6 6
+7 7
+8 8
+7 15
+8 15
+9 15
+10 15
+11 15
+15 3
+17 4
+Clusters
+Random -1 12 Z1
+0 6 Z2 S2
+Config
+Nmin 1
+Imax 5
+Dmax 1.9
+Lmin 2.5
+Pmax 10
