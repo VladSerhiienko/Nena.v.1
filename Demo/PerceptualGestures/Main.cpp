@@ -3,7 +3,7 @@
 #include <Psapi.h>
 
 
-#if 1
+#if 0
 
 std::map<HWND, std::wstring> g_windows;
 std::map<HWND, std::wstring> g_images;
@@ -117,8 +117,8 @@ int wmain(int argc, WCHAR* argv [])
 	//return DemoObjects1();
 	//return DemoFaces1();
 	//return DemoFaces2();
-	//return DemoFaces4();
-	return DemoGestures1();
+	return DemoFaces4();
+	//return DemoGestures1();
 }
 
 int DemoObjects1()
@@ -351,6 +351,7 @@ int DemoFaces4()
 		if (frame->FacesFound) for (INT64 fidx = 0; fidx < frame->FacesFound && !sts; fidx++)
 		{
 			sts = frame->StoreFaceNamesByIdIndex(fidx);
+
 			if (!strlen(frame->Names))
 			{
 				if (strcmp(frame->Names, "dunno"))
@@ -360,10 +361,7 @@ int DemoFaces4()
 					if (strlen(frame->Names)) frame->SetFaceNameByIdIndex(fidx);
 				}
 			}
-			else
-			{
-				std::cout << "Hey! I know you! Hi, "<< frame->Names << "!\n";
-			}
+			else std::cout << "Hey! I know you! Hi, "<< frame->Names << "!\n";
 
 		}
 		else

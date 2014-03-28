@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Hello!</title>
+        <script>
+            document.onkeydown = function(e) {
+                var e = window.event || e
+                
+                var word = 'This is not arrow button!';
+                
+                               
+                if(e.keyCode === 37)
+                	word = 'LEFT';
+               	if(e.keyCode === 38)
+               		word = 'UP';
+               	if(e.keyCode === 39)
+               		word = 'RIGHT';
+               	if(e.keyCode === 40)
+               		word = 'DOWN';
+               	
+               	
+                w = document.querySelector('#c');
+                w.innerHTML += "<br />" + word;
+            }
+        </script>
+    </head>
+    <body>
+        <div id="c">
+            
+        </div>
+    </body>
+</html>

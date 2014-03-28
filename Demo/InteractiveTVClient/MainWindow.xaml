@@ -1,0 +1,29 @@
+﻿<Window x:Class="InteractiveTV.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:pageTransitions="clr-namespace:WpfPageTransitions;assembly=WpfPageTransitions"
+        Title="Interactive TV" Height="350" Width="525" WindowStyle="SingleBorderWindow" KeyDown="OnWindowKeyPressed">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <pageTransitions:PageTransition 
+            x:Name="pageTransitionControl" 
+            Margin="5, 5, 5, 2.5" 
+            TransitionType="GrowAndFade" 
+            Grid.Row="0"/>
+        
+        <Grid Grid.Row="1" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Name="_Status" Text="status" Margin="5, 2.5, 5, 5" Grid.Column="0" HorizontalAlignment="Center"/>
+            <Button Name="_Show" Content="Show" Margin="5, 2.5, 5, 5" Grid.Column="1" Width="50" HorizontalAlignment="Center" Click="OnShowButtonClicked"/>
+
+        </Grid>
+    </Grid>
+</Window>
