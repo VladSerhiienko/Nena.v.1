@@ -5,7 +5,7 @@
   - Contains utility functions for converting strings to numbers and vice versa
   - Contains thread-safe class for reading/writing/editing xml configuration file for applications
   - Contains classes that allow communication between instances through tcp sockets (implements some sort of server, that can accept multiple clients, and a client)
-  - Constains a class for creating an ordinary or borderless (for games) window
+  - Constains a class for creating an ordinary or borderless (for games) window, switching to fullscreen and back
   - Contains classes, that imitate C# events and delegates (are fast but not enough for real-time games, especially, when are utilised for direct window events handling in core classes, and are not used within this library but are stable and tested in my previous demos; the original implementation was found on codeproject a year ago (I have improved it a bit)
 
 - DirectX/, DirectXOverlay/, DirectXResources/ (in __Graphics_vs2013.sln__)
