@@ -16,7 +16,7 @@
 
 - Recognizing/ (in __Recognizing_vs2013.sln__)
   - Perceptual_vs2013:
-    - Contains classes for gesture recognition (requires Interactive Gesture Cam) and face tracking (any web camera device can be used) using Intel Perceptual Computing SDK 
+    - Contains classes for gesture recognition (requires Interactive Gesture Cam), face and object tracking (any web camera device can be used) using Intel Perceptual Computing SDK 
     - Video stream location in ::Perc::Capture class is very similar to UtilCapture class, provided with SDK, but my class has a bit more straightforward usage pattern - there is ::Perc::Sample class that is used for sampling video streams (the original ...->QueryImage(IMAGE_DEPTH) drove me crazy); also, there are more classes, that use my capture class and, optionally, my sample class for capturing images from  streams and processing them
   - Luxand_vs2013:
     - Contains classes for live face recognition using Luxand SDK (you should get your own evaluation key, otherwise sdk activation will fail; you can insert you key in application configuration file - app.vars.xml - there is a reserved record - 'App/Video/Tracking/LuxandSDK/License'; there are some more reserved records with 'App/Video/Tracking/LuxandSDK/...', but they can stay unchanged or can be removed, unless you have several video device connected to PC and you want to use a particular one with desired settings like capture dimensions) 
