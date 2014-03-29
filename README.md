@@ -1,7 +1,16 @@
-Nena.v.1
-========
-<<<<<<< HEAD
+# Nena
+### Utility classes for: 
+- DirectX graphics (_3D w/ 2D interoperation_)
+- DirectX resources (_loading/creation_) 
+- Win32 applications (_widndow event handling_)
+- Perceptual SDK (_gestures and face detection_)
+- Luxand SDK (_face recognition_)
+- demo applications
 
-Contains utility classes for DirectX graphics (both 3D and/or 2D, resource loading/creation), Win32 application event handling, Perceptual SDK, Luxand SDK and demo applications
-=======
->>>>>>> baec0fb285773f79d9d8ff0592ce61bb03e2ec61
+========
+### Repository folders: 
+- Lib/ - Contains source files for libraries
+- Devkit/ - Contains *.h and *.lib files 
+- Demo/ - Contains source files for demo applications
+- Bin/ - Compiled demo applcations
+- Props/ - Contains property files for C++ projects
