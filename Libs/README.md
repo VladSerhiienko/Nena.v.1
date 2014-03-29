@@ -10,7 +10,7 @@
 
 - DirectX/, DirectXOverlay/, DirectXResources/ (in __Graphics_vs2013.sln__)
   - Contains classes that handle DirectX device, context and rendering resources are created correctly and are compatible with each other, reacts on screen rotations (I took code from DirectX samples as a base for those classes, extracted some core classes and interfaces, added Direct2D interoperability features to ensure both render targets are compatible)
-  - Contains a class, that implements a step timer for simulations and animations (can be used with fixed step, has fixed timestep update logic for low fps applications)
+  - Contains a class, that implements a step timer for simulations and animations (can be used with fixed step, has fixed timestep update logic for low fps applications - ensures they are running as smoothly as possible)
   - Contains a class for creating Direct2D device, context and rendering resources, that are compatible with Direct3D stuff
   - Contains utility classes and functions for loading and/or creating shaders, textures/images, buffers (contains asynchronous functions, using ppltasks.h)
 
