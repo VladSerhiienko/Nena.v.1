@@ -1,5 +1,6 @@
 # Nena
-## Props/ (should be interesting for contributors, or those, who will use my classes within this solution folder 'Nena' with my libs and demos)
+## Props/ 
+#### (should be interesting for contributors, or those, who will use my classes within this solution folder 'Nena' with my libs and demos)
 
 - When creating a demo (or library), you should first add Nn-build-checked to debug folder(s) (in visual studio property manager tab), or Nn-build-release for release folder(s) (otherwise, release versions of libraries will be linked to applications debug build (or files won`t be found at all), and you will get linker errors
 - You have probably noticed some property sheets *d.props - they are here only for compability with with older demos, so that they can be loaded without errors, and will be removed in further releases
