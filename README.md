@@ -14,3 +14,6 @@
 - Demo/ - Contains source files for demo applications
 - Bin/ - Compiled demo applcations
 - Props/ - Contains property files for C++ projects
+
+-------
+Each folder has its readme file with further explanations
