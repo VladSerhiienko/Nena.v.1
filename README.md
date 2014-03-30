@@ -2,8 +2,8 @@
 ### Utility classes for: 
 - DirectX graphics (_3D w/ 2D interoperation_)
 - DirectX resources (_loading/creation_) 
-- Win32 applications (_widndow event handling_)
-- Perceptual SDK (_gestures and face detection_)
+- Win32 applications (_window event handling_)
+- Perceptual SDK (_gestures, face and object detection_)
 - Luxand SDK (_face recognition_)
 - demo applications
 
