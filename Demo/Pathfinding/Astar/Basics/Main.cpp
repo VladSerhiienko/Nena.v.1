@@ -6,8 +6,8 @@ void TestDynamicPathFinder();
 
 void main()
 {
-	TestStaticPathFinder();
-	//TestDynamicPathFinder();
+	//TestStaticPathFinder();
+	TestDynamicPathFinder();
 }
 
 void TestDynamicPathFinder()

@@ -23,7 +23,7 @@ namespace Demo
 		Demo::Camera::Camera()
 		{
 			EyeDisplacement.z = -10.f;
-			//FocusPosition.y = 2.0f;
+			FocusPosition.y = -5.0f;
 
 			FieldOfView = ::Nena::XM_PIDIV2;
 			AspectRatio = 1.3333f;

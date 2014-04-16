@@ -1,0 +1,28 @@
+INDEX		This file
+README		README file for GENOCOP III
+errors.c	error reporting module
+evalfunc.c	function evaluation module
+evaluate.c	the actual evaluation code
+fileio.c	file i/o routines
+function.c	objective functions
+genocop.h	common header file
+in.001		input file #1
+in.002		input file #2
+in.003		input file #3
+init.c		initialization module
+main.c		main program entry point
+makefile	used by make/NMAKE/MAKE
+nleq.c		non-linear equalities
+nlineq.c	non-linear inequalities
+numerics.c	memory management routines
+operate.c	operator module
+operator.c	the actual operator code
+optimize.c	the optimization module
+out.001		output file for in.001
+out.002		output file for in.002
+out.003		output file for in.003
+random.c	random number generator module
+sort.c		sort routines
+utils.c		misc. utility functions
+validate.c	validation routines
+

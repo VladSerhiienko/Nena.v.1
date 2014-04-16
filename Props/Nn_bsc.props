@@ -49,9 +49,12 @@
     <Nn_Inclxndlibs>$(Nn_DevkitRoot)Luxand\Lib\</Nn_Inclxndlibs>
     <Nn_Lnklxnd>Luxand$(Nn_PrjSffx)$(Nn_d).lib</Nn_Lnklxnd>
     <Nn_Lnklxndd>Luxand$(Nn_PrjSffx)$(Nn_d).lib</Nn_Lnklxndd>
+    <Nn_Incscr>$(Nn_DevkitRoot)Scripting\Inc\</Nn_Incscr>
+    <Nn_Incscrlibs>$(Nn_DevkitRoot)Scripting\Lib\</Nn_Incscrlibs>
+    <Nn_Lnkscr>Scripting$(Nn_PrjSffx)$(Nn_d).lib</Nn_Lnkscr>
   </PropertyGroup>
   <PropertyGroup>
-    <_PropertySheetDisplayName>NenaBasicProps</_PropertySheetDisplayName>
+    <_PropertySheetDisplayName>NenaDeclarations</_PropertySheetDisplayName>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
@@ -203,6 +206,15 @@
     </BuildMacro>
     <BuildMacro Include="Nn_Lnklxndd">
       <Value>$(Nn_Lnklxndd)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Incscr">
+      <Value>$(Nn_Incscr)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Incscrlibs">
+      <Value>$(Nn_Incscrlibs)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nn_Lnkscr">
+      <Value>$(Nn_Lnkscr)</Value>
     </BuildMacro>
   </ItemGroup>
 </Project>

@@ -1,0 +1,384 @@
+                            GENOCOP III README File
+
+-------------------------------------------------------------------------------
+
+    A mirror of this document, as well as the latest version of GENOCOP III,
+              can be found on the GENOCOP III WWW home page at
+
+	           http://www.coe.uncc.edu/~gnazhiya/gchome.html
+
+-------------------------------------------------------------------------------
+
+                               Table Of Contents
+
+-------------------------------------------------------------------------------
+
+
+ [*]  Objective
+
+ [*]  Operation of the system
+
+ [*]  How to use the system
+
+ [*]  Questions, Comments and Suggestions
+
+-------------------------------------------------------------------------------
+
+Objective
+
+      [*]  The Genocop III system aims at finding a global optimum (minimum or
+     maximum) of a function.
+      [*]  Additional constraints (nonlinear equalities and inequalities and
+     linear inequalities) may be specified, as well as domain constraints.
+      [*]  This system does not support direct input of linear equalities,
+     unlike previous versions. It is always possible to place them as a special
+     case of nonlinear equalities. However, system performance and efficiency
+     would suffer. If you have linear equalities in your input, we suggest you
+     modify the input by eliminating all equalities before you apply the
+     system.
+
+
+
+Operation of the System - General Remarks
+
+      [*]  System parameters, domains, and linear inequalities are input via a
+     data file.
+      [*]  The objective function and any nonlinear constraints are placed in
+     appropriate C files - the main reason for this as opposed to parsing them
+     in the data file is speed and ease of entry for the user.
+      [*]  The system outputs the results alongwith statistical data into a
+     specified output file.
+      [*]  The system may query the user for input when it is unable to
+     generate initial feasible values on its own.
+
+
+
+How to use the system - an example
+
+      [*]  General remarks about the data file are :
+        o Comments are permitted in the data file - they start with a # sign in
+          the first column. Anything following a # symbol till the end of that
+          line is ignored.
+        o Lines have a limit of 255 characters. To change this, change the
+          defined value of MAXCHARS in the file genocop.h and recompile.
+        o The order of data in the input file is important.
+
+      [*]  Objective Function :
+
+     Let's start with an objective function
+
+     f(x) = x1*x1 + x2*x2
+
+     and attempt to minimize it.
+
+     Select a unique case number for this function and insert it into the file
+     function.c as shown below (case 3). The value of f(x) is always stored in
+     X[0], the first element of the vector/array.
+
+             case 3:
+                     X[0] = X[1]*X[1] + X[2]*X[2];
+                     break;
+             case 4:
+                     X[0] = 0.01*X[1]*X[1] + X[2]*X[2];
+                     break;
+             case 5:
+                     X[0] = X[1] - X[2];
+                     break;
+             case 6:
+                     X[0] = X[1]*X[1] + X[2]*X[2] + 2.0*X[3]*X[3] + X[4]*X[4] -
+                                     5.0*X[1] - 5.0*X[2] - 21.0*X[3] + 7.0*X[4];
+                     break;
+
+      [*]  Constraints :
+
+     Now, the linear constraints are :
+        o 1) x1 + x2 - 1.0 >= 0.0
+
+     and the non-linear constraints are :
+        o 1) x1*x1 + x2*x2 - 1.0 >= 0.0
+        o 2) (9.0)*x1*x1 + x2*x2 - 9.0 >= 0.0
+        o 3) x1*x1 - x2 >= 0.0
+        o 4) x2*x2 - x1 >= 0.0
+
+     and the domain constraints are :
+        o 1) -50.0 <= x1 <= 50.0
+        o 2) -50.0 <= x2 <= 50.0
+
+     Insert the non-linear inequalities into the file nlineq.c as shown below
+     (with the same case number, case 3).
+        o Don't forget the break statement at the end of the case.
+        o Also, all functions should be of the form g(x) >= 0.0
+        o The value of g[x] is stored in nlineq[i] as shown below.
+        o If there are any nonlinear equalities in the case, they are entered
+          in the file nleq.c in a similar fashion.
+
+             case 3:
+                     nlineq[1] = X[1]*X[1] + X[2]*X[2] - 1.0;
+                     nlineq[2] = 9*X[1]*X[1] + X[2]*X[2] - 9.0;
+                     nlineq[3] = X[1]*X[1] - X[2];
+                     nlineq[4] = X[2]*X[2] - 1.0;
+                     break;
+             case 4:
+                     nlineq[1] = X[1]*X[2] - 25.0;
+                     nlineq[2] = X[1]*X[1] + X[2]*X[2] - 25.0;
+                     break;
+             case 5:
+                     nlineq[1] = -3.0*X[1]*X[1] + 2.0*X[1]*X[2] - X[2]*X[2] + 1.0;
+                     break;
+
+      [*]  Data File :
+
+     All the rest of the data is entered in the data file, which is formatted
+     as follows (read the comments - they're self-explanatory):
+
+     # page 46
+     #-------------------------------------------------------------
+     # Fixed field data
+     #-------------------------------------------------------------
+     # number of variables
+     2
+     #-------------------------------------------------------------
+     # the constraints section
+     #-------------------------------------------------------------
+     #-------------------------------------------------------------
+     # functions for both the following are specified in the
+     # code as expressions in VALIDATE.C
+     #-------------------------------------------------------------
+     # no. of non-linear equalities (g[x] = 0; converted to NL ineq. by the code)
+     0
+     # no. of non-linear inequalities (h[x]>=0)
+     4
+     # no. of linear constraints (inequalities) (k[x]>=0)
+     1
+     # no. of domain constraints
+     2
+     # population size of ref. points
+     5
+     # population size of search points
+     20
+     # no. of operators
+     8
+     #-------------------------------------------------------------
+     # all operator specific params moved to the header files
+     #-------------------------------------------------------------
+     # total no. of evaluations
+     10000
+     # Period of evolution of reference population (every # of evaluations)
+     100
+     # the number of offspring made for each of the above
+     10
+     # selection of reference point for repair (0=RANDOM or 1=ORDERED)
+     # ORDERED uses the prob. distribution
+     0
+     # selection of repair method for search population (0=RANDOM or 1=DETERMINISTIC)
+     0
+     # replacement ratio for search population
+     0.25
+     # initialization method for reference population (0=SINGLE or 1=MULTIPLE)
+     0
+     # initialization method for search population (0=SINGLE or 1=MULTIPLE)
+     1
+     # objective function type (0=MAX or 1=MIN)
+     1
+     # test case no. (corresponds to the case numbers in FUNCTION.C and VALIDATE.C)
+     3
+     # precision factor EPSILON - used to check equality constraints
+     # which should be < EPSILON and > -EPSILON
+     0.0001
+     # BOTH random number seeds below are REQUIRED
+     # First random number seed - MUST be between 0 and 31328
+     15000
+     # Second random number seed - MUST be between 0 and 30081
+     15000
+     # Frequency distribution control mode - FIXED (0) or ADAPTIVE (1)
+     # If the frequency is given as ADAPTIVE, the frequency of each operator
+     # is dynamically adjusted according to its success or failure in each
+     # application; In that case, the lower and upper limits of the frequency
+     # are determined by L_FREQ_LIM and U_FREQ_LIM in the GENOCOP.H header
+     # file; so, for ADAPTIVE operator frequency, the frequency of operators
+     # can be ignored.  The frequency data is written into FREQ.DAT
+     # WARNING!!! This file can get quite large, since the frequency
+     # distribution is recorded every time an operator fails/succeeds.
+     1
+     #-------------------------------------------------------------
+     # Dynamic input data
+     #-------------------------------------------------------------
+     # First, the domain constraints (the number in the middle corresponds
+     # to the variable index (converted to a decimal floating point form)
+     #
+     -50.0 1.0 50.0
+     -50.0 2.0 50.0
+     #
+     # Now, the linear constraints of the form l(x) + c >= 0.0
+     # The numbers go from left to right as coefficients of
+     # x1, x2 etc.  Zeros MUST be filled in as coefficients for
+     # missing variables as 0.0.  The last number is the constant term, if any.
+     # If there is no constant term, provide 0.0.
+     #
+     # The example below is x1 + x2 - 1.0 >= 0.0
+     #
+     1.0  1.0  -1.0
+     #
+     # Now, the frequency of operators.  We suggest they be uniform values to
+     # start with.  The number of operators has been provided above.
+     # At present, the order of operators are :
+     #
+     # 1.  Whole arithmetical crossover
+     # 2.  Simple arithmetical crossover
+     # 3.  Uniform mutation
+     # 4.  Boundary mutation
+     # 5.  Non-uniform mutation
+     # 6.  Whole non-uniform mutation
+     # 7.  Heuristic crossover
+     # 8.  Gaussian mutation
+     # 9.  Pool recombination operator
+     # 10. Scatter search operator
+     #
+     4  4  4  4  4  4  4  4
+     # end of data file.
+
+      [*]  Compiling and running the system:
+
+     Now, compile the system by typing make. If you're not using unix, 
+     follow the instructions for your particular compiler/system.  You can
+     find specific instructions for a few environments on the WWW homepage.
+
+     If everything has been entered properly, the system will compile and give
+     you an executable called gcop3.
+
+     Type gcop3 infile.dat outfile.dat where infile.dat and outfile.dat are the
+     input and output file names respectively. Once the run is complete,
+     outfile.dat will contain :
+
+     -- GENERAL DATA -------------------------------------------
+
+     No. of variables .....................: 2
+     No. of linear equalities .............: 0
+     No. of non-linear inequalities .......: 4
+     No. of linear inequalities ...........: 1
+     No. of domain constraints ............: 2
+     Reference population size ............: 5
+     Search population size ...............: 20
+     No. of operators .....................: 8
+     Total no. of evaluations .............: 10000
+     Reference population evolution period : 100
+     No. of offspring for ref. population .: 10
+     Reference point selection method .....: 0
+     Search point repair method ...........: 0
+     Search point replacement ratio .......: 0.250000
+     Reference point initialization method : 0
+     Search point initialization method ...: 1
+     Objective function type ..............: 1
+     Test case number .....................: 3
+     Precision factor .....................: 0.000100
+     Random number generator Seed #1.......: 15000
+     Random number generator Seed #1.......: 15000
+     Frequency control mode................: 0
+
+     -- DOMAIN CONSTRAINTS -------------------------------------
+
+     Variable # 1; Lower Limit -50.000000; Upper Limit 50.000000.
+     Variable # 2; Lower Limit -50.000000; Upper Limit 50.000000.
+
+     -- LINEAR CONSTRAINTS -------------------------------------
+
+     # 1 : 1.000000*X[1] +  1.000000*X[2] +  -1.000000 >= 0.0
+
+     -- OPERATOR DATA ------------------------------------------
+
+     Operator # 1 : 4.000000
+     Operator # 2 : 4.000000
+     Operator # 3 : 4.000000
+     Operator # 4 : 4.000000
+     Operator # 5 : 4.000000
+     Operator # 6 : 4.000000
+     Operator # 7 : 4.000000
+     Operator # 8 : 4.000000
+
+     -- NORMALIZED ---------------------------------------------
+     -- OPERATOR DATA ------------------------------------------
+
+     Operator # 1 : 0.125000
+     Operator # 2 : 0.125000
+     Operator # 3 : 0.125000
+     Operator # 4 : 0.125000
+     Operator # 5 : 0.125000
+     Operator # 6 : 0.125000
+     Operator # 7 : 0.125000
+     Operator # 8 : 0.125000
+
+     -- OPTIMIZATION -------------------------------------------
+     Evaluation Count:         29;Best Ref. Val = 172.559936523438
+     Evaluation Count:         34;Best Ref. Val = 85.364356994629
+     Evaluation Count:         49;Best Ref. Val = 33.258666992188
+     Evaluation Count:         57;Best Ref. Val = 8.832159996033
+     Evaluation Count:         80;Best Ref. Val = 8.740837097168
+     Evaluation Count:         81;Best Ref. Val = 6.999429702759
+     Evaluation Count:         83;Best Ref. Val = 3.993982315063
+     Evaluation Count:         90;Best Ref. Val = 3.316706895828
+     Evaluation Count:         91;Best Ref. Val = 2.092952013016
+     Evaluation Count:         97;Best Ref. Val = 2.087322235107
+     Evaluation Count:         99;Best Ref. Val = 2.080737113953
+     Evaluation Count:        107;Best Ref. Val = 2.067155599594
+     Evaluation Count:        117;Best Ref. Val = 2.065909385681
+     Evaluation Count:        138;Best Ref. Val = 2.065088748932
+     Evaluation Count:        171;Best Ref. Val = 2.055048942566
+     Evaluation Count:        173;Best Ref. Val = 2.024542093277
+     Evaluation Count:        183;Best Ref. Val = 2.021667242050
+     Evaluation Count:        198;Best Ref. Val = 2.001261711121
+     .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+     .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+     .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+     .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+     .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+     Evaluation Count:       1908;Best Ref. Val = 2.000004529953
+     Evaluation Count:       2006;Best Ref. Val = 2.000004291534
+     Evaluation Count:       2193;Best Ref. Val = 2.000002622604
+     Evaluation Count:       2257;Best Ref. Val = 2.000001668930
+     Evaluation Count:       2408;Best Ref. Val = 2.000000715256
+     Evaluation Count:       2607;Best Ref. Val = 2.000000476837
+     Evaluation Count:       2707;Best Ref. Val = 2.000000238419
+     Evaluation Count:       2908;Best Ref. Val = 2.000000000000
+
+     -- ACTUAL OPERATOR FREQUENCY ------------------------------
+     Operator #1 was used 1345 times
+     Operator #2 was used 1333 times
+     Operator #3 was used 1367 times
+     Operator #4 was used 1275 times
+     Operator #5 was used 1242 times
+     Operator #6 was used 1230 times
+     Operator #7 was used 1375 times
+     Operator #8 was used 1303 times
+
+     As can be seen from this file, the optimum was reached on evaluation
+     #2908, and the optimum value is 2.0.
+
+
+
+Questions, Comments and Suggestions
+
+     Please send any questions you have to zbyszek@uncc.edu or
+     gnazhiya@uncc.edu. Comments and suggestions are welcome.
+
+
+
+Contact Info
+
+        Zbigniew Michalewicz  zbyszek@uncc.edu
+
+        Girish Nazhiyath      gnazhiya@uncc.edu
+
+        Mail                  Department of Computer Science
+
+                              University of North Carolina at Charlotte
+
+                              Charlotte, NC 28223
+
+        Phone                 (704) 547-4873
+
+        Fax                   (704) 547-2352
+
+
+
+-------------------------------------------------------------------------------
+

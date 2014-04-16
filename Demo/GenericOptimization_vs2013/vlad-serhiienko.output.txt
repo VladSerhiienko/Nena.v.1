@@ -1,0 +1,70 @@
+
+-- GENERAL DATA -------------------------------------------
+
+No. of variables .....................: 2
+No. of linear equalities .............: 0
+No. of non-linear inequalities .......: 0
+No. of linear inequalities ...........: 0
+No. of domain constraints ............: 2
+Reference population size ............: 50
+Search population size ...............: 100
+No. of operators .....................: 8
+Total no. of evaluations .............: 20000
+Reference population evolution period : 5000
+No. of offspring for ref. population .: 10
+Reference point selection method .....: 0
+Search point repair method ...........: 0
+Search point replacement ratio .......: 0.250000
+Reference point initialization method : 0
+Search point initialization method ...: 1
+Objective function type ..............: 1
+Test case number .....................: -1
+Precision factor .....................: 0.000100
+Random number generator Seed #1.......: 15000
+Random number generator Seed #2.......: 15000
+Frequency control mode................: 0
+
+-- OPERATOR DATA ------------------------------------------
+
+Operator # 1 : 0.125000
+Operator # 2 : 0.250000
+Operator # 3 : 0.375000
+Operator # 4 : 0.500000
+Operator # 5 : 0.625000
+Operator # 6 : 0.750000
+Operator # 7 : 0.875000
+Operator # 8 : 1.000000
+
+=>        150 : -2.341486692429
+=>        184 : -2.376060724258
+=>        197 : -2.465575933456
+=>        201 : -2.512824058533
+=>        494 : -2.516295433044
+=>        557 : -2.525479793549
+=>        573 : -2.526480197906
+=>        580 : -2.535290241241
+=>        614 : -2.563231468201
+=>        687 : -2.564171552658
+=>        704 : -2.569792509079
+=>        799 : -2.569959402084
+=>        804 : -2.571119308472
+=>        847 : -2.571135759354
+=>        892 : -2.571278572083
+=>        991 : -2.571420192719
+=>       1088 : -2.571424961090
+=>       1581 : -2.571425676346
+=>       1599 : -2.571426630020
+=>       1608 : -2.571428298950
+=>       1664 : -2.571428537369
+
+-- BEST VECTOR FOUND --------------------------------------
+0.428515195847    -0.642849504948    
+-- ACTUAL OPERATOR FREQUENCY ------------------------------
+Operator #1 was used 2561 times
+Operator #2 was used 2424 times
+Operator #3 was used 2432 times
+Operator #4 was used 2533 times
+Operator #5 was used 2499 times
+Operator #6 was used 2520 times
+Operator #7 was used 2467 times
+Operator #8 was used 2428 times

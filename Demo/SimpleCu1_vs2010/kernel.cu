@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 
-cudaError_t addWithCuda(int *c, const int *a, const int *b, unsigned int size);
+cudaError addWithCuda(int *c, const int *a, const int *b, unsigned int size);
 
 __global__ void addKernel(int *c, const int *a, const int *b)
 {
@@ -27,7 +27,7 @@ int main()
     }
 
     printf("{1,2,3,4,5} + {10,20,30,40,50} = {%d,%d,%d,%d,%d}\n",
-        c[0], c[1], c[2], c[3], c[4]);
+		c[0], c[1], c[2], c[3], c[4]);
 
     // cudaDeviceReset must be called before exiting in order for profiling and
     // tracing tools such as Nsight and Visual Profiler to show complete traces.
@@ -65,7 +65,7 @@ cudaError_t addWithCuda(int *c, const int *a, const int *b, unsigned int size)
 	for (int device = 0; device < deviceCount; device++)
 	{
 		cudaGetDeviceProperties(&deviceProps, device);
-		printf("cuda device %d: %d.%d", deviceProps.major, deviceProps.minor);
+		printf("cuda device %d: %d.%d", device, deviceProps.major, deviceProps.minor);
 	}
 
     // Choose which GPU to run on, change this on a multi-GPU system.

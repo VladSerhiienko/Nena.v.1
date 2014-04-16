@@ -1,0 +1,104 @@
+# case 3; page 46
+#-------------------------------------------------------------
+# Fixed field data
+#-------------------------------------------------------------
+# number of variables
+2
+#-------------------------------------------------------------
+# the constraints section
+#-------------------------------------------------------------
+#-------------------------------------------------------------
+# functions for both the following are specified in the
+# code as expressions in VALIDATE.C
+#-------------------------------------------------------------
+# no. of non-linear equalities (f[x] = 0; converted to NL ineq. by the code)
+0
+# no. of non-linear inequalities (f[x]>=0)
+4
+# no. of linear constraints (inequalities) (f[x]>=0)
+1
+# no. of domain constraints
+2
+# population size of ref. points
+5
+# population size of search points
+20
+# no. of operators
+8
+#-------------------------------------------------------------
+# all operator specific params moved to the header files
+#-------------------------------------------------------------
+# total no. of evaluations
+10000
+# Period of evolution of reference population (every # of evaluations)
+100
+# the number of offspring made for each of the above
+10
+# selection of reference point for repair (0=RANDOM or 1=ORDERED)
+# ORDERED uses the prob. distribution
+0
+# selection of repair method for search population (0=RANDOM or 1=DETERMINISTIC)
+0
+# replacement ratio for search population
+0.25
+# initialization method for reference population (0=SINGLE or 1=MULTIPLE)
+0
+# initialization method for search population (0=SINGLE or 1=MULTIPLE)
+1
+# objective function type (0=MAX or 1=MIN)
+1
+# test case no. (corresponds to the case numbers in function.c and validate.c)
+2
+# precision factor EPSILON
+0.0001
+# BOTH random number seeds below are REQUIRED
+# First random number seed - MUST be between 0 and 31328
+15000
+# Second random number seed - MUST be between 0 and 30081
+15000
+# Frequency distribution control mode - FIXED (0) or ADAPTIVE (1)
+# If the frequency is given as ADAPTIVE, the frequency of each operator
+# is dynamically adjusted according to its success or failure in each
+# application; In that case, the lower and upper limits of the frequency
+# are determined by L_FREQ_LIM and U_FREQ_LIM in the GENOCOP.H header
+# file; so, for ADAPTIVE operator frequency, the frequency of operators
+# can be ignored.  The frequency data is written into FREQ.DAT 
+# WARNING!!! This file can get quite large, since the frequency
+# distribution is recorded every time an operator fails/succeeds.
+0
+#-------------------------------------------------------------
+# Dynamic input data 
+#-------------------------------------------------------------
+# First, the domain constraints (the number in the middle corresponds
+# to the variable index (converted to a decimal floating point form)
+#
+-50.0 1.0 50.0
+-50.0 2.0 50.0
+#
+# Now, the linear constraints of the form f(x) + c >= 0.0
+# The numbers go from left to right as coefficients of
+# x1, x2 etc.  Zeros MUST be filled in as coefficients for
+# missing variables as 0.0.  The last number is the constant term, if any.
+# If there is no constant term, provide 0.0.
+#
+# The example below is x1 + x2 - 1.0 >= 0.0
+#
+1.0  1.0  -1.0
+#
+#
+# Now, the frequency of operators.  We suggest they be uniform values to
+# start with.  The number of operators has been provided above.
+# At present, the order of operators are :
+#
+# 1.  Whole arithmetical crossover
+# 2.  Simple arithmetical crossover
+# 3.  Whole uniform mutation
+# 4.  Boundary mutation
+# 5.  Non-uniform mutation
+# 6.  Whole non-uniform mutation
+# 7.  Heuristic crossover
+# 8.  Gaussian mutation
+# 9.  Pool recombination operator
+# 10. Scatter search operator
+#
+4  4  4  4  4  4  4  4

@@ -1,0 +1,159 @@
+
+-- GENERAL DATA -------------------------------------------
+
+No. of variables .....................: 2
+No. of linear equalities .............: 0
+No. of non-linear inequalities .......: 4
+No. of linear inequalities ...........: 1
+No. of domain constraints ............: 2
+Reference population size ............: 5
+Search population size ...............: 20
+No. of operators .....................: 8
+Total no. of evaluations .............: 10000
+Reference population evolution period : 100
+No. of offspring for ref. population .: 10
+Reference point selection method .....: 0
+Search point repair method ...........: 0
+Search point replacement ratio .......: 0.250000
+Reference point initialization method : 0
+Search point initialization method ...: 1
+Objective function type ..............: 1
+Test case number .....................: 2
+Precision factor .....................: 0.000100
+Random number generator Seed #1.......: 15000
+Random number generator Seed #1.......: 15000
+Frequency control mode................: 0
+
+-- DOMAIN CONSTRAINTS -------------------------------------
+
+Variable # 1; Lower Limit -50.000000; Upper Limit 50.000000.
+Variable # 2; Lower Limit -50.000000; Upper Limit 50.000000.
+
+
+-- LINEAR CONSTRAINTS -------------------------------------
+
+# 1 : 1.000000*X[1] +  1.000000*X[2] +  -1.000000 >= 0.0 
+
+
+-- OPERATOR DATA ------------------------------------------
+
+Operator # 1 : 4.000000
+Operator # 2 : 4.000000
+Operator # 3 : 4.000000
+Operator # 4 : 4.000000
+Operator # 5 : 4.000000
+Operator # 6 : 4.000000
+Operator # 7 : 4.000000
+Operator # 8 : 4.000000
+
+-- NORMALIZED ---------------------------------------------
+-- OPERATOR DATA ------------------------------------------
+
+Operator # 1 : 0.125000
+Operator # 2 : 0.125000
+Operator # 3 : 0.125000
+Operator # 4 : 0.125000
+Operator # 5 : 0.125000
+Operator # 6 : 0.125000
+Operator # 7 : 0.125000
+Operator # 8 : 0.125000
+
+-- OPTIMIZATION -------------------------------------------
+-- Initial Evaluation -----------------------------------
+Evaluation Count:         25;Best Ref. Val = 291.341125488281
+
+Evaluation Count:         32;Best Ref. Val = 259.717834472656
+Evaluation Count:         68;Best Ref. Val = 240.763717651367
+Evaluation Count:         72;Best Ref. Val = 208.199676513672
+Evaluation Count:         79;Best Ref. Val = 152.697311401367
+Evaluation Count:         87;Best Ref. Val = 73.892662048340
+Evaluation Count:         93;Best Ref. Val = 51.999053955078
+Evaluation Count:         95;Best Ref. Val = 31.430156707764
+Evaluation Count:        109;Best Ref. Val = 31.222036361694
+Evaluation Count:        113;Best Ref. Val = 24.776485443115
+Evaluation Count:        115;Best Ref. Val = 24.496894836426
+Evaluation Count:        117;Best Ref. Val = 14.948724746704
+Evaluation Count:        122;Best Ref. Val = 13.567194938660
+Evaluation Count:        174;Best Ref. Val = 8.917037963867
+Evaluation Count:        274;Best Ref. Val = 7.937389373779
+Evaluation Count:        309;Best Ref. Val = 7.820149421692
+Evaluation Count:        314;Best Ref. Val = 4.562070846558
+Evaluation Count:        393;Best Ref. Val = 4.169879913330
+Evaluation Count:        408;Best Ref. Val = 4.169802665710
+Evaluation Count:        443;Best Ref. Val = 4.162493705750
+Evaluation Count:        487;Best Ref. Val = 4.059741020203
+Evaluation Count:        491;Best Ref. Val = 3.228883266449
+Evaluation Count:        496;Best Ref. Val = 3.217928409576
+Evaluation Count:        523;Best Ref. Val = 2.937832355499
+Evaluation Count:        563;Best Ref. Val = 2.933714151382
+Evaluation Count:        570;Best Ref. Val = 2.921300411224
+Evaluation Count:        582;Best Ref. Val = 2.831174373627
+Evaluation Count:        592;Best Ref. Val = 2.464404106140
+Evaluation Count:        595;Best Ref. Val = 2.356629371643
+Evaluation Count:        597;Best Ref. Val = 2.346311569214
+Evaluation Count:        606;Best Ref. Val = 2.346188306808
+Evaluation Count:        607;Best Ref. Val = 2.338992118835
+Evaluation Count:        614;Best Ref. Val = 2.234612941742
+Evaluation Count:        618;Best Ref. Val = 2.214063644409
+Evaluation Count:        621;Best Ref. Val = 2.205559730530
+Evaluation Count:        636;Best Ref. Val = 2.203133583069
+Evaluation Count:        638;Best Ref. Val = 2.197226047516
+Evaluation Count:        639;Best Ref. Val = 2.163204669952
+Evaluation Count:        642;Best Ref. Val = 2.123747348785
+Evaluation Count:        652;Best Ref. Val = 2.070370197296
+Evaluation Count:        666;Best Ref. Val = 2.054179191589
+Evaluation Count:        678;Best Ref. Val = 2.025182962418
+Evaluation Count:        709;Best Ref. Val = 2.021706581116
+Evaluation Count:        712;Best Ref. Val = 2.016563892365
+Evaluation Count:        717;Best Ref. Val = 2.008531570435
+Evaluation Count:        737;Best Ref. Val = 2.005598545074
+Evaluation Count:        760;Best Ref. Val = 2.002420902252
+Evaluation Count:        778;Best Ref. Val = 2.002390384674
+Evaluation Count:        817;Best Ref. Val = 2.002354621887
+Evaluation Count:        895;Best Ref. Val = 2.002247810364
+Evaluation Count:        906;Best Ref. Val = 2.002118110657
+Evaluation Count:        943;Best Ref. Val = 2.002069950104
+Evaluation Count:        975;Best Ref. Val = 2.002025604248
+Evaluation Count:       1008;Best Ref. Val = 2.001929044724
+Evaluation Count:       1114;Best Ref. Val = 2.001919031143
+Evaluation Count:       1137;Best Ref. Val = 2.001910209656
+Evaluation Count:       1152;Best Ref. Val = 2.001893043518
+Evaluation Count:       1155;Best Ref. Val = 2.001878261566
+Evaluation Count:       1166;Best Ref. Val = 2.001875877380
+Evaluation Count:       1183;Best Ref. Val = 2.000175237656
+Evaluation Count:       1271;Best Ref. Val = 2.000170469284
+Evaluation Count:       1289;Best Ref. Val = 2.000139474869
+Evaluation Count:       1307;Best Ref. Val = 2.000117063522
+Evaluation Count:       1387;Best Ref. Val = 2.000104427338
+Evaluation Count:       1418;Best Ref. Val = 2.000100851059
+Evaluation Count:       1438;Best Ref. Val = 2.000100135803
+Evaluation Count:       1441;Best Ref. Val = 2.000096559525
+Evaluation Count:       1460;Best Ref. Val = 2.000077247620
+Evaluation Count:       1472;Best Ref. Val = 2.000076055527
+Evaluation Count:       1493;Best Ref. Val = 2.000075578690
+Evaluation Count:       1505;Best Ref. Val = 2.000073194504
+Evaluation Count:       1556;Best Ref. Val = 2.000072240829
+Evaluation Count:       1559;Best Ref. Val = 2.000070095062
+Evaluation Count:       1569;Best Ref. Val = 2.000069379807
+Evaluation Count:       1579;Best Ref. Val = 2.000069141388
+Evaluation Count:       1639;Best Ref. Val = 2.000068902969
+Evaluation Count:       1659;Best Ref. Val = 2.000007152557
+Evaluation Count:       1667;Best Ref. Val = 2.000002384186
+Evaluation Count:       1731;Best Ref. Val = 2.000001430511
+Evaluation Count:       1755;Best Ref. Val = 2.000000953674
+Evaluation Count:       1788;Best Ref. Val = 2.000000715256
+Evaluation Count:       1806;Best Ref. Val = 2.000000476837
+Evaluation Count:       2107;Best Ref. Val = 2.000000238419
+Evaluation Count:       2305;Best Ref. Val = 2.000000000000
+
+-- BEST VECTOR FOUND --------------------------------------
+1.000000000000    1.000000000000    
+-- ACTUAL OPERATOR FREQUENCY ------------------------------
+Operator #1 was used 1296 times
+Operator #2 was used 1369 times
+Operator #3 was used 1296 times
+Operator #4 was used 1314 times
+Operator #5 was used 1345 times
+Operator #6 was used 1321 times
+Operator #7 was used 1305 times
+Operator #8 was used 1357 times

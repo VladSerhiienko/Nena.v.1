@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <Nena_Maya>C:\Program Files\Autodesk\Maya2014\</Nena_Maya>
+    <Nena_MayaLib>$(Nena_Maya)lib\</Nena_MayaLib>
+    <Nena_MayaInc>$(Nena_Maya)include\</Nena_MayaInc>
+    <Nena_MayaBin>$(Nena_Maya)bin\</Nena_MayaBin>
+    <Nena_MayaLnk>Foundation.lib;OpenMaya.lib;OpenMayaAnim.lib;</Nena_MayaLnk>
+    <Nena_Lua>D:\Development\VisualStudio\Dependencies\lua-5.2.3\LuaDevkit\</Nena_Lua>
+    <Nena_LuaLib>$(Nena_Lua)lib\$(PlatformTarget)\$(Configuration)\</Nena_LuaLib>
+    <Nena_LuaInc>$(Nena_Lua)inc\</Nena_LuaInc>
+    <Nena_LuaLnk>Lua.lib;</Nena_LuaLnk>
+    <Nena_RXMLInc>D:\Development\VisualStudio\Dependencies\rapidxml-1.13\</Nena_RXMLInc>
+    <Nena_Luxand>D:\Development\VisualStudio\Dependencies\Luxand_FaceSDK\</Nena_Luxand>
+    <Nena_LuxandInc>$(Nena_Luxand)include\C\</Nena_LuxandInc>
+    <Nena_LuxandLib>$(Nena_Luxand)bin\cpy_$(PlatformTarget)\</Nena_LuxandLib>
+    <Nena_LuxandLnk>facesdk.lib</Nena_LuxandLnk>
+    <Nena_NvidiaPhysX_v324>D:\Development\VisualStudio\Dependencies\PhysX-3.2.4_PC_SDK_Core\</Nena_NvidiaPhysX_v324>
+    <Nena_NvidiaPhysX_v324_Inc>$(Nena_NvidiaPhysX_v324)Include\</Nena_NvidiaPhysX_v324_Inc>
+    <Nena_NvidiaPhysX_v324_Lib>$(Nena_NvidiaPhysX_v324)Lib\$(Nn_NvidiaBuildArch)\</Nena_NvidiaPhysX_v324_Lib>
+    <Nena_NvidiaPhysX_v324_Path>$(Nena_NvidiaPhysX_v324)Bin\$(Nn_NvidiaBuildArch)\</Nena_NvidiaPhysX_v324_Path>
+    <Nena_NvidiaPhysX_v324_Lnk_Bsc>PhysX3$(Nn_NvidiaBuildConfig)_$(PlatformTarget).lib</Nena_NvidiaPhysX_v324_Lnk_Bsc>
+    <Nena_NvidiaPhysX_v324_Lnk_Cook>PhysX3Cooking$(Nn_NvidiaBuildConfig)_$(PlatformTarget).lib</Nena_NvidiaPhysX_v324_Lnk_Cook>
+    <Nena_NvidiaPhysX_v324_Lnk_Cmmn>PhysX3Common$(Nn_NvidiaBuildConfig)_$(PlatformTarget).lib</Nena_NvidiaPhysX_v324_Lnk_Cmmn>
+    <Nena_NvidiaPhysX_v324_Lnk_Char>PhysX3CharacterKinematic$(Nn_NvidiaBuildConfig)_$(PlatformTarget).lib</Nena_NvidiaPhysX_v324_Lnk_Char>
+    <Nena_NvidiaPhysX_v324_Lnk_Task>PxTask$(Nn_NvidiaBuildConfig).lib</Nena_NvidiaPhysX_v324_Lnk_Task>
+    <Nena_NvidiaPhysX_v324_Lnk_Vehicle>PhysX3Vehicle$(Nn_NvidiaBuildConfig).lib</Nena_NvidiaPhysX_v324_Lnk_Vehicle>
+    <Nena_NvidiaPhysX_v324_Lnk>$(Nena_NvidiaPhysX_v324_Lnk_Bsc); $(Nena_NvidiaPhysX_v324_Lnk_Cmmn);</Nena_NvidiaPhysX_v324_Lnk>
+    <Nena_NvidiaPhysX_v324_Lnk_Ex>PhysX3Extensions$(Nn_NvidiaBuildConfig).lib</Nena_NvidiaPhysX_v324_Lnk_Ex>
+    <Nena_NvidiaPhysX_v324_Lnk_Profile>PhysXProfileSDK$(Nn_NvidiaBuildConfig).lib</Nena_NvidiaPhysX_v324_Lnk_Profile>
+    <Nena_NvidiaPhysX_v324_Lnk_All>$(Nena_NvidiaPhysX_v324_Lnk); $(Nena_NvidiaPhysX_v324_Lnk_Cook);  $(Nena_NvidiaPhysX_v324_Lnk_Char); $(Nena_NvidiaPhysX_v324_Lnk_Vehicle); $(Nena_NvidiaPhysX_v324_Lnk_Task); $(Nena_NvidiaPhysX_v324_Lnk_Ex); $(Nena_NvidiaPhysX_v324_Lnk_Profile);</Nena_NvidiaPhysX_v324_Lnk_All>
+    <Nena_NvidiaPhysX_v330>D:\Development\VisualStudio\Dependencies\PhysX-3.3.0_PC_SDK_Core\</Nena_NvidiaPhysX_v330>
+    <Nena_NvidiaPhysX_v330_Inc>$(Nena_NvidiaPhysX_v330)Include\</Nena_NvidiaPhysX_v330_Inc>
+    <Nena_NvidiaPhysX_v330_Lib>$(Nena_NvidiaPhysX_v330)Lib\$(Nn_NvidiaBuildArch)\</Nena_NvidiaPhysX_v330_Lib>
+    <Nena_NvidiaPhysX_v330_Path>$(Nena_NvidiaPhysX_v330)Bin\$(Nn_NvidiaBuildArch)\</Nena_NvidiaPhysX_v330_Path>
+    <Nena_NvidiaPhysX_v330_Lnk_Bsc>PhysX3$(Nn_NvidiaBuildConfig)_$(PlatformTarget).lib</Nena_NvidiaPhysX_v330_Lnk_Bsc>
+    <Nena_NvidiaPhysX_v330_Lnk_Cook>PhysX3Cooking$(Nn_NvidiaBuildConfig)_$(PlatformTarget).lib</Nena_NvidiaPhysX_v330_Lnk_Cook>
+    <Nena_NvidiaPhysX_v330_Lnk_Cmmn>PhysX3Common$(Nn_NvidiaBuildConfig)_$(PlatformTarget).lib</Nena_NvidiaPhysX_v330_Lnk_Cmmn>
+    <Nena_NvidiaPhysX_v330_Lnk_Char>PhysX3CharacterKinematic$(Nn_NvidiaBuildConfig)_$(PlatformTarget).lib</Nena_NvidiaPhysX_v330_Lnk_Char>
+    <Nena_NvidiaPhysX_v330_Lnk_Task>PxTask$(Nn_NvidiaBuildConfig).lib</Nena_NvidiaPhysX_v330_Lnk_Task>
+    <Nena_NvidiaPhysX_v330_Lnk_Vehicle>PhysX3Vehicle$(Nn_NvidiaBuildConfig).lib</Nena_NvidiaPhysX_v330_Lnk_Vehicle>
+    <Nena_NvidiaPhysX_v330_Lnk>$(Nena_NvidiaPhysX_v330_Lnk_Bsc); $(Nena_NvidiaPhysX_v330_Lnk_Cmmn);</Nena_NvidiaPhysX_v330_Lnk>
+    <Nena_NvidiaPhysX_v330_Lnk_Ex>PhysX3Extensions$(Nn_NvidiaBuildConfig).lib</Nena_NvidiaPhysX_v330_Lnk_Ex>
+    <Nena_NvidiaPhysX_v330_Lnk_Profile>PhysXProfileSDK$(Nn_NvidiaBuildConfig).lib</Nena_NvidiaPhysX_v330_Lnk_Profile>
+    <Nena_NvidiaPhysX_v330_Lnk_All>$(Nena_NvidiaPhysX_v330_Lnk); $(Nena_NvidiaPhysX_v330_Lnk_Cook);  $(Nena_NvidiaPhysX_v330_Lnk_Char); $(Nena_NvidiaPhysX_v330_Lnk_Vehicle); $(Nena_NvidiaPhysX_v330_Lnk_Task); $(Nena_NvidiaPhysX_v330_Lnk_Ex); $(Nena_NvidiaPhysX_v330_Lnk_Profile);</Nena_NvidiaPhysX_v330_Lnk_All>
+    <Nena_NvidiaPhysX>$(Nena_NvidiaPhysX_v330)</Nena_NvidiaPhysX>
+    <Nena_NvidiaPhysXPath>$(Nena_NvidiaPhysX_v330_Path)</Nena_NvidiaPhysXPath>
+    <Nena_NvidiaPhysXInc>$(Nena_NvidiaPhysX_v330_Inc)</Nena_NvidiaPhysXInc>
+    <Nena_NvidiaPhysXLib>$(Nena_NvidiaPhysX_v330_Lib)</Nena_NvidiaPhysXLib>
+    <Nena_NvidiaPhysXLnk>$(Nena_NvidiaPhysX_v330_Lnk)</Nena_NvidiaPhysXLnk>
+    <Nena_NvidiaPhysXLnk_All>$(Nena_NvidiaPhysX_v330_Lnk_All)</Nena_NvidiaPhysXLnk_All>
+    <Nena_Cute>C:\Qt\Qt5.3.0\5.3\msvc2013_64\</Nena_Cute>
+    <Nena_Cute32>C:\Qt\Qt5.3.0.x86\5.3\msvc2013\</Nena_Cute32>
+    <Nena_CuteInc>$(Nena_Cute)include\</Nena_CuteInc>
+    <Nena_Cute32Inc>$(Nena_Cute32)include\</Nena_Cute32Inc>
+    <Nena_CuteLib>$(Nena_Cute)lib\</Nena_CuteLib>
+    <Nena_Cute32Lib>$(Nena_Cute32)lib\</Nena_Cute32Lib>
+    <Nena_CuteLnk>Qt5Widgets$(Nn_d).lib;Qt5Core$(Nn_d).lib;Qt5Gui$(Nn_d).lib;Qt5Concurrent$(Nn_d).lib;</Nena_CuteLnk>
+    <Nena_Lib2Git>$(SolutionDir)..\@Deps\libgit2.v.0.20.0\</Nena_Lib2Git>
+    <Nena_Lib2GitInc>$(Nena_Lib2Git)include\</Nena_Lib2GitInc>
+    <Nena_Lib2GitLib32>$(Nena_Lib2Git)lib\</Nena_Lib2GitLib32>
+    <Nena_Lib2GitLib64>$(Nena_Lib2Git)lib64\</Nena_Lib2GitLib64>
+    <Nena_Lib2GitLib>$(Nena_Lib2Git)lib64\</Nena_Lib2GitLib>
+    <Nena_Lib2GitLnk>git2.lib</Nena_Lib2GitLnk>
+  </PropertyGroup>
+  <PropertyGroup>
+    <_PropertySheetDisplayName>NenaDependencies</_PropertySheetDisplayName>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(Nena_RXMLInc);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="Nena_Maya">
+      <Value>$(Nena_Maya)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_MayaLib">
+      <Value>$(Nena_MayaLib)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_MayaInc">
+      <Value>$(Nena_MayaInc)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_MayaBin">
+      <Value>$(Nena_MayaBin)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_MayaLnk">
+      <Value>$(Nena_MayaLnk)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_Lua">
+      <Value>$(Nena_Lua)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_LuaLib">
+      <Value>$(Nena_LuaLib)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_LuaInc">
+      <Value>$(Nena_LuaInc)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_LuaLnk">
+      <Value>$(Nena_LuaLnk)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_RXMLInc">
+      <Value>$(Nena_RXMLInc)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_Luxand">
+      <Value>$(Nena_Luxand)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_LuxandInc">
+      <Value>$(Nena_LuxandInc)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_LuxandLib">
+      <Value>$(Nena_LuxandLib)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_LuxandLnk">
+      <Value>$(Nena_LuxandLnk)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v324">
+      <Value>$(Nena_NvidiaPhysX_v324)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v324_Inc">
+      <Value>$(Nena_NvidiaPhysX_v324_Inc)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v324_Lib">
+      <Value>$(Nena_NvidiaPhysX_v324_Lib)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v324_Path">
+      <Value>$(Nena_NvidiaPhysX_v324_Path)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v324_Lnk_Bsc">
+      <Value>$(Nena_NvidiaPhysX_v324_Lnk_Bsc)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v324_Lnk_Cook">
+      <Value>$(Nena_NvidiaPhysX_v324_Lnk_Cook)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v324_Lnk_Cmmn">
+      <Value>$(Nena_NvidiaPhysX_v324_Lnk_Cmmn)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v324_Lnk_Char">
+      <Value>$(Nena_NvidiaPhysX_v324_Lnk_Char)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v324_Lnk_Task">
+      <Value>$(Nena_NvidiaPhysX_v324_Lnk_Task)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v324_Lnk_Vehicle">
+      <Value>$(Nena_NvidiaPhysX_v324_Lnk_Vehicle)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v324_Lnk">
+      <Value>$(Nena_NvidiaPhysX_v324_Lnk)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v324_Lnk_Ex">
+      <Value>$(Nena_NvidiaPhysX_v324_Lnk_Ex)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v324_Lnk_Profile">
+      <Value>$(Nena_NvidiaPhysX_v324_Lnk_Profile)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v324_Lnk_All">
+      <Value>$(Nena_NvidiaPhysX_v324_Lnk_All)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v330">
+      <Value>$(Nena_NvidiaPhysX_v330)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v330_Inc">
+      <Value>$(Nena_NvidiaPhysX_v330_Inc)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v330_Lib">
+      <Value>$(Nena_NvidiaPhysX_v330_Lib)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v330_Path">
+      <Value>$(Nena_NvidiaPhysX_v330_Path)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v330_Lnk_Bsc">
+      <Value>$(Nena_NvidiaPhysX_v330_Lnk_Bsc)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v330_Lnk_Cook">
+      <Value>$(Nena_NvidiaPhysX_v330_Lnk_Cook)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v330_Lnk_Cmmn">
+      <Value>$(Nena_NvidiaPhysX_v330_Lnk_Cmmn)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v330_Lnk_Char">
+      <Value>$(Nena_NvidiaPhysX_v330_Lnk_Char)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v330_Lnk_Task">
+      <Value>$(Nena_NvidiaPhysX_v330_Lnk_Task)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v330_Lnk_Vehicle">
+      <Value>$(Nena_NvidiaPhysX_v330_Lnk_Vehicle)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v330_Lnk">
+      <Value>$(Nena_NvidiaPhysX_v330_Lnk)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v330_Lnk_Ex">
+      <Value>$(Nena_NvidiaPhysX_v330_Lnk_Ex)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v330_Lnk_Profile">
+      <Value>$(Nena_NvidiaPhysX_v330_Lnk_Profile)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX_v330_Lnk_All">
+      <Value>$(Nena_NvidiaPhysX_v330_Lnk_All)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysX">
+      <Value>$(Nena_NvidiaPhysX)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysXPath">
+      <Value>$(Nena_NvidiaPhysXPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysXInc">
+      <Value>$(Nena_NvidiaPhysXInc)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysXLib">
+      <Value>$(Nena_NvidiaPhysXLib)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysXLnk">
+      <Value>$(Nena_NvidiaPhysXLnk)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_NvidiaPhysXLnk_All">
+      <Value>$(Nena_NvidiaPhysXLnk_All)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_Cute">
+      <Value>$(Nena_Cute)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_Cute32">
+      <Value>$(Nena_Cute32)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_CuteInc">
+      <Value>$(Nena_CuteInc)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_Cute32Inc">
+      <Value>$(Nena_Cute32Inc)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_CuteLib">
+      <Value>$(Nena_CuteLib)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_Cute32Lib">
+      <Value>$(Nena_Cute32Lib)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_CuteLnk">
+      <Value>$(Nena_CuteLnk)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_Lib2Git">
+      <Value>$(Nena_Lib2Git)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_Lib2GitInc">
+      <Value>$(Nena_Lib2GitInc)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_Lib2GitLib32">
+      <Value>$(Nena_Lib2GitLib32)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_Lib2GitLib64">
+      <Value>$(Nena_Lib2GitLib64)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_Lib2GitLib">
+      <Value>$(Nena_Lib2GitLib)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_Lib2GitLnk">
+      <Value>$(Nena_Lib2GitLnk)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>
