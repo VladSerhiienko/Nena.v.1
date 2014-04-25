@@ -234,6 +234,7 @@ LRESULT Framework::Application::Window::OnResized()
 	if (clearColor.B() >= .9f || clearColor.B() <= .1f) dirB *= -1.0f;
 	clearColor.Negate(negatedClearColor);
 
+	Graphics.ClearColor = clearColor;
 	Graphics.Clear(Graphics.Context.Get());
 
 	Graphics.BindToPipeline(Graphics.Context.Get());

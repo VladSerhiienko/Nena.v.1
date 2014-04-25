@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="git.revwalk.cpp" />
+    <ClCompile Include="qt.dialog_chooserepo.ui.cpp" />
+    <ClCompile Include="qt.dialog_chooserepo.ui.mo.h.cpp" />
+    <ClCompile Include="qt.dialog_mainwnd.ui.cpp" />
+    <ClCompile Include="qt.dialog_mainwnd.ui.mo.h.cpp" />
+    <ClCompile Include="git.revwalk.cpp" />
+    <ClCompile Include="git.startup.cpp" />
+    <ClCompile Include="qt.dialog_chooserepo.ui.cpp" />
+    <ClCompile Include="qt.dialog_chooserepo.ui.mo.h.cpp" />
+    <ClCompile Include="qt.dialog_mainwnd.ui.cpp" />
+    <ClCompile Include="qt.dialog_mainwnd.ui.mo.h.cpp" />
+    <ClCompile Include="qt_git.revwalk_modelview.cpp" />
+    <ClCompile Include="git.revwalk.cpp" />
+    <ClCompile Include="git.startup.cpp" />
+    <ClCompile Include="qt.dialog_busy.ui.cpp" />
+    <ClCompile Include="qt.dialog_busy.ui.mo.h.cpp" />
+    <ClCompile Include="qt.dialog_chooserepo.ui.cpp" />
+    <ClCompile Include="qt.dialog_chooserepo.ui.mo.h.cpp" />
+    <ClCompile Include="qt.dialog_mainwnd.ui.cpp" />
+    <ClCompile Include="qt.dialog_mainwnd.ui.mo.h.cpp" />
+    <ClCompile Include="qt_git.revwalk_modelview.cpp" />
+    <ClCompile Include="qt_git.revwalk_modelview.mo.h.cpp" />
+    <ClCompile Include="git.revwalk.cpp" />
+    <ClCompile Include="hidden\git.startup.cpp" />
+    <ClCompile Include="hidden\qt.dialog_busy.ui.cpp" />
+    <ClCompile Include="hidden\qt.dialog_busy.ui.mo.h.cpp" />
+    <ClCompile Include="hidden\qt.splash.ui.cpp" />
+    <ClCompile Include="hidden\qt.splash.ui.mo.h.cpp" />
+    <ClCompile Include="qt.dialog_chooserepo.ui.cpp" />
+    <ClCompile Include="qt.dialog_chooserepo.ui.mo.h.cpp" />
+    <ClCompile Include="qt.dialog_mainwnd.ui.cpp" />
+    <ClCompile Include="qt.dialog_mainwnd.ui.mo.h.cpp" />
+    <ClCompile Include="qt_git.revwalk_modelview.cpp" />
+    <ClCompile Include="qt_git.revwalk_modelview.mo.h.cpp" />
+    <ClCompile Include="**\*.cpp" />
+    <ClCompile Include="**\*.cpp" />
+    <ClCompile Include="**\*.cpp" />
+    <ClCompile Include="**\*.cpp" />
+    <ClCompile Include="**\*.cpp" />
+    <ClCompile Include="**\*.cpp" />
+    <ClCompile Include="**\*.cpp" />
+    <ClCompile Include="**\*.cpp" />
+    <ClCompile Include="**\*.cpp" />
+    <ClCompile Include="**\*.cpp" />
+    <ClCompile Include="**\*.cpp" />
+    <ClCompile Include="**\*.cpp" />
+    <ClCompile Include="**\*.cpp" />
+    <ClCompile Include="**\*.cpp" />
+    <ClCompile Include="**\*.cpp" />
+    <ClCompile Include="**\*.cpp" />
+    <ClCompile Include="**\*.cpp" />
+    <ClCompile Include="**\*.cpp" />
+    <ClCompile Include="**\*.cpp" />
+    <ClCompile Include="**\*.cpp" />
+    <ClCompile Include="**\*.cpp" />
+    <ClCompile Include="**\*.cpp" />
+    <ClCompile Include="git.revwalk.cpp" />
+    <ClCompile Include="git.startup.cpp" />
+    <ClCompile Include="qt.dialog_busy.ui.cpp" />
+    <ClCompile Include="qt.dialog_busy.ui.mo.h.cpp" />
+    <ClCompile Include="qt.dialog_chooserepo.ui.cpp" />
+    <ClCompile Include="qt.dialog_chooserepo.ui.mo.h.cpp" />
+    <ClCompile Include="qt.dialog_mainwnd.ui.cpp" />
+    <ClCompile Include="qt.dialog_mainwnd.ui.mo.h.cpp" />
+    <ClCompile Include="git.revwalk.cpp" />
+    <ClCompile Include="git.startup.cpp" />
+    <ClCompile Include="qt.dialog_busy.ui.cpp" />
+    <ClCompile Include="qt.dialog_busy.ui.mo.h.cpp" />
+    <ClCompile Include="qt.dialog_chooserepo.ui.cpp" />
+    <ClCompile Include="qt.dialog_chooserepo.ui.mo.h.cpp" />
+    <ClCompile Include="qt.dialog_mainwnd.ui.cpp" />
+    <ClCompile Include="qt.dialog_mainwnd.ui.mo.h.cpp" />
+    <ClCompile Include="git.revwalk.cpp" />
+    <ClCompile Include="git.startup.cpp" />
+    <ClCompile Include="qt.dialog_busy.ui.cpp" />
+    <ClCompile Include="qt.dialog_busy.ui.mo.h.cpp" />
+    <ClCompile Include="qt.dialog_chooserepo.ui.cpp" />
+    <ClCompile Include="qt.dialog_chooserepo.ui.mo.h.cpp" />
+    <ClCompile Include="qt.dialog_mainwnd.ui.cpp" />
+    <ClCompile Include="qt.dialog_mainwnd.ui.mo.h.cpp" />
+    <ClCompile Include="git.revwalk.cpp" />
+    <ClCompile Include="git.startup.cpp" />
+    <ClCompile Include="qt.dialog_busy.ui.cpp" />
+    <ClCompile Include="qt.dialog_busy.ui.mo.h.cpp" />
+    <ClCompile Include="qt.dialog_chooserepo.ui.cpp" />
+    <ClCompile Include="qt.dialog_chooserepo.ui.mo.h.cpp" />
+    <ClCompile Include="qt.dialog_mainwnd.ui.cpp" />
+    <ClCompile Include="qt.dialog_mainwnd.ui.mo.h.cpp" />
+    <ClCompile Include="git.revwalk.cpp" />
+    <ClCompile Include="git.startup.cpp" />
+    <ClCompile Include="qt.dialog_busy.ui.cpp" />
+    <ClCompile Include="qt.dialog_busy.ui.mo.h.cpp" />
+    <ClCompile Include="qt.dialog_chooserepo.ui.cpp" />
+    <ClCompile Include="qt.dialog_chooserepo.ui.mo.h.cpp" />
+    <ClCompile Include="qt.dialog_mainwnd.ui.cpp" />
+    <ClCompile Include="qt.dialog_mainwnd.ui.mo.h.cpp" />
+    <ClCompile Include="git.revwalk.cpp" />
+    <ClCompile Include="git.startup.cpp" />
+    <ClCompile Include="qt.dialog_busy.ui.cpp" />
+    <ClCompile Include="qt.dialog_busy.ui.mo.h.cpp" />
+    <ClCompile Include="qt.dialog_chooserepo.ui.cpp" />
+    <ClCompile Include="qt.dialog_chooserepo.ui.mo.h.cpp" />
+    <ClCompile Include="qt.dialog_mainwnd.ui.cpp" />
+    <ClCompile Include="qt.dialog_mainwnd.ui.mo.h.cpp" />
+    <ClCompile Include="git.revwalk.cpp" />
+    <ClCompile Include="git.startup.cpp" />
+    <ClCompile Include="qt.dialog_busy.ui.cpp" />
+    <ClCompile Include="qt.dialog_busy.ui.mo.h.cpp" />
+    <ClCompile Include="qt.dialog_chooserepo.ui.cpp" />
+    <ClCompile Include="qt.dialog_chooserepo.ui.mo.h.cpp" />
+    <ClCompile Include="qt.dialog_mainwnd.ui.cpp" />
+    <ClCompile Include="qt.dialog_mainwnd.ui.mo.h.cpp" />
+    <ClCompile Include="git.revwalk.cpp" />
+    <ClCompile Include="git.startup.cpp" />
+    <ClCompile Include="qt.dialog_busy.ui.cpp" />
+    <ClCompile Include="qt.dialog_busy.ui.mo.h.cpp" />
+    <ClCompile Include="qt.dialog_chooserepo.ui.cpp" />
+    <ClCompile Include="qt.dialog_chooserepo.ui.mo.h.cpp" />
+    <ClCompile Include="qt.dialog_mainwnd.ui.cpp" />
+    <ClCompile Include="qt.dialog_mainwnd.ui.mo.h.cpp" />
+    <ClCompile Include="git.revwalk.cpp" />
+    <ClCompile Include="git.startup.cpp" />
+    <ClCompile Include="qt.dialog_busy.ui.cpp" />
+    <ClCompile Include="qt.dialog_busy.ui.mo.h.cpp" />
+    <ClCompile Include="qt.dialog_chooserepo.ui.cpp" />
+    <ClCompile Include="qt.dialog_chooserepo.ui.mo.h.cpp" />
+    <ClCompile Include="qt.dialog_mainwnd.ui.cpp" />
+    <ClCompile Include="qt.dialog_mainwnd.ui.mo.h.cpp" />
+    <ClCompile Include="qt.dialog_mainwnd.ui.mo.h.cpp">
+      <Filter>Qt</Filter>
+    </ClCompile>
+    <ClCompile Include="qt.dialog_mainwnd.ui.cpp">
+      <Filter>Qt</Filter>
+    </ClCompile>
+    <ClCompile Include="qt.dialog_chooserepo.ui.mo.h.cpp">
+      <Filter>Qt</Filter>
+    </ClCompile>
+    <ClCompile Include="qt.dialog_chooserepo.ui.cpp">
+      <Filter>Qt</Filter>
+    </ClCompile>
+    <ClCompile Include="qt.dialog_busy.ui.mo.h.cpp">
+      <Filter>Qt</Filter>
+    </ClCompile>
+    <ClCompile Include="qt.dialog_busy.ui.cpp">
+      <Filter>Qt</Filter>
+    </ClCompile>
+    <ClCompile Include="git.startup.cpp">
+      <Filter>Git</Filter>
+    </ClCompile>
+    <ClCompile Include="git.revwalk.cpp">
+      <Filter>Git</Filter>
+    </ClCompile>
+    <ClCompile Include="qt_git.revwalk_modelview.cpp">
+      <Filter>Qt\Git</Filter>
+    </ClCompile>
+    <ClCompile Include="git.revwalk.cpp">
+      <Filter>Git</Filter>
+    </ClCompile>
+    <ClCompile Include="git.startup.cpp">
+      <Filter>Git</Filter>
+    </ClCompile>
+    <ClCompile Include="qt_git.revwalk_modelview.cpp">
+      <Filter>Qt\Git</Filter>
+    </ClCompile>
+    <ClCompile Include="qt.dialog_mainwnd.ui.mo.h.cpp">
+      <Filter>Qt</Filter>
+    </ClCompile>
+    <ClCompile Include="qt.dialog_mainwnd.ui.cpp">
+      <Filter>Qt</Filter>
+    </ClCompile>
+    <ClCompile Include="qt.dialog_chooserepo.ui.mo.h.cpp">
+      <Filter>Qt</Filter>
+    </ClCompile>
+    <ClCompile Include="qt.dialog_chooserepo.ui.cpp">
+      <Filter>Qt</Filter>
+    </ClCompile>
+    <ClCompile Include="qt.dialog_busy.ui.mo.h.cpp">
+      <Filter>Qt</Filter>
+    </ClCompile>
+    <ClCompile Include="qt.dialog_busy.ui.cpp">
+      <Filter>Qt</Filter>
+    </ClCompile>
+    <ClCompile Include="qt_git.revwalk_modelview.mo.h.cpp" />
+    <ClCompile Include="app.precompiled.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="git.revwalk.h" />
+    <ClInclude Include="qt.concurrent_ui.h" />
+    <ClInclude Include="qt.dialog_chooserepo.ui.mo.h" />
+    <ClInclude Include="qt.dialog_mainwnd.ui.mo.h" />
+    <ClInclude Include="git.revwalk.h" />
+    <ClInclude Include="qt.concurrent_ui.h" />
+    <ClInclude Include="qt.dialog_chooserepo.ui.mo.h" />
+    <ClInclude Include="qt.dialog_mainwnd.ui.mo.h" />
+    <ClInclude Include="qt_git.revwalk_modelview.mo.h" />
+    <ClInclude Include="git.revwalk.h" />
+    <ClInclude Include="qt.concurrent_ui.h" />
+    <ClInclude Include="qt.dialog_busy.ui.mo.h" />
+    <ClInclude Include="qt.dialog_chooserepo.ui.mo.h" />
+    <ClInclude Include="qt.dialog_mainwnd.ui.mo.h" />
+    <ClInclude Include="qt_git.revwalk_modelview.mo.h" />
+    <ClInclude Include="git.revwalk.h" />
+    <ClInclude Include="hidden\qt.dialog_busy.ui.mo.h" />
+    <ClInclude Include="hidden\qt.splash.ui.mo.h" />
+    <ClInclude Include="qt.concurrent_ui.h" />
+    <ClInclude Include="qt.dialog_chooserepo.ui.mo.h" />
+    <ClInclude Include="qt.dialog_mainwnd.ui.mo.h" />
+    <ClInclude Include="qt_git.revwalk_modelview.mo.h" />
+    <ClInclude Include="**\*.h" />
+    <ClInclude Include="**\*.h" />
+    <ClInclude Include="**\*.h" />
+    <ClInclude Include="**\*.h" />
+    <ClInclude Include="**\*.h" />
+    <ClInclude Include="**\*.h" />
+    <ClInclude Include="**\*.h" />
+    <ClInclude Include="**\*.h" />
+    <ClInclude Include="**\*.h" />
+    <ClInclude Include="git.revwalk.h" />
+    <ClInclude Include="qt.concurrent_ui.h" />
+    <ClInclude Include="qt.dialog_busy.ui.mo.h" />
+    <ClInclude Include="qt.dialog_chooserepo.ui.mo.h" />
+    <ClInclude Include="qt.dialog_mainwnd.ui.mo.h" />
+    <ClInclude Include="git.revwalk.h" />
+    <ClInclude Include="qt.concurrent_ui.h" />
+    <ClInclude Include="qt.dialog_busy.ui.mo.h" />
+    <ClInclude Include="qt.dialog_chooserepo.ui.mo.h" />
+    <ClInclude Include="qt.dialog_mainwnd.ui.mo.h" />
+    <ClInclude Include="git.revwalk.h" />
+    <ClInclude Include="qt.concurrent_ui.h" />
+    <ClInclude Include="qt.dialog_busy.ui.mo.h" />
+    <ClInclude Include="qt.dialog_chooserepo.ui.mo.h" />
+    <ClInclude Include="qt.dialog_mainwnd.ui.mo.h" />
+    <ClInclude Include="git.revwalk.h" />
+    <ClInclude Include="qt.concurrent_ui.h" />
+    <ClInclude Include="qt.dialog_busy.ui.mo.h" />
+    <ClInclude Include="qt.dialog_chooserepo.ui.mo.h" />
+    <ClInclude Include="qt.dialog_mainwnd.ui.mo.h" />
+    <ClInclude Include="git.revwalk.h" />
+    <ClInclude Include="qt.concurrent_ui.h" />
+    <ClInclude Include="qt.dialog_busy.ui.mo.h" />
+    <ClInclude Include="qt.dialog_chooserepo.ui.mo.h" />
+    <ClInclude Include="qt.dialog_mainwnd.ui.mo.h" />
+    <ClInclude Include="git.revwalk.h" />
+    <ClInclude Include="qt.concurrent_ui.h" />
+    <ClInclude Include="qt.dialog_busy.ui.mo.h" />
+    <ClInclude Include="qt.dialog_chooserepo.ui.mo.h" />
+    <ClInclude Include="qt.dialog_mainwnd.ui.mo.h" />
+    <ClInclude Include="qt.dialog_mainwnd.ui.mo.h">
+      <Filter>Qt</Filter>
+    </ClInclude>
+    <ClInclude Include="qt.dialog_chooserepo.ui.mo.h">
+      <Filter>Qt</Filter>
+    </ClInclude>
+    <ClInclude Include="qt.dialog_busy.ui.mo.h">
+      <Filter>Qt</Filter>
+    </ClInclude>
+    <ClInclude Include="qt.concurrent_ui.h">
+      <Filter>Qt</Filter>
+    </ClInclude>
+    <ClInclude Include="git.revwalk.h">
+      <Filter>Git</Filter>
+    </ClInclude>
+    <ClInclude Include="qt_git.revwalk_modelview.mo.h">
+      <Filter>Qt\Git</Filter>
+    </ClInclude>
+    <ClInclude Include="git.revwalk.h">
+      <Filter>Git</Filter>
+    </ClInclude>
+    <ClInclude Include="qt_git.revwalk_modelview.mo.h">
+      <Filter>Qt\Git</Filter>
+    </ClInclude>
+    <ClInclude Include="qt.dialog_mainwnd.ui.mo.h">
+      <Filter>Qt</Filter>
+    </ClInclude>
+    <ClInclude Include="qt.dialog_chooserepo.ui.mo.h">
+      <Filter>Qt</Filter>
+    </ClInclude>
+    <ClInclude Include="qt.dialog_busy.ui.mo.h">
+      <Filter>Qt</Filter>
+    </ClInclude>
+    <ClInclude Include="qt.concurrent_ui.h">
+      <Filter>Qt</Filter>
+    </ClInclude>
+    <ClInclude Include="app.precompiled.h" />
+  </ItemGroup>
+</Project>

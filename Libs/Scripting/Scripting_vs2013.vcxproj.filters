@@ -18,12 +18,18 @@
     <ClInclude Include="LuaScripting.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="vrc_script.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LuaScripting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vrc_script.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -33,6 +39,9 @@
     </None>
     <None Include="script2.lua">
       <Filter>Resource Files</Filter>
+    </None>
+    <None Include="vrc_script.inl">
+      <Filter>Header Files</Filter>
     </None>
   </ItemGroup>
 </Project>

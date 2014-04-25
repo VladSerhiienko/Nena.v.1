@@ -63,13 +63,21 @@
     <Nena_Lib2GitLib64>$(Nena_Lib2Git)lib64\</Nena_Lib2GitLib64>
     <Nena_Lib2GitLib>$(Nena_Lib2Git)lib64\</Nena_Lib2GitLib>
     <Nena_Lib2GitLnk>git2.lib</Nena_Lib2GitLnk>
+    <Nena_Awesomium>$(AWE_DIR)</Nena_Awesomium>
+    <Nena_AwesomiumInc>$(Nena_Awesomium)include\</Nena_AwesomiumInc>
+    <Nena_AwesomiumLib>$(Nena_Awesomium)build\lib\</Nena_AwesomiumLib>
+    <Nena_AwesomiumLnk>awesomium.lib</Nena_AwesomiumLnk>
+    <Nena_SRDelegates>D:\Development\VisualStudio\Dependencies\SRDelegates\</Nena_SRDelegates>
+    <Nena_SRDelegatesInc>$(Nena_SRDelegates)include\</Nena_SRDelegatesInc>
+    <Nena_FastDelegates>D:\Development\VisualStudio\Dependencies\FastDelegate_src\</Nena_FastDelegates>
+    <Nena_FastDelegatesInc>$(Nena_FastDelegates)include\</Nena_FastDelegatesInc>
   </PropertyGroup>
   <PropertyGroup>
     <_PropertySheetDisplayName>NenaDependencies</_PropertySheetDisplayName>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>$(Nena_RXMLInc);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(Nena_FastDelegatesInc);$(Nena_SRDelegatesInc);$(Nena_RXMLInc);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -258,6 +266,30 @@
     </BuildMacro>
     <BuildMacro Include="Nena_Lib2GitLnk">
       <Value>$(Nena_Lib2GitLnk)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_Awesomium">
+      <Value>$(Nena_Awesomium)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_AwesomiumInc">
+      <Value>$(Nena_AwesomiumInc)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_AwesomiumLib">
+      <Value>$(Nena_AwesomiumLib)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_AwesomiumLnk">
+      <Value>$(Nena_AwesomiumLnk)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_SRDelegates">
+      <Value>$(Nena_SRDelegates)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_SRDelegatesInc">
+      <Value>$(Nena_SRDelegatesInc)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_FastDelegates">
+      <Value>$(Nena_FastDelegates)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Nena_FastDelegatesInc">
+      <Value>$(Nena_FastDelegatesInc)</Value>
     </BuildMacro>
   </ItemGroup>
 </Project>

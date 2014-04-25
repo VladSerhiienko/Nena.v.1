@@ -114,6 +114,7 @@
 echo Copying headers...
 mkdir $(OutDir)..\Inc\Nena\
 copy $(ProjectDir)*.h $(OutDir)..\Inc\Nena\*.h
+copy $(ProjectDir)*.inl $(OutDir)..\Inc\Nena\*.inl
 echo --------------------------------------------------</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -130,11 +131,8 @@ echo --------------------------------------------------</Command>
       <AdditionalDependencies>$(Nena_LuaLnk);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>echo --------------------------------------------------
-echo Copying headers...
-mkdir $(OutDir)..\Inc\Nena\
-copy $(ProjectDir)*.h $(OutDir)..\Inc\Nena\*.h
-echo --------------------------------------------------</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -173,14 +171,17 @@ echo --------------------------------------------------</Command>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="LuaScripting.h" />
+    <ClInclude Include="vrc_script.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LuaScripting.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="vrc_script.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="script1.lua" />
     <None Include="script2.lua" />
+    <None Include="vrc_script.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

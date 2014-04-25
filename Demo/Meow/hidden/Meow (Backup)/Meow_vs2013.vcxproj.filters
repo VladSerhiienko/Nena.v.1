@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Qt">
+      <UniqueIdentifier>{22b75b68-685d-4d6c-8282-dc853d239d8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Git">
+      <UniqueIdentifier>{40ae84c4-222b-4d8b-8448-f1ece8f2cfe2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="sample_dialog.cpp" />
+    <ClCompile Include="sample_main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="sample_dialog.ui.mo.h" />
+  </ItemGroup>
+</Project>

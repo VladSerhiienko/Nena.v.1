@@ -8,8 +8,9 @@ Nena::App::App() :
 	DestroyEvent(Dispatcher::Message::Destroy), 
 	CloseEvent(Dispatcher::Message::Close)
 {
-	DestroyEvent.Priority = 1010;
-	CloseEvent.Priority = 1015;
+	DestroyEvent.Priority = 1100;
+	CloseEvent.Priority = 1110;
+	SetDefaults();
 }
 
 Nena::App::~App()
@@ -50,17 +51,73 @@ Nena::Dispatcher::Event::Event(UINT32 msg) : Msg(msg)
 Nena::Dispatcher::MouseEvent::MouseEvent(UINT32 msg) : Event(msg)
 {
 	Parser = &MissingParser;
+	SetPriority(50);
 }
 
 Nena::Dispatcher::KeyboardEvent::KeyboardEvent(UINT32 msg) : Event(msg)
 {
 	Parser = &MissingParser;
+	SetPriority(100);
 }
 
 Nena::App::QuitEvent::QuitEvent(UINT32 msg) : Event(msg)
 {
 	OnDispatch = &PostQuitMessageCallback;
 	Priority = MaxPriority;
+}
+
+Nena::App::UserEvent::UserEvent() : Event(Nena::App::InterruptionMessage)
+{
+	Dispatcher::Event::OnDispatch = &Dispatch;
+	Priority = MaxPriority + 5;
+}
+
+LRESULT Nena::App::UserEvent::Dispatch(
+	Event *e, HWND hwnd, UINT32 msg,
+	WPARAM wparam, LPARAM lparam
+	)
+{
+	if (e->Msg == msg)
+	{
+		OutputDebugStringA("Nena::App::UserEvent::Dispatch()\n");
+		auto app = App::GetForCurrentThread();
+		app->Interrupted(app);
+		return 0;
+	}
+	else return e->OnMismatch->Dispatch(
+		hwnd, msg, wparam, lparam
+		);
+}
+
+Nena::App::PaintEvent::PaintEvent()
+	: Event(Nena::Application::Message::Paint)
+{
+	Priority = MinPriority - 1;
+}
+
+Nena::App::ViewResizedMovedEvent::ViewResizedMovedEvent() 
+	: Event(Nena::Application::Message::ExitSizeMove)
+{
+	Dispatcher::Event::OnDispatch = &ExitSizeMove;
+	Priority = MaxPriority + 10;
+}
+
+LRESULT _Nena_DispatcherCallTy_ Nena::App::ViewResizedMovedEvent::ExitSizeMove(
+	Event *e, HWND hwnd, UINT32 msg,
+	WPARAM wparam, LPARAM lparam
+	)
+{
+	if (e->Msg == msg)
+	{
+		OutputDebugStringA("Nena::App::ViewResizedMovedEvent::ExitSizeMove()\n");
+		auto app = Nena::App::GetForCurrentThread();
+		app->View.UpdateSizePosition();
+		app->View.ResizedMoved(&app->View);
+		return 0;
+	}
+	else return e->OnMismatch->Dispatch(
+		hwnd, msg, wparam, lparam
+		);
 }
 
 void Nena::Dispatcher::Event::SetPriority(UINT32 priority)
@@ -81,16 +138,12 @@ void Nena::Dispatcher::Event::Insert(
 	Event *thisEvent = this;
 	Event *nextEvent = OnMismatch;
 
-	if (nextEvent->Priority && nextEvent->Priority <= otherEvent->Priority)
+	if ((nextEvent->Priority) && 
+		(nextEvent->Priority <= otherEvent->Priority))
 		return nextEvent->Insert(otherEvent);
-	else /*if ((nextEvent->Priority < otherEvent->Priority &&
-		thisEvent->Priority >= otherEvent->Priority) || 
-		(thisEvent->Priority <= otherEvent->Priority &&
-		nextEvent->Priority < otherEvent->Priority))*/
-	{
-		thisEvent->OnMismatch = otherEvent;
+	else
+		thisEvent->OnMismatch = otherEvent,
 		otherEvent->OnMismatch = nextEvent;
-	}
 }
 
 void Nena::Dispatcher::Event::ClampEventPriority(Event *e)
@@ -141,7 +194,7 @@ LRESULT Nena::Dispatcher::Event::DefaultDispatcherSafe(
 			if (e->OnCaught) return e->OnCaught->Dispatch(
 				hwnd, msg, wparam, lparam
 				);
-			else return DefWindowProc(
+			else return ::DefWindowProcA(
 				hwnd, msg, wparam, lparam
 				);
 		}
@@ -150,7 +203,7 @@ LRESULT Nena::Dispatcher::Event::DefaultDispatcherSafe(
 			if (e->OnFailed) return e->OnFailed->Dispatch(
 				hwnd, msg, wparam, lparam
 				);
-			else return DefWindowProc(
+			else return ::DefWindowProcA(
 				hwnd, msg, wparam, lparam
 				);
 		}
@@ -160,7 +213,7 @@ LRESULT Nena::Dispatcher::Event::DefaultDispatcherSafe(
 		if (e->OnMismatch) return e->OnMismatch->Dispatch(
 			hwnd, msg, wparam, lparam
 			);
-		else return DefWindowProc(
+		else return ::DefWindowProcA(
 			hwnd, msg, wparam, lparam
 			);
 	}
@@ -187,25 +240,52 @@ LRESULT Nena::Dispatcher::Event::DefaultDispatcherFast(
 		);
 }
 
-void Nena::App::MessageLoop()
+void Nena::App::MessageLoop(::BOOL withTimer)
 {
-	OutputDebugStringA("Nena::App::MessageLoop()\n");
-	MSG e; ZeroMemory(&e, sizeof MSG);
-	Application::Window::Handle wnd = View.Raw;
+	::OutputDebugStringA("Nena::App::MessageLoop()\n");
+	::MSG e; ::ZeroMemory(&e, sizeof MSG);
 
-	if (OnInit) OnInit(this); 
-	Timer.ResetElapsedTime(); while (OnUpdate)
+	auto wnd = View.Raw;
+	if (!wnd) return;
+
+	if (OnInit) OnInit(this);
+	MessageLoopStarted(this);
+
+	if (withTimer && OnUpdate) while (OnUpdate)
 	{
 		if (PeekMessage(&e, wnd, 0, 0, PM_REMOVE))
 		{
-			TranslateMessage(&e);
-			DispatchMessage(&e);
+			::TranslateMessage(&e);
+			::DispatchMessageA(&e);
 		}
 
 		if (e.message != WM_QUIT) { Timer.Tick([this] { OnUpdate(this); }); continue; }
-		else OnUpdate = nullptr;
+		else OnUpdate = nullptr; // , QuitRequested(this);
+	}
+	else if (OnUpdate) while (OnUpdate)
+	{
+		if (::PeekMessageA(&e, wnd, 0, 0, PM_REMOVE))
+		{
+			::TranslateMessage(&e);
+			::DispatchMessageA(&e);
+		}
+
+		if (e.message != WM_QUIT) { OnUpdate(this); continue; }
+		else OnUpdate = nullptr; // , QuitRequested(this);
+	}
+	else while (true)
+	{
+		if (::PeekMessageA(&e, wnd, 0, 0, PM_REMOVE))
+		{
+			::TranslateMessage(&e);
+			::DispatchMessageA(&e);
+		}
+
+		if (e.message == WM_QUIT)
+			break;
 	}
 
+	MessageLoopQuit(this);
 	if (OnQuit) OnQuit(this);
 }
 
@@ -216,7 +296,14 @@ LRESULT Nena::App::QuitEvent::PostQuitMessageCallback(
 {
 	if (e->Msg == msg)
 	{
-		OutputDebugStringA("Nena::App::QuitEvent::PostQuitMessageCallback()\n");
+		//if (msg == WM_QUIT)
+		//{
+		::OutputDebugStringA("Nena::App::QuitEvent::PostQuitMessageCallback()\n");
+		App::GetForCurrentThread()->QuitRequested(
+			App::GetForCurrentThread()
+			);
+		//}
+
 		::PostQuitMessage(EXIT_SUCCESS);
 		return 0;
 	}
@@ -231,16 +318,20 @@ LRESULT Nena::App::QuitEvent::PostQuitMessageCallback(
 
 void Nena::App::SetDefaults()
 {
-	OutputDebugStringA("Nena::App::SetDefaults()\n");
-	Launcher.Insert(&DestroyEvent); // add to general app scenario window shutdown handling
-	Launcher.Insert(&CloseEvent); // add to general app scenario window shutdown handling
+	if (Handler.Root) return;
+
+	::OutputDebugStringA("Nena::App::SetDefaults()\n");
+
+	View.Style = Application::Window::DefaultWindowStyle;
+	View.Fullscreen = FALSE;
+
+	MessageLoopStarted += _Nena_Delegate_MakeBind(&App::AppendSizeMoveOnDemand, this);
+	Launcher.Insert(&DestroyEvent);
+	Launcher.Insert(&CloseEvent);
 	Handler.Root = &Launcher;
 
 	OnInit = &App::MissingInit;
 	OnQuit = &App::MissingQuit;
-
-	View.Style = Application::Window::DefaultWindowStyle;
-	View.Fullscreen = FALSE;
 }
 
 void Nena::App::MissingInit(App *app)
@@ -249,7 +340,7 @@ void Nena::App::MissingInit(App *app)
 	auto vars = Vars::GetForCurrentThread();
 	if (!vars->GetRecordsCount()) result = vars->Read();
 
-	OutputDebugStringA("Nena::App::MissingInit()\n");
+	::OutputDebugStringA("Nena::App::MissingInit()\n");
 
 	if (SUCCEEDED(result))
 	{
@@ -288,20 +379,44 @@ void Nena::App::MissingInit(App *app)
 				smallDims.u32[0], smallDims.u32[1],
 				bigDims.u32[0], bigDims.u32[1]);
 
-		if (text.size()) app->View.SetTitel(text);
+		if (text.size()) app->View.SetTitle(text);
 	}
 
 }
 
 void Nena::App::MissingQuit(App *app)
 {
-	OutputDebugStringA("Nena::App::MissingQuit()\n");
+	::OutputDebugStringA("Nena::App::MissingQuit()\n");
 	app->View.OnClosed();
+}
+
+void Nena::App::AppendSizeMoveOnDemand(_In_ App *app)
+{
+	::OutputDebugStringA("Nena::App::AppendSizeMoveOnDemand()\n");
+	if ((View.Style & WS_THICKFRAME) == WS_THICKFRAME)
+		Launcher.Insert(&ViewResizedMoved);
 }
 
 void Nena::App::EnableCrtChecks()
 {
-	OutputDebugStringA("Nena::App::EnableCrtChecks()\n");
+	::OutputDebugStringA("Nena::App::EnableCrtChecks()\n");
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	_CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_DEBUG);
 }
+
+void Nena::App::PostUserMessage()
+{
+	::PostMessageA(
+		View.Raw, Nena::App::InterruptionMessage, 
+		NULL, (LPARAM) this
+		);
+}
+
+void Nena::App::PostUserMessage(DWORD msg, WPARAM d, LPARAM p)
+{
+	::PostMessageA(
+		View.Raw, msg, d, p
+		);
+}
+
+

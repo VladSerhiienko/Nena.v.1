@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="app.precompiled.cpp">
+      <Filter>Oasis\App</Filter>
+    </ClCompile>
+    <ClCompile Include="app.main.cpp">
+      <Filter>Oasis\App</Filter>
+    </ClCompile>
+    <ClCompile Include="itv.engine.cpp">
+      <Filter>Oasis\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="itv.input.cpp">
+      <Filter>Oasis\Engine\[Details]</Filter>
+    </ClCompile>
+    <ClCompile Include="itv.graphics.cpp">
+      <Filter>Oasis\Engine\[Details]</Filter>
+    </ClCompile>
+    <ClCompile Include="itv.oasis.cpp">
+      <Filter>Oasis</Filter>
+    </ClCompile>
+    <ClCompile Include="itv.oasis.home.cpp">
+      <Filter>Oasis\Content</Filter>
+    </ClCompile>
+    <ClCompile Include="itv.oasis.web.cpp">
+      <Filter>Oasis\Content\[Details]</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="app.precompiled.h">
+      <Filter>Oasis\App</Filter>
+    </ClInclude>
+    <ClInclude Include="itv.engine.h">
+      <Filter>Oasis\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="itv.input.h">
+      <Filter>Oasis\Engine\[Details]</Filter>
+    </ClInclude>
+    <ClInclude Include="itv.graphics.h">
+      <Filter>Oasis\Engine\[Details]</Filter>
+    </ClInclude>
+    <ClInclude Include="itv.oasis.h">
+      <Filter>Oasis</Filter>
+    </ClInclude>
+    <ClInclude Include="itv.oasis.home.h">
+      <Filter>Oasis\Content</Filter>
+    </ClInclude>
+    <ClInclude Include="itv.oasis.web.h">
+      <Filter>Oasis\Content\[Details]</Filter>
+    </ClInclude>
+    <ClInclude Include="itv.oasis.renderer.h">
+      <Filter>Oasis\Content\[Details]</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Oasis">
+      <UniqueIdentifier>{7138e043-4585-4c3a-97e3-6fcad6b00496}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Oasis\App">
+      <UniqueIdentifier>{72c9f912-a642-4682-ab5f-fe5d92b98be8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Oasis\Engine">
+      <UniqueIdentifier>{188b58ba-c76a-4681-b50b-98600bbe05df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Oasis\Engine\[Details]">
+      <UniqueIdentifier>{6b6220a1-2695-4cf7-985b-5b34237172cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Oasis\Content">
+      <UniqueIdentifier>{30ee1019-6f55-44f4-aebd-98caf168fa01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Oasis\Content\[Details]">
+      <UniqueIdentifier>{b0725a7a-4a92-4bbd-8077-d386c98226de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Oasis\App\[Resources]">
+      <UniqueIdentifier>{c1ed23b6-c5c9-42a1-a8e1-15fc5af6447b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="itv.oasis.inl">
+      <Filter>Oasis</Filter>
+    </None>
+    <None Include="app.vars.xml">
+      <Filter>Oasis\App\[Resources]</Filter>
+    </None>
+    <None Include="app.vars.overrides.xml">
+      <Filter>Oasis\App\[Resources]</Filter>
+    </None>
+  </ItemGroup>
+</Project>

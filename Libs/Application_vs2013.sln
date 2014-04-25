@@ -8,6 +8,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Scripting_vs2013", "Scripting\Scripting_vs2013.vcxproj", "{189EB3E2-D8B4-4BE9-8D75-6649535A40B2}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "App_vs2013", "App\App_vs2013.vcxproj", "{124A9BDD-925A-4DE6-8560-5E5313AFACEB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{825BE28C-5810-4BFE-A6D7-EEF802FA84EA} = {825BE28C-5810-4BFE-A6D7-EEF802FA84EA}
+		{189EB3E2-D8B4-4BE9-8D75-6649535A40B2} = {189EB3E2-D8B4-4BE9-8D75-6649535A40B2}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

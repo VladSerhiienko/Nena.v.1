@@ -370,6 +370,9 @@ namespace Nena
 			static const UINT32 Destroy = WM_DESTROY;
 			static const UINT32 Close = WM_CLOSE;
 			static const UINT32 Quit = WM_QUIT;
+			static const UINT32 ExitSizeMove = WM_EXITSIZEMOVE;
+			static const UINT32 Paint = WM_PAINT;
+			static const UINT32 Timer = WM_TIMER;
 		};
 
 		typedef enum Message1 : UINT32

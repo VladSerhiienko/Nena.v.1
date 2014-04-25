@@ -49,4 +49,9 @@
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="App.inl">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>

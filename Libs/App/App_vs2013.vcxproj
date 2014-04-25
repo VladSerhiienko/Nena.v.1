@@ -36,6 +36,9 @@
       <SubType>Designer</SubType>
     </Xml>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="App.inl" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{124A9BDD-925A-4DE6-8560-5E5313AFACEB}</ProjectGuid>
     <RootNamespace>App_vs2013</RootNamespace>
@@ -130,6 +133,7 @@
 echo Copying headers...
 mkdir $(OutDir)..\Inc\Nena\
 copy $(ProjectDir)*.h $(OutDir)..\Inc\Nena\*.h
+copy $(ProjectDir)*.inl $(OutDir)..\Inc\Nena\*.inl
 echo --------------------------------------------------</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -144,11 +148,8 @@ echo --------------------------------------------------</Command>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>echo --------------------------------------------------
-echo Copying headers...
-mkdir $(OutDir)..\Inc\Nena\
-copy $(ProjectDir)*.h $(OutDir)..\Inc\Nena\*.h
-echo --------------------------------------------------</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -166,11 +167,8 @@ echo --------------------------------------------------</Command>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>echo --------------------------------------------------
-echo Copying headers...
-mkdir $(OutDir)..\Inc\Nena\
-copy $(ProjectDir)*.h $(OutDir)..\Inc\Nena\*.h
-echo --------------------------------------------------</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -188,11 +186,8 @@ echo --------------------------------------------------</Command>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>echo --------------------------------------------------
-echo Copying headers...
-mkdir $(OutDir)..\Inc\Nena\
-copy $(ProjectDir)*.h $(OutDir)..\Inc\Nena\*.h
-echo --------------------------------------------------</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

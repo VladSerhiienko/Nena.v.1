@@ -9,7 +9,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PerceptualFaceAnalysis_vs20
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PerceptualGestures_vs2013", "PerceptualGestures\PerceptualGestures_vs2013.vcxproj", "{D73EC52E-D024-4ACE-8955-F662E87584E2}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GestureWinemit_v1_vs2013", "GestureWinemit_v1\GestureWinemit_v1_vs2013.vcxproj", "{BB00F978-5544-4B25-8345-33056764396F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GestureWinemit_v1_vs2013", "GestureWinemit\GestureWinemit_v1_vs2013.vcxproj", "{BB00F978-5544-4B25-8345-33056764396F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
