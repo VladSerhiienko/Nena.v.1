@@ -6,8 +6,14 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DirectX_vs2013", "DirectX\DirectX_vs2013.vcxproj", "{71DBEF69-A6EA-498E-A1D3-465650706D0C}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DirectXOverlay_vs2013", "DirectXOverlay\DirectXOverlay_vs2013.vcxproj", "{714852A4-6115-4759-8B87-A60503F87531}"
+	ProjectSection(ProjectDependencies) = postProject
+		{71DBEF69-A6EA-498E-A1D3-465650706D0C} = {71DBEF69-A6EA-498E-A1D3-465650706D0C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DirectXResources_vs2013", "DirectXResources\DirectXResources_vs2013.vcxproj", "{28868B4B-9E2E-470E-85D9-58C9FC2A9F93}"
+	ProjectSection(ProjectDependencies) = postProject
+		{71DBEF69-A6EA-498E-A1D3-465650706D0C} = {71DBEF69-A6EA-498E-A1D3-465650706D0C}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

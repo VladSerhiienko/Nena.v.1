@@ -1,5 +1,6 @@
 #include "app.precompiled.h"
 #include "itv.oasis.home.h"
+#include "itv.oasis.air.h"
 
 struct InteractiveTV::Project::Oasis::Implementation 
 	: public InteractiveTV::Project::Oasis::Object
@@ -15,15 +16,17 @@ struct InteractiveTV::Project::Oasis::Implementation
 
 	Implementation() 
 		: home(new Oasis::Home) 
-	{ 
-		OutputDebugStringA("InteractiveTV::Project::Oasis::Implementation::Implementation()\n");
-
+	{
 		AssignId(this);
-		Name = "/.//oasis/";
-		home->Name = Name;
-		home->Name += "home/";
+		Name = _Oasis_origin;
+		Name += "impl/";
+		_Oasis_air_grabot(this, OasisAirMsg::kInfo, "impl ctor");
 	}
 
+	~Implementation()
+	{
+		delete home, home = NULL;
+	}
 };
 
 ::INT16 InteractiveTV::Project::Oasis::Implementation::s_next_id = 0;
@@ -33,31 +36,27 @@ void InteractiveTV::Project::Oasis::AssignId(Oasis::Object *object)
 	impl->AssignId(object);
 }
 
-void InteractiveTV::Project::Oasis::SetName(
-	Oasis::Object *master, 
-	Oasis::Object *slave, 
-	String const &name
-	)
-{
-	if (master && slave) slave->Name += master->Name + name + '/';
-	else if (slave) slave->Name = name;
-}
-
 InteractiveTV::Project::Oasis::Shared::Shared()
 {
 	using namespace Nena;
 	using namespace Nena::Application;
 
-	OutputDebugStringA("InteractiveTV::Project::Oasis::Shared::Shared()\n");
+	Oasis = Oasis::GetForCurrentThread();
+	Air = Oasis::Air::GetForCurrentThread();
 
+	Name = _Oasis_origin; 
+	Name += "shared/";
 
-	Oasis::GenerateUuid();
-	Path = "./.oasis/{" + Uuid + "}/";
+	_Oasis_air_grabot(this, OasisAirMsg::kInfo, "ctor");
+
+	Oasis::GenerateUuid(Uuid);
+	Path = "./.oasis/";
+	UniquePath = "./.oasis/{" + Uuid + "}/";
 	Oasis::CreateFolder(Path);
 
 	App = App::GetForCurrentThread();
 
-	App->View.Fullscreen = TRUE;
+	App->View.Fullscreen = FALSE;
 	App->View.Width = 1200;
 	App->View.Height = 800;
 	App->View.Style = Window::GameWindowStyle;
@@ -71,18 +70,20 @@ InteractiveTV::Project::Oasis::Shared::Shared()
 	Engine->Graphics.d3d.Windowed = !App->View.Fullscreen;
 
 	Web = Web::GetForCurrentThread();
-	Oasis = Oasis::GetForCurrentThread();
+
+	Engine->Graphics.d3d.DeviceLost += Nena_Delegate_MakeBind(Oasis, &Oasis::OnDeviceLost);
+	Engine->Graphics.d3d.DeviceRestored += Nena_Delegate_MakeBind(Oasis, &Oasis::OnDeviceRestored);
+	Engine->Graphics.d3d.SwapchainResizing += Nena_Delegate_MakeBind(Oasis, &Oasis::OnSwapchainResizing);
+	Engine->Graphics.d3d.SwapchainResized += Nena_Delegate_MakeBind(Oasis, &Oasis::OnSwapchainResized);
 
 	Web->Init();
 	Engine->Init();
 }
 
 InteractiveTV::Project::Oasis::Oasis()
-	: impl(new Implementation)
+	: impl(!impl ? new Implementation : impl)
 {
-	OutputDebugStringA("InteractiveTV::Project::Oasis::Oasis()\n");
-
-	Oasis::SetName(impl, &Context, "shared");
+	_Oasis_air_grabot(impl, OasisAirMsg::kInfo, "ctor");
 
 	Context.App->QuitRequested += Nena_Delegate_MakeBind(
 		this, &Oasis::OnAppQuitRequested
@@ -91,18 +92,20 @@ InteractiveTV::Project::Oasis::Oasis()
 
 InteractiveTV::Project::Oasis::~Oasis()
 {
-	OutputDebugStringA("InteractiveTV::Project::Oasis::~Oasis()\n");
+	_Oasis_air_grabot(impl, OasisAirMsg::kInfo, "dtor");
 	if (impl) delete impl, impl = nullptr;
 }
 
 void InteractiveTV::Project::Oasis::Run()
 {
-	OutputDebugStringA("InteractiveTV::Project::Oasis::Run()\n");
+	_Oasis_air_grabot(impl, OasisAirMsg::kInfo, "run");
 	impl->home->Init();
 
 	Context.App->OnUpdate = NULL;
-	Context.App->View.ResizedMoved += Nena_Delegate_MakeBind(this, &Oasis::OnViewResizedMoved);
-	Context.App->View.Toggled += Nena_Delegate_MakeBind(this, &Oasis::OnViewResizedMoved);
+
+	//Context.App->View.SizeChanged += Nena_Delegate_MakeBind(this, &Oasis::OnSizeChanged);
+	//Context.App->View.ResizedMoved += Nena_Delegate_MakeBind(this, &Oasis::OnSizeChanged);
+	//Context.App->View.Toggled += Nena_Delegate_MakeBind(this, &Oasis::OnSizeChanged);
 
 	Context.App->MessageLoop();
 }
@@ -141,29 +144,119 @@ void InteractiveTV::Project::Oasis::OnFrameMove()
 	Context.Engine->EndScene();
 }
 
-void _Nena_AppCallbackObjCallTy_ InteractiveTV::Project::Oasis::OnUpdate(::Nena::App *app)
+void InteractiveTV::Project::Oasis::OnToggleFullscreen()
 {
-	//static Oasis *s_oasis = Oasis::GetForCurrentThread(); return s_oasis->OnFrameMove();
+
+	if (Context.Engine->Graphics.d3d.Windowed)
+	{
+		_Oasis_air_grabot(impl, OasisAirMsg::kInfo, "toggle fullscreen mode");
+
+		Context.Engine->Graphics.d3d.Windowed = FALSE;
+		Context.Engine->Graphics.d3d.SetLogicalSize(0);
+	}
+	else
+	{
+		_Oasis_air_grabot(impl, OasisAirMsg::kInfo, "toggle windowed mode");
+
+		Context.Engine->Graphics.d3d.Windowed = TRUE;
+		Context.Engine->Graphics.d3d.SetLogicalSize(
+		{ 
+			(::FLOAT) Context.App->View.Width, 
+			(::FLOAT) Context.App->View.Height
+		});
+	}
+}
+
+void InteractiveTV::Project::Oasis::OnDeviceLost(::Nena::Graphics::DeviceResources *)
+{
+	_Oasis_air_grabot(impl, OasisAirMsg::kInfo, "device lost");
+
+	if (impl) impl->home->DiscardDeviceResources();
+
+	// release device dependent resources
+	Context.Engine->Graphics.d2d.TargetBitmap = nullptr;
+	Context.Engine->Graphics.d2d.Context = nullptr;
+	Context.Engine->Graphics.d2d.Device = nullptr;
+}
+
+void InteractiveTV::Project::Oasis::OnDeviceRestored(::Nena::Graphics::DeviceResources *)
+{
+	_Oasis_air_grabot(impl, OasisAirMsg::kInfo, "device restored");
+
+	// create device dependent resources
+	Context.Engine->Graphics.d2d.CreateDeviceResources(
+		&Context.Engine->Graphics.d3d
+		);
+	impl->home->CreateDeviceResources(
+		);
+}
+
+void InteractiveTV::Project::Oasis::OnSwapchainResizing(::Nena::Graphics::DeviceResources *)
+{
+	_Oasis_air_grabot(impl, OasisAirMsg::kInfo, "swapchain resizing");
+
+	// release window size dependent resources
+	if (impl) impl->home->DiscardWindowSizeDependentResources();
+
+	Context.Engine->Graphics.d2d.TargetBitmap = nullptr;
+	if (Context.Engine->Graphics.d2d.Context.Get()) 
+		Context.Engine->Graphics.d2d.Context->SetTarget(nullptr);
+}
+
+void InteractiveTV::Project::Oasis::OnSwapchainResized(::Nena::Graphics::DeviceResources *)
+{
+	_Oasis_air_grabot(impl, OasisAirMsg::kInfo, "swapchain resized");
+
+	// create window size dependent resources
+
+	if (Context.Engine->Graphics.d2d.Device.Get())
+	{
+		Context.Engine->Graphics.d2d.SetDpi(
+			&Context.Engine->Graphics.d3d,
+			Context.Engine->Graphics.d3d.Dpi.x,
+			Context.Engine->Graphics.d3d.Dpi.y
+			);
+
+		if (impl) impl->home->OnResized();
+	}
 }
 
 
-void InteractiveTV::Project::Oasis::OnViewResizedMoved(
-	_In_::Nena::Application::Window *window
+void InteractiveTV::Project::Oasis::OnSizeChanged(
+	::USHORT renderTargetWidth, ::USHORT renderTargetHeight
 	)
 {
-	Nena::Graphics::Resources::Size sz;
-	sz.Width = window->Fullscreen ? window->ScreenWidth : window->Width;
-	sz.Height = window->Fullscreen ? window->ScreenHeight : window->Height;
-	Context.Engine->Graphics.d3d.Windowed = !window->Fullscreen;
+	_Oasis_air_grabot(impl, OasisAirMsg::kInfo, "swapchain adjusting");
 
-	Context.Engine->Graphics.d3d.SetLogicalSize(sz);
-	Context.Engine->Graphics.d2d.CreateWindowSizeDependentResources(
-		Context.Engine->Graphics.d3d.Swapchain.Get()
-		);
-
-	impl->home->OnViewResizedMoved(window);
+	if (!Context.Engine->Graphics.d3d.Windowed)
+	{
+		if (renderTargetWidth != 0 &&
+			renderTargetHeight != 0 &&
+			renderTargetWidth != Context.App->View.Width &&
+			renderTargetHeight != Context.App->View.Height)
+		{
+			Context.Engine->Graphics.d3d.Swapchain->ResizeBuffers(
+				Context.Engine->Graphics.d3d.SwapchainBufferCount,
+				renderTargetWidth, renderTargetHeight,
+				Context.Engine->Graphics.d3d.RenderTargetFormat,
+				DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH
+				);
+		}
+	}
+	else
+	{
+		if (renderTargetWidth != 0 &&
+			renderTargetHeight != 0)
+		{
+			Context.Engine->Graphics.d3d.Swapchain->ResizeBuffers(
+				Context.Engine->Graphics.d3d.SwapchainBufferCount,
+				renderTargetWidth, renderTargetHeight,
+				Context.Engine->Graphics.d3d.RenderTargetFormat,
+				DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH
+				);
+		}
+	}
 }
-
 
 #pragma region State changes
 
@@ -200,82 +293,66 @@ void InteractiveTV::Project::Oasis::OnStateDestroyed(
 
 void InteractiveTV::Project::Oasis::Quit()
 {
-	OutputDebugStringA("InteractiveTV::Project::Oasis::Quit()\n");
+	_Oasis_air_grabot(impl, OasisAirMsg::kInfo, "quit");
 
 	OnQuit();
-	::PostQuitMessage(EXIT_SUCCESS);
+	if (Context.App->View.Raw) Context.App->View.Close();
+	else ::PostQuitMessage(EXIT_SUCCESS);
 }
 void InteractiveTV::Project::Oasis::OnQuit()
 {
-	OutputDebugStringA("InteractiveTV::Project::Oasis::OnQuit()\n");
+	_Oasis_air_grabot(impl, OasisAirMsg::kInfo, "on quit");
 
+	impl->home->Quit();
 	Context.Web->Quit();
 	Context.Engine->Quit();
 }
 void InteractiveTV::Project::Oasis::OnAppQuitRequested(::Nena::App *app)
 {
-	OutputDebugStringA("InteractiveTV::Project::Oasis::OnAppQuitRequested()\n");
+	_Oasis_air_grabot(impl, OasisAirMsg::kInfo, "on app quit requested");
 
 	OnQuit();
 }
 
-void InteractiveTV::Project::Oasis::OnKeyPressed(::UINT32 key)
+void InteractiveTV::Project::Oasis::OnKeyPressed(::UINT32 k)
 {
-	Awesomium::WebKeyboardEvent e;
-	ZeroMemory(&e, sizeof e);
-	e.type = Awesomium::WebKeyboardEvent::kTypeKeyDown;
-	e.virtual_key_code = key;
-	//e.native_key_code = key;
-
-	if (!impl->home->Oasis::Web::AppBase::View->IsLoading())
-		impl->home->Oasis::Web::AppBase::View->InjectKeyboardEvent(e);
+	return impl->home->OnKeyPressed(k);
 }
 
-void InteractiveTV::Project::Oasis::OnKeyReleased(::UINT32 key)
+void InteractiveTV::Project::Oasis::OnKeyReleased(::UINT32 k)
 {
-	Awesomium::WebKeyboardEvent e;
-	ZeroMemory(&e, sizeof e);
-	e.type = Awesomium::WebKeyboardEvent::kTypeKeyUp;
-	e.virtual_key_code = key;
-	//e.native_key_code = key;
-
-	if (!impl->home->Oasis::Web::AppBase::View->IsLoading())
-		impl->home->Oasis::Web::AppBase::View->InjectKeyboardEvent(e);
+	return impl->home->OnKeyReleased(k);
 }
 
-void InteractiveTV::Project::Oasis::OnMouseMoved(::UINT32 x, ::UINT32 y)
+void InteractiveTV::Project::Oasis::OnMouseMoved(::FLOAT x, ::FLOAT y)
 {
-	if (!impl->home->Oasis::Web::AppBase::View->IsLoading())
-		impl->home->Oasis::Web::AppBase::View->InjectMouseMove(x, y);
+	return impl->home->OnMouseMoved(x, y);
 }
 
-void InteractiveTV::Project::Oasis::OnMouseLBPressed(::UINT32 x, ::UINT32 y)
+void InteractiveTV::Project::Oasis::OnMouseLBPressed(::FLOAT x, ::FLOAT y)
 {
-	if (!impl->home->Oasis::Web::AppBase::View->IsLoading())
-		impl->home->Oasis::Web::AppBase::View->InjectMouseDown(Awesomium::MouseButton::kMouseButton_Left);
+	return impl->home->OnMouseLBPressed(x, y);
 }
 
-void InteractiveTV::Project::Oasis::OnMouseRBPressed(::UINT32 x, ::UINT32 y)
+void InteractiveTV::Project::Oasis::OnMouseRBPressed(::FLOAT x, ::FLOAT y)
 {
-	if (!impl->home->Oasis::Web::AppBase::View->IsLoading())
-		impl->home->Oasis::Web::AppBase::View->InjectMouseDown(Awesomium::MouseButton::kMouseButton_Right);
+	return impl->home->OnMouseRBPressed(x, y);
 }
 
-void InteractiveTV::Project::Oasis::OnMouseLBReleased(::UINT32 x, ::UINT32 y)
+void InteractiveTV::Project::Oasis::OnMouseLBReleased(::FLOAT x, ::FLOAT y)
 {
-	if (!impl->home->Oasis::Web::AppBase::View->IsLoading())
-		impl->home->Oasis::Web::AppBase::View->InjectMouseUp(Awesomium::MouseButton::kMouseButton_Left);
+	return impl->home->OnMouseLBReleased(x, y);
 }
 
-void InteractiveTV::Project::Oasis::OnMouseRBReleased(::UINT32 x, ::UINT32 y)
+void InteractiveTV::Project::Oasis::OnMouseRBReleased(::FLOAT x, ::FLOAT y)
 {
-	if (!impl->home->Oasis::Web::AppBase::View->IsLoading())
-		impl->home->Oasis::Web::AppBase::View->InjectMouseUp(Awesomium::MouseButton::kMouseButton_Left);
+	return impl->home->OnMouseRBReleased(x, y);
 }
 
 #pragma region Utility
 
 void InteractiveTV::Project::Oasis::GenerateUuid(
+	Oasis::String &path
 	)
 {
 	::UUID uuid;
@@ -287,8 +364,7 @@ void InteractiveTV::Project::Oasis::GenerateUuid(
 	rpc_status = ::UuidToStringA(&uuid, &rpc_cstring);
 
 	sprintf_s(uuid_buffer, "%s", rpc_cstring);
-
-	Oasis::GetForCurrentThread()->Context.Uuid = uuid_buffer;
+	path = uuid_buffer;
 
 	::RpcStringFreeA(&rpc_cstring);
 }

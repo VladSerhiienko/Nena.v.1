@@ -1,163 +1,89 @@
 #include "app.precompiled.h"
+#include "itv.remote.control.h"
 #include "itv.oasis.web.h"
 #include "itv.oasis.h"
 
 #ifndef __NENA_INTERACTIVE_TV_OASIS_HOME_INCLUDED__
 #define __NENA_INTERACTIVE_TV_OASIS_HOME_INCLUDED__
 
-namespace InteractiveTV
+struct InteractiveTV::Project::Oasis::Home
+	: public Oasis::State
+	, public Remote::Input::Feed
 {
-	namespace Project
+	struct Hub;
+	struct SignIn;
+	struct StartScreen;
+
+	typedef struct State 
+		: public Oasis::State
 	{
-		struct Oasis::Home
-			: public Oasis::State
-			, public Oasis::Web::AppBase
-			, private Awesomium::JSMethodHandler
-			, private Awesomium::WebViewListener::View
-			, private Awesomium::WebViewListener::Load
-			, private Awesomium::WebViewListener::Process
+		typedef std::vector<Oasis::Home::State *> List;
+
+		virtual void OnResized() = 0;
+		virtual void OnFrameMove() = 0;
+		virtual void CreateDeviceResources() = 0;
+		virtual void CreateDeviceIndependentResources() = 0;
+		virtual void CreateWindowSizeDependentResources() = 0;
+		virtual void DiscardDeviceResources() = 0;
+		virtual void DiscardWindowSizeDependentResources() = 0;
+
+		State(Oasis::Home *home)
+			: Oasis::State(home)
+			, Host(home)
 		{
+		}
+		virtual ~State()
+		{
+		}
 
-			Home();
-			virtual ~Home();
+	protected:
 
-			void Init();
-			void Quit();
-			void OnFrameMove();
+		Oasis::Home *Host;
 
-			::HRESULT CreateDeviceResources();
-			::HRESULT CreateDeviceIndependentResources();
-			::HRESULT CreateWindowSizeDependentResources();
+	} State;
 
-		private:
+	Home();
+	virtual ~Home();
 
-			Oasis::Shared *Context;
+	void Init();
+	void Quit();
 
-			::Nena::Graphics::OverlayResources *Overlay;
-			::Nena::Graphics::Resources::Direct2DBitmap ViewImage;
-			::Nena::Graphics::Resources::Direct2DDrawingStateBlock BlockState;
+	void OnFrameMove();
+	void OnBeginFrameMove();
+	void OnEndFrameMove();
 
-		public:
+	void CreateDeviceResources();
+	void CreateDeviceIndependentResources();
+	void CreateWindowSizeDependentResources();
+	void DiscardDeviceResources();
+	void DiscardWindowSizeDependentResources();
 
-#pragma region Oasis State
+	Oasis::Shared *Context = nullptr;
 
-			virtual void Resume();
-			virtual void Suspend();
-			virtual void OnStateQuitted(_In_ Oasis::State *);
-			virtual void OnStateResumed(_In_ Oasis::State *);
-			virtual void OnStateSuspended(_In_ Oasis::State *);
-			virtual void OnViewClosed(_In_ Oasis::State::View *);
-			virtual void OnViewClosing(_In_ Oasis::State::View *);
-			virtual void OnViewToggled(_In_ Oasis::State::View *);
-			virtual void OnViewResizedMoved(_In_ Oasis::State::View *);
+	::BOOL IsResizing = FALSE;
+	::Nena::Graphics::OverlayResources *Overlay = nullptr;
+	::Nena::Graphics::Resources::Direct2DDrawingStateBlock BlockState = nullptr;
 
-#pragma endregion
+	virtual void Resume() override;
+	virtual void Suspend() override;
+	virtual void OnStateQuitted(_In_ Oasis::State *) override;
+	virtual void OnStateResumed(_In_ Oasis::State *) override;
+	virtual void OnStateSuspended(_In_ Oasis::State *) override;
 
-		private:
+	void OnResized();
+	void OnKeyPressed(_In_::UINT32);
+	void OnKeyReleased(_In_::UINT32);
+	void OnMouseMoved(_In_::FLOAT, _In_::FLOAT);
+	void OnMouseLBPressed(_In_::FLOAT, _In_::FLOAT);
+	void OnMouseRBPressed(_In_::FLOAT, _In_::FLOAT);
+	void OnMouseLBReleased(_In_::FLOAT, _In_::FLOAT);
+	void OnMouseRBReleased(_In_::FLOAT, _In_::FLOAT);
 
-#pragma region Shortcuts
+private:
 
-			::HRESULT OnUpdateViewImage();
-			__forceinline Awesomium::WebView *GetView()	{ return Oasis::Web::AppBase::View; }
-			__forceinline Awesomium::BitmapSurface *GetViewSurface() { return static_cast<Awesomium::BitmapSurface*>(Oasis::Web::AppBase::View->surface()); }
-
-#pragma endregion
-
-		protected:
-
-#pragma region Awesomium WebView Listeners
-
-			virtual void OnChangeTitle(
-			_In_ Awesomium::WebView* caller,
-			_In_ const Awesomium::WebString& title
-			);
-			virtual void OnChangeAddressBar(
-				_In_ Awesomium::WebView* caller,
-				_In_ const Awesomium::WebURL& url
-				);
-			virtual void OnChangeTooltip(
-				_In_ Awesomium::WebView* caller,
-				_In_ const Awesomium::WebString& tooltip
-				);
-			virtual void OnChangeTargetURL(
-				_In_ Awesomium::WebView* caller,
-				_In_ const Awesomium::WebURL& url
-				);
-			virtual void OnChangeCursor(
-				_In_ Awesomium::WebView* caller,
-				_In_ Awesomium::Cursor cursor
-				);
-			virtual void OnChangeFocus(
-				_In_ Awesomium::WebView* caller,
-				_In_ Awesomium::FocusedElementType focused_type
-				);
-			virtual void OnAddConsoleMessage(
-				_In_ Awesomium::WebView* caller,
-				_In_ const Awesomium::WebString& message,
-				_In_ int line_number,
-				_In_ const Awesomium::WebString& source
-				);
-			virtual void OnShowCreatedWebView(
-				_In_ Awesomium::WebView* caller,
-				_In_ Awesomium::WebView* new_view,
-				_In_ const Awesomium::WebURL& opener_url,
-				_In_ const Awesomium::WebURL& target_url,
-				_In_ const Awesomium::Rect& initial_pos,
-				_In_ bool is_popup
-				);
-			virtual void OnBeginLoadingFrame(
-				_In_ Awesomium::WebView* caller,
-				_In_ int64 frame_id,
-				_In_ bool is_main_frame,
-				_In_ const Awesomium::WebURL& url,
-				_In_ bool is_error_page
-				);
-			virtual void OnFailLoadingFrame(
-				_In_ Awesomium::WebView* caller,
-				_In_ int64 frame_id,
-				_In_ bool is_main_frame,
-				_In_ const Awesomium::WebURL& url,
-				_In_ int error_code,
-				_In_ const Awesomium::WebString& error_desc
-				);
-			virtual void OnFinishLoadingFrame(
-				_In_ Awesomium::WebView* caller,
-				_In_ int64 frame_id,
-				_In_ bool is_main_frame,
-				_In_ const Awesomium::WebURL& url
-				);
-			virtual void OnDocumentReady(
-				_In_ Awesomium::WebView* caller,
-				_In_ const Awesomium::WebURL& url
-				);
-			virtual void OnUnresponsive(
-				_In_ Awesomium::WebView* caller
-				);
-			virtual void OnResponsive(
-				_In_ Awesomium::WebView* caller
-				);
-			virtual void OnCrashed(
-				_In_ Awesomium::WebView* caller,
-				_In_ Awesomium::TerminationStatus status
-				);
-			virtual void OnMethodCall(
-				Awesomium::WebView* caller,
-				unsigned int remote_object_id,
-				const Awesomium::WebString& method_name,
-				const Awesomium::JSArray& args
-				);
-			virtual Awesomium::JSValue OnMethodCallWithReturnValue(
-				_In_ Awesomium::WebView* caller,
-				_In_ unsigned int remote_object_id,
-				_In_ const Awesomium::WebString& method_name,
-				_In_ const Awesomium::JSArray& args
-				);
-
-#pragma endregion
-
-		};
-	}
-}
+	State::List states;
+	Remote::Input remote_input;
+};
 
 #endif // !__NENA_INTERACTIVE_TV_OASIS_HOME_INCLUDED__
 

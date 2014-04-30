@@ -8,7 +8,7 @@ namespace InteractiveTV
 {
 	namespace Project
 	{
-		struct Oasis::Web
+		struct Oasis::Web : public Oasis::Object
 		{
 			struct AppBase
 			{

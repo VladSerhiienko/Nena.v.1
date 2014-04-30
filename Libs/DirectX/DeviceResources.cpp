@@ -19,33 +19,59 @@ const float Nena::Graphics::DeviceResources::DipsPerInch = 96.0f;
 
 ::BOOL Nena::Graphics::DeviceResources::UpdateLogicalSizeAndCurrentOrientation()
 {
-	::INT status = 0;
+	::BOOL status_devmode = 0;
+	::BOOL status_monitor = 0;
 	::RECT clientRect = { 0 };
-	::DEVMODE screenSettings = { 0 };
+	::HMONITOR monitorHandle = 0;
+	::DEVMODEA screenSettings = { 0 };
+	::MONITORINFOEXA monitorInfo;
 
-	screenSettings.dmSize = sizeof DEVMODE;
-	status = ::EnumDisplaySettingsEx(
+	screenSettings.dmSize = sizeof DEVMODEA;
+	status_devmode = ::EnumDisplaySettingsExA(
 		nullptr, ENUM_CURRENT_SETTINGS,
 		&screenSettings,
 		EDS_ROTATEDMODE
 		);
 
-	CurrentOrientation = screenSettings.dmDisplayOrientation;
+	if (status_devmode)
+		CurrentOrientation = screenSettings.dmDisplayOrientation;
+
+	status_monitor = FALSE;
+	monitorHandle = ::MonitorFromWindow(Host, MONITOR_DEFAULTTOPRIMARY);
+	if (monitorHandle != NULL && monitorHandle != INVALID_HANDLE_VALUE)
+	{
+		ZeroMemory(&monitorInfo, sizeof monitorInfo);
+		monitorInfo.cbSize = sizeof monitorInfo;
+
+		if (::GetMonitorInfoA(monitorHandle, &monitorInfo))
+		{
+			LogicalSize.Width = (::FLOAT) (monitorInfo.rcMonitor.right - monitorInfo.rcMonitor.left);
+			LogicalSize.Height = (::FLOAT) (monitorInfo.rcMonitor.bottom - monitorInfo.rcMonitor.top);
+			status_monitor = TRUE;
+		}
+
+		status_devmode = ::EnumDisplaySettingsExA(
+			monitorInfo.szDevice, ENUM_CURRENT_SETTINGS,
+			&screenSettings,
+			EDS_ROTATEDMODE
+			);
+	}
+
 
 	if (Windowed)
 	{
-		status = ::GetClientRect(Host, &clientRect);
-		LogicalSize.Width = (float) clientRect.right;
-		LogicalSize.Height = (float) clientRect.bottom;
+		status_devmode = ::GetClientRect(Host, &clientRect);
+		LogicalSize.Width = (::FLOAT) clientRect.right;
+		LogicalSize.Height = (::FLOAT) clientRect.bottom;
 	}
 	else
 	{
-		LogicalSize.Width = (float) screenSettings.dmPelsWidth;
-		LogicalSize.Height = (float) screenSettings.dmPelsHeight;
+		if (status_devmode)
+			LogicalSize.Width = (float)screenSettings.dmPelsWidth,
+			LogicalSize.Height = (float)screenSettings.dmPelsHeight;
 	}
 
-	return status;
-
+	return status_devmode || status_monitor;
 }
 
 HRESULT Nena::Graphics::DeviceResources::SetWindow(
@@ -76,7 +102,8 @@ HRESULT Nena::Graphics::DeviceResources::SetLogicalSize(
 {
 	if (LogicalSize != logicalSize)
 	{
-		LogicalSize = logicalSize;
+		if (Windowed) LogicalSize = logicalSize;
+		else UpdateLogicalSizeAndCurrentOrientation();
 		return CreateWindowSizeDependentResources();
 
 	} else return S_OK;
@@ -90,7 +117,6 @@ HRESULT Nena::Graphics::DeviceResources::SetDpi(
 	if (Dpi.x != dpix || Dpi.y != dpiy)
 	{
 		::INT status = 0;
-		::RECT clientRect = { 0 };
 
 		Dpi.x = dpix; 
 		Dpi.y = dpiy;
@@ -98,7 +124,6 @@ HRESULT Nena::Graphics::DeviceResources::SetDpi(
 		// When the display DPI changes, the logical size of the window (measured in Dips) 
 		// also changes and needs to be updated.
 		status = UpdateLogicalSizeAndCurrentOrientation();
-
 		return CreateWindowSizeDependentResources();
 
 	} else return S_OK;
@@ -144,6 +169,7 @@ Nena::Graphics::DeviceResources::DeviceResources(
 	{
 		error = CreateDeviceIndependentResources();
 		Valid = SUCCEEDED(error); if (FAILED(error)) return;
+
 		error = CreateDeviceResources();
 		Valid = SUCCEEDED(error); if (FAILED(error)) return;
 	}
@@ -250,7 +276,7 @@ HRESULT Nena::Graphics::DeviceResources::CreateDeviceResources()
 	result = context.As(&Context);
 	if (FAILED(result)) return result;
 
-
+	DeviceRestored(this);
 	return result;
 }
 
@@ -326,6 +352,7 @@ HRESULT Nena::Graphics::DeviceResources::HandleDeviceLost()
 	Swapchain = nullptr;
 
 	if (DeviceNotify) DeviceNotify->OnDeviceLost();
+	DeviceLost(this);
 
 	result = CreateDeviceResources();
 	if (FAILED(result)) return result;
@@ -334,6 +361,7 @@ HRESULT Nena::Graphics::DeviceResources::HandleDeviceLost()
 	if (FAILED(result)) return result;
 
 	if (DeviceNotify) DeviceNotify->OnDeviceRestored();
+	DeviceRestored(this);
 
 	return S_OK;
 }
@@ -350,12 +378,10 @@ HRESULT Nena::Graphics::DeviceResources::CreateWindowSizeDependentResources()
 		if (RenderTargetFormat != DXGI_FORMAT_R16G16B16A16_FLOAT &&
 			RenderTargetFormat != DXGI_FORMAT_B8G8R8A8_UNORM &&
 			RenderTargetFormat != DXGI_FORMAT_R8G8B8A8_UNORM)
-		{
 			SwapchainEffect = DXGI_SWAP_EFFECT_DISCARD;
-			OutputDebugStringA(__TEXT("\tSwapchainEffect = DXGI_SWAP_EFFECT_DISCARD\n"));
-		}
 	}
 
+	//SwapchainEffect = DXGI_SWAP_EFFECT_DISCARD;
 	DXGI_SCALING scaling = SwapchainEffect != DXGI_SWAP_EFFECT_FLIP_SEQUENTIAL ?
 		DXGI_SCALING::DXGI_SCALING_STRETCH :
 		DXGI_SCALING::DXGI_SCALING_NONE;
@@ -365,14 +391,17 @@ HRESULT Nena::Graphics::DeviceResources::CreateWindowSizeDependentResources()
 	Context->OMSetRenderTargets(ARRAYSIZE(nullViews), nullViews, nullptr);
 	RenderTargetView = nullptr;
 	DepthStencilView = nullptr;
+
+	SwapchainResizing(this);
+
 	Context->Flush();
 
 	// Calculate the necessary render target size in pixels.
 	// Prevent zero size DirectX content from being created.
 	OutputSize.Width = Dips2Pels(LogicalSize.Width, Dpi.x);
 	OutputSize.Height = Dips2Pels(LogicalSize.Height, Dpi.y);
-	OutputSize.Width = max(OutputSize.Width, 1);
-	OutputSize.Height = max(OutputSize.Height, 1);
+	OutputSize.Width = max(OutputSize.Width, 8),
+	OutputSize.Height = max(OutputSize.Height, 8);
 
 
 	// The width and height of the swap chain must be based on the window's
@@ -468,7 +497,22 @@ HRESULT Nena::Graphics::DeviceResources::CreateWindowSizeDependentResources()
 		}
 	}
 
-	Swapchain->SetFullscreenState(!Windowed, nullptr);
+	if (!Windowed) // && FALSE)
+	{
+		::BOOL fullscreen;
+		::Microsoft::WRL::ComPtr<IDXGIOutput> output;
+		if (SUCCEEDED(Swapchain->GetFullscreenState(
+			&fullscreen, output.ReleaseAndGetAddressOf()
+			))) output = nullptr;
+		else fullscreen = false;
+
+		::ShowWindow(Host, SW_MINIMIZE);
+		::ShowWindow(Host, SW_RESTORE);
+	}
+
+	Swapchain->SetFullscreenState(
+		!Windowed, NULL
+		);
 
 	// Set the proper orientation for the swap chain, and generate 2D and
 	// 3D matrix transformations for rendering to the rotated swap chain.
@@ -502,6 +546,11 @@ HRESULT Nena::Graphics::DeviceResources::CreateWindowSizeDependentResources()
 	Microsoft::WRL::ComPtr<ID3D11Texture2D> backBuffer;
 	result = Swapchain->GetBuffer(0, IID_PPV_ARGS(&backBuffer));
 	if (FAILED(result)) return result;
+
+	D3D11_TEXTURE2D_DESC backBufferDesc;
+	backBuffer->GetDesc(&backBufferDesc);
+	ActualRenderTargetSize.Width = (::FLOAT) backBufferDesc.Width;
+	ActualRenderTargetSize.Height = (::FLOAT) backBufferDesc.Height;
 
 	result = Device->CreateRenderTargetView(
 		backBuffer.Get(), nullptr,
@@ -541,6 +590,7 @@ HRESULT Nena::Graphics::DeviceResources::CreateWindowSizeDependentResources()
 
 	Context->RSSetViewports(1, &Viewport);
 
+	SwapchainResized(this);
 	return result;
 }
 

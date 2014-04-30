@@ -12,6 +12,7 @@ Nena::Application::Window::Window()
 	, Name(__TEXT("NenaWindowClass"))
 	, Fullscreen(false)
 	, Raw(nullptr)
+	, TrustDxgi(FALSE)
 {
 	::OutputDebugStringA("Nena::Application::Window::Window()\n");
 }
@@ -128,10 +129,10 @@ void Nena::Application::Window::Initialize(
 			ScreenWidth = 0,
 			ScreenHeight = 0;
 		else
-			ScreenWidth = (UInt16) screen.dmPelsWidth,
-			ScreenHeight = (UInt16) screen.dmPelsHeight;
-
-		X = Y = 0;
+			ScreenWidth = (UInt16)screen.dmPelsWidth,
+			ScreenHeight = (UInt16)screen.dmPelsHeight,
+			X = (Int16)((ScreenWidth - Width) / 2),
+			Y = (Int16)((ScreenHeight - Height) / 2);
 	}
 
 	if (Fullscreen) Raw = ::CreateWindowExA(
@@ -297,7 +298,7 @@ Nena::Application::Window::Boolean Nena::Application::Window::ToggleFullscreen()
 	ZeroMemory(&monitorInfo, sizeof MONITORINFOEXA);
 	monitorInfo.cbSize = sizeof MONITORINFOEXA;
 
-	monitorHandle = ::MonitorFromWindow(Raw, MONITOR_DEFAULTTONEAREST);
+	monitorHandle = ::MonitorFromWindow(Raw, MONITOR_DEFAULTTOPRIMARY);
 	if (monitorHandle == INVALID_HANDLE_VALUE || monitorHandle == NULL)
 	{
 		::OutputDebugStringA("\tFailed to get current monitor handle\n");

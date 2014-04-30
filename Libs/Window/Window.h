@@ -87,6 +87,7 @@ namespace Nena
 			/// Events
 
 			Window::WindowEvent ResizedMoved;	//! should be emitted externally (by game engine)
+			Window::WindowEvent SizeChanged;	//! should be emitted externally (by game engine)
 			Window::WindowEvent Toggled;		//! fires with user toggles fullscreen/windowed modes
 			Window::WindowEvent Created;		//! fires when window was successfully created
 			Window::WindowEvent Closing;		//! fires just before this window will be closed
@@ -106,6 +107,7 @@ namespace Nena
 			Window::String Name;			//! this window title, @see SetTitle
 			Window::Handle Raw;				//! this window handle, so the developer could use it @note do not modify
 			Window::ULong Style;			//! current window style, @see static window styles
+			Window::Boolean TrustDxgi;		//! when switching to/from fullscreen 
 
 			Window();
 			~Window();

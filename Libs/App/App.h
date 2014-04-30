@@ -118,6 +118,44 @@ namespace Nena
 			KeyboardEvent(_In_::UINT32 msg = Message::Other);
 		} KeyboardEvent;
 
+
+		struct PaintEvent : public Dispatcher::Event
+		{
+			PaintEvent();
+		};
+
+		struct ViewResizedMovedEvent : public Dispatcher::Event
+		{
+			static ::LRESULT _Nena_DispatcherCallTy_ ExitSizeMove(
+			_In_ Nena::Dispatcher::Event *e,
+			_In_::HWND hwnd, _In_::UINT32 msg,
+			_In_::WPARAM wparam, _In_::LPARAM lparam
+			);
+			ViewResizedMovedEvent();
+		};
+
+		struct ViewSizeChangedEvent : public Dispatcher::Event
+		{
+			static ::LRESULT _Nena_DispatcherCallTy_ ViewSizeChanged(
+			_In_ Nena::Dispatcher::Event *e,
+			_In_::HWND hwnd, _In_::UINT32 msg,
+			_In_::WPARAM wparam, _In_::LPARAM lparam
+			);
+			ViewSizeChangedEvent();
+		};
+
+		// Can be used to handle Dispatcher::Message::Close and 
+		// Dispatcher::Message::Destroy events.
+		struct QuitEvent : public Dispatcher::Event
+		{
+			static ::LRESULT _Nena_DispatcherCallTy_ PostQuitMessageCallback(
+			_In_ Event *e, _In_::HWND hwnd, _In_::UINT32 msg,
+			_In_::WPARAM wparam, _In_::LPARAM lparam
+			);
+
+			QuitEvent(_In_::UINT32 msg);
+		};
+
 		typedef struct LaunchEvent : public Event
 		{
 			__forceinline static ::LRESULT _Nena_DispatcherCallTy_ Fire(
@@ -187,34 +225,6 @@ namespace Nena
 		typedef ::Nena::Delegate<void, ::Nena::App *> AppHandler;
 		typedef ::Nena::Event<void, ::Nena::App *> AppEvent;
 
-
-		struct PaintEvent : public Dispatcher::Event
-		{
-			PaintEvent();
-		};
-
-		struct ViewResizedMovedEvent : public Dispatcher::Event
-		{
-			static ::LRESULT _Nena_DispatcherCallTy_ ExitSizeMove(
-				_In_ Nena::Dispatcher::Event *e,
-				_In_::HWND hwnd, _In_::UINT32 msg,
-				_In_::WPARAM wparam, _In_::LPARAM lparam
-				);
-			ViewResizedMovedEvent();
-		};
-
-		// Can be used to handle Dispatcher::Message::Close and 
-		// Dispatcher::Message::Destroy events.
-		struct QuitEvent : public Dispatcher::Event
-		{
-			static ::LRESULT _Nena_DispatcherCallTy_ PostQuitMessageCallback(
-				_In_ Event *e, _In_::HWND hwnd, _In_::UINT32 msg,
-				_In_::WPARAM wparam, _In_::LPARAM lparam
-				);
-
-			QuitEvent(_In_::UINT32 msg);
-		};
-
 		struct UserEvent : public Dispatcher::Event
 		{
 			static ::LRESULT _Nena_DispatcherCallTy_ Dispatch(
@@ -247,9 +257,10 @@ namespace Nena
 		Simulation::StepTimer Timer;
 		Application::Window View;
 
-		App::ViewResizedMovedEvent ViewResizedMoved;
-		App::QuitEvent DestroyEvent;
-		App::QuitEvent CloseEvent;
+		Dispatcher::ViewResizedMovedEvent ViewResizedMoved;
+		Dispatcher::ViewSizeChangedEvent ViewSizeChanged;
+		Dispatcher::QuitEvent DestroyEvent;
+		Dispatcher::QuitEvent CloseEvent;
 		AppEvent MessageLoopStarted;
 		AppEvent MessageLoopQuit;
 		AppEvent QuitRequested;

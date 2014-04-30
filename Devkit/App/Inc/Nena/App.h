@@ -18,6 +18,9 @@
 #include <Windows.h>
 #include <Nena\Window.h>
 #include <Nena\StepTimer.h>
+#include <Nena\Delegate.h>
+#include <ppl.h>
+#include <ppltasks.h>
 
 #include "AppNeon.h"
 #include "AppEventAssets.h"
@@ -27,7 +30,6 @@
 
 #define _Nena_DispatcherCallbackObjCallTy_			__vectorcall
 #define _Nena_AppCallbackObjCallTy_					__fastcall
-#define _Nena_DispatcherCallTy_						__fastcall
 #define _Nena_DispatcherCallTy_						__fastcall
 
 namespace Nena
@@ -40,39 +42,39 @@ namespace Nena
 		typedef ::Nena::Application::Message Message;
 		typedef ::Nena::Utilities::Neon::N128 GenericArgs;
 
-		typedef GenericArgs(_Nena_DispatcherCallTy_*ExtractObj)(_In_ Event *, _In_ HWND, _In_ UINT32, _In_ WPARAM, _In_ LPARAM);
-		typedef LRESULT(_Nena_DispatcherCallTy_*DispatchObj)(_In_ Event *, _In_ HWND, _In_ UINT32, _In_ WPARAM, _In_ LPARAM);
-		typedef BOOL(_Nena_DispatcherCallTy_*CallbackObj)(_In_ Event *, _In_ GenericArgs const &);
+		typedef GenericArgs(_Nena_DispatcherCallTy_*ExtractObj)(_In_ Event *, _In_::HWND, _In_::UINT32, _In_::WPARAM, _In_::LPARAM);
+		typedef ::LRESULT(_Nena_DispatcherCallTy_*DispatchObj)(_In_ Event *, _In_::HWND, _In_::UINT32, _In_::WPARAM, _In_::LPARAM);
+		typedef ::BOOL(_Nena_DispatcherCallTy_*CallbackObj)(_In_ Event *, _In_ GenericArgs const &);
 
 		typedef struct Event
 		{
 			friend App;
 			friend Dispatcher;
 
-			static const UINT32 MinPriority = 5u;
-			static const UINT32 MaxPriority = 1000u;
+			static const ::UINT32 MinPriority = 5u;
+			static const ::UINT32 MaxPriority = 1000u;
 
-			static LRESULT _Nena_DispatcherCallTy_ DefaultDispatcherSafe(
-				_In_ Event *e, _In_ HWND hwnd, _In_ UINT32 msg,
-				_In_ WPARAM wparam, _In_ LPARAM lparam
+			static ::LRESULT _Nena_DispatcherCallTy_ DefaultDispatcherSafe(
+				_In_ Event *e, _In_::HWND hwnd, _In_::UINT32 msg,
+				_In_::WPARAM wparam, _In_::LPARAM lparam
 				);
 			static LRESULT _Nena_DispatcherCallTy_ DefaultDispatcherFast(
-				_In_ Event *e, _In_ HWND hwnd, _In_ UINT32 msg,
-				_In_ WPARAM wparam, _In_ LPARAM lparam
+				_In_ Event *e, _In_::HWND hwnd, _In_::UINT32 msg,
+				_In_::WPARAM wparam, _In_::LPARAM lparam
 				);
 			static void ClampEventPriority(
 				_In_ Event *e
 				);
 
-			Event(_In_ UINT32 msg = Message::Other); // msg ctor
+			Event(_In_::UINT32 msg = Message::Other); // msg ctor
 			void Insert(_In_ Event *other);
 
-			void SetPriority(UINT32 priority);
-			UINT32 GetPriority();
+			void SetPriority(::UINT32 priority);
+			::UINT32 GetPriority();
 
-			__forceinline LRESULT _Nena_DispatcherCallTy_ Dispatch(
-				_In_ HWND hwnd, _In_ UINT32 msg,
-				_In_ WPARAM wparam, _In_ LPARAM lparam
+			__forceinline ::LRESULT _Nena_DispatcherCallTy_ Dispatch(
+				_In_::HWND hwnd, _In_::UINT32 msg,
+				_In_::WPARAM wparam, _In_::LPARAM lparam
 				)
 			{
 				return OnDispatch(
@@ -81,7 +83,7 @@ namespace Nena
 					);
 			}
 
-			UINT32 Msg = Message::Other; // window message to react on
+			::UINT32 Msg = Message::Other; // window message to react on
 			DispatchObj OnDispatch = nullptr; // is called in dispatch method
 			CallbackObj Callee = nullptr; // call this if event is caught
 			ExtractObj Parser = nullptr; // call this when event should be parsed
@@ -92,35 +94,73 @@ namespace Nena
 
 		private:
 
-			UINT32 Priority = MinPriority;
+			::UINT32 Priority = MinPriority;
 		} Event, BasicEvent;
 
 		typedef struct MouseEvent : public Event
 		{
-			static GenericArgs __fastcall MissingParser(
+			static GenericArgs _Nena_DispatcherCallTy_ MissingParser(
 				_In_ Event *e,
-				_In_ HWND hwnd, _In_ UINT32 msg,
-				_In_ WPARAM wparam, _In_ LPARAM lparam
+				_In_::HWND hwnd, _In_::UINT32 msg,
+				_In_::WPARAM wparam, _In_::LPARAM lparam
 				);
 
-			MouseEvent(_In_ UINT32 msg = Message::Other);
+			MouseEvent(_In_::UINT32 msg = Message::Other);
 		} MouseEvent;
 
 		typedef struct KeyboardEvent : public Event
 		{
-			static GenericArgs __fastcall MissingParser(
-				_In_ Event *e, _In_ HWND hwnd, _In_ UINT32 msg,
-				_In_ WPARAM wparam, _In_ LPARAM lparam
+			static GenericArgs _Nena_DispatcherCallTy_ MissingParser(
+			_In_ Event *e, _In_::HWND hwnd, _In_::UINT32 msg,
+				_In_::WPARAM wparam, _In_::LPARAM lparam
 				);
 
-			KeyboardEvent(_In_ UINT32 msg = Message::Other);
+			KeyboardEvent(_In_::UINT32 msg = Message::Other);
 		} KeyboardEvent;
+
+
+		struct PaintEvent : public Dispatcher::Event
+		{
+			PaintEvent();
+		};
+
+		struct ViewResizedMovedEvent : public Dispatcher::Event
+		{
+			static ::LRESULT _Nena_DispatcherCallTy_ ExitSizeMove(
+			_In_ Nena::Dispatcher::Event *e,
+			_In_::HWND hwnd, _In_::UINT32 msg,
+			_In_::WPARAM wparam, _In_::LPARAM lparam
+			);
+			ViewResizedMovedEvent();
+		};
+
+		struct ViewSizeChangedEvent : public Dispatcher::Event
+		{
+			static ::LRESULT _Nena_DispatcherCallTy_ ViewSizeChanged(
+			_In_ Nena::Dispatcher::Event *e,
+			_In_::HWND hwnd, _In_::UINT32 msg,
+			_In_::WPARAM wparam, _In_::LPARAM lparam
+			);
+			ViewSizeChangedEvent();
+		};
+
+		// Can be used to handle Dispatcher::Message::Close and 
+		// Dispatcher::Message::Destroy events.
+		struct QuitEvent : public Dispatcher::Event
+		{
+			static ::LRESULT _Nena_DispatcherCallTy_ PostQuitMessageCallback(
+			_In_ Event *e, _In_::HWND hwnd, _In_::UINT32 msg,
+			_In_::WPARAM wparam, _In_::LPARAM lparam
+			);
+
+			QuitEvent(_In_::UINT32 msg);
+		};
 
 		typedef struct LaunchEvent : public Event
 		{
-			__forceinline static LRESULT __fastcall Fire(
-				_In_ Event *e, _In_ HWND hwnd, _In_ UINT32 msg,
-				_In_ WPARAM wparam, _In_ LPARAM lparam
+			__forceinline static ::LRESULT _Nena_DispatcherCallTy_ Fire(
+				_In_ Event *e, _In_::HWND hwnd, _In_::UINT32 msg,
+				_In_::WPARAM wparam, _In_::LPARAM lparam
 				)
 			{
 				return e->OnMismatch->OnDispatch(
@@ -139,13 +179,10 @@ namespace Nena
 			friend App;
 		private:
 
-			__forceinline static LRESULT __fastcall Null(
-				_In_ Event *e, _In_ HWND hwnd, _In_ UINT32 msg,
-				_In_ WPARAM wparam, _In_ LPARAM lparam
-				)
-			{
-				return 0;
-			}
+			__forceinline static ::LRESULT _Nena_DispatcherCallTy_ Null(
+				_In_ Event *e, _In_::HWND hwnd, _In_::UINT32 msg,
+				_In_::WPARAM wparam, _In_::LPARAM lparam
+				);
 
 			CaughtStub();
 		} CaughtStub;
@@ -155,37 +192,23 @@ namespace Nena
 			friend App;
 		private:
 
-			__forceinline static LRESULT __fastcall Null(
-				_In_ Event *e, _In_ HWND hwnd, _In_ UINT32 msg,
-				_In_ WPARAM wparam, _In_ LPARAM lparam
-				)
-			{
-				return DefWindowProc(
-					hwnd, msg, wparam, lparam
-					);
-			}
+			__forceinline static ::LRESULT _Nena_DispatcherCallTy_ Null(
+				_In_ Event *e, _In_::HWND hwnd, _In_::UINT32 msg,
+				_In_::WPARAM wparam, _In_::LPARAM lparam
+				);
 
 			Stub();
 		} DefaultStub;
 
-		__forceinline LRESULT _Nena_DispatcherCallTy_ Dispatch(
-			_In_ HWND hwnd, _In_ UINT32 msg, 
-			_In_ WPARAM wparam, _In_ LPARAM lparam
-			)
-		{
-			/*if (Root)*/ 
-			return Root->Dispatch(
-				hwnd, msg, wparam, lparam
-				); 
-			/*else return DefWindowProc(
-				hwnd, msg, wparam, lparam
-				);*/
-		}
+		__forceinline ::LRESULT _Nena_DispatcherCallTy_ Dispatch(
+			_In_::HWND hwnd, _In_::UINT32 msg,
+			_In_::WPARAM wparam, _In_::LPARAM lparam
+			);
 
 		void Register(_In_ Event *e);
 
-		LaunchEvent *Root = nullptr;
-		Unknown UserData = nullptr;
+		Dispatcher::LaunchEvent *Root = nullptr;
+		Dispatcher::Unknown UserData = nullptr;
 	};
 
 	struct App
@@ -195,69 +218,87 @@ namespace Nena
 		friend Dispatcher::Event;
 
 		typedef void *Unknown;
-		typedef HWND HWindow;
-		typedef void(_Nena_AppCallbackObjCallTy_*AppCallbackObj1)(_In_ Nena::App::Unknown);
-		typedef void(_Nena_AppCallbackObjCallTy_*AppCallbackObj2)(_In_ Nena::App *);
+		typedef ::HWND HWindow;
+		typedef void(_Nena_AppCallbackObjCallTy_*AppCallbackObj1)(_In_::Nena::App::Unknown);
+		typedef void(_Nena_AppCallbackObjCallTy_*AppCallbackObj2)(_In_::Nena::App *);
 		typedef AppCallbackObj2 AppCallbackObj;
+		typedef ::Nena::Delegate<void, ::Nena::App *> AppHandler;
+		typedef ::Nena::Event<void, ::Nena::App *> AppEvent;
 
-		// Can be used to handle Dispatcher::Message::Close and 
-		// Dispatcher::Message::Destroy events.
-		struct QuitEvent : public Dispatcher::Event
+		struct UserEvent : public Dispatcher::Event
 		{
-			static LRESULT _Nena_DispatcherCallTy_ PostQuitMessageCallback(
-				_In_ Event *e, _In_ HWND hwnd, _In_ UINT32 msg,
-				_In_ WPARAM wparam, _In_ LPARAM lparam
-				);
+			static ::LRESULT _Nena_DispatcherCallTy_ Dispatch(
+			_In_ Event *e, _In_::HWND hwnd, _In_::UINT32 msg,
+			_In_::WPARAM wparam, _In_::LPARAM lparam
+			);
 
-			QuitEvent(_In_ UINT32 msg);
+			UserEvent();
 		};
 
 		static void _Nena_AppCallbackObjCallTy_ MissingInit(_In_ App *app);
 		static void _Nena_AppCallbackObjCallTy_ MissingQuit(_In_ App *app);
 
 		void EnableCrtChecks();
-		void MessageLoop();
+		void MessageLoop(::BOOL withTimer = TRUE);
+		void PostUserMessage();
+		void PostUserMessage(::DWORD msg, ::WPARAM, ::LPARAM);
 		void SetDefaults();
 
 		App();
 		~App();
 
+		static const ::DWORD InterruptionMessage = WM_USER + 1;
+
 		AppCallbackObj OnUpdate = nullptr;
-		AppCallbackObj OnInit = nullptr;
-		AppCallbackObj OnQuit = nullptr;
+		AppCallbackObj OnInit = nullptr;  //! @deprecated @see event MessageLoopStarted
+		AppCallbackObj OnQuit = nullptr;  //! @deprecated @see event MessageLoopQuit
 		Unknown UserData = nullptr;
 
+		Simulation::StepTimer Timer;
 		Application::Window View;
 
+		Dispatcher::ViewResizedMovedEvent ViewResizedMoved;
+		Dispatcher::ViewSizeChangedEvent ViewSizeChanged;
+		Dispatcher::QuitEvent DestroyEvent;
+		Dispatcher::QuitEvent CloseEvent;
+		AppEvent MessageLoopStarted;
+		AppEvent MessageLoopQuit;
+		AppEvent QuitRequested;
+		AppEvent Interrupted;
+
 		Dispatcher::LaunchEvent Launcher;
-		App::QuitEvent DestroyEvent;
-		App::QuitEvent CloseEvent;
 		Dispatcher Handler;
 
-		__forceinline static App *GetForCurrentThread()
-		{
-			static App app; return &app;
-		}
+		__forceinline static ::Nena::App *GetForCurrentThread();
 
-		__forceinline static LRESULT CALLBACK Loop(
-			_In_ HWND hwnd, _In_ UINT msg,
-			_In_ WPARAM wparam, _In_ LPARAM lparam
-			)
-		{
-			static App *app = App::GetForCurrentThread();
-			return app->Handler.Dispatch(hwnd, msg, wparam, lparam);
-		}
+		__forceinline static ::LRESULT CALLBACK Loop(
+			_In_::HWND hwnd,
+			_In_::UINT msg,
+			_In_::WPARAM wparam,
+			_In_::LPARAM lparam
+			);
 
-		__forceinline Simulation::StepTimer const *GetTimer() const { return &Timer; }
-		__forceinline Simulation::StepTimer *GetTimer() { return &Timer; }
+		template <typename _TyCallback>
+		__forceinline static void CoWait(
+			_In_::concurrency::task<void> task,
+			_In_ _TyCallback callback, 
+			_In_opt_::BOOL timer = TRUE,
+			_In_opt_::LPCSTR name = "_nena_app_cowait_event"
+			);
+
+		__forceinline Simulation::StepTimer const *GetTimer() const;
+		__forceinline Simulation::StepTimer *GetTimer();
 
 	protected:
 
 		static Dispatcher::DefaultStub s_defaultStub;
 		static Dispatcher::CaughtStub s_caughtStub;
-		Simulation::StepTimer Timer;
+		void AppendSizeMoveOnDemand(_In_ App *app);
+
 
 	};
+
+#include "App.inl"
 }
 
 #endif

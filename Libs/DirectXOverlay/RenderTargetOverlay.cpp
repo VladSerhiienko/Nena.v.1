@@ -42,10 +42,12 @@ void Nena::Graphics::OverlayResources::SetDisplayRotation(
 
 
 ::HRESULT Nena::Graphics::OverlayResources::CreateDeviceResources(
-	_In_ Resources::IDirect3DDevice *device
+	_In_ Nena::Graphics::DeviceResources *resources
 	)
 {
 	::HRESULT result = S_OK;
+
+	auto device = resources->Device.Get();
 	Resources::DxgiDevice dxgiDevice;
 
 	result = device->QueryInterface(IID_PPV_ARGS(&dxgiDevice));
@@ -102,9 +104,13 @@ void Nena::Graphics::OverlayResources::SetDisplayRotation(
 	return result;
 }
 
-::HRESULT Nena::Graphics::OverlayResources::CreateWindowSizeDependentResources(Resources::IDxgiSwapchain *swapchain)
+::HRESULT Nena::Graphics::OverlayResources::CreateWindowSizeDependentResources(
+	_In_ Nena::Graphics::DeviceResources *resources
+	)
 {
 	::HRESULT result = S_OK;
+
+	auto swapchain = resources->Swapchain.Get();
 
 	DXGI_SWAP_CHAIN_DESC1 surfaceDesc;
 	result = swapchain->GetDesc1(&surfaceDesc);
@@ -138,9 +144,13 @@ void Nena::Graphics::OverlayResources::SetDisplayRotation(
 }
 
 
-void Nena::Graphics::OverlayResources::SetDpi(float x, float y)
+void Nena::Graphics::OverlayResources::SetDpi(
+	_In_ Nena::Graphics::DeviceResources *resources,
+	_In_::FLOAT x, _In_::FLOAT y
+	)
 {
 	Context->SetDpi(x, y);
+	CreateWindowSizeDependentResources(resources);
 }
 
 

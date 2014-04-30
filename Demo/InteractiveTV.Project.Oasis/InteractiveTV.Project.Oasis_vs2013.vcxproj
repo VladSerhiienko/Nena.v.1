@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="itv.graphics.cpp" />
+    <ClCompile Include="itv.oasis.air.cpp" />
     <ClCompile Include="itv.oasis.home.cpp" />
     <ClCompile Include="itv.input.cpp" />
     <ClCompile Include="app.precompiled.cpp">
@@ -31,17 +32,34 @@
     <ClCompile Include="app.main.cpp" />
     <ClCompile Include="itv.engine.cpp" />
     <ClCompile Include="itv.oasis.cpp" />
+    <ClCompile Include="itv.oasis.home.hub.cpp" />
+    <ClCompile Include="itv.oasis.home.startscreen.cpp" />
+    <ClCompile Include="itv.oasis.ui.button.cpp" />
+    <ClCompile Include="itv.oasis.ui.dialog.cpp" />
+    <ClCompile Include="itv.oasis.ui.pointers.cpp" />
     <ClCompile Include="itv.oasis.web.cpp" />
+    <ClCompile Include="itv.remote.control.cpp" />
+    <ClCompile Include="nena.bitmap.helper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="itv.graphics.h" />
+    <ClInclude Include="itv.oasis.air.h" />
     <ClInclude Include="itv.oasis.home.h" />
     <ClInclude Include="itv.input.h" />
     <ClInclude Include="app.precompiled.h" />
     <ClInclude Include="itv.engine.h" />
     <ClInclude Include="itv.oasis.h" />
+    <ClInclude Include="itv.oasis.home.hub.h" />
+    <ClInclude Include="itv.oasis.home.startscreen.h" />
     <ClInclude Include="itv.oasis.renderer.h" />
+    <ClInclude Include="itv.oasis.ui.button.h" />
+    <ClInclude Include="itv.oasis.ui.dialog.h" />
+    <ClInclude Include="itv.oasis.ui.pointers.h" />
     <ClInclude Include="itv.oasis.web.h" />
+    <ClInclude Include="itv.remote.control.h" />
+    <ClInclude Include="nena.animation.h" />
+    <ClInclude Include="nena.basic.timer.h" />
+    <ClInclude Include="nena.bitmap.helper.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.vars.overrides.xml" />
@@ -96,6 +114,7 @@
     <Import Project="..\..\Props\Nn_awe.props" />
     <Import Project="..\..\Props\Nn_Pcsdk.props" />
     <Import Project="..\..\Props\Nn_Lxndsdk.props" />
+    <Import Project="..\..\Props\Nn_Perc.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -108,6 +127,7 @@
     <Import Project="..\..\Props\Nn_awe.props" />
     <Import Project="..\..\Props\Nn_Pcsdk.props" />
     <Import Project="..\..\Props\Nn_Lxndsdk.props" />
+    <Import Project="..\..\Props\Nn_Perc.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -120,6 +140,7 @@
     <Import Project="..\..\Props\Nn_awe.props" />
     <Import Project="..\..\Props\Nn_Pcsdk.props" />
     <Import Project="..\..\Props\Nn_Lxndsdk.props" />
+    <Import Project="..\..\Props\Nn_Perc.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -132,6 +153,7 @@
     <Import Project="..\..\Props\Nn_awe.props" />
     <Import Project="..\..\Props\Nn_Pcsdk.props" />
     <Import Project="..\..\Props\Nn_Lxndsdk.props" />
+    <Import Project="..\..\Props\Nn_Perc.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />

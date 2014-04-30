@@ -17,11 +17,10 @@ void InteractiveTV::Graphics::Init()
 	if (!Nena::App::GetForCurrentThread()->View.Raw) return;
 
 	d3d.Vsync = TRUE;
+	//d3d.SwapchainEffect = DXGI_SWAP_EFFECT_DISCARD;
 	d3d.Windowed = !Nena::App::GetForCurrentThread()->View.Fullscreen;
-	d3d.SetWindow(Nena::App::GetForCurrentThread()->View.Raw);
+	d2d.CreateDeviceResources(&d3d);
 
-	d2d.CreateDeviceIndependentResources();
-	d2d.CreateDeviceResources(d3d.Device.Get());
-	d2d.SetDpi(d3d.Dpi.x, d3d.Dpi.y);
-	d2d.CreateWindowSizeDependentResources(d3d.Swapchain.Get());
+	d3d.SetWindow(Nena::App::GetForCurrentThread()->View.Raw);
+	d2d.SetDpi(&d3d, d3d.Dpi.x, d3d.Dpi.y);
 }

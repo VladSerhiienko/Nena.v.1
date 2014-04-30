@@ -1,3 +1,5 @@
+
+#include <Nena\Delegate.h>
 #include "RenderTargetBase.h"
 
 #ifndef __NENA_D3DBASE_H__
@@ -53,6 +55,8 @@ namespace Nena
 		struct DeviceResources : // Constrols all the DirectX resources
 			public Nena::Graphics::DeviceRenderTargetBase
 		{
+			typedef ::Nena::Event<void, DeviceResources *> Event;
+
 			// Constructor for DeviceResources.
 			Nena::Graphics::DeviceResources::DeviceResources(
 				::D3D_DRIVER_TYPE driver = D3D_DRIVER_TYPE_HARDWARE,
@@ -132,19 +136,25 @@ namespace Nena
 			// Converts a length in device-independent pixels (DIPs) to a length in physical pixels.
 			static ::FLOAT Nena::Graphics::DeviceResources::Dips2Pels(::FLOAT dips, ::FLOAT dpi);
 
+			DeviceResources::Event DeviceLost;			// Release device resources
+			DeviceResources::Event DeviceRestored;		// Create device resources
+			DeviceResources::Event SwapchainResizing;	// Release window size dependent resources
+			DeviceResources::Event SwapchainResized;	// Create window size dependent resources
+
 			// Direct3D objects.
-			Nena::Graphics::Resources::Context3 Context;
-			Nena::Graphics::Resources::Device3 Device; 
-			Nena::Graphics::Resources::Swapchain Swapchain;
+			::Nena::Graphics::Resources::Context3 Context;
+			::Nena::Graphics::Resources::Device3 Device;
+			::Nena::Graphics::Resources::Swapchain Swapchain;
 
-			Nena::Graphics::Resources::DriverType Driver;
-			Nena::Graphics::Resources::WindowHandle Host;
-			Nena::Graphics::IDeviceNotify *DeviceNotify;
+			::Nena::Graphics::Resources::DriverType Driver;
+			::Nena::Graphics::Resources::WindowHandle Host;
+			::Nena::Graphics::IDeviceNotify *DeviceNotify;
 
-			Nena::Graphics::Resources::FeatureLevel Features;
-			Nena::Graphics::Resources::Size RenderTargetSize;
-			Nena::Graphics::Resources::Size LogicalSize;
-			Nena::Graphics::Resources::Size OutputSize;
+			::Nena::Graphics::Resources::FeatureLevel Features;
+			::Nena::Graphics::Resources::Size RenderTargetSize;
+			::Nena::Graphics::Resources::Size ActualRenderTargetSize;
+			::Nena::Graphics::Resources::Size LogicalSize;
+			::Nena::Graphics::Resources::Size OutputSize;
 
 			::DXGI_SWAP_CHAIN_FLAG SwapchainFlags;
 			::DXGI_ALPHA_MODE SwapchainAlphaMode;

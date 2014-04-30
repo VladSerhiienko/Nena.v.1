@@ -13,6 +13,7 @@ LRESULT _Nena_DispatcherCallTy_ InteractiveTV::Input::PaintCallback(
 	if (e->Msg == msg)
 	{
 		oasis->OnFrameMove();
+		oasis->Context.Timer.Update( );
 		return 0;
 	}
 	else return e->OnMismatch->Dispatch(
@@ -38,9 +39,12 @@ LRESULT _Nena_DispatcherCallTy_ InteractiveTV::Input::KeyboardDispatchCallback(
 		else if (msg == Nena::Application::Message::KeyReleased)
 		{
 			auto args = e->Parser(e, hwnd, msg, wparam, lparam);
-			if (args.u32[0] == Nena::Application::VirtualKey::F) oasis->Context.App->View.ToggleFullscreen();
-			else if (args.u32[0] == Nena::Application::VirtualKey::Escape) oasis->Context.App->View.Close();
-			else oasis->OnKeyReleased(args.u32[0]);
+			if (args.u32[0] == Nena::Application::VirtualKey::F) 
+				oasis->OnToggleFullscreen();
+			else if (args.u32[0] == Nena::Application::VirtualKey::Escape) 
+				oasis->Quit();
+			else 
+				oasis->OnKeyReleased(args.u32[0]);
 		}
 
 		return 0;
@@ -91,6 +95,32 @@ LRESULT _Nena_DispatcherCallTy_ InteractiveTV::Input::MouseDispatchCallback(
 	return e->OnMismatch->Dispatch(
 		hwnd, msg, wparam, lparam
 		);
+}
+
+
+LRESULT _Nena_DispatcherCallTy_ InteractiveTV::Input::SizeChangedCallback(
+	_In_ Nena::Dispatcher::Event *e,
+	_In_ HWND hwnd, _In_ UINT32 msg,
+	_In_ WPARAM wparam, _In_ LPARAM lparam
+	)
+{
+	static auto oasis = InteractiveTV::Project::Oasis::GetForCurrentThread();
+
+	if (e->Msg == msg)
+	{
+		if (wparam != SIZE_MINIMIZED)
+		{
+			auto w = LOWORD(lparam);
+			auto h = HIWORD(lparam);
+			oasis->OnSizeChanged(w, h);
+			return 0;
+		}
+	}
+
+	return e->OnMismatch->Dispatch(
+		hwnd, msg, wparam, lparam
+		);
+
 }
 
 LRESULT _Nena_DispatcherCallTy_ InteractiveTV::Input::MouseWheelDispatchCallback(
@@ -145,6 +175,9 @@ InteractiveTV::Input::Input()
 	MouseRightButtonReleased.OnDispatch = &MouseDispatchCallback;
 	MouseMiddleButtonPressed.OnDispatch = &MouseDispatchCallback;
 	MouseMiddleButtonReleased.OnDispatch = &MouseDispatchCallback;
+
+	auto xcontext = &InteractiveTV::Project::Oasis::GetForCurrentThread()->Context;
+	xcontext->App->ViewSizeChanged.OnDispatch = &SizeChangedCallback;
 }
 
 void InteractiveTV::Input::Init()

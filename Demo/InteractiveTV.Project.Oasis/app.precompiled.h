@@ -11,11 +11,12 @@
 #include <sstream>
 #include <fstream>
 #include <string>
-
+#include <stdio.h>
 #include <unordered_set>
 #include <vector>
 #include <set>
 #include <map>
+#include <deque>
 
 #include <Awesomium/Platform.h>
 #include <Awesomium/WebCore.h>
@@ -35,12 +36,21 @@
 #include <Nena/DeviceResources.h>
 #include <Nena/RenderTargetOverlay.h>
 
+#include <Nena/VideoCapturePerc.h>
+#include <Nena/VideoTrackingFacePerc.h>
+#include <Nena/VideoTrackingObjectPerc.h>
+#include <Nena/VideoTrackingGesturesPerc.h>
+
+#include <Nena/VideoTrackingFaceLxnd.h>
+
 #pragma comment(lib, "Rpcrt4.lib")
 
 #define __NENA_INCLUDE_FAST_DELEGATES__ TRUE
 #define __NENA_INCLUDE_SR_DELEGATES__ TRUE
 
 #include <Nena/Delegate.h>
+
+#include "nena.basic.timer.h"
 
 namespace InteractiveTV
 {

@@ -60,7 +60,7 @@ public:
 		}
 
 		// Ensure we wont have memory leaks. 
-		Safe_Delete( ArgsPtr );
+		// Safe_Delete( ArgsPtr );
 	}
 
 	inline void Attach( _In_ Handler *EventHandlerPtr )

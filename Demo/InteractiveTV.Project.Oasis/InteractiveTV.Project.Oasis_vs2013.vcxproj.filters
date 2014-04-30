@@ -2,77 +2,137 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="app.precompiled.cpp">
-      <Filter>Oasis\App</Filter>
+      <Filter>App</Filter>
     </ClCompile>
     <ClCompile Include="app.main.cpp">
-      <Filter>Oasis\App</Filter>
+      <Filter>App</Filter>
     </ClCompile>
     <ClCompile Include="itv.engine.cpp">
-      <Filter>Oasis\Engine</Filter>
+      <Filter>Oasis\[Details]\Engine</Filter>
     </ClCompile>
     <ClCompile Include="itv.input.cpp">
-      <Filter>Oasis\Engine\[Details]</Filter>
+      <Filter>Oasis\[Details]\Engine\[Details]</Filter>
     </ClCompile>
     <ClCompile Include="itv.graphics.cpp">
-      <Filter>Oasis\Engine\[Details]</Filter>
+      <Filter>Oasis\[Details]\Engine\[Details]</Filter>
     </ClCompile>
     <ClCompile Include="itv.oasis.cpp">
       <Filter>Oasis</Filter>
     </ClCompile>
     <ClCompile Include="itv.oasis.home.cpp">
-      <Filter>Oasis\Content</Filter>
+      <Filter>Oasis\[Details]\Content</Filter>
     </ClCompile>
     <ClCompile Include="itv.oasis.web.cpp">
-      <Filter>Oasis\Content\[Details]</Filter>
+      <Filter>Oasis\[Details]\Content\[Details]</Filter>
+    </ClCompile>
+    <ClCompile Include="itv.oasis.air.cpp">
+      <Filter>Oasis\[Details]</Filter>
+    </ClCompile>
+    <ClCompile Include="itv.oasis.home.startscreen.cpp">
+      <Filter>Oasis\[Details]\Content</Filter>
+    </ClCompile>
+    <ClCompile Include="itv.oasis.home.hub.cpp">
+      <Filter>Oasis\[Details]\Content</Filter>
+    </ClCompile>
+    <ClCompile Include="nena.bitmap.helper.cpp">
+      <Filter>Oasis\[Details]\Engine\[Details]</Filter>
+    </ClCompile>
+    <ClCompile Include="itv.remote.control.cpp">
+      <Filter>Oasis\[Details]\Engine\[Details]</Filter>
+    </ClCompile>
+    <ClCompile Include="itv.oasis.ui.button.cpp">
+      <Filter>Oasis\[Details]\Content\[Ui]</Filter>
+    </ClCompile>
+    <ClCompile Include="itv.oasis.ui.dialog.cpp">
+      <Filter>Oasis\[Details]\Content\[Ui]</Filter>
+    </ClCompile>
+    <ClCompile Include="itv.oasis.ui.pointers.cpp">
+      <Filter>Oasis\[Details]\Content\[Ui]</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="app.precompiled.h">
-      <Filter>Oasis\App</Filter>
+      <Filter>App</Filter>
     </ClInclude>
     <ClInclude Include="itv.engine.h">
-      <Filter>Oasis\Engine</Filter>
+      <Filter>Oasis\[Details]\Engine</Filter>
     </ClInclude>
     <ClInclude Include="itv.input.h">
-      <Filter>Oasis\Engine\[Details]</Filter>
+      <Filter>Oasis\[Details]\Engine\[Details]</Filter>
     </ClInclude>
     <ClInclude Include="itv.graphics.h">
-      <Filter>Oasis\Engine\[Details]</Filter>
+      <Filter>Oasis\[Details]\Engine\[Details]</Filter>
     </ClInclude>
     <ClInclude Include="itv.oasis.h">
       <Filter>Oasis</Filter>
     </ClInclude>
     <ClInclude Include="itv.oasis.home.h">
-      <Filter>Oasis\Content</Filter>
+      <Filter>Oasis\[Details]\Content</Filter>
     </ClInclude>
     <ClInclude Include="itv.oasis.web.h">
-      <Filter>Oasis\Content\[Details]</Filter>
+      <Filter>Oasis\[Details]\Content\[Details]</Filter>
     </ClInclude>
     <ClInclude Include="itv.oasis.renderer.h">
-      <Filter>Oasis\Content\[Details]</Filter>
+      <Filter>Oasis\[Details]\Content\[Details]</Filter>
+    </ClInclude>
+    <ClInclude Include="itv.oasis.air.h">
+      <Filter>Oasis\[Details]</Filter>
+    </ClInclude>
+    <ClInclude Include="itv.oasis.home.startscreen.h">
+      <Filter>Oasis\[Details]\Content</Filter>
+    </ClInclude>
+    <ClInclude Include="itv.oasis.home.hub.h">
+      <Filter>Oasis\[Details]\Content</Filter>
+    </ClInclude>
+    <ClInclude Include="nena.animation.h">
+      <Filter>Oasis\[Details]\Engine\[Details]</Filter>
+    </ClInclude>
+    <ClInclude Include="nena.bitmap.helper.h">
+      <Filter>Oasis\[Details]\Engine\[Details]</Filter>
+    </ClInclude>
+    <ClInclude Include="nena.basic.timer.h">
+      <Filter>Oasis\[Details]\Engine\[Details]</Filter>
+    </ClInclude>
+    <ClInclude Include="itv.remote.control.h">
+      <Filter>Oasis\[Details]\Engine\[Details]</Filter>
+    </ClInclude>
+    <ClInclude Include="itv.oasis.ui.button.h">
+      <Filter>Oasis\[Details]\Content\[Ui]</Filter>
+    </ClInclude>
+    <ClInclude Include="itv.oasis.ui.dialog.h">
+      <Filter>Oasis\[Details]\Content\[Ui]</Filter>
+    </ClInclude>
+    <ClInclude Include="itv.oasis.ui.pointers.h">
+      <Filter>Oasis\[Details]\Content\[Ui]</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Oasis">
       <UniqueIdentifier>{7138e043-4585-4c3a-97e3-6fcad6b00496}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Oasis\App">
-      <UniqueIdentifier>{72c9f912-a642-4682-ab5f-fe5d92b98be8}</UniqueIdentifier>
+    <Filter Include="Oasis\[Details]">
+      <UniqueIdentifier>{7042cd06-7b40-4947-8f19-68bd08ab92f8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Oasis\Engine">
+    <Filter Include="Oasis\[Details]\Engine">
       <UniqueIdentifier>{188b58ba-c76a-4681-b50b-98600bbe05df}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Oasis\Engine\[Details]">
+    <Filter Include="Oasis\[Details]\Engine\[Details]">
       <UniqueIdentifier>{6b6220a1-2695-4cf7-985b-5b34237172cb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Oasis\Content">
+    <Filter Include="Oasis\[Details]\Content">
       <UniqueIdentifier>{30ee1019-6f55-44f4-aebd-98caf168fa01}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Oasis\Content\[Details]">
+    <Filter Include="Oasis\[Details]\Content\[Details]">
       <UniqueIdentifier>{b0725a7a-4a92-4bbd-8077-d386c98226de}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Oasis\App\[Resources]">
+    <Filter Include="App">
+      <UniqueIdentifier>{72c9f912-a642-4682-ab5f-fe5d92b98be8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="App\[Resources]">
       <UniqueIdentifier>{c1ed23b6-c5c9-42a1-a8e1-15fc5af6447b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Oasis\[Details]\Content\[Ui]">
+      <UniqueIdentifier>{a5cf0fdd-d253-4686-a1db-522c16a1ca66}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -80,10 +140,10 @@
       <Filter>Oasis</Filter>
     </None>
     <None Include="app.vars.xml">
-      <Filter>Oasis\App\[Resources]</Filter>
+      <Filter>App\[Resources]</Filter>
     </None>
     <None Include="app.vars.overrides.xml">
-      <Filter>Oasis\App\[Resources]</Filter>
+      <Filter>App\[Resources]</Filter>
     </None>
   </ItemGroup>
 </Project>

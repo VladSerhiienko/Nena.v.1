@@ -3,6 +3,7 @@
 #define __NENA_DIRECTX_OVERLAY_H__
 
 #include <Nena\DirectXTypes.h>
+#include <Nena\DeviceResources.h>
 
 namespace Nena
 {
@@ -17,17 +18,21 @@ namespace Nena
 			Nena::Graphics::OverlayResources::~OverlayResources();
 
 			// Call *before* DeviceResources::SetDpi() or DeviceResources::CreateWindowSizeDependentResources.
-			void Nena::Graphics::OverlayResources::SetDpi(_In_::FLOAT x, _In_::FLOAT y);
+			void Nena::Graphics::OverlayResources::SetDpi(
+				_In_ Nena::Graphics::DeviceResources *resources,
+				_In_::FLOAT x, _In_::FLOAT y
+				);
 
 			// Call *after* DeviceResources::CreateDeviceIndependentResources().
-			::HRESULT Nena::Graphics::OverlayResources::CreateDeviceIndependentResources();
+			::HRESULT Nena::Graphics::OverlayResources::CreateDeviceIndependentResources(
+				);
 			::HRESULT Nena::Graphics::OverlayResources::CreateDeviceResources(
-				_In_ Resources::IDirect3DDevice *device
+				_In_ Nena::Graphics::DeviceResources *resources
 				);
 
 			// Call *after* DeviceResources::CreateWindowSizeDependentResources() to update target bitmap.
 			::HRESULT Nena::Graphics::OverlayResources::CreateWindowSizeDependentResources(
-				_In_ Resources::IDxgiSwapchain *swapchain
+				_In_ Nena::Graphics::DeviceResources *resources
 				);
 
 			// Calculates 2D orientation matrix for direct 2D context.

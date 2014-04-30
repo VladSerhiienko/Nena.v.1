@@ -60,7 +60,7 @@ Nena::Dispatcher::KeyboardEvent::KeyboardEvent(UINT32 msg) : Event(msg)
 	SetPriority(100);
 }
 
-Nena::App::QuitEvent::QuitEvent(UINT32 msg) : Event(msg)
+Nena::Dispatcher::QuitEvent::QuitEvent(UINT32 msg) : Event(msg)
 {
 	OnDispatch = &PostQuitMessageCallback;
 	Priority = MaxPriority;
@@ -70,6 +70,32 @@ Nena::App::UserEvent::UserEvent() : Event(Nena::App::InterruptionMessage)
 {
 	Dispatcher::Event::OnDispatch = &Dispatch;
 	Priority = MaxPriority + 5;
+}
+
+
+::LRESULT _Nena_DispatcherCallTy_ Nena::Dispatcher::ViewSizeChangedEvent::ViewSizeChanged(
+	_In_ Nena::Dispatcher::Event *e,
+	_In_::HWND hwnd, _In_::UINT32 msg,
+	_In_::WPARAM wparam, _In_::LPARAM lparam
+	)
+{
+	if (e->Msg == msg)
+	{
+		OutputDebugStringA("Nena::Dispatcher::ViewSizeChangedEvent::ViewSizeChanged()\n");
+		auto app = App::GetForCurrentThread();
+		app->View.SizeChanged(&app->View);
+		return 0;
+	}
+	else return e->OnMismatch->Dispatch(
+		hwnd, msg, wparam, lparam
+		);
+}
+
+Nena::Dispatcher::ViewSizeChangedEvent::ViewSizeChangedEvent()
+	: Event(Nena::Application::Message::Size)
+{
+	Dispatcher::Event::OnDispatch = &ViewSizeChangedEvent::ViewSizeChanged;
+	Priority = 1010;
 }
 
 LRESULT Nena::App::UserEvent::Dispatch(
@@ -89,20 +115,20 @@ LRESULT Nena::App::UserEvent::Dispatch(
 		);
 }
 
-Nena::App::PaintEvent::PaintEvent()
+Nena::Dispatcher::PaintEvent::PaintEvent()
 	: Event(Nena::Application::Message::Paint)
 {
-	Priority = MinPriority - 1;
+	Priority = 0; // MinPriority - 1;
 }
 
-Nena::App::ViewResizedMovedEvent::ViewResizedMovedEvent() 
+Nena::Dispatcher::ViewResizedMovedEvent::ViewResizedMovedEvent()
 	: Event(Nena::Application::Message::ExitSizeMove)
 {
-	Dispatcher::Event::OnDispatch = &ExitSizeMove;
-	Priority = MaxPriority + 10;
+	Dispatcher::Event::OnDispatch = &ViewResizedMovedEvent::ExitSizeMove;
+	Priority = 1010;
 }
 
-LRESULT _Nena_DispatcherCallTy_ Nena::App::ViewResizedMovedEvent::ExitSizeMove(
+LRESULT _Nena_DispatcherCallTy_ Nena::Dispatcher::ViewResizedMovedEvent::ExitSizeMove(
 	Event *e, HWND hwnd, UINT32 msg,
 	WPARAM wparam, LPARAM lparam
 	)
@@ -289,7 +315,7 @@ void Nena::App::MessageLoop(::BOOL withTimer)
 	if (OnQuit) OnQuit(this);
 }
 
-LRESULT Nena::App::QuitEvent::PostQuitMessageCallback(
+LRESULT Nena::Dispatcher::QuitEvent::PostQuitMessageCallback(
 	Event *e, HWND hwnd, UINT32 msg,
 	WPARAM wparam, LPARAM lparam
 	)
@@ -393,8 +419,11 @@ void Nena::App::MissingQuit(App *app)
 void Nena::App::AppendSizeMoveOnDemand(_In_ App *app)
 {
 	::OutputDebugStringA("Nena::App::AppendSizeMoveOnDemand()\n");
+
 	if ((View.Style & WS_THICKFRAME) == WS_THICKFRAME)
 		Launcher.Insert(&ViewResizedMoved);
+	else 
+		Launcher.Insert(&ViewSizeChanged);
 }
 
 void Nena::App::EnableCrtChecks()
