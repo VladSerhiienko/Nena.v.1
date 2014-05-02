@@ -5,8 +5,8 @@
 #ifndef __NENA_INTERACTIVE_TV_REMOTE_CONTROL_INCLUDED__
 #define __NENA_INTERACTIVE_TV_REMOTE_CONTROL_INCLUDED__
 
-namespace InteractiveTV 
-{ 
+namespace InteractiveTV
+{
 	namespace Remote
 	{
 		struct Input;
@@ -15,37 +15,57 @@ namespace InteractiveTV
 
 struct InteractiveTV::Remote::Input : public InteractiveTV::Project::Oasis::Object
 {
-	enum State
+	static UINT32 const GestureAppMessage = WM_USER + 2;
+	typedef Nena::Event<void, Remote::Input *> Event;
+
+	typedef enum GestureAppMessageArg
+	{
+		kWave = PXCGesture::Gesture::LABEL_HAND_WAVE,
+		kCircle = PXCGesture::Gesture::LABEL_HAND_CIRCLE,
+		kNavigationSwipeUp = PXCGesture::Gesture::LABEL_NAV_SWIPE_UP,
+		kNavigationSwipeDown = PXCGesture::Gesture::LABEL_NAV_SWIPE_DOWN,
+		kNavigationSwipeLeft = PXCGesture::Gesture::LABEL_NAV_SWIPE_LEFT,
+		kNavigationSwipeRight = PXCGesture::Gesture::LABEL_NAV_SWIPE_RIGHT,
+
+	} GestureAppMessageArg;
+
+	typedef enum FeedTarget : UINT32
 	{
 		kIdle = 0,
 		kGestures = 1 << 0,
 		kFaceDetection = 1 << 1,
 		kFaceDetectionIdle = 1 << 2,
 		kFaceRecognition = 1 << 3,
-	};
 
-	struct GestureCallback : 
+	} FeedTarget;
+
+	struct GestureCallback :
 		protected PXCGesture::Gesture::Handler,
 		protected PXCGesture::Alert::Handler
 	{
+		GestureCallback( Remote::Input * );
+
 		typedef PXCGesture::Alert::Handler *HAlert;
 		typedef PXCGesture::Gesture::Handler *HGesture;
 		inline HAlert GetAlertHandler( ) { return this; }
 		inline HGesture GetGestureHandler( ) { return this; }
-		virtual void PXCAPI OnAlert( _In_ PXCGesture::Alert *alert ) override;
-		virtual void PXCAPI OnGesture( _In_ PXCGesture::Gesture *data ) override;
+		virtual void PXCAPI OnAlert( _In_ PXCGesture::Alert * ) override;
+		virtual void PXCAPI OnGesture( _In_ PXCGesture::Gesture * ) override;
+
+	private:
+
+		Remote::Input *m_host;
 	};
 
-	struct Details
+	typedef struct Details
 	{
-		PXCGesture::Gesture gestures [2];
-		PXCGesture::GeoNode nodes [2][11];
-	};
+		PXCGesture::GeoNode Nodes[ 2 ][ 11 ];
+	} Details;
 
-	struct Feed
+	typedef struct Feed
 	{
-		Feed( Remote::Input *host );
-		void SetState( Remote::Input::State state );
+		Feed( Remote::Input * );
+		void Set( Remote::Input::FeedTarget );
 		::BOOL IsHostValid( );
 
 		Remote::Input::Details *BeginRead( );
@@ -54,11 +74,13 @@ struct InteractiveTV::Remote::Input : public InteractiveTV::Project::Oasis::Obje
 	private:
 
 		friend Remote::Input;
-		Remote::Input::Details QueriedRemoteInput;
-		Remote::Input *Host;
-	};
+		Remote::Input::Details m_queried_remote_input;
+		Remote::Input *m_host;
+
+	} Feed;
 
 	GestureCallback GestureTrackerOutput;
+
 	Nena::Video::Perc::Sample *VideoSampler;
 	Nena::Video::Perc::Capture VideoCapturer;
 	Nena::Video::Perc::Tracking::Gesture GestureTracker;
@@ -75,22 +97,21 @@ struct InteractiveTV::Remote::Input : public InteractiveTV::Project::Oasis::Obje
 
 private:
 
-	volatile State m_state;
-	volatile ::BOOL m_ready;
-	volatile ::BOOL m_running;
-	volatile ::BOOL m_feed_is_busy;
+	volatile Input::FeedTarget m_feed_tgt;
+	volatile ::BOOL m_is_ready;
+	volatile ::BOOL m_is_running;
+	volatile ::BOOL m_is_feed_busy;
 	volatile ::BOOL m_is_busy;
 	volatile ::BOOL m_is_valid;
-	Details gesture_data;
 
-	Nena::Simulation::BasicTimer timer;
-
-	concurrency::task_group m_flow;
-	concurrency::task_group_status m_trackingStatus;
+	Input::Details m_remote_input_details;
+	concurrency::task_group m_tracking_flow;
+	concurrency::task_group_status m_tracking_status;
+	Nena::Simulation::BasicTimer m_remote_input_timer;
 
 	void GestureTrackingRoutine( );
-	static void QueryGestureData( Details *data, PXCGesture *gesture );
-	static void PrintGestureData( PXCGesture *gesture );
+	static void QueryGestureData( Details *, PXCGesture * );
+	static void PrintGestureData( PXCGesture * );
 
 };
 

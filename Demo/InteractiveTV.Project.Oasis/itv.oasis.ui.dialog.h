@@ -40,10 +40,11 @@ struct InteractiveTV::Ui::Dialog
 	typedef ::D2D1_ELLIPSE Ellipse;
 	typedef ::D2D1_COLOR_F Color;
 	typedef ::D2D1_RECT_F Rect;
-	typedef ::Nena::Graphics::OverlayResources OverlayResources;
-	typedef ::Nena::Graphics::Resources::Direct2DBitmap Bitmap;
-	typedef ::Nena::Graphics::Resources::Direct2DSolidColorBrush SolidColorBrush;
 	typedef ::Nena::Graphics::Resources::Size Size;
+	typedef ::Nena::Graphics::Resources::Direct2DBitmap Bitmap;
+	typedef ::Nena::Graphics::OverlayResources OverlayResources;
+	typedef ::Nena::Graphics::Resources::Direct2DSolidColorBrush SolidColorBrush;
+	typedef ::Nena::Event<void, Ui::Dialog *, Ui::Button *> Event;
 
 	Oasis::Shared *Context = nullptr;
 	Dialog::Size *ScreenSize = nullptr;
@@ -56,8 +57,9 @@ struct InteractiveTV::Ui::Dialog
 	Dialog::Color PanelColor;
 	Dialog::Color ProgressArcColor;
 	Dialog::ArcSegment ProgressArc;
-	Button::SolidColorBrush BorderBrush;
-	Button::SolidColorBrush FillBrush;
+	Dialog::SolidColorBrush BorderBrush;
+	Dialog::SolidColorBrush FillBrush;
+	Dialog::Event ButtonSelected;
 
 	Dialog::Stage CurrentStage;
 	Dialog::AnimationControl Easing;

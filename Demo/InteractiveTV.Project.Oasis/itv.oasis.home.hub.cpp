@@ -1,123 +1,201 @@
 #include "app.precompiled.h"
 #include "itv.oasis.air.h"
 #include "itv.oasis.home.hub.h"
+#include "itv.oasis.home.startscreen.h"
 
+#define _Oasis_home_hub "home/hub/"
 
-InteractiveTV::Project::Oasis::Home::Hub::Hub(Oasis::Home *master)
-	: Oasis::Home::State(master)
-	, Oasis::Web::AppBase(nullptr)
+InteractiveTV::Project::Oasis::Home::Hub::Hub( Oasis::Home *master )
+: Oasis::Home::State( master )
+, Oasis::Web::AppBase( nullptr )
+, Navigation( master )
 {
-	Name = _Oasis_origin;
-	Name += "home/hub/";
+	Name = _Oasis_origin _Oasis_home_hub;
 
-	Context = &Oasis::GetForCurrentThread()->Context;
+	Context = &Oasis::GetForCurrentThread( )->Context;
 	Overlay = &Context->Engine->Graphics.d2d;
 
-	_Oasis_air_grabot(this, OasisAirMsg::kInfo, "ctor");
-}
-
-InteractiveTV::Project::Oasis::Home::Hub::~Hub()
-{
-	_Oasis_air_grabot(this, OasisAirMsg::kInfo, "dtor");
-	// ...
-}
-
-void InteractiveTV::Project::Oasis::Home::Hub::Init()
-{
-	_Oasis_air_grabot(this, OasisAirMsg::kInfo, "init");
-
-	CreateDeviceIndependentResources();
-
-	CreateDeviceResources();
-
-	Width = Context->App->View.Fullscreen ? Context->App->View.ScreenWidth : Context->App->View.Width;
-	Height = Context->App->View.Fullscreen ? Context->App->View.ScreenHeight : Context->App->View.Height;
-	CreateWindowSizeDependentResources();
-
 	CurrentStage = Stage::kSuspended;
-	Initted(this);
+
+	_Oasis_air_grabot(
+		this, OasisAirMsg::kInfo,
+		"ctor"
+		);
 }
 
-void InteractiveTV::Project::Oasis::Home::Hub::Quit()
+InteractiveTV::Project::Oasis::Home::Hub::~Hub( )
 {
-	_Oasis_air_grabot(this, OasisAirMsg::kInfo, "quit");
-
-	if (GetView() && GetView()->IsLoading())
-		GetView()->Stop();
-
-	DestroyCoreObjects();
-
-	Quitted(this);
+	_Oasis_air_grabot(
+		this, OasisAirMsg::kInfo,
+		"dtor"
+		);
 }
 
-void InteractiveTV::Project::Oasis::Home::Hub::OnFrameMove()
+void InteractiveTV::Project::Oasis::Home::Hub::Init( )
+{
+	CreateDeviceIndependentResources( );
+	CreateDeviceResources( );
+	CreateWindowSizeDependentResources( );
+
+	Navigation.Add( "./Assets/News.png" );
+	Navigation.Add( "./Assets/User-Add.png" );
+	Navigation.Add( "./Assets/Debug .png" );
+	Navigation.Add( "./Assets/Media-Player.png" );
+	Navigation.Set( Pointers );
+	Navigation.ButtonSelected += Nena_Delegate_MakeBind(
+		this, &Hub::OnButtonSelected
+		);
+	Navigation.Init( );
+
+	_Oasis_air_grabot(
+		this, OasisAirMsg::kInfo,
+		"init"
+		);
+
+	Initted( this );
+}
+
+void InteractiveTV::Project::Oasis::Home::Hub::Quit( )
+{
+	if ( GetView( ) && GetView( )->IsLoading( ) )
+		GetView( )->Stop( );
+	DestroyCoreObjects( );
+
+	_Oasis_air_grabot(
+		this, OasisAirMsg::kInfo,
+		"quit"
+		);
+
+	Quitted( this );
+}
+
+::HRESULT InteractiveTV::Project::Oasis::Home::Hub::OnUpdateViewImage( )
+{
+	::HRESULT result( S_OK );
+
+	::BOOL is_unavailable = !GetView( )
+		|| GetView( )->IsLoading( )
+		|| GetView( )->IsCrashed( );
+
+	if ( is_unavailable ) return E_PENDING;
+	else if ( auto surface = GetViewSurface( ) )
+	{
+		__try
+		{
+			result = ViewImage->CopyFromMemory(
+				nullptr, surface->buffer( ),
+				surface->width( ) * 4
+				);
+			return result;
+		}
+		__except (
+			GetExceptionCode( ) == EXCEPTION_ACCESS_VIOLATION
+			? EXCEPTION_EXECUTE_HANDLER
+			: EXCEPTION_CONTINUE_SEARCH
+			)
+		{
+			::Sleep( 500 );
+			return E_PENDING;
+		}
+	}
+
+	return E_FAIL;
+}
+
+void InteractiveTV::Project::Oasis::Home::Hub::OnFrameMove( )
 {
 	if ( CurrentStage == kSuspended )
 		return;
 
-	::HRESULT result(S_OK);
+	::FLOAT dx = 0.0f;
+	switch ( CurrentStage )
+	{
+	case Hub::kSuspending:
+		Easing.SuspendingX += Context->Timer.Elapsed;
+		dx = Easing.SuspendingX.OnFrame( );
+		break;
+	case Hub::kResuming:
+		Easing.ResumingX += Context->Timer.Elapsed;
+		dx = Easing.ResumingX.OnFrame( );
+		break;
+	}
+
+	if ( SUCCEEDED( OnUpdateViewImage( ) ) )
+	{
+		Overlay->Context->SetTransform(
+			D2D1::Matrix3x2F::Translation( { dx, 0 } )
+			);
+		D2D1_RECT_F dest = D2D1::RectF( 0, 0, (FLOAT) Width, (FLOAT) Height );
+		Overlay->Context->DrawBitmap( ViewImage.Get( ), &dest );
+		Overlay->Context->SetTransform(
+			D2D1::Matrix3x2F::Identity( )
+			);
+	}
+
+	Navigation.OnFrameMove(
+		);
 
 	switch ( CurrentStage )
 	{
 	case Hub::kSuspending:
+		if ( Easing.SuspendingX.Saturated )
+			CurrentStage = kSuspended,
+			Suspended( this );
 		break;
 	case Hub::kResuming:
+		if ( Easing.ResumingX.Saturated )
+			CurrentStage = kResumed,
+			Resumed( this );
 		break;
-	case Hub::kResumed:
-		break;
-	}
-
-	result = OnUpdateViewImage();
-	if (SUCCEEDED(result))
-	{
-		D2D1_RECT_F dest = D2D1::RectF(0, 0, Width, Height);
-
-		Overlay->Context->SaveDrawingState(
-			BlockState.Get()
-			);
-
-		Overlay->Context->BeginDraw();
-		Overlay->Context->DrawBitmap(ViewImage.Get(), &dest);
-		result = Overlay->Context->EndDraw();
-
-		if (FAILED(result)) _Oasis_air_grabot(this, OasisAirMsg::kError, "frame failed");
-
-		Overlay->Context->RestoreDrawingState(
-			BlockState.Get()
-			);
 	}
 }
 
-void InteractiveTV::Project::Oasis::Home::Hub::CreateDeviceResources()
+void InteractiveTV::Project::Oasis::Home::Hub::CreateDeviceResources( )
 {
-	_Oasis_air_grabot(this, OasisAirMsg::kInfo, "create device-dependentx resources");
+	Navigation.CreateDeviceResources( );
 
-	Overlay->D2DFactory->CreateDrawingStateBlock(
-		BlockState.ReleaseAndGetAddressOf()
-		);
-}
-
-void InteractiveTV::Project::Oasis::Home::Hub::CreateDeviceIndependentResources()
-{
-	_Oasis_air_grabot(this, OasisAirMsg::kInfo, "create device-independent resources");
-
-	CreateCoreObjects();
-	GetView()->set_js_method_handler(this);
-	GetView()->set_process_listener(this);
-	GetView()->set_view_listener(this);
-	GetView()->set_load_listener(this);
-}
-
-void InteractiveTV::Project::Oasis::Home::Hub::CreateWindowSizeDependentResources()
-{
 	_Oasis_air_grabot(
-		this, OasisAirMsg::kInfo, 
-		"create window-size-dependent resources"
+		this, OasisAirMsg::kInfo,
+		"device-dependentx resources created"
 		);
+}
 
+void InteractiveTV::Project::Oasis::Home::Hub::CreateDeviceIndependentResources( )
+{
+	CreateCoreObjects( );
+	GetView( )->set_js_method_handler( this );
+	GetView( )->set_process_listener( this );
+	GetView( )->set_view_listener( this );
+	GetView( )->set_load_listener( this );
+	GetView( )->LoadURL( Awesomium::WebURL(
+		Awesomium::WSLit( "https://www.google.com/" )
+		) );
+	Navigation.CreateDeviceIndependentResources( );
+
+	_Oasis_air_grabot(
+		this, OasisAirMsg::kInfo,
+		"device-independent resources created"
+		);
+}
+
+void InteractiveTV::Project::Oasis::Home::Hub::CreateWindowSizeDependentResources( )
+{
 	ScreenSize = &Context->Engine->Graphics.d3d.ActualRenderTargetSize;
-	AppBase::Width = Context->Engine->Graphics.d3d.LogicalSize.Width;
-	AppBase::Height = Context->Engine->Graphics.d3d.LogicalSize.Height;
+	AppBase::Width = (INT32) Context->Engine->Graphics.d3d.LogicalSize.Width;
+	AppBase::Height = (INT32) Context->Engine->Graphics.d3d.LogicalSize.Height;
+
+	auto total = 1.0f;
+	auto susp_factor = 0.2f;
+
+	Easing.ResumingX.Params.Total = total;
+	Easing.ResumingX.Params.Elapsed = 0.0f;
+	Easing.ResumingX.Params.Offset = ScreenSize->Width;
+	Easing.ResumingX.Params.Distance = -ScreenSize->Width;
+
+	Easing.SuspendingX.Params.Total = total * susp_factor;
+	Easing.SuspendingX.Params.Elapsed = 0.0f;
+	Easing.SuspendingX.Params.Offset = 0.0f;
+	Easing.SuspendingX.Params.Distance = -ScreenSize->Width;
 
 	if ( !Context->Engine->Graphics.d2d.Device.Get( ) )
 	{
@@ -129,14 +207,14 @@ void InteractiveTV::Project::Oasis::Home::Hub::CreateWindowSizeDependentResource
 		return;
 	}
 
-	::HRESULT result(S_OK);
+	::HRESULT result( S_OK );
 
-	auto view = GetView();
-	if (!view) result = E_POINTER;
-	else GetView()->Resize(Width, Height);
+	auto view = GetView( );
+	if ( !view ) result = E_POINTER;
+	else GetView( )->Resize( Width, Height );
 
-	auto surface = GetViewSurface();
-	if (!surface) result = E_POINTER;
+	auto surface = GetViewSurface( );
+	if ( !surface ) result = E_POINTER;
 
 	D2D1_BITMAP_PROPERTIES bitmap_properties;
 	bitmap_properties.dpiX = Context->Engine->Graphics.d2d.Dpi.x;
@@ -148,10 +226,10 @@ void InteractiveTV::Project::Oasis::Home::Hub::CreateWindowSizeDependentResource
 
 	Microsoft::WRL::ComPtr<ID2D1Bitmap> image;
 	result = Context->Engine->Graphics.d2d.Context->CreateBitmap(
-		D2D1::SizeU(Width, Height), bitmap_properties,
-		_Outptr_result_maybenull_ image.ReleaseAndGetAddressOf()
+		D2D1::SizeU( Width, Height ), bitmap_properties,
+		_Outptr_result_maybenull_ image.ReleaseAndGetAddressOf( )
 		);
-	if ( !Context->Engine->Graphics.d2d.Device.Get( ) )
+	if ( FAILED( result ) )
 	{
 		_Oasis_air_grabot(
 			this, OasisAirMsg::kInfo,
@@ -160,9 +238,9 @@ void InteractiveTV::Project::Oasis::Home::Hub::CreateWindowSizeDependentResource
 
 		return;
 	}
-	if (SUCCEEDED(result))
-		result = image.As(&ViewImage);
-	else
+
+	result = image.As( &ViewImage );
+	if ( SUCCEEDED( result ) )
 	{
 		_Oasis_air_grabot(
 			this, OasisAirMsg::kInfo,
@@ -170,138 +248,153 @@ void InteractiveTV::Project::Oasis::Home::Hub::CreateWindowSizeDependentResource
 			);
 		return;
 	}
+
+	_Oasis_air_grabot(
+		this, OasisAirMsg::kInfo,
+		"window-size-dependent resources created"
+		);
+
+	Navigation.CreateWindowSizeDependentResources( );
 }
 
-void InteractiveTV::Project::Oasis::Home::Hub::DiscardDeviceResources()
+void InteractiveTV::Project::Oasis::Home::Hub::DiscardDeviceResources( )
 {
-	_Oasis_air_grabot(this, OasisAirMsg::kInfo, "create device-dependent resources");
-	BlockState = nullptr;
+	_Oasis_air_grabot(
+		this, OasisAirMsg::kInfo,
+		"create device-dependent resources"
+		);
 }
 
-void InteractiveTV::Project::Oasis::Home::Hub::DiscardWindowSizeDependentResources()
+void InteractiveTV::Project::Oasis::Home::Hub::DiscardWindowSizeDependentResources( )
 {
-	_Oasis_air_grabot(this, OasisAirMsg::kInfo, "release window-size-dependent resources");
+	_Oasis_air_grabot(
+		this, OasisAirMsg::kInfo,
+		"release window-size-dependent resources"
+		);
+
 	ViewImage = nullptr;
-}
-
-::HRESULT InteractiveTV::Project::Oasis::Home::Hub::OnUpdateViewImage()
-{
-
-	::HRESULT result(S_OK);
-
-	::BOOL is_unavailable = IsResizing
-		|| !GetView()
-		|| GetView()->IsLoading()
-		|| GetView()->IsCrashed();
-
-	if (is_unavailable)
-	{
-		/*_Oasis_air_grabot(
-			this, OasisAirMsg::kInfo,
-			"webview is pending..."
-			);*/
-
-		return E_PENDING;
-	}
-	else if (auto surface = GetViewSurface())
-	{
-		__try
-		{
-			result = ViewImage->CopyFromMemory(
-				nullptr, surface->buffer(),
-				surface->width() * 4
-				);
-			return result;
-		}
-		__except (
-			GetExceptionCode() == EXCEPTION_ACCESS_VIOLATION
-			? EXCEPTION_EXECUTE_HANDLER
-			: EXCEPTION_CONTINUE_SEARCH
-			)
-		{
-			::Sleep(1000);
-			return E_PENDING;
-		}
-	}
-
-	return E_FAIL;
 }
 
 #pragma region Oasis State
 
-void InteractiveTV::Project::Oasis::Home::Hub::Resume()
+void InteractiveTV::Project::Oasis::Home::Hub::Resume( )
 {
-	if ( GetView( )->IsLoading( ) )
-		GetView( )->Stop( );
-	GetView( )->LoadURL( Awesomium::WebURL( Awesomium::WSLit( "https://www.google.com/" ) ) );
-	GetView()->ResumeRendering(
-		);
+	if ( GetView( ) )
+		GetView( )->ResumeRendering( );
+	CurrentStage = Hub::kResuming;
+	Easing.SuspendingX.Reset( );
+	Easing.ResumingX.Reset( );
+
 	_Oasis_air_grabot(
 		this, OasisAirMsg::kWarning,
 		"resumed"
 		);
-
-	Resumed(this);
 }
 
-void InteractiveTV::Project::Oasis::Home::Hub::Suspend()
+void InteractiveTV::Project::Oasis::Home::Hub::Suspend( )
 {
 	if ( GetView( )->IsLoading( ) )
 		GetView( )->Stop( );
-	GetView()->PauseRendering(
+	Easing.SuspendingX.Reset( );
+	Easing.ResumingX.Reset( );
+
+	CurrentStage = Hub::kSuspending;
+	GetView( )->PauseRendering(
 		);
 	_Oasis_air_grabot(
 		this, OasisAirMsg::kWarning,
 		"suspended"
 		);
-
-	Suspended(this);
 }
 
-void InteractiveTV::Project::Oasis::Home::Hub::OnKeyPressed(::UINT32 k)
+void InteractiveTV::Project::Oasis::Home::Hub::OnButtonSelected(
+	Ui::Dialog *navigation, Ui::Button *selection
+	)
+{
+	if ( navigation == &Navigation && selection ) switch ( selection->Index )
+	{
+	case 3:
+		Suspend( );
+		Start->Resume( );
+		break;
+	}
+
+}
+
+void InteractiveTV::Project::Oasis::Home::Hub::OnGestureReceived(
+	Remote::Input::GestureAppMessageArg arg
+	)
+{
+	if ( CurrentStage != Hub::kResumed ) return;
+	else if ( Navigation.CurrentStage == Ui::Dialog::kResumed )
+		Navigation.OnGestureReceived( arg );
+	else switch ( arg )
+	{
+	case Remote::Input::kWave:
+		break;
+	case Remote::Input::kCircle:
+
+		if ( Navigation.CurrentStage == Ui::Dialog::kSuspended )
+			Navigation.Resume( );
+
+		break;
+	case Remote::Input::kNavigationSwipeUp:
+		break;
+	case Remote::Input::kNavigationSwipeDown:
+		break;
+	case Remote::Input::kNavigationSwipeLeft:
+		break;
+	case Remote::Input::kNavigationSwipeRight:
+		break;
+	}
+}
+
+void InteractiveTV::Project::Oasis::Home::Hub::OnKeyPressed( ::UINT32 k )
 {
 }
 
-void InteractiveTV::Project::Oasis::Home::Hub::OnKeyReleased(::UINT32 k)
+void InteractiveTV::Project::Oasis::Home::Hub::OnKeyReleased( ::UINT32 k )
 {
 }
 
-void InteractiveTV::Project::Oasis::Home::Hub::OnMouseMoved(::FLOAT x, ::FLOAT y)
+void InteractiveTV::Project::Oasis::Home::Hub::OnMouseMoved( ::FLOAT x, ::FLOAT y )
 {
 }
 
-void InteractiveTV::Project::Oasis::Home::Hub::OnMouseLBPressed(::FLOAT x, ::FLOAT y)
+void InteractiveTV::Project::Oasis::Home::Hub::OnMouseLBPressed( ::FLOAT x, ::FLOAT y )
 {
 }
 
-void InteractiveTV::Project::Oasis::Home::Hub::OnMouseRBPressed(::FLOAT x, ::FLOAT y)
+void InteractiveTV::Project::Oasis::Home::Hub::OnMouseRBPressed( ::FLOAT x, ::FLOAT y )
 {
 }
 
-void InteractiveTV::Project::Oasis::Home::Hub::OnMouseLBReleased(::FLOAT x, ::FLOAT y)
+void InteractiveTV::Project::Oasis::Home::Hub::OnMouseLBReleased( ::FLOAT x, ::FLOAT y )
 {
 }
 
-void InteractiveTV::Project::Oasis::Home::Hub::OnMouseRBReleased(::FLOAT x, ::FLOAT y)
+void InteractiveTV::Project::Oasis::Home::Hub::OnMouseRBReleased( ::FLOAT x, ::FLOAT y )
 {
 }
 
-void InteractiveTV::Project::Oasis::Home::Hub::OnResized()
+void InteractiveTV::Project::Oasis::Home::Hub::OnResized( )
 {
-	Width = Context->Engine->Graphics.d3d.ActualRenderTargetSize.Width;
-	Height = Context->Engine->Graphics.d3d.ActualRenderTargetSize.Height;
+	Width = (INT32) Context->Engine->Graphics.d3d.ActualRenderTargetSize.Width;
+	Height = (INT32) Context->Engine->Graphics.d3d.ActualRenderTargetSize.Height;
 
 	_Oasis_air_grabot(
-		this, OasisAirMsg::kInfo, 
-		"on resized %d %d", 
+		this, OasisAirMsg::kInfo,
+		"on resized %d %d",
 		Width, Height
 		);
 
-	GetView()->Resize(Width, Height);
-	::Sleep(500);
+	GetView( )->Resize(
+		Width, Height
+		);
 
-	Context->Web->OnFrameMove();
-	CreateWindowSizeDependentResources();
+	::Sleep( 500 );
+	Context->Web->OnFrameMove( );
+	CreateWindowSizeDependentResources( );
 }
 
 #pragma endregion
@@ -411,8 +504,8 @@ void InteractiveTV::Project::Oasis::Home::Hub::OnBeginLoadingFrame(
 	_In_ bool is_error_page
 	)
 {
-	auto url_utf8 = Awesomium::ToString(url.spec());
-	_Oasis_air_grabot(this, OasisAirMsg::kInfo, "loading frame %s", url_utf8.c_str());
+	auto url_utf8 = Awesomium::ToString( url.spec( ) );
+	_Oasis_air_grabot( this, OasisAirMsg::kInfo, "loading frame %s", url_utf8.c_str( ) );
 }
 
 //! This event occurs when a frame fails to load. See error_desc for additional information.
@@ -425,8 +518,8 @@ void InteractiveTV::Project::Oasis::Home::Hub::OnFailLoadingFrame(
 	_In_ const Awesomium::WebString& error_desc
 	)
 {
-	auto url_utf8 = Awesomium::ToString(url.spec());
-	_Oasis_air_grabot(this, OasisAirMsg::kWarning, "failed frame %s", url_utf8.c_str());
+	auto url_utf8 = Awesomium::ToString( url.spec( ) );
+	_Oasis_air_grabot( this, OasisAirMsg::kWarning, "failed frame %s", url_utf8.c_str( ) );
 }
 
 //! This event occurs when the page finishes loading a frame. The main frame always finishes loading last for a given page load.
@@ -437,8 +530,8 @@ void InteractiveTV::Project::Oasis::Home::Hub::OnFinishLoadingFrame(
 	_In_ const Awesomium::WebURL& url
 	)
 {
-	auto url_utf8 = Awesomium::ToString(url.spec());
-	_Oasis_air_grabot(this, OasisAirMsg::kInfo, "finish frame %s", url_utf8.c_str());
+	auto url_utf8 = Awesomium::ToString( url.spec( ) );
+	_Oasis_air_grabot( this, OasisAirMsg::kInfo, "finish frame %s", url_utf8.c_str( ) );
 }
 
 //! This event occurs when the DOM has finished parsing and the window object is available for JavaScript execution.
@@ -447,8 +540,8 @@ void InteractiveTV::Project::Oasis::Home::Hub::OnDocumentReady(
 	_In_ const Awesomium::WebURL& url
 	)
 {
-	auto url_utf8 = Awesomium::ToString(url.spec());
-	_Oasis_air_grabot(this, OasisAirMsg::kInfo, "constructed %s", url_utf8.c_str());
+	auto url_utf8 = Awesomium::ToString( url.spec( ) );
+	_Oasis_air_grabot( this, OasisAirMsg::kInfo, "constructed %s", url_utf8.c_str( ) );
 }
 
 #pragma endregion // load events
@@ -519,7 +612,7 @@ Awesomium::JSValue InteractiveTV::Project::Oasis::Home::Hub::OnMethodCallWithRet
 	_In_ const Awesomium::JSArray& args
 	)
 {
-	return Awesomium::JSValue();
+	return Awesomium::JSValue( );
 }
 
 #pragma endregion // javascript events

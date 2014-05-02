@@ -7,6 +7,7 @@ namespace InteractiveTV
 {
 	struct Input
 	{
+		Nena::App::UserEvent GestureReceived;
 		Nena::Dispatcher::PaintEvent Paint;
 		Nena::Dispatcher::KeyboardEvent KeyPressed;
 		Nena::Dispatcher::KeyboardEvent KeyReleased;
@@ -46,6 +47,11 @@ namespace InteractiveTV
 			_In_ WPARAM wparam, _In_ LPARAM lparam
 			);
 		static LRESULT _Nena_DispatcherCallTy_ SizeChangedCallback(
+			_In_ Nena::Dispatcher::Event *e,
+			_In_ HWND hwnd, _In_ UINT32 msg,
+			_In_ WPARAM wparam, _In_ LPARAM lparam
+			);
+		static LRESULT _Nena_DispatcherCallTy_ GestureReceivedCallback(
 			_In_ Nena::Dispatcher::Event *e,
 			_In_ HWND hwnd, _In_ UINT32 msg,
 			_In_ WPARAM wparam, _In_ LPARAM lparam

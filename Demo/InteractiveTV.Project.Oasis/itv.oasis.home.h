@@ -14,27 +14,22 @@ struct InteractiveTV::Project::Oasis::Home
 	struct SignIn;
 	struct StartScreen;
 
-	typedef struct State 
+	typedef struct State
 		: public Oasis::State
 	{
 		typedef std::vector<Oasis::Home::State *> List;
 
-		virtual void OnResized() = 0;
-		virtual void OnFrameMove() = 0;
-		virtual void CreateDeviceResources() = 0;
-		virtual void CreateDeviceIndependentResources() = 0;
-		virtual void CreateWindowSizeDependentResources() = 0;
-		virtual void DiscardDeviceResources() = 0;
-		virtual void DiscardWindowSizeDependentResources() = 0;
+		virtual void OnResized( ) = 0; 
+		virtual void OnFrameMove( ) = 0;
+		virtual void CreateDeviceResources( ) = 0;
+		virtual void CreateDeviceIndependentResources( ) = 0;
+		virtual void CreateWindowSizeDependentResources( ) = 0;
+		virtual void DiscardDeviceResources( ) = 0;
+		virtual void DiscardWindowSizeDependentResources( ) = 0;
+		virtual void OnGestureReceived( Remote::Input::GestureAppMessageArg ) {}
 
-		State(Oasis::Home *home)
-			: Oasis::State(home)
-			, Host(home)
-		{
-		}
-		virtual ~State()
-		{
-		}
+		State( Oasis::Home *home ) : Oasis::State( home ), Host( home ) {}
+		virtual ~State( ) {}
 
 	protected:
 
@@ -42,21 +37,21 @@ struct InteractiveTV::Project::Oasis::Home
 
 	} State;
 
-	Home();
-	virtual ~Home();
+	Home( );
+	virtual ~Home( );
 
-	void Init();
-	void Quit();
+	void Init( );
+	void Quit( );
 
-	void OnFrameMove();
-	void OnBeginFrameMove();
-	void OnEndFrameMove();
+	void OnFrameMove( );
+	void OnBeginFrameMove( );
+	void OnEndFrameMove( );
 
-	void CreateDeviceResources();
-	void CreateDeviceIndependentResources();
-	void CreateWindowSizeDependentResources();
-	void DiscardDeviceResources();
-	void DiscardWindowSizeDependentResources();
+	void CreateDeviceResources( );
+	void CreateDeviceIndependentResources( );
+	void CreateWindowSizeDependentResources( );
+	void DiscardDeviceResources( );
+	void DiscardWindowSizeDependentResources( );
 
 	Oasis::Shared *Context = nullptr;
 
@@ -64,20 +59,21 @@ struct InteractiveTV::Project::Oasis::Home
 	::Nena::Graphics::OverlayResources *Overlay = nullptr;
 	::Nena::Graphics::Resources::Direct2DDrawingStateBlock BlockState = nullptr;
 
-	virtual void Resume() override;
-	virtual void Suspend() override;
-	virtual void OnStateQuitted(_In_ Oasis::State *) override;
-	virtual void OnStateResumed(_In_ Oasis::State *) override;
-	virtual void OnStateSuspended(_In_ Oasis::State *) override;
+	virtual void Resume( ) override;
+	virtual void Suspend( ) override;
+	virtual void OnStateQuitted( _In_ Oasis::State * ) override;
+	virtual void OnStateResumed( _In_ Oasis::State * ) override;
+	virtual void OnStateSuspended( _In_ Oasis::State * ) override;
 
-	void OnResized();
-	void OnKeyPressed(_In_::UINT32);
-	void OnKeyReleased(_In_::UINT32);
-	void OnMouseMoved(_In_::FLOAT, _In_::FLOAT);
-	void OnMouseLBPressed(_In_::FLOAT, _In_::FLOAT);
-	void OnMouseRBPressed(_In_::FLOAT, _In_::FLOAT);
-	void OnMouseLBReleased(_In_::FLOAT, _In_::FLOAT);
-	void OnMouseRBReleased(_In_::FLOAT, _In_::FLOAT);
+	void OnResized( );
+	void OnKeyPressed( _In_::UINT32 );
+	void OnKeyReleased( _In_::UINT32 );
+	void OnGestureReceived( _In_::UINT32 );
+	void OnMouseMoved( _In_::FLOAT, _In_::FLOAT );
+	void OnMouseLBPressed( _In_::FLOAT, _In_::FLOAT );
+	void OnMouseRBPressed( _In_::FLOAT, _In_::FLOAT );
+	void OnMouseLBReleased( _In_::FLOAT, _In_::FLOAT );
+	void OnMouseRBReleased( _In_::FLOAT, _In_::FLOAT );
 
 private:
 

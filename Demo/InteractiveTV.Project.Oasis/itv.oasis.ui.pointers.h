@@ -56,6 +56,13 @@ struct InteractiveTV::Ui::Pointers
 	Pointers::SolidColorBrush BorderBrush;
 	Pointers::SolidColorBrush CloseBorderBrush;
 
+	::BOOL IsActive;
+	::BOOL IsVisible;
+	::BOOL IsMovable;
+	::BOOL IsDragging;
+	::Nena::Vector2 LastPosition;
+
+	::LPVOID Element;
 	Pointers::AnimationControl Easing;
 	InteractiveTV::Project::Oasis::Home *Host;
 

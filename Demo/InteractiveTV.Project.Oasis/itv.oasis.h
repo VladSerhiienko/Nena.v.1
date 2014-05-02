@@ -52,7 +52,7 @@ namespace InteractiveTV
 			private:
 
 				friend ::InteractiveTV::Project::Oasis;
-				Shared();
+				Shared( );
 			};
 
 			struct State : public Oasis::Object
@@ -74,16 +74,16 @@ namespace InteractiveTV
 				Oasis::State::Event ResourcesCreated;		//! emits, when all the resources are ready
 				Oasis::State::Event ResourcesDestroyed;		//! emits, when all the resources are released
 
-				virtual void Init() = 0;
-				virtual void Quit() = 0;
-				virtual void Resume() = 0;
-				virtual void Suspend() = 0;
-				virtual void OnStateQuitted(_In_ Oasis::State *) {}
-				virtual void OnStateResumed(_In_ Oasis::State *) {}
-				virtual void OnStateSuspended(_In_ Oasis::State *) {}
+				virtual void Init( ) = 0;
+				virtual void Quit( ) = 0;
+				virtual void Resume( ) = 0;
+				virtual void Suspend( ) = 0;
+				virtual void OnStateQuitted( _In_ Oasis::State * ) {}
+				virtual void OnStateResumed( _In_ Oasis::State * ) {}
+				virtual void OnStateSuspended( _In_ Oasis::State * ) {}
 
-				State(_In_ Oasis::State *master);
-				virtual ~State();
+				State( _In_ Oasis::State *master );
+				virtual ~State( );
 
 			private:
 
@@ -91,7 +91,7 @@ namespace InteractiveTV
 
 			};
 
-			__forceinline static Oasis *GetForCurrentThread();
+			__forceinline static Oasis *GetForCurrentThread( );
 
 			void AssignId(
 				_In_ Oasis::Object *obj
@@ -110,41 +110,42 @@ namespace InteractiveTV
 				_In_ Oasis::State *state
 				);
 
-			void Run();
-			void Quit();
-			void OnQuit();
-			void OnFrameMove();
-			void OnToggleFullscreen();
+			void Run( );
+			void Quit( );
+			void OnQuit( );
+			void OnFrameMove( );
+			void OnToggleFullscreen( );
 
-			void OnKeyPressed(_In_::UINT32 key);
-			void OnKeyReleased(_In_::UINT32 key);
-			void OnMouseMoved(_In_::FLOAT x, _In_::FLOAT y);
-			void OnMouseLBPressed(_In_::FLOAT x, _In_::FLOAT y);
-			void OnMouseRBPressed(_In_::FLOAT x, _In_::FLOAT y);
-			void OnMouseLBReleased(_In_::FLOAT x, _In_::FLOAT y);
-			void OnMouseRBReleased(_In_::FLOAT x, _In_::FLOAT y);
-			void OnSizeChanged(_In_::USHORT x, _In_::USHORT y);
+			void OnKeyPressed( _In_::UINT32 key );
+			void OnKeyReleased( _In_::UINT32 key );
+			void OnGestureReceived( _In_::UINT32 key );
+			void OnMouseMoved( _In_::FLOAT x, _In_::FLOAT y );
+			void OnMouseLBPressed( _In_::FLOAT x, _In_::FLOAT y );
+			void OnMouseRBPressed( _In_::FLOAT x, _In_::FLOAT y );
+			void OnMouseLBReleased( _In_::FLOAT x, _In_::FLOAT y );
+			void OnMouseRBReleased( _In_::FLOAT x, _In_::FLOAT y );
+			void OnSizeChanged( _In_::USHORT x, _In_::USHORT y );
 
 			Shared Context;
 
 		public:
 
-			static void GenerateUuid(Oasis::String &path);
-			static ::BOOL CreateFolder(Oasis::String path);
+			static void GenerateUuid( Oasis::String &path );
+			static ::BOOL CreateFolder( Oasis::String path );
 
 		private:
 
 			Implementation *impl;
 
-			Oasis();
-			~Oasis();
+			Oasis( );
+			~Oasis( );
 
-			void OnAppQuitRequested(::Nena::App *);
+			void OnAppQuitRequested( ::Nena::App * );
 
-			void OnDeviceLost(::Nena::Graphics::DeviceResources *);
-			void OnDeviceRestored(::Nena::Graphics::DeviceResources *);
-			void OnSwapchainResizing(::Nena::Graphics::DeviceResources *);
-			void OnSwapchainResized(::Nena::Graphics::DeviceResources *);
+			void OnDeviceLost( ::Nena::Graphics::DeviceResources * );
+			void OnDeviceRestored( ::Nena::Graphics::DeviceResources * );
+			void OnSwapchainResizing( ::Nena::Graphics::DeviceResources * );
+			void OnSwapchainResized( ::Nena::Graphics::DeviceResources * );
 
 		private:
 		};

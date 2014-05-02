@@ -1,5 +1,6 @@
 #include "app.precompiled.h"
 #include "itv.oasis.home.h"
+#include "itv.oasis.ui.dialog.h"
 #include "nena.animation.h"
 
 #ifndef __NENA_INTERACTIVE_TV_OASIS_HOME_HUB_INCLUDED__
@@ -21,51 +22,68 @@ struct InteractiveTV::Project::Oasis::Home::Hub
 		kResumed,
 	};
 
+	struct AnimationControl
+	{
+		Nena::Animation::QuarticInEasingFunction SuspendingX;
+		Nena::Animation::QuarticOutEasingFunction ResumingX;
+	};
 
-	Hub(Oasis::Home *);
-	~Hub();
+	typedef std::string String8;
+	typedef std::wstring String, String16;
+	typedef ::tm TimeGeneric;
+	typedef ::time_t TimeUnix;
 
-	virtual void Init() override;
-	virtual void Quit() override;
-
-	virtual void Resume() override;
-	virtual void Suspend() override;
-
-	virtual void OnResized() override;
-	virtual void OnFrameMove() override;
-	virtual void CreateDeviceResources() override;
-	virtual void CreateDeviceIndependentResources() override;
-	virtual void CreateWindowSizeDependentResources() override;
-	virtual void DiscardDeviceResources() override;
-	virtual void DiscardWindowSizeDependentResources() override;
-
-
-	::BOOL IsResizing = FALSE;
-	Hub::Stage CurrentStage = kSuspended;
+	Hub::Stage CurrentStage;
 	Oasis::Shared *Context = nullptr;
+	Hub::AnimationControl Easing;
+
+	StartScreen *Start;
+	Ui::Dialog Navigation;
+	Ui::Pointers *Pointers;
 
 	::Nena::Graphics::OverlayResources *Overlay = nullptr;
 	::Nena::Graphics::Resources::Size *ScreenSize = nullptr;
 	::Nena::Graphics::Resources::Direct2DBitmap ViewImage = nullptr;
-	::Nena::Graphics::Resources::Direct2DDrawingStateBlock BlockState = nullptr;
+
+	Hub( Oasis::Home * );
+	~Hub( );
+
+	virtual void Init( ) override;
+	virtual void Quit( ) override;
+
+	virtual void Resume( ) override;
+	virtual void Suspend( ) override;
+
+	virtual void OnResized( ) override;
+	virtual void OnFrameMove( ) override;
+	virtual void CreateDeviceResources( ) override;
+	virtual void CreateDeviceIndependentResources( ) override;
+	virtual void CreateWindowSizeDependentResources( ) override;
+	virtual void DiscardDeviceResources( ) override;
+	virtual void DiscardWindowSizeDependentResources( ) override;
+
+	virtual void OnGestureReceived(
+		Remote::Input::GestureAppMessageArg
+		) override;
 
 public:
 
-	void OnKeyPressed(_In_::UINT32 key);
-	void OnKeyReleased(_In_::UINT32 key);
-	void OnMouseMoved(_In_::FLOAT x, _In_::FLOAT y);
-	void OnMouseLBPressed(_In_::FLOAT x, _In_::FLOAT y);
-	void OnMouseRBPressed(_In_::FLOAT x, _In_::FLOAT y);
-	void OnMouseLBReleased(_In_::FLOAT x, _In_::FLOAT y);
-	void OnMouseRBReleased(_In_::FLOAT x, _In_::FLOAT y);
+	void OnKeyPressed( _In_::UINT32 key );
+	void OnKeyReleased( _In_::UINT32 key );
+	void OnMouseMoved( _In_::FLOAT x, _In_::FLOAT y );
+	void OnMouseLBPressed( _In_::FLOAT x, _In_::FLOAT y );
+	void OnMouseRBPressed( _In_::FLOAT x, _In_::FLOAT y );
+	void OnMouseLBReleased( _In_::FLOAT x, _In_::FLOAT y );
+	void OnMouseRBReleased( _In_::FLOAT x, _In_::FLOAT y );
+	void OnButtonSelected( Ui::Dialog *, Ui::Button * );
 
 private:
 
 #pragma region Shortcuts
 
-	::HRESULT OnUpdateViewImage();
-	__forceinline Awesomium::WebView *GetView()	{ return Oasis::Web::AppBase::View; }
-	__forceinline Awesomium::BitmapSurface *GetViewSurface() { return static_cast<Awesomium::BitmapSurface*>(Oasis::Web::AppBase::View->surface()); }
+	::HRESULT OnUpdateViewImage( );
+	__forceinline Awesomium::WebView *GetView( ) { return Oasis::Web::AppBase::View; }
+	__forceinline Awesomium::BitmapSurface *GetViewSurface( ) { return static_cast<Awesomium::BitmapSurface*>(Oasis::Web::AppBase::View->surface( )); }
 
 #pragma endregion
 
