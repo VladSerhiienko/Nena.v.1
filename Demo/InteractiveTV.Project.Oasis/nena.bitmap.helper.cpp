@@ -13,7 +13,7 @@ Nena::Graphics::Resources::Direct2DBitmap Nena::Graphics::Resources::BitmapHelp:
 	_In_ BitmapHelp::String uri, _Out_opt_::HRESULT *result
 	)
 {
-	using namespace InteractiveTV::Project;
+	using namespace InteractiveTV;
 
 	Nena::Graphics::Resources::Direct2DBitmap bitmap = nullptr;
 	auto overlay = &Oasis::GetForCurrentThread( )->Context.Engine->Graphics.d2d;

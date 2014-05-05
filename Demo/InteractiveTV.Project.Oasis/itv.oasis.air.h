@@ -7,7 +7,7 @@
 
 namespace InteractiveTV
 {
-	struct Project::Oasis::Air
+	struct Oasis::Air
 	{
 
 #pragma region Typedefs
@@ -133,20 +133,20 @@ namespace InteractiveTV
 
 	};
 
-	typedef Project::Oasis::Air::Message::Type OasisAirMsg;
+	typedef Oasis::Air::Message::Type OasisAirMsg;
 }
 
-#define _Oasis_air_fmt(...) InteractiveTV::Project::Oasis::Air::ConsoleTrace<512, FALSE>(fmt, __VA_ARGS__)
-#define _Oasis_air_grab(...) InteractiveTV::Project::Oasis::Air::GetForCurrentThread()->Grab( \
-	InteractiveTV::Project::Oasis::Air::ConsoleTrace<512, FALSE>(__VA_ARGS__))
-#define _Oasis_air_grabt(t, ...) InteractiveTV::Project::Oasis::Air::GetForCurrentThread()->Grab( \
-	t, InteractiveTV::Project::Oasis::Air::ConsoleTrace<1024, FALSE>(__VA_ARGS__))
-#define _Oasis_air_grabtc(t, ...) InteractiveTV::Project::Oasis::Air::GetForCurrentThread()->Grab( \
-	t, InteractiveTV::Project::Oasis::Air::ConsoleTrace<1024, TRUE>(__VA_ARGS__))
-#define _Oasis_air_grabot(o, t, ...) InteractiveTV::Project::Oasis::Air::GetForCurrentThread()->Grab( \
-	o, t, InteractiveTV::Project::Oasis::Air::ConsoleTrace<1024, FALSE>(__VA_ARGS__))
-#define _Oasis_air_grabotc(o, t, ...) InteractiveTV::Project::Oasis::Air::GetForCurrentThread()->Grab( \
-	o, t, InteractiveTV::Project::Oasis::Air::ConsoleTrace<1024, TRUE>(__VA_ARGS__))
+#define _Oasis_air_fmt(...) InteractiveTV::Oasis::Air::ConsoleTrace<512, FALSE>(fmt, __VA_ARGS__)
+#define _Oasis_air_grab(...) InteractiveTV::Oasis::Air::GetForCurrentThread()->Grab( \
+	InteractiveTV::Oasis::Air::ConsoleTrace<512, FALSE>(__VA_ARGS__))
+#define _Oasis_air_grabt(t, ...) InteractiveTV::Oasis::Air::GetForCurrentThread()->Grab( \
+	t, InteractiveTV::Oasis::Air::ConsoleTrace<1024, FALSE>(__VA_ARGS__))
+#define _Oasis_air_grabtc(t, ...) InteractiveTV::Oasis::Air::GetForCurrentThread()->Grab( \
+	t, InteractiveTV::Oasis::Air::ConsoleTrace<1024, TRUE>(__VA_ARGS__))
+#define _Oasis_air_grabot(o, t, ...) InteractiveTV::Oasis::Air::GetForCurrentThread()->Grab( \
+	o, t, InteractiveTV::Oasis::Air::ConsoleTrace<1024, FALSE>(__VA_ARGS__))
+#define _Oasis_air_grabotc(o, t, ...) InteractiveTV::Oasis::Air::GetForCurrentThread()->Grab( \
+	o, t, InteractiveTV::Oasis::Air::ConsoleTrace<1024, TRUE>(__VA_ARGS__))
 
 #endif // !__NENA_INTERACTIVE_TV_OASIS_AIR_INCLUDED__
 

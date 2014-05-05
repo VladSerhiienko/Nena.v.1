@@ -1,38 +1,32 @@
 #include "app.precompiled.h"
+
 #include "itv.oasis.home.h"
+#include "itv.oasis.web.h"
 #include "itv.oasis.air.h"
 
-#include "itv.oasis.home.startscreen.h"
+#include "itv.oasis.home.start.h"
 #include "itv.oasis.home.hub.h"
-#include "itv.oasis.ui.dialog.h"
-#include "itv.oasis.ui.pointers.h"
 
-InteractiveTV::Project::Oasis::Home::Home( )
+InteractiveTV::Oasis::Home::Home( )
 : Oasis::State( nullptr )
 , Feed( &remote_input )
 {
 	Name = _Oasis_origin;
 	Name += "home/";
 
-	auto start_screen = new Home::StartScreen( this );
-	auto hub = new Home::Hub( this );
-
+	auto hub = new HubScreen( this );
+	auto start = new StartScreen( this );
 	auto pointers = new Ui::Pointers( this );
-
-	start_screen->Pointers = pointers;
+	start->Pointers = pointers;
 	hub->Pointers = pointers;
+	start->Hub = hub;
+	hub->Start = start;
 
-	start_screen->Hub = hub;
-	hub->Start = start_screen;
-
-	// push for handling
-	states.push_back( start_screen );
 	states.push_back( hub );
-
-	// always on top
+	states.push_back( start );
 	states.push_back( pointers );
 
-	start_screen->Resume( );
+	hub->Resume( );
 	pointers->Resume( );
 
 	Context = &Oasis::GetForCurrentThread( )->Context;
@@ -45,7 +39,7 @@ InteractiveTV::Project::Oasis::Home::Home( )
 		);
 }
 
-InteractiveTV::Project::Oasis::Home::~Home( )
+InteractiveTV::Oasis::Home::~Home( )
 {
 	Quit( );
 	for ( auto &state : states )
@@ -57,18 +51,19 @@ InteractiveTV::Project::Oasis::Home::~Home( )
 		);
 }
 
-void InteractiveTV::Project::Oasis::Home::Init( )
+void InteractiveTV::Oasis::Home::Init( )
 {
 	remote_input.Init( );
 	remote_input.LaunchGestureTracking( );
 	Set( Remote::Input::kGestures );
 
+	for ( auto &state : states )
+		state->Init( );
+
 	CreateDeviceIndependentResources( );
 	CreateDeviceResources( );
 	CreateWindowSizeDependentResources( );
 
-	for ( auto &state : states )
-		state->Init( );
 	_Oasis_air_grabot(
 		this, OasisAirMsg::kInfo,
 		"initted"
@@ -77,7 +72,7 @@ void InteractiveTV::Project::Oasis::Home::Init( )
 	Initted( this );
 }
 
-void InteractiveTV::Project::Oasis::Home::Quit( )
+void InteractiveTV::Oasis::Home::Quit( )
 {
 	remote_input.Quit( );
 	for ( auto &state : states )
@@ -91,7 +86,7 @@ void InteractiveTV::Project::Oasis::Home::Quit( )
 	Quitted( this );
 }
 
-void InteractiveTV::Project::Oasis::Home::OnBeginFrameMove( )
+void InteractiveTV::Oasis::Home::OnBeginFrameMove( )
 {
 	Overlay->Context->SaveDrawingState(
 		BlockState.Get( )
@@ -100,7 +95,7 @@ void InteractiveTV::Project::Oasis::Home::OnBeginFrameMove( )
 		);
 }
 
-void InteractiveTV::Project::Oasis::Home::OnEndFrameMove( )
+void InteractiveTV::Oasis::Home::OnEndFrameMove( )
 {
 	::HRESULT result( S_OK );
 
@@ -115,34 +110,9 @@ void InteractiveTV::Project::Oasis::Home::OnEndFrameMove( )
 		);
 }
 
-void InteractiveTV::Project::Oasis::Home::OnFrameMove( )
+void InteractiveTV::Oasis::Home::OnFrameMove( )
 {
 	Context->Web->OnFrameMove( );
-
-	/*if ( auto in =  BeginRead( ) )
-	{
-	if ( in->gestures [0].body > 0 )
-	if ( in->gestures [0].label > 0 )
-	{
-	_Oasis_air_grabot( this, OasisAirMsg::kInfo,
-	"gesture#0 %d (%d%%)",
-	in->gestures [0].label,
-	in->gestures [0].confidence
-	);
-
-	if ( in->gestures [1].body > 0 )
-	if ( in->gestures [1].label > 0 )
-	{
-	_Oasis_air_grabot( this, OasisAirMsg::kInfo,
-	"gesture#1 %d (%d%%)",
-	in->gestures [1].label,
-	in->gestures [1].confidence
-	);
-	}
-	}
-
-	EndRead( );
-	}*/
 
 	OnBeginFrameMove( );
 	for ( auto &s : states )
@@ -150,7 +120,7 @@ void InteractiveTV::Project::Oasis::Home::OnFrameMove( )
 	OnEndFrameMove( );
 }
 
-void InteractiveTV::Project::Oasis::Home::CreateDeviceResources( )
+void InteractiveTV::Oasis::Home::CreateDeviceResources( )
 {
 	Overlay->D2DFactory->CreateDrawingStateBlock(
 		BlockState.ReleaseAndGetAddressOf( )
@@ -163,7 +133,7 @@ void InteractiveTV::Project::Oasis::Home::CreateDeviceResources( )
 		);
 }
 
-void InteractiveTV::Project::Oasis::Home::CreateDeviceIndependentResources( )
+void InteractiveTV::Oasis::Home::CreateDeviceIndependentResources( )
 {
 	for ( auto &state : states )
 		state->CreateDeviceIndependentResources( );
@@ -173,7 +143,7 @@ void InteractiveTV::Project::Oasis::Home::CreateDeviceIndependentResources( )
 		);
 }
 
-void InteractiveTV::Project::Oasis::Home::CreateWindowSizeDependentResources( )
+void InteractiveTV::Oasis::Home::CreateWindowSizeDependentResources( )
 {
 	for ( auto &state : states )
 		state->CreateWindowSizeDependentResources( );
@@ -183,7 +153,7 @@ void InteractiveTV::Project::Oasis::Home::CreateWindowSizeDependentResources( )
 		);
 }
 
-void InteractiveTV::Project::Oasis::Home::DiscardDeviceResources( )
+void InteractiveTV::Oasis::Home::DiscardDeviceResources( )
 {
 	BlockState = nullptr;
 	for ( auto &state : states )
@@ -194,7 +164,7 @@ void InteractiveTV::Project::Oasis::Home::DiscardDeviceResources( )
 		);
 }
 
-void InteractiveTV::Project::Oasis::Home::DiscardWindowSizeDependentResources( )
+void InteractiveTV::Oasis::Home::DiscardWindowSizeDependentResources( )
 {
 	for ( auto &state : states )
 		state->DiscardWindowSizeDependentResources( );
@@ -206,7 +176,7 @@ void InteractiveTV::Project::Oasis::Home::DiscardWindowSizeDependentResources( )
 
 #pragma region Oasis State
 
-void InteractiveTV::Project::Oasis::Home::Resume( )
+void InteractiveTV::Oasis::Home::Resume( )
 {
 	for ( auto &state : states )
 		state->Resume( );
@@ -218,7 +188,7 @@ void InteractiveTV::Project::Oasis::Home::Resume( )
 	Resumed( this );
 }
 
-void InteractiveTV::Project::Oasis::Home::Suspend( )
+void InteractiveTV::Oasis::Home::Suspend( )
 {
 	for ( auto &state : states )
 		state->Suspend( );
@@ -230,7 +200,7 @@ void InteractiveTV::Project::Oasis::Home::Suspend( )
 	Suspended( this );
 }
 
-void InteractiveTV::Project::Oasis::Home::OnResized( )
+void InteractiveTV::Oasis::Home::OnResized( )
 {
 	for ( auto &state : states )
 		state->OnResized( );
@@ -240,11 +210,11 @@ void InteractiveTV::Project::Oasis::Home::OnResized( )
 		);
 }
 
-void InteractiveTV::Project::Oasis::Home::OnKeyPressed( ::UINT32 k )
+void InteractiveTV::Oasis::Home::OnKeyPressed( ::UINT32 k )
 {
 }
 
-void InteractiveTV::Project::Oasis::Home::OnKeyReleased( ::UINT32 k )
+void InteractiveTV::Oasis::Home::OnKeyReleased( ::UINT32 k )
 {
 	/*
 	switch ( g )
@@ -259,7 +229,7 @@ void InteractiveTV::Project::Oasis::Home::OnKeyReleased( ::UINT32 k )
 	*/
 }
 
-void InteractiveTV::Project::Oasis::Home::OnGestureReceived( _In_::UINT32 g )
+void InteractiveTV::Oasis::Home::OnGestureReceived( _In_::UINT32 g )
 {
 	for ( auto &state : states )
 		state->OnGestureReceived( 
@@ -267,35 +237,35 @@ void InteractiveTV::Project::Oasis::Home::OnGestureReceived( _In_::UINT32 g )
 			);
 }
 
-void InteractiveTV::Project::Oasis::Home::OnMouseMoved( ::FLOAT x, ::FLOAT y )
+void InteractiveTV::Oasis::Home::OnMouseMoved( ::FLOAT x, ::FLOAT y )
 {
 }
 
-void InteractiveTV::Project::Oasis::Home::OnMouseLBPressed( ::FLOAT x, ::FLOAT y )
+void InteractiveTV::Oasis::Home::OnMouseLBPressed( ::FLOAT x, ::FLOAT y )
 {
 }
 
-void InteractiveTV::Project::Oasis::Home::OnMouseRBPressed( ::FLOAT x, ::FLOAT y )
+void InteractiveTV::Oasis::Home::OnMouseRBPressed( ::FLOAT x, ::FLOAT y )
 {
 }
 
-void InteractiveTV::Project::Oasis::Home::OnMouseLBReleased( ::FLOAT x, ::FLOAT y )
+void InteractiveTV::Oasis::Home::OnMouseLBReleased( ::FLOAT x, ::FLOAT y )
 {
 }
 
-void InteractiveTV::Project::Oasis::Home::OnMouseRBReleased( ::FLOAT x, ::FLOAT y )
+void InteractiveTV::Oasis::Home::OnMouseRBReleased( ::FLOAT x, ::FLOAT y )
 {
 }
 
-void InteractiveTV::Project::Oasis::Home::OnStateQuitted( _In_ Oasis::State *kid )
+void InteractiveTV::Oasis::Home::OnStateQuitted( _In_ Oasis::State *kid )
 {
 }
 
-void InteractiveTV::Project::Oasis::Home::OnStateResumed( _In_ Oasis::State *kid )
+void InteractiveTV::Oasis::Home::OnStateResumed( _In_ Oasis::State *kid )
 {
 }
 
-void InteractiveTV::Project::Oasis::Home::OnStateSuspended( _In_ Oasis::State *kid )
+void InteractiveTV::Oasis::Home::OnStateSuspended( _In_ Oasis::State *kid )
 {
 }
 

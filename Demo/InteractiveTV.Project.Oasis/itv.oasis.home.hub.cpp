@@ -1,21 +1,15 @@
 #include "app.precompiled.h"
 #include "itv.oasis.air.h"
 #include "itv.oasis.home.hub.h"
-#include "itv.oasis.home.startscreen.h"
+#include "itv.oasis.home.start.h"
 
 #define _Oasis_home_hub "home/hub/"
 
-InteractiveTV::Project::Oasis::Home::Hub::Hub( Oasis::Home *master )
+InteractiveTV::Oasis::Home::HubScreen::HubScreen( Oasis::Home *master )
 : Oasis::Home::State( master )
 , Oasis::Web::AppBase( nullptr )
-, Navigation( master )
 {
 	Name = _Oasis_origin _Oasis_home_hub;
-
-	Context = &Oasis::GetForCurrentThread( )->Context;
-	Overlay = &Context->Engine->Graphics.d2d;
-
-	CurrentStage = Stage::kSuspended;
 
 	_Oasis_air_grabot(
 		this, OasisAirMsg::kInfo,
@@ -23,7 +17,7 @@ InteractiveTV::Project::Oasis::Home::Hub::Hub( Oasis::Home *master )
 		);
 }
 
-InteractiveTV::Project::Oasis::Home::Hub::~Hub( )
+InteractiveTV::Oasis::Home::HubScreen::~HubScreen( )
 {
 	_Oasis_air_grabot(
 		this, OasisAirMsg::kInfo,
@@ -31,21 +25,28 @@ InteractiveTV::Project::Oasis::Home::Hub::~Hub( )
 		);
 }
 
-void InteractiveTV::Project::Oasis::Home::Hub::Init( )
+void InteractiveTV::Oasis::Home::HubScreen::Init( )
 {
-	CreateDeviceIndependentResources( );
-	CreateDeviceResources( );
-	CreateWindowSizeDependentResources( );
+	Img.Bitmap.AcquireGlobals( );
 
-	Navigation.Add( "./Assets/News.png" );
-	Navigation.Add( "./Assets/User-Add.png" );
-	Navigation.Add( "./Assets/Debug .png" );
-	Navigation.Add( "./Assets/Media-Player.png" );
-	Navigation.Set( Pointers );
-	Navigation.ButtonSelected += Nena_Delegate_MakeBind(
-		this, &Hub::OnButtonSelected
+	Navdialog.dialog_pointers = Pointers;
+	Navdialog.AddButton( "./Assets/News.png" );
+	Navdialog.AddButton( "./Assets/Business-Card-01.png" );
+	Navdialog.AddButton( "./Assets/Debug .png" );
+	Navdialog.AddButton( "./Assets/QR-Code.png" );
+	Navdialog.AddButton( "./Assets/Media-Player.png" );
+	Navdialog.AddButton( "./Assets/Confused.png" );
+	Navdialog.Init( );
+
+	Navdialog.button_selected += Nena_Delegate_MakeBind(
+		this, &HubScreen::OnDialogButtonSelected
 		);
-	Navigation.Init( );
+
+	Easing.SetTotal( 2.0f );
+	Easing.SuspendingValue.Params.Distance = 0.0f;
+	Easing.SuspendingValue.Params.Offset = 2.0f;
+	Easing.ResumingValue.Params.Distance = -2.0f;
+	Easing.ResumingValue.Params.Offset = 2.0f;
 
 	_Oasis_air_grabot(
 		this, OasisAirMsg::kInfo,
@@ -55,11 +56,14 @@ void InteractiveTV::Project::Oasis::Home::Hub::Init( )
 	Initted( this );
 }
 
-void InteractiveTV::Project::Oasis::Home::Hub::Quit( )
+void InteractiveTV::Oasis::Home::HubScreen::Quit( )
 {
-	if ( GetView( ) && GetView( )->IsLoading( ) )
+	if ( GetView( ) &&
+		GetView( )->IsLoading( ) )
 		GetView( )->Stop( );
 	DestroyCoreObjects( );
+
+	Navdialog.Quit( );
 
 	_Oasis_air_grabot(
 		this, OasisAirMsg::kInfo,
@@ -69,7 +73,7 @@ void InteractiveTV::Project::Oasis::Home::Hub::Quit( )
 	Quitted( this );
 }
 
-::HRESULT InteractiveTV::Project::Oasis::Home::Hub::OnUpdateViewImage( )
+::HRESULT InteractiveTV::Oasis::Home::HubScreen::OnUpdateViewImage( )
 {
 	::HRESULT result( S_OK );
 
@@ -82,9 +86,10 @@ void InteractiveTV::Project::Oasis::Home::Hub::Quit( )
 	{
 		__try
 		{
-			result = ViewImage->CopyFromMemory(
-				nullptr, surface->buffer( ),
-				surface->width( ) * 4
+			result = Img.Bitmap.img_bitmap->CopyFromMemory(
+				nullptr, // completely overwritten
+				surface->buffer( ), // bytes
+				surface->width( ) * 4 // pitch
 				);
 			return result;
 		}
@@ -102,57 +107,57 @@ void InteractiveTV::Project::Oasis::Home::Hub::Quit( )
 	return E_FAIL;
 }
 
-void InteractiveTV::Project::Oasis::Home::Hub::OnFrameMove( )
+InteractiveTV::Oasis::Home::HubScreen::Stage
+InteractiveTV::Oasis::Home::HubScreen::GetEasingStage(
+)
 {
-	if ( CurrentStage == kSuspended )
-		return;
+	return Easing.CurrentStage;
+}
 
-	::FLOAT dx = 0.0f;
-	switch ( CurrentStage )
+void InteractiveTV::Oasis::Home::HubScreen::OnDialogButtonSelected(
+	::InteractiveTV::Ui::Round::Dialog *dlg,
+	::InteractiveTV::Ui::Round::Dialog::Button *btn
+	)
+{
+	Pointers->IsVisible[ 0 ] = FALSE;
+	if ( btn->button_id == 4 )
 	{
-	case Hub::kSuspending:
-		Easing.SuspendingX += Context->Timer.Elapsed;
-		dx = Easing.SuspendingX.OnFrame( );
-		break;
-	case Hub::kResuming:
-		Easing.ResumingX += Context->Timer.Elapsed;
-		dx = Easing.ResumingX.OnFrame( );
-		break;
-	}
-
-	if ( SUCCEEDED( OnUpdateViewImage( ) ) )
-	{
-		Overlay->Context->SetTransform(
-			D2D1::Matrix3x2F::Translation( { dx, 0 } )
-			);
-		D2D1_RECT_F dest = D2D1::RectF( 0, 0, (FLOAT) Width, (FLOAT) Height );
-		Overlay->Context->DrawBitmap( ViewImage.Get( ), &dest );
-		Overlay->Context->SetTransform(
-			D2D1::Matrix3x2F::Identity( )
-			);
-	}
-
-	Navigation.OnFrameMove(
-		);
-
-	switch ( CurrentStage )
-	{
-	case Hub::kSuspending:
-		if ( Easing.SuspendingX.Saturated )
-			CurrentStage = kSuspended,
-			Suspended( this );
-		break;
-	case Hub::kResuming:
-		if ( Easing.ResumingX.Saturated )
-			CurrentStage = kResumed,
-			Resumed( this );
-		break;
+		Start->Resume( );
+		Suspend( );
 	}
 }
 
-void InteractiveTV::Project::Oasis::Home::Hub::CreateDeviceResources( )
+void InteractiveTV::Oasis::Home::HubScreen::OnFrameMove( )
 {
-	Navigation.CreateDeviceResources( );
+	if ( GetEasingStage( ) != Stage::kSuspended )
+	if ( SUCCEEDED( OnUpdateViewImage( ) ) )
+	{
+		::Nena::Vector2 transaction_scene;
+		Easing += Img.Bitmap.cross_context->Timer.Elapsed;
+		transaction_scene.x = Easing.OnFrame(
+			);
+		Img.Bitmap.CalculateActualPositionMetricTs(
+			transaction_scene
+			);
+
+		Img.Bitmap.overlay->Context->SetTransform(
+			::D2D1::Matrix3x2F::Translation( { transaction_scene.x, 0 } )
+			);
+		Img.Bitmap.DrawFullscreen(
+			);
+		Img.Bitmap.RestoreDeviceTransform(
+			);
+		Navdialog.OnFrameMove(
+			);
+	}
+}
+
+void InteractiveTV::Oasis::Home::HubScreen::CreateDeviceResources( )
+{
+	Img.Bitmap.CreateDeviceResources(
+		);
+	Navdialog.CreateDeviceResources(
+		);
 
 	_Oasis_air_grabot(
 		this, OasisAirMsg::kInfo,
@@ -160,9 +165,11 @@ void InteractiveTV::Project::Oasis::Home::Hub::CreateDeviceResources( )
 		);
 }
 
-void InteractiveTV::Project::Oasis::Home::Hub::CreateDeviceIndependentResources( )
+void InteractiveTV::Oasis::Home::HubScreen::CreateDeviceIndependentResources( )
 {
-	CreateCoreObjects( );
+	CreateCoreObjects(
+		);
+
 	GetView( )->set_js_method_handler( this );
 	GetView( )->set_process_listener( this );
 	GetView( )->set_view_listener( this );
@@ -170,7 +177,9 @@ void InteractiveTV::Project::Oasis::Home::Hub::CreateDeviceIndependentResources(
 	GetView( )->LoadURL( Awesomium::WebURL(
 		Awesomium::WSLit( "https://www.google.com/" )
 		) );
-	Navigation.CreateDeviceIndependentResources( );
+
+	Navdialog.CreateDeviceIndependentResources(
+		);
 
 	_Oasis_air_grabot(
 		this, OasisAirMsg::kInfo,
@@ -178,24 +187,11 @@ void InteractiveTV::Project::Oasis::Home::Hub::CreateDeviceIndependentResources(
 		);
 }
 
-void InteractiveTV::Project::Oasis::Home::Hub::CreateWindowSizeDependentResources( )
+void InteractiveTV::Oasis::Home::HubScreen::CreateWindowSizeDependentResources( )
 {
-	ScreenSize = &Context->Engine->Graphics.d3d.ActualRenderTargetSize;
-	AppBase::Width = (INT32) Context->Engine->Graphics.d3d.LogicalSize.Width;
-	AppBase::Height = (INT32) Context->Engine->Graphics.d3d.LogicalSize.Height;
-
-	auto total = 1.0f;
-	auto susp_factor = 0.2f;
-
-	Easing.ResumingX.Params.Total = total;
-	Easing.ResumingX.Params.Elapsed = 0.0f;
-	Easing.ResumingX.Params.Offset = ScreenSize->Width;
-	Easing.ResumingX.Params.Distance = -ScreenSize->Width;
-
-	Easing.SuspendingX.Params.Total = total * susp_factor;
-	Easing.SuspendingX.Params.Elapsed = 0.0f;
-	Easing.SuspendingX.Params.Offset = 0.0f;
-	Easing.SuspendingX.Params.Distance = -ScreenSize->Width;
+	auto screen_size = &Img.Bitmap.cross_context->Engine->Graphics.d3d.ActualRenderTargetSize;
+	AppBase::Width = (INT32) screen_size->Width;
+	AppBase::Height = (INT32) screen_size->Height;
 
 	if ( !Context->Engine->Graphics.d2d.Device.Get( ) )
 	{
@@ -239,7 +235,7 @@ void InteractiveTV::Project::Oasis::Home::Hub::CreateWindowSizeDependentResource
 		return;
 	}
 
-	result = image.As( &ViewImage );
+	result = image.As( &Img.Bitmap.img_bitmap );
 	if ( SUCCEEDED( result ) )
 	{
 		_Oasis_air_grabot(
@@ -249,41 +245,45 @@ void InteractiveTV::Project::Oasis::Home::Hub::CreateWindowSizeDependentResource
 		return;
 	}
 
+	Navdialog.CreateWindowSizeDependentResources( );
+
 	_Oasis_air_grabot(
 		this, OasisAirMsg::kInfo,
 		"window-size-dependent resources created"
 		);
-
-	Navigation.CreateWindowSizeDependentResources( );
 }
 
-void InteractiveTV::Project::Oasis::Home::Hub::DiscardDeviceResources( )
+void InteractiveTV::Oasis::Home::HubScreen::DiscardDeviceResources( )
 {
+	Navdialog.DiscardDeviceResources( );
+
 	_Oasis_air_grabot(
 		this, OasisAirMsg::kInfo,
 		"create device-dependent resources"
 		);
 }
 
-void InteractiveTV::Project::Oasis::Home::Hub::DiscardWindowSizeDependentResources( )
+void InteractiveTV::Oasis::Home::HubScreen::DiscardWindowSizeDependentResources( )
 {
+	Navdialog.DiscardWindowSizeDependentResources( );
+
 	_Oasis_air_grabot(
 		this, OasisAirMsg::kInfo,
 		"release window-size-dependent resources"
 		);
 
-	ViewImage = nullptr;
+	Img.Bitmap.img_bitmap = nullptr;
 }
 
 #pragma region Oasis State
 
-void InteractiveTV::Project::Oasis::Home::Hub::Resume( )
+void InteractiveTV::Oasis::Home::HubScreen::Resume( )
 {
 	if ( GetView( ) )
 		GetView( )->ResumeRendering( );
-	CurrentStage = Hub::kResuming;
-	Easing.SuspendingX.Reset( );
-	Easing.ResumingX.Reset( );
+
+	Easing.Resume( );
+	Pointers->IsVisible[ 0 ] = FALSE;
 
 	_Oasis_air_grabot(
 		this, OasisAirMsg::kWarning,
@@ -291,96 +291,59 @@ void InteractiveTV::Project::Oasis::Home::Hub::Resume( )
 		);
 }
 
-void InteractiveTV::Project::Oasis::Home::Hub::Suspend( )
+void InteractiveTV::Oasis::Home::HubScreen::Suspend( )
 {
-	if ( GetView( )->IsLoading( ) )
-		GetView( )->Stop( );
-	Easing.SuspendingX.Reset( );
-	Easing.ResumingX.Reset( );
+	if ( GetView( ) )
+	{
+		if ( GetView( )->IsLoading( ) )
+			GetView( )->Stop( );
+		GetView( )->PauseRendering( );
+	}
 
-	CurrentStage = Hub::kSuspending;
-	GetView( )->PauseRendering(
-		);
+	Easing.Suspend( );
+	Pointers->IsVisible[ 0 ] = TRUE;
+
 	_Oasis_air_grabot(
 		this, OasisAirMsg::kWarning,
 		"suspended"
 		);
 }
 
-void InteractiveTV::Project::Oasis::Home::Hub::OnButtonSelected(
-	Ui::Dialog *navigation, Ui::Button *selection
-	)
-{
-	if ( navigation == &Navigation && selection ) switch ( selection->Index )
-	{
-	case 3:
-		Suspend( );
-		Start->Resume( );
-		break;
-	}
-
-}
-
-void InteractiveTV::Project::Oasis::Home::Hub::OnGestureReceived(
+void InteractiveTV::Oasis::Home::HubScreen::OnGestureReceived(
 	Remote::Input::GestureAppMessageArg arg
 	)
 {
-	if ( CurrentStage != Hub::kResumed ) return;
-	else if ( Navigation.CurrentStage == Ui::Dialog::kResumed )
-		Navigation.OnGestureReceived( arg );
-	else switch ( arg )
+	if ( GetEasingStage( ) != Stage::kSuspended )
 	{
-	case Remote::Input::kWave:
-		break;
-	case Remote::Input::kCircle:
+		if ( Navdialog.GetEasingStage( ) == ::Nena::Animation::EasingStage::kResumed )
+			Navdialog.OnGestureReceived( arg );
 
-		if ( Navigation.CurrentStage == Ui::Dialog::kSuspended )
-			Navigation.Resume( );
+		switch ( arg )
+		{
+		case Remote::Input::kWave:
+			break;
+		case Remote::Input::kCircle:
+			if ( Navdialog.GetEasingStage( ) == ::Nena::Animation::EasingStage::kSuspended )
+				Pointers->IsVisible[ 0 ] = TRUE,
+				Navdialog.Resume( );
 
-		break;
-	case Remote::Input::kNavigationSwipeUp:
-		break;
-	case Remote::Input::kNavigationSwipeDown:
-		break;
-	case Remote::Input::kNavigationSwipeLeft:
-		break;
-	case Remote::Input::kNavigationSwipeRight:
-		break;
+			break;
+		case Remote::Input::kNavigationSwipeUp:
+			break;
+		case Remote::Input::kNavigationSwipeDown:
+			break;
+		case Remote::Input::kNavigationSwipeLeft:
+			break;
+		case Remote::Input::kNavigationSwipeRight:
+			break;
+		}
 	}
 }
 
-void InteractiveTV::Project::Oasis::Home::Hub::OnKeyPressed( ::UINT32 k )
+void InteractiveTV::Oasis::Home::HubScreen::OnResized( )
 {
-}
-
-void InteractiveTV::Project::Oasis::Home::Hub::OnKeyReleased( ::UINT32 k )
-{
-}
-
-void InteractiveTV::Project::Oasis::Home::Hub::OnMouseMoved( ::FLOAT x, ::FLOAT y )
-{
-}
-
-void InteractiveTV::Project::Oasis::Home::Hub::OnMouseLBPressed( ::FLOAT x, ::FLOAT y )
-{
-}
-
-void InteractiveTV::Project::Oasis::Home::Hub::OnMouseRBPressed( ::FLOAT x, ::FLOAT y )
-{
-}
-
-void InteractiveTV::Project::Oasis::Home::Hub::OnMouseLBReleased( ::FLOAT x, ::FLOAT y )
-{
-}
-
-void InteractiveTV::Project::Oasis::Home::Hub::OnMouseRBReleased( ::FLOAT x, ::FLOAT y )
-{
-}
-
-void InteractiveTV::Project::Oasis::Home::Hub::OnResized( )
-{
-	Width = (INT32) Context->Engine->Graphics.d3d.ActualRenderTargetSize.Width;
-	Height = (INT32) Context->Engine->Graphics.d3d.ActualRenderTargetSize.Height;
+	Width = (INT32) Img.Bitmap.cross_context->Engine->Graphics.d3d.ActualRenderTargetSize.Width;
+	Height = (INT32) Img.Bitmap.cross_context->Engine->Graphics.d3d.ActualRenderTargetSize.Height;
 
 	_Oasis_air_grabot(
 		this, OasisAirMsg::kInfo,
@@ -395,17 +358,18 @@ void InteractiveTV::Project::Oasis::Home::Hub::OnResized( )
 	::Sleep( 500 );
 	Context->Web->OnFrameMove( );
 	CreateWindowSizeDependentResources( );
+	Navdialog.OnResized( );
+
 }
 
 #pragma endregion
-
 
 #pragma region Event overrides
 
 #pragma region View events
 
 //! This event occurs when the page title has changed.
-void InteractiveTV::Project::Oasis::Home::Hub::OnChangeTitle(
+void InteractiveTV::Oasis::Home::HubScreen::OnChangeTitle(
 	_In_ Awesomium::WebView* caller,
 	_In_ const Awesomium::WebString& title
 	)
@@ -413,7 +377,7 @@ void InteractiveTV::Project::Oasis::Home::Hub::OnChangeTitle(
 }
 
 //! This event occurs when the page URL has changed.
-void InteractiveTV::Project::Oasis::Home::Hub::OnChangeAddressBar(
+void InteractiveTV::Oasis::Home::HubScreen::OnChangeAddressBar(
 	_In_ Awesomium::WebView* caller,
 	_In_ const Awesomium::WebURL& url
 	)
@@ -422,7 +386,7 @@ void InteractiveTV::Project::Oasis::Home::Hub::OnChangeAddressBar(
 
 //! This event occurs when the tooltip text has changed. You
 //! should hide the tooltip when the text is empty.
-void InteractiveTV::Project::Oasis::Home::Hub::OnChangeTooltip(
+void InteractiveTV::Oasis::Home::HubScreen::OnChangeTooltip(
 	_In_ Awesomium::WebView* caller,
 	_In_ const Awesomium::WebString& tooltip
 	)
@@ -432,7 +396,7 @@ void InteractiveTV::Project::Oasis::Home::Hub::OnChangeTooltip(
 
 //! This event occurs when the target URL has changed. This
 //! is usually the result of hovering over a link on a page.
-void InteractiveTV::Project::Oasis::Home::Hub::OnChangeTargetURL(
+void InteractiveTV::Oasis::Home::HubScreen::OnChangeTargetURL(
 	_In_ Awesomium::WebView* caller,
 	_In_ const Awesomium::WebURL& url
 	)
@@ -441,7 +405,7 @@ void InteractiveTV::Project::Oasis::Home::Hub::OnChangeTargetURL(
 
 //! This event occurs when the cursor has changed. This is
 //! is usually the result of hovering over different content.
-void InteractiveTV::Project::Oasis::Home::Hub::OnChangeCursor(
+void InteractiveTV::Oasis::Home::HubScreen::OnChangeCursor(
 	_In_ Awesomium::WebView* caller,
 	_In_ Awesomium::Cursor cursor
 	)
@@ -451,7 +415,7 @@ void InteractiveTV::Project::Oasis::Home::Hub::OnChangeCursor(
 //! This event occurs when the focused element changes on the page.
 //! This is usually the result of textbox being focused or some other
 //! user-interaction event.
-void InteractiveTV::Project::Oasis::Home::Hub::OnChangeFocus(
+void InteractiveTV::Oasis::Home::HubScreen::OnChangeFocus(
 	_In_ Awesomium::WebView* caller,
 	_In_ Awesomium::FocusedElementType focused_type
 	)
@@ -461,7 +425,7 @@ void InteractiveTV::Project::Oasis::Home::Hub::OnChangeFocus(
 //! This event occurs when a message is added to the console on the page.
 //! This is usually the result of a JavaScript error being encountered
 //! on a page.
-void InteractiveTV::Project::Oasis::Home::Hub::OnAddConsoleMessage(
+void InteractiveTV::Oasis::Home::HubScreen::OnAddConsoleMessage(
 	_In_ Awesomium::WebView* caller,
 	_In_ const Awesomium::WebString& message,
 	_In_ int line_number,
@@ -480,7 +444,7 @@ void InteractiveTV::Project::Oasis::Home::Hub::OnAddConsoleMessage(
 //! If this is a child of a Windowed WebView, you should call
 //! WebView::set_parent_window on the new view immediately within
 //! this event.
-void InteractiveTV::Project::Oasis::Home::Hub::OnShowCreatedWebView(
+void InteractiveTV::Oasis::Home::HubScreen::OnShowCreatedWebView(
 	_In_ Awesomium::WebView* caller,
 	_In_ Awesomium::WebView* new_view,
 	_In_ const Awesomium::WebURL& opener_url,
@@ -496,7 +460,7 @@ void InteractiveTV::Project::Oasis::Home::Hub::OnShowCreatedWebView(
 #pragma region Load events
 
 //! This event occurs when the page begins loading a frame.
-void InteractiveTV::Project::Oasis::Home::Hub::OnBeginLoadingFrame(
+void InteractiveTV::Oasis::Home::HubScreen::OnBeginLoadingFrame(
 	_In_ Awesomium::WebView* caller,
 	_In_ int64 frame_id,
 	_In_ bool is_main_frame,
@@ -509,7 +473,7 @@ void InteractiveTV::Project::Oasis::Home::Hub::OnBeginLoadingFrame(
 }
 
 //! This event occurs when a frame fails to load. See error_desc for additional information.
-void InteractiveTV::Project::Oasis::Home::Hub::OnFailLoadingFrame(
+void InteractiveTV::Oasis::Home::HubScreen::OnFailLoadingFrame(
 	_In_ Awesomium::WebView* caller,
 	_In_ int64 frame_id,
 	_In_ bool is_main_frame,
@@ -523,7 +487,7 @@ void InteractiveTV::Project::Oasis::Home::Hub::OnFailLoadingFrame(
 }
 
 //! This event occurs when the page finishes loading a frame. The main frame always finishes loading last for a given page load.
-void InteractiveTV::Project::Oasis::Home::Hub::OnFinishLoadingFrame(
+void InteractiveTV::Oasis::Home::HubScreen::OnFinishLoadingFrame(
 	_In_ Awesomium::WebView* caller,
 	_In_ int64 frame_id,
 	_In_ bool is_main_frame,
@@ -535,7 +499,7 @@ void InteractiveTV::Project::Oasis::Home::Hub::OnFinishLoadingFrame(
 }
 
 //! This event occurs when the DOM has finished parsing and the window object is available for JavaScript execution.
-void InteractiveTV::Project::Oasis::Home::Hub::OnDocumentReady(
+void InteractiveTV::Oasis::Home::HubScreen::OnDocumentReady(
 	_In_ Awesomium::WebView* caller,
 	_In_ const Awesomium::WebURL& url
 	)
@@ -549,21 +513,21 @@ void InteractiveTV::Project::Oasis::Home::Hub::OnDocumentReady(
 #pragma region Process events
 
 //! This event occurs when the process hangs.
-void InteractiveTV::Project::Oasis::Home::Hub::OnUnresponsive(
+void InteractiveTV::Oasis::Home::HubScreen::OnUnresponsive(
 	_In_ Awesomium::WebView* caller
 	)
 {
 }
 
 //! This event occurs when the process becomes responsive after a hang.
-void InteractiveTV::Project::Oasis::Home::Hub::OnResponsive(
+void InteractiveTV::Oasis::Home::HubScreen::OnResponsive(
 	_In_ Awesomium::WebView* caller
 	)
 {
 }
 
 //! This event occurs when the process crashes.
-void InteractiveTV::Project::Oasis::Home::Hub::OnCrashed(
+void InteractiveTV::Oasis::Home::HubScreen::OnCrashed(
 	_In_ Awesomium::WebView* caller,
 	_In_ Awesomium::TerminationStatus status
 	)
@@ -580,7 +544,7 @@ void InteractiveTV::Project::Oasis::Home::Hub::OnCrashed(
 //! @param  remote_object_id  The unique ID of the JS Object that contains this method.
 //! @param  method_name  The name of the method being called.
 //! @param  args  The arguments passed to the method.
-void InteractiveTV::Project::Oasis::Home::Hub::OnMethodCall(
+void InteractiveTV::Oasis::Home::HubScreen::OnMethodCall(
 	Awesomium::WebView* caller,
 	unsigned int remote_object_id,
 	const Awesomium::WebString& method_name,
@@ -605,7 +569,7 @@ void InteractiveTV::Project::Oasis::Home::Hub::OnMethodCall(
 //!        synchronous API calls at the risk of causing deadlock.
 //!        This event does not support objects being passed as arguments
 //!        (all JS objects are replaced with undefined in the args array).
-Awesomium::JSValue InteractiveTV::Project::Oasis::Home::Hub::OnMethodCallWithReturnValue(
+Awesomium::JSValue InteractiveTV::Oasis::Home::HubScreen::OnMethodCallWithReturnValue(
 	_In_ Awesomium::WebView* caller,
 	_In_ unsigned int remote_object_id,
 	_In_ const Awesomium::WebString& method_name,
@@ -618,3 +582,31 @@ Awesomium::JSValue InteractiveTV::Project::Oasis::Home::Hub::OnMethodCallWithRet
 #pragma endregion // javascript events
 
 #pragma endregion
+
+void InteractiveTV::Oasis::Home::HubScreen::OnKeyPressed( ::UINT32 k )
+{
+}
+
+void InteractiveTV::Oasis::Home::HubScreen::OnKeyReleased( ::UINT32 k )
+{
+}
+
+void InteractiveTV::Oasis::Home::HubScreen::OnMouseMoved( ::FLOAT x, ::FLOAT y )
+{
+}
+
+void InteractiveTV::Oasis::Home::HubScreen::OnMouseLBPressed( ::FLOAT x, ::FLOAT y )
+{
+}
+
+void InteractiveTV::Oasis::Home::HubScreen::OnMouseRBPressed( ::FLOAT x, ::FLOAT y )
+{
+}
+
+void InteractiveTV::Oasis::Home::HubScreen::OnMouseLBReleased( ::FLOAT x, ::FLOAT y )
+{
+}
+
+void InteractiveTV::Oasis::Home::HubScreen::OnMouseRBReleased( ::FLOAT x, ::FLOAT y )
+{
+}

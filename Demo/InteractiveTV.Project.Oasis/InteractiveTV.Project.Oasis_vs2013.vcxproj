@@ -5,17 +5,9 @@
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Debug|x64">
-      <Configuration>Debug</Configuration>
-      <Platform>x64</Platform>
-    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|x64">
-      <Configuration>Release</Configuration>
-      <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
@@ -26,17 +18,15 @@
     <ClCompile Include="app.precompiled.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="app.main.cpp" />
     <ClCompile Include="itv.engine.cpp" />
     <ClCompile Include="itv.oasis.cpp" />
     <ClCompile Include="itv.oasis.home.hub.cpp" />
-    <ClCompile Include="itv.oasis.home.startscreen.cpp" />
-    <ClCompile Include="itv.oasis.ui.button.cpp" />
-    <ClCompile Include="itv.oasis.ui.dialog.cpp" />
+    <ClCompile Include="itv.oasis.home.start.cpp" />
+    <ClCompile Include="itv.oasis.ui.base.cpp" />
     <ClCompile Include="itv.oasis.ui.pointers.cpp" />
+    <ClCompile Include="itv.oasis.ui.round.cpp" />
     <ClCompile Include="itv.oasis.web.cpp" />
     <ClCompile Include="itv.remote.control.cpp" />
     <ClCompile Include="nena.bitmap.helper.cpp" />
@@ -50,11 +40,11 @@
     <ClInclude Include="itv.engine.h" />
     <ClInclude Include="itv.oasis.h" />
     <ClInclude Include="itv.oasis.home.hub.h" />
-    <ClInclude Include="itv.oasis.home.startscreen.h" />
+    <ClInclude Include="itv.oasis.home.start.h" />
     <ClInclude Include="itv.oasis.renderer.h" />
-    <ClInclude Include="itv.oasis.ui.button.h" />
-    <ClInclude Include="itv.oasis.ui.dialog.h" />
+    <ClInclude Include="itv.oasis.ui.base.h" />
     <ClInclude Include="itv.oasis.ui.pointers.h" />
+    <ClInclude Include="itv.oasis.ui.round.h" />
     <ClInclude Include="itv.oasis.web.h" />
     <ClInclude Include="itv.remote.control.h" />
     <ClInclude Include="nena.animation.h" />
@@ -80,20 +70,7 @@
     <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
@@ -104,19 +81,6 @@
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\Props\Nn_Build_Checked.props" />
-    <Import Project="..\..\Props\Nn_bsc.props" />
-    <Import Project="..\..\Props\Nn_Dpndc.props" />
-    <Import Project="..\..\Props\Nn_appwnd.props" />
-    <Import Project="..\..\Props\Nn_Dx.props" />
-    <Import Project="..\..\Props\Nn_Dfapp.props" />
-    <Import Project="..\..\Props\Nn_awe.props" />
-    <Import Project="..\..\Props\Nn_Pcsdk.props" />
-    <Import Project="..\..\Props\Nn_Lxndsdk.props" />
-    <Import Project="..\..\Props\Nn_Perc.props" />
-  </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\Props\Nn_Build_Checked.props" />
     <Import Project="..\..\Props\Nn_bsc.props" />
@@ -142,24 +106,9 @@
     <Import Project="..\..\Props\Nn_Lxndsdk.props" />
     <Import Project="..\..\Props\Nn_Perc.props" />
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\Props\Nn_Build_Release.props" />
-    <Import Project="..\..\Props\Nn_bsc.props" />
-    <Import Project="..\..\Props\Nn_Dpndc.props" />
-    <Import Project="..\..\Props\Nn_appwnd.props" />
-    <Import Project="..\..\Props\Nn_Dx.props" />
-    <Import Project="..\..\Props\Nn_Dfapp.props" />
-    <Import Project="..\..\Props\Nn_awe.props" />
-    <Import Project="..\..\Props\Nn_Pcsdk.props" />
-    <Import Project="..\..\Props\Nn_Lxndsdk.props" />
-    <Import Project="..\..\Props\Nn_Perc.props" />
-  </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -183,51 +132,7 @@
       <PreserveSbr>true</PreserveSbr>
     </Bscmake>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>app.precompiled.h</PrecompiledHeaderFile>
-    </ClCompile>
-    <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-    </Link>
-    <PostBuildEvent>
-      <Command>
-      </Command>
-    </PostBuildEvent>
-    <PreBuildEvent>
-      <Command>
-      </Command>
-    </PreBuildEvent>
-  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>MaxSpeed</Optimization>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>app.precompiled.h</PrecompiledHeaderFile>
-    </ClCompile>
-    <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
-    </Link>
-    <PreBuildEvent>
-      <Command>
-      </Command>
-    </PreBuildEvent>
-    <PostBuildEvent>
-      <Command>
-      </Command>
-    </PostBuildEvent>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>

@@ -8,6 +8,6 @@ struct SomeClass
 
 int main(int argc, char *argv [])
 {
-	InteractiveTV::Project::Oasis::GetForCurrentThread()->Run();
+	InteractiveTV::Oasis::GetForCurrentThread()->Run();
 	return EXIT_SUCCESS;
 }

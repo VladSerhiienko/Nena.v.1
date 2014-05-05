@@ -9,7 +9,7 @@ LRESULT _Nena_DispatcherCallTy_ InteractiveTV::Input::PaintCallback(
 	_In_ WPARAM wparam, _In_ LPARAM lparam
 	)
 {
-	static auto oasis = InteractiveTV::Project::Oasis::GetForCurrentThread( );
+	static auto oasis = InteractiveTV::Oasis::GetForCurrentThread( );
 
 	if ( e->Msg == msg )
 	{
@@ -28,7 +28,7 @@ LRESULT _Nena_DispatcherCallTy_ InteractiveTV::Input::KeyboardDispatchCallback(
 	_In_ WPARAM wparam, _In_ LPARAM lparam
 	)
 {
-	static auto oasis = InteractiveTV::Project::Oasis::GetForCurrentThread( );
+	static auto oasis = InteractiveTV::Oasis::GetForCurrentThread( );
 
 	if ( e->Msg == msg )
 	{
@@ -61,7 +61,7 @@ LRESULT _Nena_DispatcherCallTy_ InteractiveTV::Input::MouseDispatchCallback(
 	_In_ WPARAM wparam, _In_ LPARAM lparam
 	)
 {
-	static auto oasis = InteractiveTV::Project::Oasis::GetForCurrentThread( );
+	static auto oasis = InteractiveTV::Oasis::GetForCurrentThread( );
 
 	if ( e->Msg == msg )
 	{
@@ -104,7 +104,7 @@ LRESULT _Nena_DispatcherCallTy_ InteractiveTV::Input::SizeChangedCallback(
 	_In_ WPARAM wparam, _In_ LPARAM lparam
 	)
 {
-	static auto oasis = InteractiveTV::Project::Oasis::GetForCurrentThread( );
+	static auto oasis = InteractiveTV::Oasis::GetForCurrentThread( );
 
 	if ( e->Msg == msg )
 	{
@@ -128,7 +128,7 @@ LRESULT _Nena_DispatcherCallTy_ InteractiveTV::Input::GestureReceivedCallback(
 	_In_ WPARAM wparam, _In_ LPARAM lparam
 	)
 {
-	static auto oasis = InteractiveTV::Project::Oasis::GetForCurrentThread( );
+	static auto oasis = InteractiveTV::Oasis::GetForCurrentThread( );
 
 	if ( e->Msg == msg )
 	{
@@ -202,7 +202,7 @@ InteractiveTV::Input::Input(
 	MouseMiddleButtonPressed.OnDispatch = &MouseDispatchCallback;
 	MouseMiddleButtonReleased.OnDispatch = &MouseDispatchCallback;
 
-	auto xcontext = &InteractiveTV::Project::Oasis::GetForCurrentThread( )->Context;
+	auto xcontext = &InteractiveTV::Oasis::GetForCurrentThread( )->Context;
 	xcontext->App->ViewSizeChanged.OnDispatch = &SizeChangedCallback;
 }
 

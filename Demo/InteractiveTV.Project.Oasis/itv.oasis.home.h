@@ -1,17 +1,17 @@
 #include "app.precompiled.h"
 #include "itv.remote.control.h"
-#include "itv.oasis.web.h"
+#include "itv.oasis.ui.base.h"
 #include "itv.oasis.h"
 
 #ifndef __NENA_INTERACTIVE_TV_OASIS_HOME_INCLUDED__
 #define __NENA_INTERACTIVE_TV_OASIS_HOME_INCLUDED__
 
-struct InteractiveTV::Project::Oasis::Home
+struct InteractiveTV::Oasis::Home
 	: public Oasis::State
 	, public Remote::Input::Feed
 {
-	struct Hub;
-	struct SignIn;
+	struct HubScreen;
+	struct SignUpScreen;
 	struct StartScreen;
 
 	typedef struct State
@@ -27,12 +27,14 @@ struct InteractiveTV::Project::Oasis::Home
 		virtual void DiscardDeviceResources( ) = 0;
 		virtual void DiscardWindowSizeDependentResources( ) = 0;
 		virtual void OnGestureReceived( Remote::Input::GestureAppMessageArg ) {}
+		::InteractiveTV::Ui::Base::Element *GetScene( ) { return &Scene; }
 
 		State( Oasis::Home *home ) : Oasis::State( home ), Host( home ) {}
 		virtual ~State( ) {}
 
 	protected:
-
+		
+		::InteractiveTV::Ui::Base::Element Scene;
 		Oasis::Home *Host;
 
 	} State;
@@ -77,8 +79,11 @@ struct InteractiveTV::Project::Oasis::Home
 
 private:
 
+	::Nena::Animation::SinusoidalInEasingFunction scene_transitions;
+	::InteractiveTV::Ui::Base::Element scene;
+
+	::InteractiveTV::Remote::Input remote_input;
 	State::List states;
-	Remote::Input remote_input;
 };
 
 #endif // !__NENA_INTERACTIVE_TV_OASIS_HOME_INCLUDED__

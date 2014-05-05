@@ -13,7 +13,7 @@ namespace InteractiveTV
 	}
 }
 
-struct InteractiveTV::Remote::Input : public InteractiveTV::Project::Oasis::Object
+struct InteractiveTV::Remote::Input : public InteractiveTV::Oasis::Object
 {
 	static UINT32 const GestureAppMessage = WM_USER + 2;
 	typedef Nena::Event<void, Remote::Input *> Event;

@@ -6,7 +6,7 @@
 
 namespace InteractiveTV
 {
-	/*struct Project::Oasis::Renderer
+	/*struct Oasis::Renderer
 	{
 		Oasis::Shared *Context;
 

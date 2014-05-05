@@ -28,9 +28,6 @@
     <ClCompile Include="itv.oasis.air.cpp">
       <Filter>Oasis\[Details]</Filter>
     </ClCompile>
-    <ClCompile Include="itv.oasis.home.startscreen.cpp">
-      <Filter>Oasis\[Details]\Content</Filter>
-    </ClCompile>
     <ClCompile Include="itv.oasis.home.hub.cpp">
       <Filter>Oasis\[Details]\Content</Filter>
     </ClCompile>
@@ -40,14 +37,17 @@
     <ClCompile Include="itv.remote.control.cpp">
       <Filter>Oasis\[Details]\Engine\[Details]</Filter>
     </ClCompile>
-    <ClCompile Include="itv.oasis.ui.button.cpp">
-      <Filter>Oasis\[Details]\Content\[Ui]</Filter>
-    </ClCompile>
-    <ClCompile Include="itv.oasis.ui.dialog.cpp">
-      <Filter>Oasis\[Details]\Content\[Ui]</Filter>
-    </ClCompile>
     <ClCompile Include="itv.oasis.ui.pointers.cpp">
       <Filter>Oasis\[Details]\Content\[Ui]</Filter>
+    </ClCompile>
+    <ClCompile Include="itv.oasis.ui.base.cpp">
+      <Filter>Oasis\[Details]\Content\[Ui]\[Details]</Filter>
+    </ClCompile>
+    <ClCompile Include="itv.oasis.ui.round.cpp">
+      <Filter>Oasis\[Details]\Content\[Ui]</Filter>
+    </ClCompile>
+    <ClCompile Include="itv.oasis.home.start.cpp">
+      <Filter>Oasis\[Details]\Content</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -78,9 +78,6 @@
     <ClInclude Include="itv.oasis.air.h">
       <Filter>Oasis\[Details]</Filter>
     </ClInclude>
-    <ClInclude Include="itv.oasis.home.startscreen.h">
-      <Filter>Oasis\[Details]\Content</Filter>
-    </ClInclude>
     <ClInclude Include="itv.oasis.home.hub.h">
       <Filter>Oasis\[Details]\Content</Filter>
     </ClInclude>
@@ -96,14 +93,17 @@
     <ClInclude Include="itv.remote.control.h">
       <Filter>Oasis\[Details]\Engine\[Details]</Filter>
     </ClInclude>
-    <ClInclude Include="itv.oasis.ui.button.h">
-      <Filter>Oasis\[Details]\Content\[Ui]</Filter>
-    </ClInclude>
-    <ClInclude Include="itv.oasis.ui.dialog.h">
-      <Filter>Oasis\[Details]\Content\[Ui]</Filter>
-    </ClInclude>
     <ClInclude Include="itv.oasis.ui.pointers.h">
       <Filter>Oasis\[Details]\Content\[Ui]</Filter>
+    </ClInclude>
+    <ClInclude Include="itv.oasis.ui.base.h">
+      <Filter>Oasis\[Details]\Content\[Ui]\[Details]</Filter>
+    </ClInclude>
+    <ClInclude Include="itv.oasis.ui.round.h">
+      <Filter>Oasis\[Details]\Content\[Ui]</Filter>
+    </ClInclude>
+    <ClInclude Include="itv.oasis.home.start.h">
+      <Filter>Oasis\[Details]\Content</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +133,9 @@
     </Filter>
     <Filter Include="Oasis\[Details]\Content\[Ui]">
       <UniqueIdentifier>{a5cf0fdd-d253-4686-a1db-522c16a1ca66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Oasis\[Details]\Content\[Ui]\[Details]">
+      <UniqueIdentifier>{40967462-db84-4d5a-afcc-46fd8762854b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

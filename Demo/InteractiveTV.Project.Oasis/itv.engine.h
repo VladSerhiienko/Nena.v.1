@@ -22,7 +22,7 @@ namespace InteractiveTV
 
 	private:
 
-		friend InteractiveTV::Project::Oasis;
+		friend InteractiveTV::Oasis;
 		static Engine *GetForCurrentThread();
 	};
 }

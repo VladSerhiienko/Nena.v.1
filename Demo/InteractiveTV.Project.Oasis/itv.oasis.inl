@@ -1,5 +1,5 @@
 
-__forceinline InteractiveTV::Project::Oasis *InteractiveTV::Project::Oasis::GetForCurrentThread()
+__forceinline InteractiveTV::Oasis *InteractiveTV::Oasis::GetForCurrentThread()
 {
 	static Oasis s_oasis; return &s_oasis;
 }

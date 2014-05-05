@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<App>
+  <Vars>
+    <Rec Name="App/View/Text">Interactive::TV</Rec>
+    <Rec Name="App/View/Width">800</Rec>
+    <Rec Name="App/View/Height">600</Rec>
+    <Rec Name="App/View/Fullscreen">False</Rec>
+    <Rec Name="App/View/Class">NenaWindowClass_InteractiveTV_View</Rec>
+    <Rec Name="App/View/Ico/Small/File">../../Bin/@Icons/cpp.ico</Rec>
+    <Rec Name="App/View/Ico/Big/File">../../Bin/@Icons/cpp.ico</Rec>
+    <Rec Name="App/View/Ico/Small/Wpx">64</Rec>
+    <Rec Name="App/View/Ico/Small/Hpx">64</Rec>
+    <Rec Name="App/View/Ico/Big/Wpx">128</Rec>
+    <Rec Name="App/View/Ico/Big/Hpx">128</Rec>
+    
+    <!-- + date + time (w/secs) -->
+    <Rec Name="ITV/Web/Core/Config/Log/Path">./Log/Path</Rec>
+    <!-- None 0, Normal 1, Verbose 2 -->
+    <Rec Name="ITV/Web/Core/Config/Log/Level">Verbose</Rec> 
+    
+    
+    
+  </Vars>
+</App>

@@ -4,9 +4,9 @@
 
 #define _Oasis_web "web/"
 
-InteractiveTV::Project::Oasis::Web::AppBase::List InteractiveTV::Project::Oasis::Web::s_kids;
+InteractiveTV::Oasis::Web::AppBase::List InteractiveTV::Oasis::Web::s_kids;
 
-InteractiveTV::Project::Oasis::Web::AppBase::AppBase(
+InteractiveTV::Oasis::Web::AppBase::AppBase(
 	Oasis::Web::AppBase *master
 	)
 	: Master( master )
@@ -24,16 +24,16 @@ InteractiveTV::Project::Oasis::Web::AppBase::AppBase(
 		);
 }
 
-InteractiveTV::Project::Oasis::Web::AppBase::~AppBase( )
+InteractiveTV::Oasis::Web::AppBase::~AppBase( )
 {
 	DestroyCoreObjects( );
 }
 
-void InteractiveTV::Project::Oasis::Web::AppBase::SetName( Oasis::String name )
+void InteractiveTV::Oasis::Web::AppBase::SetName( Oasis::String name )
 {
 }
 
-void InteractiveTV::Project::Oasis::Web::AppBase::CreateCoreObjects( )
+void InteractiveTV::Oasis::Web::AppBase::CreateCoreObjects( )
 {
 	auto xsc = &Oasis::GetForCurrentThread( )->Context;
 
@@ -57,19 +57,19 @@ void InteractiveTV::Project::Oasis::Web::AppBase::CreateCoreObjects( )
 	}
 }
 
-void InteractiveTV::Project::Oasis::Web::AppBase::DestroyCoreObjects( )
+void InteractiveTV::Oasis::Web::AppBase::DestroyCoreObjects( )
 {
 	if ( View ) View->Destroy( ), View = nullptr;
 	if ( Session ) Session->Release( ), Session = nullptr;
 }
 
-InteractiveTV::Project::Oasis::Web *
-InteractiveTV::Project::Oasis::Web::GetForCurrentThread( )
+InteractiveTV::Oasis::Web *
+InteractiveTV::Oasis::Web::GetForCurrentThread( )
 {
-	static InteractiveTV::Project::Oasis::Web s_web; return &s_web;
+	static InteractiveTV::Oasis::Web s_web; return &s_web;
 }
 
-InteractiveTV::Project::Oasis::Web::Web( )
+InteractiveTV::Oasis::Web::Web( )
 {
 	typedef BOOL( WINAPI * IsWow64ProcessFunctionPointer ) (HANDLE, PBOOL);
 
@@ -98,7 +98,7 @@ InteractiveTV::Project::Oasis::Web::Web( )
 		);
 }
 
-InteractiveTV::Project::Oasis::Web::~Web( )
+InteractiveTV::Oasis::Web::~Web( )
 {
 	_Oasis_air_grabot(
 		this, OasisAirMsg::kInfo,
@@ -106,7 +106,7 @@ InteractiveTV::Project::Oasis::Web::~Web( )
 		);
 }
 
-void InteractiveTV::Project::Oasis::Web::Init( )
+void InteractiveTV::Oasis::Web::Init( )
 {
 	m_core = Awesomium::WebCore::Initialize(
 		m_core_configuration
@@ -118,7 +118,7 @@ void InteractiveTV::Project::Oasis::Web::Init( )
 		);
 }
 
-void InteractiveTV::Project::Oasis::Web::Quit( )
+void InteractiveTV::Oasis::Web::Quit( )
 {
 	//for (auto &kid : s_kids) delete kid, kid = nullptr; s_kids.clear();
 	if ( m_core ) Awesomium::WebCore::Shutdown( ), m_core = nullptr;
@@ -129,7 +129,7 @@ void InteractiveTV::Project::Oasis::Web::Quit( )
 		);
 }
 
-void InteractiveTV::Project::Oasis::Web::OnFrameMove( )
+void InteractiveTV::Oasis::Web::OnFrameMove( )
 {
 	if ( m_core ) m_core->Update( );
 }

@@ -8,28 +8,28 @@ struct SrwLockExclusiveGuard
 	~SrwLockExclusiveGuard( ) { ReleaseSRWLockExclusive( &m_lock ); }
 };
 
-InteractiveTV::Project::Oasis::Air::Air( )
+InteractiveTV::Oasis::Air::Air( )
 {
 	InitializeSRWLock( &msg_collection_guard );
 }
 
-InteractiveTV::Project::Oasis::Air::~Air( )
+InteractiveTV::Oasis::Air::~Air( )
 {
 }
 
-InteractiveTV::Project::Oasis::Air *InteractiveTV::Project::Oasis::Air::GetForCurrentThread()
+InteractiveTV::Oasis::Air *InteractiveTV::Oasis::Air::GetForCurrentThread()
 {
 	static Air s_air; return &s_air;
 }
 
-void InteractiveTV::Project::Oasis::Air::Grab(
+void InteractiveTV::Oasis::Air::Grab(
 	Air::String msg
 	)
 {
 	return Grab(msg, Message::kInfo);
 }
 
-void InteractiveTV::Project::Oasis::Air::Grab(
+void InteractiveTV::Oasis::Air::Grab(
 	Air::Message::Type type, 
 	Air::String msg
 	)
@@ -37,7 +37,7 @@ void InteractiveTV::Project::Oasis::Air::Grab(
 	return Grab(msg, type);
 }
 
-void InteractiveTV::Project::Oasis::Air::Grab(
+void InteractiveTV::Oasis::Air::Grab(
 	Air::String msg, 
 	Air::Message::Type type
 	)
@@ -45,14 +45,14 @@ void InteractiveTV::Project::Oasis::Air::Grab(
 	return Grab(nullptr, msg, type);
 }
 
-void InteractiveTV::Project::Oasis::Air::Grab(
+void InteractiveTV::Oasis::Air::Grab(
 	Oasis::Object *obj, Air::String msg
 	)
 {
 	return Grab(obj, msg, Message::kInfo);
 }
 
-void InteractiveTV::Project::Oasis::Air::Grab(
+void InteractiveTV::Oasis::Air::Grab(
 	Oasis::Object *obj, 
 	Air::Message::Type type, 
 	Air::String msg
@@ -61,7 +61,7 @@ void InteractiveTV::Project::Oasis::Air::Grab(
 	return Grab( obj, msg, type );
 }
 
-void InteractiveTV::Project::Oasis::Air::Grab(
+void InteractiveTV::Oasis::Air::Grab(
 	Oasis::Object *obj, 
 	Air::String msg, 
 	Air::Message::Type type
@@ -97,20 +97,20 @@ void InteractiveTV::Project::Oasis::Air::Grab(
 	}
 }
 
-InteractiveTV::Project::Oasis::Air::StringDeque::const_iterator 
-InteractiveTV::Project::Oasis::Air::Begin()
+InteractiveTV::Oasis::Air::StringDeque::const_iterator 
+InteractiveTV::Oasis::Air::Begin()
 {
 	return msg_collection.cbegin();
 }
 
-InteractiveTV::Project::Oasis::Air::StringDeque::const_iterator 
-InteractiveTV::Project::Oasis::Air::End()
+InteractiveTV::Oasis::Air::StringDeque::const_iterator 
+InteractiveTV::Oasis::Air::End()
 {
 	return msg_collection.cend();
 }
 
-InteractiveTV::Project::Oasis::Air::StringDeque::size_type 
-InteractiveTV::Project::Oasis::Air::Size()
+InteractiveTV::Oasis::Air::StringDeque::size_type 
+InteractiveTV::Oasis::Air::Size()
 {
 	return msg_collection.size();
 }

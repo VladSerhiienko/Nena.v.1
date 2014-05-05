@@ -1,52 +1,48 @@
 #include "app.precompiled.h"
 #include "itv.oasis.home.h"
-#include "itv.oasis.ui.dialog.h"
-#include "nena.animation.h"
+#include "itv.oasis.ui.pointers.h"
+#include "itv.oasis.ui.round.h"
 
 #ifndef __NENA_INTERACTIVE_TV_OASIS_HOME_HUB_INCLUDED__
 #define __NENA_INTERACTIVE_TV_OASIS_HOME_HUB_INCLUDED__
 
-struct InteractiveTV::Project::Oasis::Home::Hub
-	: public InteractiveTV::Project::Oasis::Home::State
-	, public InteractiveTV::Project::Oasis::Web::AppBase
+struct InteractiveTV::Oasis::Home::HubScreen
+	: public InteractiveTV::Oasis::Home::State
+	, public InteractiveTV::Oasis::Web::AppBase
 	, private Awesomium::JSMethodHandler
 	, private Awesomium::WebViewListener::View
 	, private Awesomium::WebViewListener::Load
 	, private Awesomium::WebViewListener::Process
 {
-	enum Stage
-	{
-		kSuspending,
-		kSuspended,
-		kResuming,
-		kResumed,
-	};
-
-	struct AnimationControl
-	{
-		Nena::Animation::QuarticInEasingFunction SuspendingX;
-		Nena::Animation::QuarticOutEasingFunction ResumingX;
-	};
-
 	typedef std::string String8;
 	typedef std::wstring String, String16;
-	typedef ::tm TimeGeneric;
-	typedef ::time_t TimeUnix;
+	typedef ::Nena::Animation::EasingStage Stage;
+	typedef ::Nena::Animation::EasingFunctionPair<
+		::Nena::Animation::EasingFunctionType::kExpOut,
+		::Nena::Animation::EasingFunctionType::kExpOut>
+		SinusoidalInInEasingFunctionPair;
 
-	Hub::Stage CurrentStage;
-	Oasis::Shared *Context = nullptr;
-	Hub::AnimationControl Easing;
+	typedef struct WebViewImage
+	{
+		::InteractiveTV::Ui::Base::Image Bitmap;
 
-	StartScreen *Start;
-	Ui::Dialog Navigation;
-	Ui::Pointers *Pointers;
+	} WebViewImage;
 
-	::Nena::Graphics::OverlayResources *Overlay = nullptr;
-	::Nena::Graphics::Resources::Size *ScreenSize = nullptr;
-	::Nena::Graphics::Resources::Direct2DBitmap ViewImage = nullptr;
+	HubScreen::WebViewImage Img;
+	::InteractiveTV::Ui::Pointers *Pointers;
+	::InteractiveTV::Oasis::Home::State *Start;
+	::InteractiveTV::Ui::Round::Dialog Navdialog;
+	HubScreen::SinusoidalInInEasingFunctionPair Easing;
 
-	Hub( Oasis::Home * );
-	~Hub( );
+	HubScreen( Oasis::Home * );
+	~HubScreen( );
+
+	HubScreen::Stage GetEasingStage(
+		);
+	void OnDialogButtonSelected(
+		::InteractiveTV::Ui::Round::Dialog *,
+		::InteractiveTV::Ui::Round::Dialog::Button *
+		);
 
 	virtual void Init( ) override;
 	virtual void Quit( ) override;
@@ -75,7 +71,6 @@ public:
 	void OnMouseRBPressed( _In_::FLOAT x, _In_::FLOAT y );
 	void OnMouseLBReleased( _In_::FLOAT x, _In_::FLOAT y );
 	void OnMouseRBReleased( _In_::FLOAT x, _In_::FLOAT y );
-	void OnButtonSelected( Ui::Dialog *, Ui::Button * );
 
 private:
 

@@ -6,15 +6,13 @@
 
 namespace InteractiveTV
 {
-	namespace Project
-	{
 		struct Oasis::Web : public Oasis::Object
 		{
 			struct AppBase
 			{
 				typedef ::std::vector<Oasis::Web::AppBase *> List;
-				friend ::InteractiveTV::Project::Oasis::Web;
-				friend ::InteractiveTV::Project::Oasis;
+				friend ::InteractiveTV::Oasis::Web;
+				friend ::InteractiveTV::Oasis;
 
 				AppBase(Oasis::Web::AppBase *master);
 				virtual ~AppBase();
@@ -39,8 +37,8 @@ namespace InteractiveTV
 
 		private:
 
-			friend InteractiveTV::Project::Oasis;
-			friend InteractiveTV::Project::Oasis::Web::AppBase;
+			friend InteractiveTV::Oasis;
+			friend InteractiveTV::Oasis::Web::AppBase;
 			static Oasis::Web *GetForCurrentThread();
 
 			Oasis::Web::AppBase::List m_states;
@@ -51,7 +49,6 @@ namespace InteractiveTV
 
 			static Oasis::Web::AppBase::List s_kids;
 		};
-	}
 }
 
 #endif // !__NENA_INTERACTIVE_TV_OASIS_WEB_INCLUDED__

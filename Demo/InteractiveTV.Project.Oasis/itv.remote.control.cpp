@@ -17,7 +17,7 @@ void InteractiveTV::Remote::Input::GestureCallback::OnAlert( _In_ PXCGesture::Al
 
 void InteractiveTV::Remote::Input::GestureCallback::OnGesture( _In_ PXCGesture::Gesture *data )
 {
-	static auto app = InteractiveTV::Project::Oasis::GetForCurrentThread( )->Context.App;
+	static auto app = InteractiveTV::Oasis::GetForCurrentThread( )->Context.App;
 
 	switch ( data->label )
 	{
@@ -233,8 +233,8 @@ void InteractiveTV::Remote::Input::QueryGestureData(
 {
 	gesture->QueryNodeData( 0, PXCGesture::GeoNode::LABEL_BODY_HAND_PRIMARY, 10, data->Nodes[ 0 ] );
 	gesture->QueryNodeData( 0, PXCGesture::GeoNode::LABEL_BODY_HAND_SECONDARY, 10, data->Nodes[ 1 ] );
-	gesture->QueryNodeData( 0, PXCGesture::GeoNode::LABEL_BODY_ELBOW_PRIMARY, &data->Nodes[ 0 ][ 10 ] );
-	gesture->QueryNodeData( 0, PXCGesture::GeoNode::LABEL_BODY_ELBOW_SECONDARY, &data->Nodes[ 1 ][ 10 ] );
+	//gesture->QueryNodeData( 0, PXCGesture::GeoNode::LABEL_BODY_ELBOW_PRIMARY, &data->Nodes[ 0 ][ 10 ] );
+	//gesture->QueryNodeData( 0, PXCGesture::GeoNode::LABEL_BODY_ELBOW_SECONDARY, &data->Nodes[ 1 ][ 10 ] );
 	//gesture->QueryGestureData( 0, PXCGesture::GeoNode::LABEL_BODY_HAND_PRIMARY, 0, &data->gestures[ 0 ] );
 	//gesture->QueryGestureData( 0, PXCGesture::GeoNode::LABEL_BODY_HAND_SECONDARY, 0, &data->gestures[ 1 ] );
 }

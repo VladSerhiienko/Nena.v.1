@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<App>
+  <Vars>
+    <Rec Name="Demo/ShadowMapping/Shader/Shadow/VS/CSO">Shaders/ShadowVertexShader.cso</Rec>
+    <Rec Name="Demo/ShadowMapping/Shader/Shadow/GS/CSO">Shaders/ShadowGeometryShader.cso</Rec>
+    <Rec Name="Demo/ShadowMapping/Shader/Shadow/PS/CSO">Shaders/ShadowPixelShader.cso</Rec>
+    <Rec Name="Demo/ShadowMapping/Shader/Depth/VS/CSO">Shaders/ShadowVertexShader.cso</Rec>
+    <Rec Name="Demo/ShadowMapping/Shader/Depth/GS/CSO">Shaders/DepthGeometryShader.cso</Rec>
+    <Rec Name="Demo/ShadowMapping/Shader/Depth/PS/CSO">Shaders/DepthPixelShader.cso</Rec>
+  </Vars>
+</App>

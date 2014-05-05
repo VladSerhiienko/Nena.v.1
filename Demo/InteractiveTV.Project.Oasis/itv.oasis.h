@@ -8,8 +8,6 @@
 
 namespace InteractiveTV
 {
-	namespace Project
-	{
 		class Oasis
 		{
 			struct Implementation;
@@ -28,7 +26,7 @@ namespace InteractiveTV
 
 			struct Object
 			{
-				friend ::InteractiveTV::Project::Oasis;
+				friend ::InteractiveTV::Oasis;
 
 			protected: Object( ) = default;
 			protected: ::UINT16 Id; String Name;
@@ -42,16 +40,16 @@ namespace InteractiveTV
 				::Nena::App *App = nullptr;
 				::Nena::Simulation::BasicTimer Timer;
 				::InteractiveTV::Engine *Engine = nullptr;
-				::InteractiveTV::Project::Oasis *Oasis = nullptr;
-				::InteractiveTV::Project::Oasis::Web *Web = nullptr;
-				::InteractiveTV::Project::Oasis::Air *Air = nullptr;
-				::InteractiveTV::Project::Oasis::String Uuid;
-				::InteractiveTV::Project::Oasis::String Path;
-				::InteractiveTV::Project::Oasis::String UniquePath;
+				::InteractiveTV::Oasis *Oasis = nullptr;
+				::InteractiveTV::Oasis::Web *Web = nullptr;
+				::InteractiveTV::Oasis::Air *Air = nullptr;
+				::InteractiveTV::Oasis::String Uuid;
+				::InteractiveTV::Oasis::String Path;
+				::InteractiveTV::Oasis::String UniquePath;
 
 			private:
 
-				friend ::InteractiveTV::Project::Oasis;
+				friend ::InteractiveTV::Oasis;
 				Shared( );
 			};
 
@@ -149,8 +147,6 @@ namespace InteractiveTV
 
 		private:
 		};
-
-	}
 
 #include "itv.oasis.inl"
 

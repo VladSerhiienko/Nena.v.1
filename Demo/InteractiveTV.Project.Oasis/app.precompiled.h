@@ -49,15 +49,11 @@
 #define __NENA_INCLUDE_SR_DELEGATES__ TRUE
 
 #include <Nena/Delegate.h>
-
 #include "nena.basic.timer.h"
 
 namespace InteractiveTV
 {
-	namespace Project
-	{
-		class Oasis;
-	}
+	class Oasis;
 }
 
 #endif // !__NENA_INTERACTIVE_TV_PCH_INCLUDED__
